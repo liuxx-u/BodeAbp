@@ -1,0 +1,9 @@
+﻿.k-grid tbody .k-button, .k-ie8 .k-grid tbody button.k-button { min-width: 0 !important; }
+.input-group-addon-verify { padding: 1px; }
+.theme-panel>.toggler, .theme-panel>.toggler-close, .theme-panel>.theme-options{ top: -10px;}
+.page-content-white .page-title{ margin: 12px 0; font-size: 20px;}
+.k-header>.k-grid-filter, .k-header>.k-header-column-menu{ float: left;}
+.k-grid table{ table-layout: fixed;}
+.k-grid td{ white-space: nowrap; overflow: hidden;}
+.k-grid th{ white-space: pre-line; overflow:scroll;}
+.page-header.navbar.navbar-fixed-top{ z-index: 1000;}

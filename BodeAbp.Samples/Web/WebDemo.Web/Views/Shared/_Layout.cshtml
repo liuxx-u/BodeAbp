@@ -1,0 +1,30 @@
+﻿@using Abp.Timing
+@using Abp.Web.Mvc.Extensions
+@*
+    IMPORTANT NOTES FROM ASP.NET BOILERPLATE:
+
+    This _Layout.cshtml is not used actually. It's left here if you want to add some classic style (MPA)
+    pages to your application.
+
+    See App/Main/views/layout/layout.cshtml for Angular application's layout page.
+*@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>WebDemo</title>
+    @RenderSection("Styles", false)
+    <link rel="shortcut icon" href="~/favicon.ico">
+
+    @RenderSection("Scripts", false)
+</head>
+<body>
+    @RenderBody()
+</body>
+</html>

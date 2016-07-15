@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<localizationDictionary culture="zh-CN">
+  <texts>
+    <text name="HomePage" value="主页" />
+    <text name="About" value="关于我们" />
+
+    <text name="Identity" value="权限管理" />
+    <text name="Identity.Users" value="用户列表" />
+    <text name="Identity.Roles" value="角色列表" />
+
+    <text name="System" value="系统管理" />
+    <text name="System.ServerInfo" value="服务器信息" />
+    <text name="System.OperationLogs" value="操作日志" />
+    
+    <text name="WellcomeMessage" value="欢迎使用 WebDemo!" />
+    
+    <text name="FormIsNotValidMessage" value="部分输入信息不符合要求，请检查并改正.." />
+
+    <text name="InvalidUserNameOrPassword" value="用户名或密码无效" />
+    <text name="UserIsNotActiveAndCanNotLogin" value="用户 {0} 未激活，不能登录." />
+    <text name="PleaseEnterLoginInformation" value="请输入登录信息" />
+    <text name="UserNameOrEmail" value="用户名或邮箱地址" />
+    <text name="Password" value="密码" />
+    <text name="RememberMe" value="记住我" />
+    <text name="LogIn" value="登录" />
+
+    <text name="LoginFailed" value="登录失败!" />
+    
+  </texts>
+</localizationDictionary>

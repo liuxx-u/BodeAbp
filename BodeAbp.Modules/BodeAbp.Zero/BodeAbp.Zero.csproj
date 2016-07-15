@@ -1,0 +1,206 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{CDDBA61D-53E2-4046-B902-18AFCE9AFFF2}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>BodeAbp.Zero</RootNamespace>
+    <AssemblyName>BodeAbp.Zero</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Debug\BodeAbp.Zero.XML</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Release\BodeAbp.Zero.XML</DocumentationFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Castle.Core, Version=3.3.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Castle.Core.3.3.0\lib\net45\Castle.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Castle.Facilities.Logging, Version=3.3.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Castle.LoggingFacility.3.3.0\lib\net45\Castle.Facilities.Logging.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Castle.Windsor, Version=3.3.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Castle.Windsor.3.3.0\lib\net45\Castle.Windsor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Newtonsoft.Json.8.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Auditing\AuditingAppService.cs" />
+    <Compile Include="Auditing\Dtos\AuditLogDto.cs" />
+    <Compile Include="Auditing\IAuditingAppService.cs" />
+    <Compile Include="Auditing\ModelConfigs\AuditLogConfiguration.cs" />
+    <Compile Include="Providers\BodeAbpZeroAuthorizationProvider.cs" />
+    <Compile Include="Providers\BodeAbpZeroNavigationProvider.cs" />
+    <Compile Include="Providers\PermissionChecker.cs" />
+    <Compile Include="Providers\PermissionNames.cs" />
+    <Compile Include="BackgroundJobs\ModelConfigs\BackgroundJobInfoConfiguration.cs" />
+    <Compile Include="Organizations\Dtos\OrganizationUnitDto.cs" />
+    <Compile Include="Organizations\IOrganizationAppService.cs" />
+    <Compile Include="Organizations\ModelConfigs\OrganizationUnitConfiguration.cs" />
+    <Compile Include="Organizations\ModelConfigs\UserOrganizationUnitConfiguration.cs" />
+    <Compile Include="Organizations\OrganizationAppService.cs" />
+    <Compile Include="Permissions\Dtos\PermissionBriefOutPut.cs" />
+    <Compile Include="Permissions\IPermissionAppService.cs" />
+    <Compile Include="Permissions\ModelConfigs\RolePermissionConfiguration.cs" />
+    <Compile Include="Permissions\ModelConfigs\UserPermissionConfiguration.cs" />
+    <Compile Include="Permissions\PermissionAppService.cs" />
+    <Compile Include="Roles\Dtos\GrantRolePermissionInput.cs" />
+    <Compile Include="Roles\Dtos\RoleDto.cs" />
+    <Compile Include="Roles\Dtos\RoleQueryDto.cs" />
+    <Compile Include="Roles\IRoleAppService.cs" />
+    <Compile Include="Roles\ModelConfigs\RoleConfiguration.cs" />
+    <Compile Include="Roles\ModelConfigs\UserRoleConfiguration.cs" />
+    <Compile Include="Roles\RoleAppService.cs" />
+    <Compile Include="Settings\Domain\Setting.cs" />
+    <Compile Include="Settings\Domain\SettingExtensions.cs" />
+    <Compile Include="Settings\Domain\SettingStore.cs" />
+    <Compile Include="Settings\ISettingsAppService.cs" />
+    <Compile Include="Settings\ModelConfigs\SettingConfiguration.cs" />
+    <Compile Include="Settings\SeedActions\DefaultSettingSeedAction.cs" />
+    <Compile Include="Settings\SettingsAppService.cs" />
+    <Compile Include="Users\Domain\IExternalAuthenticationSource.cs" />
+    <Compile Include="Users\Dtos\ChangePasswordInput.cs" />
+    <Compile Include="Users\Dtos\ChangeUserNameInput.cs" />
+    <Compile Include="Users\Dtos\CreateUserInput.cs" />
+    <Compile Include="Users\Dtos\ResetPasswordInput.cs" />
+    <Compile Include="Users\Dtos\UserDto.cs" />
+    <Compile Include="Users\Dtos\UserRoleSelectOutPut.cs" />
+    <Compile Include="Users\Dtos\ValidateCodeDto.cs" />
+    <Compile Include="Users\IUserAppService.cs" />
+    <Compile Include="Users\ModelConfigs\UserConfiguration.cs" />
+    <Compile Include="Users\ModelConfigs\UserExternalLoginConfiguration.cs" />
+    <Compile Include="Users\ModelConfigs\UserLoginAttemptConfiguration.cs" />
+    <Compile Include="Users\ModelConfigs\ValidateCodeConfiguration.cs" />
+    <Compile Include="Roles\SeedActions\HostRoleSeedAction.cs" />
+    <Compile Include="Users\SeedActions\UserSeedAction.cs" />
+    <Compile Include="Users\UserAppService.cs" />
+    <Compile Include="Zero\Configuration\BodeAbpZeroSettingNames.cs" />
+    <Compile Include="Auditing\Domain\AuditingStore.cs" />
+    <Compile Include="Auditing\Domain\AuditLog.cs" />
+    <Compile Include="Organizations\Domain\IMayHaveOrganizationUnit.cs" />
+    <Compile Include="Organizations\Domain\IMustHaveOrganizationUnit.cs" />
+    <Compile Include="Organizations\Domain\IOrganizationUnitSettings.cs" />
+    <Compile Include="Organizations\Domain\OrganizationUnit.cs" />
+    <Compile Include="Organizations\Domain\OrganizationUnitManager.cs" />
+    <Compile Include="Organizations\Domain\OrganizationUnitSettings.cs" />
+    <Compile Include="Organizations\Domain\UserOrganizationUnit.cs" />
+    <Compile Include="Permissions\Domain\PermissionBase.cs" />
+    <Compile Include="Permissions\Domain\IRolePermissionStore.cs" />
+    <Compile Include="Permissions\Domain\IUserPermissionStore.cs" />
+    <Compile Include="Permissions\Domain\PermissionEqualityComparer.cs" />
+    <Compile Include="Permissions\Domain\PermissionGrantInfo.cs" />
+    <Compile Include="Permissions\Domain\RolePermission.cs" />
+    <Compile Include="Permissions\Domain\RolePermissionCacheItem.cs" />
+    <Compile Include="Permissions\Domain\UserPermission.cs" />
+    <Compile Include="Permissions\Domain\UserPermissionCacheItem.cs" />
+    <Compile Include="Roles\Domain\Role.cs" />
+    <Compile Include="Roles\Domain\RoleManager.cs" />
+    <Compile Include="Roles\Domain\RoleStore.cs" />
+    <Compile Include="Roles\Domain\UserRole.cs" />
+    <Compile Include="Users\Domain\User.cs" />
+    <Compile Include="Users\Domain\UserManager.cs" />
+    <Compile Include="Users\Domain\UserStore.cs" />
+    <Compile Include="Users\Domain\UserExternalLogin.cs" />
+    <Compile Include="Users\Domain\UserLoginAttempt.cs" />
+    <Compile Include="Users\Domain\ValidateCode.cs" />
+    <Compile Include="BackgroundJobs\Domain\BackgroundJobStore.cs" />
+    <Compile Include="Zero\BodeAbpZeroConsts.cs" />
+    <Compile Include="Zero\BodeAbpZeroModule.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Runtime\Caching\AbpZeroCacheManagerExtensions.cs" />
+    <Compile Include="Runtime\Session\AbpSessionExtensions.cs" />
+    <Compile Include="Runtime\Session\IdentityFrameworkClaimsAbpSession.cs" />
+    <Compile Include="Zero\Configuration\BodeAbpZeroSettingProvider.cs" />
+    <Compile Include="Zero\Configuration\IRoleManagementConfig.cs" />
+    <Compile Include="Zero\Configuration\IUserManagementConfig.cs" />
+    <Compile Include="Zero\Configuration\RoleManagementConfig.cs" />
+    <Compile Include="Zero\Configuration\StaticRoleDefinition.cs" />
+    <Compile Include="Zero\Configuration\UserManagementConfig.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\BodeAbp.Frame\Abp.AutoMapper\Abp.AutoMapper.csproj">
+      <Project>{06eb5f7c-b974-4775-a305-f175d645f7c9}</Project>
+      <Name>Abp.AutoMapper</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\BodeAbp.Frame\Abp.EntityFramework\Abp.EntityFramework.csproj">
+      <Project>{948f0caf-3382-4e03-9a0f-0ddb206fe40d}</Project>
+      <Name>Abp.EntityFramework</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\BodeAbp.Frame\Abp\Abp.csproj">
+      <Project>{2c221d3b-5f54-4c5b-8082-318636415132}</Project>
+      <Name>Abp</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\BodeAbp.Plugins\BodeAbp.Plugins.Core\BodeAbp.Plugins.Core.csproj">
+      <Project>{954fed98-e6f7-421d-ad08-e8c85ce745c8}</Project>
+      <Name>BodeAbp.Plugins.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\BodeAbp.Plugins\BodeAbp.Sms.Juhe\BodeAbp.Sms.Juhe.csproj">
+      <Project>{f84d0d4a-f672-4281-90f3-1af989aac127}</Project>
+      <Name>BodeAbp.Sms.Juhe</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Zero\Localization\Source\AbpZero.xml" />
+    <Content Include="Zero\Localization\Source\AbpZero-en-US.xml" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

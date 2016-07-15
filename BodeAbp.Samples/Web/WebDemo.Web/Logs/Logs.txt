@@ -1,0 +1,388 @@
+WARN  2016-07-14 14:53:30,576 [69   ] Abp.Logging.LogHelper                    - Can not find 'Product.Attribute.Crud' in localization source 'BodeAbpProduct'!
+WARN  2016-07-14 14:53:30,819 [69   ] Abp.Logging.LogHelper                    - Can not find 'Product.AttributeOption' in localization source 'BodeAbpProduct'!
+WARN  2016-07-14 14:53:30,819 [69   ] Abp.Logging.LogHelper                    - Can not find 'Product.AttributeOption.Crud' in localization source 'BodeAbpProduct'!
+WARN  2016-07-14 14:53:30,819 [69   ] Abp.Logging.LogHelper                    - Can not find 'Zero' in localization source 'BodeAbpZero'!
+WARN  2016-07-14 14:53:30,820 [69   ] Abp.Logging.LogHelper                    - Can not find 'Zero.Role' in localization source 'BodeAbpZero'!
+WARN  2016-07-14 14:53:30,820 [69   ] Abp.Logging.LogHelper                    - Can not find 'Zero.Role.Crud' in localization source 'BodeAbpZero'!
+WARN  2016-07-14 14:53:30,820 [69   ] Abp.Logging.LogHelper                    - Can not find 'Zero.Role.Test' in localization source 'BodeAbpZero'!
+WARN  2016-07-14 14:53:30,820 [69   ] Abp.Logging.LogHelper                    - Can not find 'Zero.User' in localization source 'BodeAbpZero'!
+WARN  2016-07-14 14:53:30,820 [69   ] Abp.Logging.LogHelper                    - Can not find 'Zero.User.Crud' in localization source 'BodeAbpZero'!
+WARN  2016-07-14 14:53:30,820 [69   ] Abp.Logging.LogHelper                    - Can not find 'Zero.AuditLog' in localization source 'BodeAbpZero'!
+WARN  2016-07-14 14:53:30,820 [69   ] Abp.Logging.LogHelper                    - Can not find 'Zero.AuditLog.Crud' in localization source 'BodeAbpZero'!
+WARN  2016-07-14 14:53:30,820 [69   ] Abp.Logging.LogHelper                    - Can not find 'Pages' in localization source 'WebDemo'!
+WARN  2016-07-14 14:58:44,375 [92   ] Abp.Logging.LogHelper                    - Can not find 'Activity' in localization source 'BodeAbpActivity'!
+WARN  2016-07-14 14:58:44,375 [92   ] Abp.Logging.LogHelper                    - Can not find 'Activity.Activity' in localization source 'BodeAbpActivity'!
+WARN  2016-07-14 14:58:44,375 [92   ] Abp.Logging.LogHelper                    - Can not find 'Activity.Activity.Crud' in localization source 'BodeAbpActivity'!
+WARN  2016-07-14 14:58:44,375 [92   ] Abp.Logging.LogHelper                    - Can not find 'Activity.Classify' in localization source 'BodeAbpActivity'!
+WARN  2016-07-14 14:58:44,375 [92   ] Abp.Logging.LogHelper                    - Can not find 'Activity.Classify.Crud' in localization source 'BodeAbpActivity'!
+WARN  2016-07-14 14:58:44,375 [92   ] Abp.Logging.LogHelper                    - Can not find 'Product' in localization source 'BodeAbpProduct'!
+WARN  2016-07-14 14:58:44,375 [92   ] Abp.Logging.LogHelper                    - Can not find 'Product.Classify' in localization source 'BodeAbpProduct'!
+WARN  2016-07-14 14:58:44,375 [92   ] Abp.Logging.LogHelper                    - Can not find 'Product.Classify.Crud' in localization source 'BodeAbpProduct'!
+WARN  2016-07-14 14:58:44,375 [92   ] Abp.Logging.LogHelper                    - Can not find 'Product.Attribute' in localization source 'BodeAbpProduct'!
+WARN  2016-07-14 14:58:44,376 [92   ] Abp.Logging.LogHelper                    - Can not find 'Product.Attribute.Crud' in localization source 'BodeAbpProduct'!
+WARN  2016-07-14 14:58:44,376 [92   ] Abp.Logging.LogHelper                    - Can not find 'Product.AttributeOption' in localization source 'BodeAbpProduct'!
+WARN  2016-07-14 14:58:44,376 [92   ] Abp.Logging.LogHelper                    - Can not find 'Product.AttributeOption.Crud' in localization source 'BodeAbpProduct'!
+WARN  2016-07-14 14:58:44,376 [92   ] Abp.Logging.LogHelper                    - Can not find 'Zero' in localization source 'BodeAbpZero'!
+WARN  2016-07-14 14:58:44,376 [92   ] Abp.Logging.LogHelper                    - Can not find 'Zero.Role' in localization source 'BodeAbpZero'!
+WARN  2016-07-14 14:58:44,376 [92   ] Abp.Logging.LogHelper                    - Can not find 'Zero.Role.Crud' in localization source 'BodeAbpZero'!
+WARN  2016-07-14 14:58:44,376 [92   ] Abp.Logging.LogHelper                    - Can not find 'Zero.Role.Test' in localization source 'BodeAbpZero'!
+WARN  2016-07-14 14:58:44,376 [92   ] Abp.Logging.LogHelper                    - Can not find 'Zero.User' in localization source 'BodeAbpZero'!
+WARN  2016-07-14 14:58:44,376 [92   ] Abp.Logging.LogHelper                    - Can not find 'Zero.User.Crud' in localization source 'BodeAbpZero'!
+WARN  2016-07-14 14:58:44,376 [92   ] Abp.Logging.LogHelper                    - Can not find 'Zero.AuditLog' in localization source 'BodeAbpZero'!
+WARN  2016-07-14 14:58:44,376 [92   ] Abp.Logging.LogHelper                    - Can not find 'Zero.AuditLog.Crud' in localization source 'BodeAbpZero'!
+WARN  2016-07-14 14:58:44,376 [92   ] Abp.Logging.LogHelper                    - Can not find 'Pages' in localization source 'WebDemo'!
+WARN  2016-07-14 15:07:33,877 [99   ] Abp.Logging.LogHelper                    - Can not find 'key' in localization source 'Abp'!
+WARN  2016-07-14 15:07:33,877 [99   ] Abp.Logging.LogHelper                    - Can not find '权限管理' in localization source 'BodeAbpZero'!
+WARN  2016-07-14 15:07:33,877 [99   ] Abp.Logging.LogHelper                    - Can not find '用户列表' in localization source 'BodeAbpZero'!
+WARN  2016-07-14 15:07:33,877 [99   ] Abp.Logging.LogHelper                    - Can not find '角色列表' in localization source 'BodeAbpZero'!
+WARN  2016-07-14 15:07:33,877 [99   ] Abp.Logging.LogHelper                    - Can not find '组织机构列表' in localization source 'BodeAbpZero'!
+WARN  2016-07-14 15:07:33,877 [99   ] Abp.Logging.LogHelper                    - Can not find '日志管理' in localization source 'BodeAbpZero'!
+WARN  2016-07-14 15:07:33,877 [99   ] Abp.Logging.LogHelper                    - Can not find '审计日志' in localization source 'BodeAbpZero'!
+WARN  2016-07-14 15:07:33,877 [99   ] Abp.Logging.LogHelper                    - Can not find 'HomePage' in localization source 'WebDemo'!
+WARN  2016-07-14 15:07:52,185 [98   ] Abp.Logging.LogHelper                    - Can not find 'key' in localization source 'Abp'!
+WARN  2016-07-14 15:07:52,185 [98   ] Abp.Logging.LogHelper                    - Can not find '权限管理' in localization source 'BodeAbpZero'!
+WARN  2016-07-14 15:07:52,185 [98   ] Abp.Logging.LogHelper                    - Can not find '用户列表' in localization source 'BodeAbpZero'!
+WARN  2016-07-14 15:07:52,185 [98   ] Abp.Logging.LogHelper                    - Can not find '角色列表' in localization source 'BodeAbpZero'!
+WARN  2016-07-14 15:07:52,185 [98   ] Abp.Logging.LogHelper                    - Can not find '组织机构列表' in localization source 'BodeAbpZero'!
+WARN  2016-07-14 15:07:52,185 [98   ] Abp.Logging.LogHelper                    - Can not find '日志管理' in localization source 'BodeAbpZero'!
+WARN  2016-07-14 15:07:52,185 [98   ] Abp.Logging.LogHelper                    - Can not find '审计日志' in localization source 'BodeAbpZero'!
+WARN  2016-07-14 15:07:52,185 [98   ] Abp.Logging.LogHelper                    - Can not find 'HomePage' in localization source 'WebDemo'!
+WARN  2016-07-14 15:08:26,780 [99   ] Abp.Logging.LogHelper                    - Can not find 'key' in localization source 'Abp'!
+WARN  2016-07-14 15:08:26,780 [99   ] Abp.Logging.LogHelper                    - Can not find '权限管理' in localization source 'BodeAbpZero'!
+WARN  2016-07-14 15:08:26,780 [99   ] Abp.Logging.LogHelper                    - Can not find '用户列表' in localization source 'BodeAbpZero'!
+WARN  2016-07-14 15:08:26,780 [99   ] Abp.Logging.LogHelper                    - Can not find '角色列表' in localization source 'BodeAbpZero'!
+WARN  2016-07-14 15:08:26,780 [99   ] Abp.Logging.LogHelper                    - Can not find '组织机构列表' in localization source 'BodeAbpZero'!
+WARN  2016-07-14 15:08:26,780 [99   ] Abp.Logging.LogHelper                    - Can not find '日志管理' in localization source 'BodeAbpZero'!
+WARN  2016-07-14 15:08:26,780 [99   ] Abp.Logging.LogHelper                    - Can not find '审计日志' in localization source 'BodeAbpZero'!
+WARN  2016-07-14 15:08:26,780 [99   ] Abp.Logging.LogHelper                    - Can not find 'HomePage' in localization source 'WebDemo'!
+WARN  2016-07-14 15:42:54,620 [30   ] Abp.Logging.LogHelper                    - Can not find 'key' in localization source 'Abp'!
+WARN  2016-07-14 15:42:54,620 [30   ] Abp.Logging.LogHelper                    - Can not find '权限管理' in localization source 'BodeAbpZero'!
+WARN  2016-07-14 15:42:54,620 [30   ] Abp.Logging.LogHelper                    - Can not find '用户列表' in localization source 'BodeAbpZero'!
+WARN  2016-07-14 15:42:54,620 [30   ] Abp.Logging.LogHelper                    - Can not find '角色列表' in localization source 'BodeAbpZero'!
+WARN  2016-07-14 15:42:54,620 [30   ] Abp.Logging.LogHelper                    - Can not find '组织机构列表' in localization source 'BodeAbpZero'!
+WARN  2016-07-14 15:42:54,620 [30   ] Abp.Logging.LogHelper                    - Can not find '日志管理' in localization source 'BodeAbpZero'!
+WARN  2016-07-14 15:42:54,620 [30   ] Abp.Logging.LogHelper                    - Can not find '审计日志' in localization source 'BodeAbpZero'!
+WARN  2016-07-14 15:42:54,620 [30   ] Abp.Logging.LogHelper                    - Can not find 'HomePage' in localization source 'WebDemo'!
+WARN  2016-07-14 15:44:11,728 [42   ] Abp.Logging.LogHelper                    - Can not find 'key' in localization source 'Abp'!
+WARN  2016-07-14 15:44:11,728 [42   ] Abp.Logging.LogHelper                    - Can not find '权限管理' in localization source 'BodeAbpZero'!
+WARN  2016-07-14 15:44:11,728 [42   ] Abp.Logging.LogHelper                    - Can not find '用户列表' in localization source 'BodeAbpZero'!
+WARN  2016-07-14 15:44:11,728 [42   ] Abp.Logging.LogHelper                    - Can not find '角色列表' in localization source 'BodeAbpZero'!
+WARN  2016-07-14 15:44:11,728 [42   ] Abp.Logging.LogHelper                    - Can not find '组织机构列表' in localization source 'BodeAbpZero'!
+WARN  2016-07-14 15:44:11,728 [42   ] Abp.Logging.LogHelper                    - Can not find '日志管理' in localization source 'BodeAbpZero'!
+WARN  2016-07-14 15:44:11,728 [42   ] Abp.Logging.LogHelper                    - Can not find '审计日志' in localization source 'BodeAbpZero'!
+WARN  2016-07-14 15:44:11,728 [42   ] Abp.Logging.LogHelper                    - Can not find 'HomePage' in localization source 'WebDemo'!
+WARN  2016-07-14 15:44:22,658 [42   ] Abp.Logging.LogHelper                    - Can not find 'key' in localization source 'Abp'!
+WARN  2016-07-14 15:44:22,658 [42   ] Abp.Logging.LogHelper                    - Can not find '权限管理' in localization source 'BodeAbpZero'!
+WARN  2016-07-14 15:44:22,658 [42   ] Abp.Logging.LogHelper                    - Can not find '用户列表' in localization source 'BodeAbpZero'!
+WARN  2016-07-14 15:44:22,658 [42   ] Abp.Logging.LogHelper                    - Can not find '角色列表' in localization source 'BodeAbpZero'!
+WARN  2016-07-14 15:44:22,658 [42   ] Abp.Logging.LogHelper                    - Can not find '组织机构列表' in localization source 'BodeAbpZero'!
+WARN  2016-07-14 15:44:22,659 [42   ] Abp.Logging.LogHelper                    - Can not find '日志管理' in localization source 'BodeAbpZero'!
+WARN  2016-07-14 15:44:22,659 [42   ] Abp.Logging.LogHelper                    - Can not find '审计日志' in localization source 'BodeAbpZero'!
+WARN  2016-07-14 15:44:22,659 [42   ] Abp.Logging.LogHelper                    - Can not find 'HomePage' in localization source 'WebDemo'!
+WARN  2016-07-14 15:45:22,195 [19   ] Abp.Logging.LogHelper                    - Can not find 'key' in localization source 'Abp'!
+WARN  2016-07-14 15:45:22,195 [19   ] Abp.Logging.LogHelper                    - Can not find '权限管理' in localization source 'BodeAbpZero'!
+WARN  2016-07-14 15:45:22,195 [19   ] Abp.Logging.LogHelper                    - Can not find '用户列表' in localization source 'BodeAbpZero'!
+WARN  2016-07-14 15:45:22,195 [19   ] Abp.Logging.LogHelper                    - Can not find '角色列表' in localization source 'BodeAbpZero'!
+WARN  2016-07-14 15:45:22,195 [19   ] Abp.Logging.LogHelper                    - Can not find '组织机构列表' in localization source 'BodeAbpZero'!
+WARN  2016-07-14 15:45:22,195 [19   ] Abp.Logging.LogHelper                    - Can not find '日志管理' in localization source 'BodeAbpZero'!
+WARN  2016-07-14 15:45:22,195 [19   ] Abp.Logging.LogHelper                    - Can not find '审计日志' in localization source 'BodeAbpZero'!
+WARN  2016-07-14 15:45:22,195 [19   ] Abp.Logging.LogHelper                    - Can not find 'HomePage' in localization source 'WebDemo'!
+WARN  2016-07-14 15:48:24,177 [16   ] Abp.Logging.LogHelper                    - Can not find 'key' in localization source 'Abp'!
+WARN  2016-07-14 15:48:24,177 [16   ] Abp.Logging.LogHelper                    - Can not find '权限管理' in localization source 'BodeAbpZero'!
+WARN  2016-07-14 15:48:24,177 [16   ] Abp.Logging.LogHelper                    - Can not find '用户列表' in localization source 'BodeAbpZero'!
+WARN  2016-07-14 15:48:24,177 [16   ] Abp.Logging.LogHelper                    - Can not find '角色列表' in localization source 'BodeAbpZero'!
+WARN  2016-07-14 15:48:24,177 [16   ] Abp.Logging.LogHelper                    - Can not find '组织机构列表' in localization source 'BodeAbpZero'!
+WARN  2016-07-14 15:48:24,177 [16   ] Abp.Logging.LogHelper                    - Can not find '日志管理' in localization source 'BodeAbpZero'!
+WARN  2016-07-14 15:48:24,177 [16   ] Abp.Logging.LogHelper                    - Can not find '审计日志' in localization source 'BodeAbpZero'!
+WARN  2016-07-14 15:48:24,177 [16   ] Abp.Logging.LogHelper                    - Can not find 'HomePage' in localization source 'WebDemo'!
+WARN  2016-07-14 15:48:33,348 [16   ] Abp.Logging.LogHelper                    - Can not find 'key' in localization source 'Abp'!
+WARN  2016-07-14 15:48:33,348 [16   ] Abp.Logging.LogHelper                    - Can not find '权限管理' in localization source 'BodeAbpZero'!
+WARN  2016-07-14 15:48:33,348 [16   ] Abp.Logging.LogHelper                    - Can not find '用户列表' in localization source 'BodeAbpZero'!
+WARN  2016-07-14 15:48:33,348 [16   ] Abp.Logging.LogHelper                    - Can not find '角色列表' in localization source 'BodeAbpZero'!
+WARN  2016-07-14 15:48:33,348 [16   ] Abp.Logging.LogHelper                    - Can not find '组织机构列表' in localization source 'BodeAbpZero'!
+WARN  2016-07-14 15:48:33,348 [16   ] Abp.Logging.LogHelper                    - Can not find '日志管理' in localization source 'BodeAbpZero'!
+WARN  2016-07-14 15:48:33,348 [16   ] Abp.Logging.LogHelper                    - Can not find '审计日志' in localization source 'BodeAbpZero'!
+WARN  2016-07-14 15:48:33,348 [16   ] Abp.Logging.LogHelper                    - Can not find 'HomePage' in localization source 'WebDemo'!
+WARN  2016-07-14 15:53:58,241 [106  ] Abp.Logging.LogHelper                    - Can not find 'key' in localization source 'Abp'!
+WARN  2016-07-14 15:53:58,242 [106  ] Abp.Logging.LogHelper                    - Can not find '权限管理' in localization source 'BodeAbpZero'!
+WARN  2016-07-14 15:53:58,242 [106  ] Abp.Logging.LogHelper                    - Can not find '用户列表' in localization source 'BodeAbpZero'!
+WARN  2016-07-14 15:53:58,242 [106  ] Abp.Logging.LogHelper                    - Can not find '角色列表' in localization source 'BodeAbpZero'!
+WARN  2016-07-14 15:53:58,242 [106  ] Abp.Logging.LogHelper                    - Can not find '组织机构列表' in localization source 'BodeAbpZero'!
+WARN  2016-07-14 15:53:58,242 [106  ] Abp.Logging.LogHelper                    - Can not find '日志管理' in localization source 'BodeAbpZero'!
+WARN  2016-07-14 15:53:58,242 [106  ] Abp.Logging.LogHelper                    - Can not find '审计日志' in localization source 'BodeAbpZero'!
+WARN  2016-07-14 15:53:58,242 [106  ] Abp.Logging.LogHelper                    - Can not find 'HomePage' in localization source 'WebDemo'!
+DEBUG 2016-07-14 18:09:12,014 [113  ] Abp.BackgroundJobs.BackgroundJobManager  - Stop background worker: Abp.BackgroundJobs.BackgroundJobManager
+DEBUG 2016-07-14 18:09:12,014 [113  ] Abp.BackgroundJobs.BackgroundJobManager  - WaitToStop background worker: Abp.BackgroundJobs.BackgroundJobManager
+DEBUG 2016-07-14 18:15:41,405 [1    ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2016-07-14 18:15:43,511 [1    ] Abp.Modules.AbpModuleManager             - Found 17 ABP modules in total.
+DEBUG 2016-07-14 18:15:43,514 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AutoMapper.AbpAutoMapperModule, Abp.AutoMapper, Version=0.8.4.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-07-14 18:15:43,515 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=0.8.4.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-07-14 18:15:43,515 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkModule, Abp.EntityFramework, Version=0.8.4.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-07-14 18:15:43,516 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Hangfire.AbpHangfireModule, Abp.HangFire, Version=0.8.4.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-07-14 18:15:43,516 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Owin.AbpOwinModule, Abp.Owin, Version=0.8.4.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-07-14 18:15:43,516 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.WebApi.AbpWebApiModule, Abp.Web.Api, Version=0.8.4.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-07-14 18:15:43,516 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebModule, Abp.Web, Version=0.8.4.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-07-14 18:15:43,516 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.Mvc.AbpWebMvcModule, Abp.Web.Mvc, Version=0.8.4.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-07-14 18:15:43,516 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.SignalR.AbpWebSignalRModule, Abp.Web.SignalR, Version=0.8.4.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-07-14 18:15:43,516 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: BodeAbp.Activity.BodeAbpActivityModule, BodeAbp.Activity, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-07-14 18:15:43,517 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: BodeAbp.Plugins.Core.BodeAbpPluginsCoreModule, BodeAbp.Plugins.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-07-14 18:15:43,517 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: BodeAbp.Product.BodeAbpProductModule, BodeAbp.Product, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-07-14 18:15:43,517 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: BodeAbp.Sms.Juhe.BodeAbpSmsJuheModule, BodeAbp.Sms.Juhe, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-07-14 18:15:43,517 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: BodeAbp.Zero.BodeAbpZeroModule, BodeAbp.Zero, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-07-14 18:15:43,517 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: WebDemo.WebDemoCoreModule, WebDemo.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-07-14 18:15:43,517 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: WebDemo.Web.WebDemoWebModule, WebDemo.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-07-14 18:15:43,517 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: WebDemo.WebApi.WebDemoWebApiModule, WebDemo.WebApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-07-14 18:15:43,520 [1    ] Abp.Modules.AbpModuleManager             - 17 modules loaded.
+DEBUG 2016-07-14 18:15:47,098 [1    ] Abp.Localization.LocalizationManager     - Initializing 6 localization sources.
+DEBUG 2016-07-14 18:15:47,102 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2016-07-14 18:15:47,103 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpWeb
+DEBUG 2016-07-14 18:15:47,103 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: BodeAbpActivity
+DEBUG 2016-07-14 18:15:47,103 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: BodeAbpProduct
+DEBUG 2016-07-14 18:15:47,103 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: BodeAbpZero
+DEBUG 2016-07-14 18:15:47,103 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: WebDemo
+DEBUG 2016-07-14 18:15:47,307 [1    ] Abp.BackgroundJobs.BackgroundJobManager  - Start background worker: Abp.BackgroundJobs.BackgroundJobManager
+DEBUG 2016-07-14 18:15:47,405 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Found 38 classes defines auto mapping attributes
+DEBUG 2016-07-14 18:15:47,405 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Activity.Interactions.Dtos.CreateCommentInput
+DEBUG 2016-07-14 18:15:47,457 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Activity.Interactions.Dtos.CreateReplyInput
+DEBUG 2016-07-14 18:15:47,458 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Activity.Activities.Dtos.CreateActivityInput
+DEBUG 2016-07-14 18:15:47,462 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Activity.Activities.Dtos.UpdateActivityInput
+DEBUG 2016-07-14 18:15:47,464 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Activity.Activities.Dtos.UpdateActivityOutput
+DEBUG 2016-07-14 18:15:47,465 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Activity.Activities.Dtos.GetActivityOutput
+DEBUG 2016-07-14 18:15:47,466 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Activity.Activities.Dtos.GetActivityListOutput
+DEBUG 2016-07-14 18:15:47,466 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Activity.Activities.Dtos.CreateClassifyInput
+DEBUG 2016-07-14 18:15:47,468 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Activity.Activities.Dtos.UpdateClassifyInput
+DEBUG 2016-07-14 18:15:47,469 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Activity.Activities.Dtos.UpdateClassifyOutput
+DEBUG 2016-07-14 18:15:47,470 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Activity.Activities.Dtos.GetClassifyOutput
+DEBUG 2016-07-14 18:15:47,470 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Activity.Activities.Dtos.GetClassifyListOutput
+DEBUG 2016-07-14 18:15:47,471 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Product.Attributes.Dtos.CreateAttributeInput
+DEBUG 2016-07-14 18:15:47,474 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Product.Attributes.Dtos.UpdateAttributeInput
+DEBUG 2016-07-14 18:15:47,475 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Product.Attributes.Dtos.UpdateAttributeOutput
+DEBUG 2016-07-14 18:15:47,476 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Product.Attributes.Dtos.GetAttributeOutput
+DEBUG 2016-07-14 18:15:47,476 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Product.Attributes.Dtos.GetAttributeListOutput
+DEBUG 2016-07-14 18:15:47,477 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Product.Attributes.Dtos.CreateAttributeOptionInput
+DEBUG 2016-07-14 18:15:47,478 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Product.Attributes.Dtos.UpdateAttributeOptionInput
+DEBUG 2016-07-14 18:15:47,480 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Product.Attributes.Dtos.UpdateAttributeOptionOutput
+DEBUG 2016-07-14 18:15:47,480 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Product.Attributes.Dtos.GetAttributeOptionOutput
+DEBUG 2016-07-14 18:15:47,481 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Product.Attributes.Dtos.GetAttributeOptionListOutput
+DEBUG 2016-07-14 18:15:47,481 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Product.Attributes.Dtos.CreateProductClassifyInput
+DEBUG 2016-07-14 18:15:47,483 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Product.Attributes.Dtos.UpdateProductClassifyInput
+DEBUG 2016-07-14 18:15:47,484 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Product.Attributes.Dtos.UpdateProductClassifyOutput
+DEBUG 2016-07-14 18:15:47,484 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Product.Attributes.Dtos.GetProductClassifyOutput
+DEBUG 2016-07-14 18:15:47,485 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Product.Attributes.Dtos.GetProductClassifyListOutput
+DEBUG 2016-07-14 18:15:47,485 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Zero.Application.Users.Dtos.CreateUserInput
+DEBUG 2016-07-14 18:15:47,489 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Zero.Application.Users.Dtos.ValidateCodeInput
+DEBUG 2016-07-14 18:15:47,490 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Zero.Users.Dtos.GetUserListOutput
+DEBUG 2016-07-14 18:15:47,491 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Zero.Roles.Dtos.CreateRoleInput
+DEBUG 2016-07-14 18:15:47,493 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Zero.Roles.Dtos.UpdateRoleInput
+DEBUG 2016-07-14 18:15:47,494 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Zero.Roles.Dtos.UpdateRoleOutput
+DEBUG 2016-07-14 18:15:47,495 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Zero.Roles.Dtos.GetRoleOutput
+DEBUG 2016-07-14 18:15:47,496 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Zero.Roles.Dtos.GetRoleListOutput
+DEBUG 2016-07-14 18:15:47,496 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Zero.Permissions.Dtos.PermissionBriefOutPut
+DEBUG 2016-07-14 18:15:47,497 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Zero.Organizations.Dtos.OrganizationUnitDto
+DEBUG 2016-07-14 18:15:47,499 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Zero.Auditing.Dtos.GetAuditLogListOutput
+DEBUG 2016-07-14 18:15:47,512 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'BodeAbp.Zero.Users.IUserAppService' with service name 'zero/user'.
+DEBUG 2016-07-14 18:15:47,512 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'BodeAbp.Zero.Settings.ISettingsAppService' with service name 'zero/settings'.
+DEBUG 2016-07-14 18:15:47,513 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'BodeAbp.Zero.Roles.IRoleAppService' with service name 'zero/role'.
+DEBUG 2016-07-14 18:15:47,513 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'BodeAbp.Zero.Permissions.IPermissionAppService' with service name 'zero/permission'.
+DEBUG 2016-07-14 18:15:47,514 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'BodeAbp.Zero.Organizations.IOrganizationAppService' with service name 'zero/organization'.
+DEBUG 2016-07-14 18:15:47,515 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'BodeAbp.Zero.Auditing.IAuditingAppService' with service name 'zero/auditing'.
+DEBUG 2016-07-14 18:15:47,515 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'BodeAbp.Activity.Interactions.IInteractionsAppService' with service name 'activity/interactions'.
+DEBUG 2016-07-14 18:15:47,516 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'BodeAbp.Activity.Activities.IActivitiesAppService' with service name 'activity/activities'.
+DEBUG 2016-07-14 18:15:47,516 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'BodeAbp.Product.Products.IProductsAppService' with service name 'product/products'.
+DEBUG 2016-07-14 18:15:47,517 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'BodeAbp.Product.Attributes.IAttributesAppService' with service name 'product/attributes'.
+DEBUG 2016-07-14 18:17:12,651 [112  ] Abp.BackgroundJobs.BackgroundJobManager  - Stop background worker: Abp.BackgroundJobs.BackgroundJobManager
+DEBUG 2016-07-14 18:17:12,651 [112  ] Abp.BackgroundJobs.BackgroundJobManager  - WaitToStop background worker: Abp.BackgroundJobs.BackgroundJobManager
+DEBUG 2016-07-14 18:20:10,370 [1    ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2016-07-14 18:20:14,084 [1    ] Abp.Modules.AbpModuleManager             - Found 17 ABP modules in total.
+DEBUG 2016-07-14 18:20:14,089 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AutoMapper.AbpAutoMapperModule, Abp.AutoMapper, Version=0.8.4.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-07-14 18:20:14,091 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=0.8.4.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-07-14 18:20:14,091 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkModule, Abp.EntityFramework, Version=0.8.4.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-07-14 18:20:14,091 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Hangfire.AbpHangfireModule, Abp.HangFire, Version=0.8.4.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-07-14 18:20:14,091 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Owin.AbpOwinModule, Abp.Owin, Version=0.8.4.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-07-14 18:20:14,091 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.WebApi.AbpWebApiModule, Abp.Web.Api, Version=0.8.4.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-07-14 18:20:14,091 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebModule, Abp.Web, Version=0.8.4.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-07-14 18:20:14,091 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.Mvc.AbpWebMvcModule, Abp.Web.Mvc, Version=0.8.4.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-07-14 18:20:14,091 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.SignalR.AbpWebSignalRModule, Abp.Web.SignalR, Version=0.8.4.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-07-14 18:20:14,091 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: BodeAbp.Activity.BodeAbpActivityModule, BodeAbp.Activity, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-07-14 18:20:14,092 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: BodeAbp.Plugins.Core.BodeAbpPluginsCoreModule, BodeAbp.Plugins.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-07-14 18:20:14,092 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: BodeAbp.Product.BodeAbpProductModule, BodeAbp.Product, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-07-14 18:20:14,092 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: BodeAbp.Sms.Juhe.BodeAbpSmsJuheModule, BodeAbp.Sms.Juhe, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-07-14 18:20:14,092 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: BodeAbp.Zero.BodeAbpZeroModule, BodeAbp.Zero, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-07-14 18:20:14,092 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: WebDemo.WebDemoCoreModule, WebDemo.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-07-14 18:20:14,092 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: WebDemo.Web.WebDemoWebModule, WebDemo.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-07-14 18:20:14,092 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: WebDemo.WebApi.WebDemoWebApiModule, WebDemo.WebApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-07-14 18:20:14,095 [1    ] Abp.Modules.AbpModuleManager             - 17 modules loaded.
+DEBUG 2016-07-14 18:21:59,570 [1    ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2016-07-14 18:22:03,499 [1    ] Abp.Modules.AbpModuleManager             - Found 17 ABP modules in total.
+DEBUG 2016-07-14 18:22:03,502 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AutoMapper.AbpAutoMapperModule, Abp.AutoMapper, Version=0.8.4.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-07-14 18:22:03,506 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=0.8.4.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-07-14 18:22:03,506 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkModule, Abp.EntityFramework, Version=0.8.4.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-07-14 18:22:03,507 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Hangfire.AbpHangfireModule, Abp.HangFire, Version=0.8.4.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-07-14 18:22:03,507 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Owin.AbpOwinModule, Abp.Owin, Version=0.8.4.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-07-14 18:22:03,507 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.WebApi.AbpWebApiModule, Abp.Web.Api, Version=0.8.4.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-07-14 18:22:03,507 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebModule, Abp.Web, Version=0.8.4.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-07-14 18:22:03,507 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.Mvc.AbpWebMvcModule, Abp.Web.Mvc, Version=0.8.4.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-07-14 18:22:03,507 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.SignalR.AbpWebSignalRModule, Abp.Web.SignalR, Version=0.8.4.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-07-14 18:22:03,507 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: BodeAbp.Activity.BodeAbpActivityModule, BodeAbp.Activity, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-07-14 18:22:03,507 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: BodeAbp.Plugins.Core.BodeAbpPluginsCoreModule, BodeAbp.Plugins.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-07-14 18:22:03,507 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: BodeAbp.Product.BodeAbpProductModule, BodeAbp.Product, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-07-14 18:22:03,507 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: BodeAbp.Sms.Juhe.BodeAbpSmsJuheModule, BodeAbp.Sms.Juhe, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-07-14 18:22:03,507 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: BodeAbp.Zero.BodeAbpZeroModule, BodeAbp.Zero, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-07-14 18:22:03,507 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: WebDemo.WebDemoCoreModule, WebDemo.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-07-14 18:22:03,508 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: WebDemo.Web.WebDemoWebModule, WebDemo.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-07-14 18:22:03,508 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: WebDemo.WebApi.WebDemoWebApiModule, WebDemo.WebApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-07-14 18:22:03,511 [1    ] Abp.Modules.AbpModuleManager             - 17 modules loaded.
+DEBUG 2016-07-14 18:23:33,589 [1    ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2016-07-14 18:23:41,802 [1    ] Abp.Modules.AbpModuleManager             - Found 17 ABP modules in total.
+DEBUG 2016-07-14 18:23:41,805 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AutoMapper.AbpAutoMapperModule, Abp.AutoMapper, Version=0.8.4.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-07-14 18:23:41,807 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=0.8.4.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-07-14 18:23:41,807 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkModule, Abp.EntityFramework, Version=0.8.4.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-07-14 18:23:41,807 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Hangfire.AbpHangfireModule, Abp.HangFire, Version=0.8.4.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-07-14 18:23:41,807 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Owin.AbpOwinModule, Abp.Owin, Version=0.8.4.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-07-14 18:23:41,808 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.WebApi.AbpWebApiModule, Abp.Web.Api, Version=0.8.4.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-07-14 18:23:41,808 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebModule, Abp.Web, Version=0.8.4.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-07-14 18:23:41,808 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.Mvc.AbpWebMvcModule, Abp.Web.Mvc, Version=0.8.4.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-07-14 18:23:41,808 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.SignalR.AbpWebSignalRModule, Abp.Web.SignalR, Version=0.8.4.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-07-14 18:23:41,808 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: BodeAbp.Activity.BodeAbpActivityModule, BodeAbp.Activity, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-07-14 18:23:41,808 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: BodeAbp.Plugins.Core.BodeAbpPluginsCoreModule, BodeAbp.Plugins.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-07-14 18:23:41,808 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: BodeAbp.Product.BodeAbpProductModule, BodeAbp.Product, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-07-14 18:23:41,808 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: BodeAbp.Sms.Juhe.BodeAbpSmsJuheModule, BodeAbp.Sms.Juhe, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-07-14 18:23:41,809 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: BodeAbp.Zero.BodeAbpZeroModule, BodeAbp.Zero, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-07-14 18:23:41,809 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: WebDemo.WebDemoCoreModule, WebDemo.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-07-14 18:23:41,809 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: WebDemo.Web.WebDemoWebModule, WebDemo.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-07-14 18:23:41,809 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: WebDemo.WebApi.WebDemoWebApiModule, WebDemo.WebApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-07-14 18:23:41,812 [1    ] Abp.Modules.AbpModuleManager             - 17 modules loaded.
+DEBUG 2016-07-14 18:24:01,850 [1    ] Abp.Localization.LocalizationManager     - Initializing 6 localization sources.
+DEBUG 2016-07-14 18:24:01,857 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2016-07-14 18:24:01,858 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpWeb
+DEBUG 2016-07-14 18:24:01,858 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: BodeAbpActivity
+DEBUG 2016-07-14 18:24:01,858 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: BodeAbpProduct
+DEBUG 2016-07-14 18:24:01,858 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: BodeAbpZero
+DEBUG 2016-07-14 18:24:01,858 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: WebDemo
+DEBUG 2016-07-14 18:24:02,218 [1    ] Abp.BackgroundJobs.BackgroundJobManager  - Start background worker: Abp.BackgroundJobs.BackgroundJobManager
+DEBUG 2016-07-14 18:24:02,433 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Found 38 classes defines auto mapping attributes
+DEBUG 2016-07-14 18:24:02,433 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Activity.Interactions.Dtos.CreateCommentInput
+DEBUG 2016-07-14 18:24:02,538 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Activity.Interactions.Dtos.CreateReplyInput
+DEBUG 2016-07-14 18:24:02,539 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Activity.Activities.Dtos.CreateActivityInput
+DEBUG 2016-07-14 18:24:02,544 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Activity.Activities.Dtos.UpdateActivityInput
+DEBUG 2016-07-14 18:24:02,550 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Activity.Activities.Dtos.UpdateActivityOutput
+DEBUG 2016-07-14 18:24:02,551 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Activity.Activities.Dtos.GetActivityOutput
+DEBUG 2016-07-14 18:24:02,552 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Activity.Activities.Dtos.GetActivityListOutput
+DEBUG 2016-07-14 18:24:02,552 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Activity.Activities.Dtos.CreateClassifyInput
+DEBUG 2016-07-14 18:24:02,555 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Activity.Activities.Dtos.UpdateClassifyInput
+DEBUG 2016-07-14 18:24:02,556 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Activity.Activities.Dtos.UpdateClassifyOutput
+DEBUG 2016-07-14 18:24:02,556 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Activity.Activities.Dtos.GetClassifyOutput
+DEBUG 2016-07-14 18:24:02,557 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Activity.Activities.Dtos.GetClassifyListOutput
+DEBUG 2016-07-14 18:24:02,558 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Product.Attributes.Dtos.CreateAttributeInput
+DEBUG 2016-07-14 18:24:02,560 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Product.Attributes.Dtos.UpdateAttributeInput
+DEBUG 2016-07-14 18:24:02,561 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Product.Attributes.Dtos.UpdateAttributeOutput
+DEBUG 2016-07-14 18:24:02,563 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Product.Attributes.Dtos.GetAttributeOutput
+DEBUG 2016-07-14 18:24:02,564 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Product.Attributes.Dtos.GetAttributeListOutput
+DEBUG 2016-07-14 18:24:02,565 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Product.Attributes.Dtos.CreateAttributeOptionInput
+DEBUG 2016-07-14 18:24:02,567 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Product.Attributes.Dtos.UpdateAttributeOptionInput
+DEBUG 2016-07-14 18:24:02,569 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Product.Attributes.Dtos.UpdateAttributeOptionOutput
+DEBUG 2016-07-14 18:24:02,570 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Product.Attributes.Dtos.GetAttributeOptionOutput
+DEBUG 2016-07-14 18:24:02,570 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Product.Attributes.Dtos.GetAttributeOptionListOutput
+DEBUG 2016-07-14 18:24:02,571 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Product.Attributes.Dtos.CreateProductClassifyInput
+DEBUG 2016-07-14 18:24:02,573 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Product.Attributes.Dtos.UpdateProductClassifyInput
+DEBUG 2016-07-14 18:24:02,574 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Product.Attributes.Dtos.UpdateProductClassifyOutput
+DEBUG 2016-07-14 18:24:02,576 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Product.Attributes.Dtos.GetProductClassifyOutput
+DEBUG 2016-07-14 18:24:02,578 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Product.Attributes.Dtos.GetProductClassifyListOutput
+DEBUG 2016-07-14 18:24:02,579 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Zero.Application.Users.Dtos.CreateUserInput
+DEBUG 2016-07-14 18:24:02,582 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Zero.Application.Users.Dtos.ValidateCodeInput
+DEBUG 2016-07-14 18:24:02,583 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Zero.Users.Dtos.GetUserListOutput
+DEBUG 2016-07-14 18:24:02,584 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Zero.Roles.Dtos.CreateRoleInput
+DEBUG 2016-07-14 18:24:02,588 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Zero.Roles.Dtos.UpdateRoleInput
+DEBUG 2016-07-14 18:24:02,589 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Zero.Roles.Dtos.UpdateRoleOutput
+DEBUG 2016-07-14 18:24:02,592 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Zero.Roles.Dtos.GetRoleOutput
+DEBUG 2016-07-14 18:24:02,592 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Zero.Roles.Dtos.GetRoleListOutput
+DEBUG 2016-07-14 18:24:02,594 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Zero.Permissions.Dtos.PermissionBriefOutPut
+DEBUG 2016-07-14 18:24:02,597 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Zero.Organizations.Dtos.OrganizationUnitDto
+DEBUG 2016-07-14 18:24:02,599 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Zero.Auditing.Dtos.GetAuditLogListOutput
+DEBUG 2016-07-14 18:24:02,619 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'BodeAbp.Zero.Users.IUserAppService' with service name 'zero/user'.
+DEBUG 2016-07-14 18:24:02,620 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'BodeAbp.Zero.Settings.ISettingsAppService' with service name 'zero/settings'.
+DEBUG 2016-07-14 18:24:02,620 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'BodeAbp.Zero.Roles.IRoleAppService' with service name 'zero/role'.
+DEBUG 2016-07-14 18:24:02,621 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'BodeAbp.Zero.Permissions.IPermissionAppService' with service name 'zero/permission'.
+DEBUG 2016-07-14 18:24:02,621 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'BodeAbp.Zero.Organizations.IOrganizationAppService' with service name 'zero/organization'.
+DEBUG 2016-07-14 18:24:02,622 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'BodeAbp.Zero.Auditing.IAuditingAppService' with service name 'zero/auditing'.
+DEBUG 2016-07-14 18:24:02,623 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'BodeAbp.Activity.Interactions.IInteractionsAppService' with service name 'activity/interactions'.
+DEBUG 2016-07-14 18:24:02,623 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'BodeAbp.Activity.Activities.IActivitiesAppService' with service name 'activity/activities'.
+DEBUG 2016-07-14 18:24:02,624 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'BodeAbp.Product.Products.IProductsAppService' with service name 'product/products'.
+DEBUG 2016-07-14 18:24:02,624 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'BodeAbp.Product.Attributes.IAttributesAppService' with service name 'product/attributes'.
+DEBUG 2016-07-15 10:44:34,052 [1    ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2016-07-15 10:44:37,862 [1    ] Abp.Modules.AbpModuleManager             - Found 17 ABP modules in total.
+DEBUG 2016-07-15 10:44:37,865 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AutoMapper.AbpAutoMapperModule, Abp.AutoMapper, Version=0.8.4.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-07-15 10:44:37,867 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=0.8.4.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-07-15 10:44:37,867 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkModule, Abp.EntityFramework, Version=0.8.4.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-07-15 10:44:37,867 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Hangfire.AbpHangfireModule, Abp.HangFire, Version=0.8.4.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-07-15 10:44:37,867 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Owin.AbpOwinModule, Abp.Owin, Version=0.8.4.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-07-15 10:44:37,867 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.WebApi.AbpWebApiModule, Abp.Web.Api, Version=0.8.4.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-07-15 10:44:37,867 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebModule, Abp.Web, Version=0.8.4.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-07-15 10:44:37,867 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.Mvc.AbpWebMvcModule, Abp.Web.Mvc, Version=0.8.4.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-07-15 10:44:37,867 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.SignalR.AbpWebSignalRModule, Abp.Web.SignalR, Version=0.8.4.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-07-15 10:44:37,868 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: BodeAbp.Activity.BodeAbpActivityModule, BodeAbp.Activity, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-07-15 10:44:37,868 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: BodeAbp.Plugins.Core.BodeAbpPluginsCoreModule, BodeAbp.Plugins.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-07-15 10:44:37,868 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: BodeAbp.Product.BodeAbpProductModule, BodeAbp.Product, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-07-15 10:44:37,868 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: BodeAbp.Sms.Juhe.BodeAbpSmsJuheModule, BodeAbp.Sms.Juhe, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-07-15 10:44:37,868 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: BodeAbp.Zero.BodeAbpZeroModule, BodeAbp.Zero, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-07-15 10:44:37,868 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: WebDemo.WebDemoCoreModule, WebDemo.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-07-15 10:44:37,868 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: WebDemo.Web.WebDemoWebModule, WebDemo.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-07-15 10:44:37,868 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: WebDemo.WebApi.WebDemoWebApiModule, WebDemo.WebApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-07-15 10:44:37,871 [1    ] Abp.Modules.AbpModuleManager             - 17 modules loaded.
+DEBUG 2016-07-15 10:44:54,855 [1    ] Abp.Localization.LocalizationManager     - Initializing 6 localization sources.
+DEBUG 2016-07-15 10:44:54,863 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2016-07-15 10:44:54,865 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpWeb
+DEBUG 2016-07-15 10:44:54,865 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: BodeAbpActivity
+DEBUG 2016-07-15 10:44:54,865 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: BodeAbpProduct
+DEBUG 2016-07-15 10:44:54,865 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: BodeAbpZero
+DEBUG 2016-07-15 10:44:54,865 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: WebDemo
+DEBUG 2016-07-15 10:44:55,207 [1    ] Abp.BackgroundJobs.BackgroundJobManager  - Start background worker: Abp.BackgroundJobs.BackgroundJobManager
+DEBUG 2016-07-15 10:44:55,346 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Found 38 classes defines auto mapping attributes
+DEBUG 2016-07-15 10:44:55,346 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Activity.Interactions.Dtos.CreateCommentInput
+DEBUG 2016-07-15 10:44:55,465 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Activity.Interactions.Dtos.CreateReplyInput
+DEBUG 2016-07-15 10:44:55,466 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Activity.Activities.Dtos.CreateActivityInput
+DEBUG 2016-07-15 10:44:55,471 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Activity.Activities.Dtos.UpdateActivityInput
+DEBUG 2016-07-15 10:44:55,476 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Activity.Activities.Dtos.UpdateActivityOutput
+DEBUG 2016-07-15 10:44:55,478 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Activity.Activities.Dtos.GetActivityOutput
+DEBUG 2016-07-15 10:44:55,479 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Activity.Activities.Dtos.GetActivityListOutput
+DEBUG 2016-07-15 10:44:55,479 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Activity.Activities.Dtos.CreateClassifyInput
+DEBUG 2016-07-15 10:44:55,481 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Activity.Activities.Dtos.UpdateClassifyInput
+DEBUG 2016-07-15 10:44:55,483 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Activity.Activities.Dtos.UpdateClassifyOutput
+DEBUG 2016-07-15 10:44:55,483 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Activity.Activities.Dtos.GetClassifyOutput
+DEBUG 2016-07-15 10:44:55,484 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Activity.Activities.Dtos.GetClassifyListOutput
+DEBUG 2016-07-15 10:44:55,484 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Product.Attributes.Dtos.CreateAttributeInput
+DEBUG 2016-07-15 10:44:55,487 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Product.Attributes.Dtos.UpdateAttributeInput
+DEBUG 2016-07-15 10:44:55,489 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Product.Attributes.Dtos.UpdateAttributeOutput
+DEBUG 2016-07-15 10:44:55,490 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Product.Attributes.Dtos.GetAttributeOutput
+DEBUG 2016-07-15 10:44:55,491 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Product.Attributes.Dtos.GetAttributeListOutput
+DEBUG 2016-07-15 10:44:55,492 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Product.Attributes.Dtos.CreateAttributeOptionInput
+DEBUG 2016-07-15 10:44:55,494 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Product.Attributes.Dtos.UpdateAttributeOptionInput
+DEBUG 2016-07-15 10:44:55,495 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Product.Attributes.Dtos.UpdateAttributeOptionOutput
+DEBUG 2016-07-15 10:44:55,495 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Product.Attributes.Dtos.GetAttributeOptionOutput
+DEBUG 2016-07-15 10:44:55,496 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Product.Attributes.Dtos.GetAttributeOptionListOutput
+DEBUG 2016-07-15 10:44:55,496 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Product.Attributes.Dtos.CreateProductClassifyInput
+DEBUG 2016-07-15 10:44:55,498 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Product.Attributes.Dtos.UpdateProductClassifyInput
+DEBUG 2016-07-15 10:44:55,500 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Product.Attributes.Dtos.UpdateProductClassifyOutput
+DEBUG 2016-07-15 10:44:55,500 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Product.Attributes.Dtos.GetProductClassifyOutput
+DEBUG 2016-07-15 10:44:55,501 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Product.Attributes.Dtos.GetProductClassifyListOutput
+DEBUG 2016-07-15 10:44:55,501 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Zero.Application.Users.Dtos.CreateUserInput
+DEBUG 2016-07-15 10:44:55,507 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Zero.Application.Users.Dtos.ValidateCodeInput
+DEBUG 2016-07-15 10:44:55,508 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Zero.Users.Dtos.GetUserListOutput
+DEBUG 2016-07-15 10:44:55,509 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Zero.Roles.Dtos.CreateRoleInput
+DEBUG 2016-07-15 10:44:55,512 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Zero.Roles.Dtos.UpdateRoleInput
+DEBUG 2016-07-15 10:44:55,514 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Zero.Roles.Dtos.UpdateRoleOutput
+DEBUG 2016-07-15 10:44:55,515 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Zero.Roles.Dtos.GetRoleOutput
+DEBUG 2016-07-15 10:44:55,515 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Zero.Roles.Dtos.GetRoleListOutput
+DEBUG 2016-07-15 10:44:55,516 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Zero.Permissions.Dtos.PermissionBriefOutPut
+DEBUG 2016-07-15 10:44:55,518 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Zero.Organizations.Dtos.OrganizationUnitDto
+DEBUG 2016-07-15 10:44:55,520 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Zero.Auditing.Dtos.GetAuditLogListOutput
+DEBUG 2016-07-15 10:44:55,535 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'BodeAbp.Zero.Users.IUserAppService' with service name 'zero/user'.
+DEBUG 2016-07-15 10:44:55,536 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'BodeAbp.Zero.Settings.ISettingsAppService' with service name 'zero/settings'.
+DEBUG 2016-07-15 10:44:55,536 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'BodeAbp.Zero.Roles.IRoleAppService' with service name 'zero/role'.
+DEBUG 2016-07-15 10:44:55,537 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'BodeAbp.Zero.Permissions.IPermissionAppService' with service name 'zero/permission'.
+DEBUG 2016-07-15 10:44:55,538 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'BodeAbp.Zero.Organizations.IOrganizationAppService' with service name 'zero/organization'.
+DEBUG 2016-07-15 10:44:55,538 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'BodeAbp.Zero.Auditing.IAuditingAppService' with service name 'zero/auditing'.
+DEBUG 2016-07-15 10:44:55,539 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'BodeAbp.Activity.Interactions.IInteractionsAppService' with service name 'activity/interactions'.
+DEBUG 2016-07-15 10:44:55,540 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'BodeAbp.Activity.Activities.IActivitiesAppService' with service name 'activity/activities'.
+DEBUG 2016-07-15 10:44:55,540 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'BodeAbp.Product.Products.IProductsAppService' with service name 'product/products'.
+DEBUG 2016-07-15 10:44:55,541 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'BodeAbp.Product.Attributes.IAttributesAppService' with service name 'product/attributes'.
