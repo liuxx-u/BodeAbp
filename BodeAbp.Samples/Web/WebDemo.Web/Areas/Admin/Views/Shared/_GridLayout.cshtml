@@ -5,7 +5,7 @@
 @section header{
     <script type="text/javascript">
         layer.config({
-            offset: "100px", //默认距离顶部位置
+            offset: "50px", //默认距离顶部位置
         });
     </script>
     <link href="~/Content/css/dataTables.bootstrap.css" rel="stylesheet" type="text/css" />
@@ -47,13 +47,6 @@
     <script type="text/javascript">
         $(function () {
             startfunction();
-            if (!url.add) {
-                $("#btAdd").remove();
-            }
-            if (!url.delete) {
-                $("#btDelete").remove();
-            }
-
             //初始化数据
             datatable = new $.bode.grid("#dataTable", {
                 url: url,
@@ -63,31 +56,6 @@
                 isBatch: isBatch,
                 loadDataComplete: loadDataComplete
             });
-
-
-            //添加按钮事件
-            $("#btSearch").click(function (e) {
-                e.preventDefault();
-                var filter = { rules: [] };
-                $("#dataTable").closest("div").find(".col-sm-4").each(function () {
-                    var v = $(this).find(".query-input").val();
-                    filter.rules.push({
-                        field: $(this).find("select:eq(0)").select2("val"),
-                        operate: $(this).find("select:eq(1)").select2("val"),
-                        value: $(this).find(".query-input").val()
-                    });
-                });
-
-                datatable.queryParams.pageIndex = 1;
-                datatable.queryParams.filterGroup = filter;
-                datatable.query();
-            });
-
-            $("#btAdd").click(function (e) {
-                e.preventDefault();
-                datatable.popupForm();
-            });
-
             endfunction();
         });
     </script>
@@ -114,18 +82,7 @@
                                 </div>
 
                                 <div class="col-sm-8">
-                                    <div class="form-group" style="float: right" id="operateArea">
-                                        <div class="pull-right" style="margin-right: 10px;">
-                                            <button id="btAdd" class="btn btn-palegreen">
-                                                <span class="fa fa-plus" aria-hidden="true"></span> 新 增
-                                            </button>
-                                        </div>
-                                        <div class="pull-right" style="margin-right: 10px;">
-                                            <button id="btSearch" class="btn btn-info">
-                                                <span class="fa fa-search" aria-hidden="true"></span>查 询
-                                            </button>
-                                        </div>
-                                    </div>
+                                    <div class="form-group" style="float: right" id="actionArea"></div>
                                 </div>
                             </div>
                             <table class="table table-bordered table-hover table-striped dataTable no-footer" id="dataTable" aria-describedby="editabledatatable_info">

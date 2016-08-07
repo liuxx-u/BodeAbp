@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Abp.Extensions;
+using BodeAbp.Product.Products.Domain;
 using WebDemo.Web.Areas.Admin.ViewModels;
 
 namespace WebDemo.Web.Areas.Admin.Controllers
@@ -34,6 +36,11 @@ namespace WebDemo.Web.Areas.Admin.Controllers
 
         public ActionResult Table()
         {
+            ViewBag.Enums = typeof(EnumTest).ToDictionary().Select(p => new
+            {
+                value = p.Key,
+                text = p.Value
+            }).ToList();
             return View();
         }
 

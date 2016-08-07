@@ -11,7 +11,9 @@
 		this.isBatch = conf.isBatch || false;//是否允许批量操作
 		this.originData = this.conf.data || [];//初始数据
 		this.actions = this.conf.actions || [];//右上角操作按钮
+		this.imgSaveUrl = this.conf.imgSaveUrl || "/api/File/UploadPic";
 		this.formId = this.conf.formId || "bode-grid-autoform";//表单id
+		this.actionsContainerId = this.conf.actionsContainerId || "actionArea";
 		this.isFormInited = false;//表单是否初始化
 		this.formWidth = "40%";
 		this.curEditId = 0;//当前编辑数据的Id
@@ -99,7 +101,7 @@
                     var uploader = WebUploader.create({
                         auto: true,// 选完文件后，是否自动上传。
                         swf: '/Content/js/plugs/webuploader/Uploader.swf',// swf文件路径
-                        server: '/api/File/UploadPic',// 文件接收服务端。
+                        server: this.imgSaveUrl,// 文件接收服务端。
                         // 选择文件的按钮。可选。
                         // 内部根据当前运行是创建，可能是input元素，也可能是flash.
                         pick: '#'+this.columns[i]["data"],
@@ -196,7 +198,7 @@
                     data[dataField] = $("#" + dataField).val();
                 }
                 else if (colType === "img") {
-                    data[dataField] = $("#img_" + dataField).attr("src", curValue);
+                    data[dataField] = $("#img_" + dataField).attr("src");
                 }
                 else if (colType === "richtext") {
                     data[dataField] =UE.getEditor(dataField).getContent();
@@ -295,7 +297,6 @@
                     if (this.conf.url.delete) {
                         columnActions.push({
                             name: "删除",
-                            title:"确认删除",
                             icon: "fa-trash-o",
                             onClick: function (d) {
                                 layer.confirm('是否确定删除该数据？此操作是不可恢复的。', {
@@ -329,6 +330,49 @@
                     var className = sortDirection==0 ? "sorting_desc" : "sorting_asc";
                     $(this).attr("class", className);
                 }).appendTo(this.tab.find("thead>tr"));
+            }
+        }
+
+        this.initAction = function () {
+            var self = this;
+            if (self.conf.url.add) {
+                self.actions.push({
+                    name: "新增",
+                    icon: "fa-plus",
+                    btnClass: "btn-palegreen",
+                    onClick: function () {
+                        self.popupForm();
+                        return false;
+                    }
+                });
+            }
+            self.actions.push({
+                name: "查询",
+                icon: "fa-search",
+                btnClass: "btn-info",
+                onClick: function () {
+                    var filter = { rules: [] };
+                    self.tab.closest("div").find(".col-sm-4").each(function () {
+                        var v = $(this).find(".query-input").val();
+                        filter.rules.push({
+                            field: $(this).find("select:eq(0)").select2("val"),
+                            operate: $(this).find("select:eq(1)").select2("val"),
+                            value: $(this).find(".query-input").val()
+                        });
+                    });
+
+                    self.queryParams.pageIndex = 1;
+                    self.queryParams.filterGroup = filter;
+                    self.query();
+                }
+            });
+
+            for (var i = 0, iLen = self.actions.length; i < iLen; i++) {
+                var action = self.actions[i];
+                var iconHtml = action.icon ? '<span class="fa ' + action.icon + '" aria-hidden="true"></span>' : '';
+                var actionObj=$('<div class="pull-right" style="margin-right: 10px;"><button class="btn ' + action.btnClass + '">' + iconHtml + action.name + '</button></div>');
+                actionObj.find("button").bind("click", {},action.onClick);
+                actionObj.appendTo($("#" + self.actionsContainerId));
             }
         }
 
@@ -522,6 +566,9 @@
             //初始化columnHash与表头
             this.initHead();
 
+            //初始化操作按钮
+            this.initAction();
+
             //初始化数据
             this.initData();
 
@@ -532,7 +579,12 @@
         }
 
         this.reload = function () {
-            if (this.queryParams.where) delete this.queryParams.where;
+            this.queryParams = {
+                pageIndex: conf.pageIndex || 1,
+                pageSize: conf.pageSize || 15,
+                sortConditions: [],
+                filterGroup: []
+            }
             this.query();
         }
 

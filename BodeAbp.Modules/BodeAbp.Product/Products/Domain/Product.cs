@@ -103,15 +103,20 @@ namespace BodeAbp.Product.Products.Domain
         public int SalesNo { get; set; }
 
         /// <summary>
-        /// 分类Id
+        /// 枚举测试
         /// </summary>
-        public int ClassifyId { get; set; }
+        public EnumTest EnumTest { get; set; }
 
-        /// <summary>
-        /// 分类
-        /// </summary>
-        [ForeignKey("ClassifyId")]
-        public virtual ProductClassify Classify { get; set; }
+        ///// <summary>
+        ///// 分类Id
+        ///// </summary>
+        //public int ClassifyId { get; set; }
+
+        ///// <summary>
+        ///// 分类
+        ///// </summary>
+        //[ForeignKey("ClassifyId")]
+        //public virtual ProductClassify Classify { get; set; }
 
         /// <summary>
         /// 资源集合
@@ -138,5 +143,15 @@ namespace BodeAbp.Product.Products.Domain
         public virtual ICollection<Goods> Skus { get; set; }
 
         #endregion
+    }
+
+    /// <summary>
+    /// 枚举测试
+    /// </summary>
+    public enum EnumTest
+    {
+        男装 = 1,
+        女装 = 2,
+        童装 = 3
     }
 }

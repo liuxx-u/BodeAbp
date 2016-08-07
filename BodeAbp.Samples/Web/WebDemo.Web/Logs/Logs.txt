@@ -5971,3 +5971,423 @@ DEBUG 2016-08-07 17:54:31,880 [1    ] Abp.Logging.LogHelper                    -
 DEBUG 2016-08-07 17:54:31,881 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'BodeAbp.Activity.Activities.IActivitiesAppService' with service name 'activity/activities'.
 DEBUG 2016-08-07 17:54:31,882 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'BodeAbp.Product.Products.IProductsAppService' with service name 'product/products'.
 DEBUG 2016-08-07 17:54:31,882 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'BodeAbp.Product.Attributes.IAttributesAppService' with service name 'product/attributes'.
+DEBUG 2016-08-07 19:48:10,105 [1    ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2016-08-07 19:48:15,053 [1    ] Abp.Modules.AbpModuleManager             - Found 17 ABP modules in total.
+DEBUG 2016-08-07 19:48:15,057 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AutoMapper.AbpAutoMapperModule, Abp.AutoMapper, Version=0.8.4.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-08-07 19:48:15,059 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=0.8.4.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-08-07 19:48:15,059 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkModule, Abp.EntityFramework, Version=0.8.4.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-08-07 19:48:15,059 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Hangfire.AbpHangfireModule, Abp.HangFire, Version=0.8.4.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-08-07 19:48:15,059 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Owin.AbpOwinModule, Abp.Owin, Version=0.8.4.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-08-07 19:48:15,060 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.WebApi.AbpWebApiModule, Abp.Web.Api, Version=0.8.4.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-08-07 19:48:15,060 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebModule, Abp.Web, Version=0.8.4.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-08-07 19:48:15,060 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.Mvc.AbpWebMvcModule, Abp.Web.Mvc, Version=0.8.4.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-08-07 19:48:15,060 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.SignalR.AbpWebSignalRModule, Abp.Web.SignalR, Version=0.8.4.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-08-07 19:48:15,060 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: BodeAbp.Activity.BodeAbpActivityModule, BodeAbp.Activity, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-08-07 19:48:15,060 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: BodeAbp.Plugins.Core.BodeAbpPluginsCoreModule, BodeAbp.Plugins.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-08-07 19:48:15,060 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: BodeAbp.Product.BodeAbpProductModule, BodeAbp.Product, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-08-07 19:48:15,060 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: BodeAbp.Sms.Juhe.BodeAbpSmsJuheModule, BodeAbp.Sms.Juhe, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-08-07 19:48:15,061 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: BodeAbp.Zero.BodeAbpZeroModule, BodeAbp.Zero, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-08-07 19:48:15,061 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: WebDemo.WebDemoCoreModule, WebDemo.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-08-07 19:48:15,061 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: WebDemo.Web.WebDemoWebModule, WebDemo.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-08-07 19:48:15,061 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: WebDemo.WebApi.WebDemoWebApiModule, WebDemo.WebApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-08-07 19:48:15,092 [1    ] Abp.Modules.AbpModuleManager             - 17 modules loaded.
+DEBUG 2016-08-07 19:48:25,331 [1    ] Abp.Localization.LocalizationManager     - Initializing 6 localization sources.
+DEBUG 2016-08-07 19:48:25,348 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2016-08-07 19:48:25,350 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpWeb
+DEBUG 2016-08-07 19:48:25,350 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: BodeAbpActivity
+DEBUG 2016-08-07 19:48:25,350 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: BodeAbpProduct
+DEBUG 2016-08-07 19:48:25,350 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: BodeAbpZero
+DEBUG 2016-08-07 19:48:25,350 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: WebDemo
+DEBUG 2016-08-07 19:48:26,098 [1    ] Abp.BackgroundJobs.BackgroundJobManager  - Start background worker: Abp.BackgroundJobs.BackgroundJobManager
+DEBUG 2016-08-07 19:48:26,375 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Found 43 classes defines auto mapping attributes
+DEBUG 2016-08-07 19:48:26,375 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Activity.Interactions.Dtos.CreateCommentInput
+DEBUG 2016-08-07 19:48:26,719 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Activity.Interactions.Dtos.CreateReplyInput
+DEBUG 2016-08-07 19:48:26,720 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Activity.Activities.Dtos.CreateActivityInput
+DEBUG 2016-08-07 19:48:26,761 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Activity.Activities.Dtos.UpdateActivityInput
+DEBUG 2016-08-07 19:48:26,767 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Activity.Activities.Dtos.UpdateActivityOutput
+DEBUG 2016-08-07 19:48:26,772 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Activity.Activities.Dtos.GetActivityOutput
+DEBUG 2016-08-07 19:48:26,774 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Activity.Activities.Dtos.GetActivityListOutput
+DEBUG 2016-08-07 19:48:26,775 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Activity.Activities.Dtos.CreateClassifyInput
+DEBUG 2016-08-07 19:48:26,779 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Activity.Activities.Dtos.UpdateClassifyInput
+DEBUG 2016-08-07 19:48:26,782 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Activity.Activities.Dtos.UpdateClassifyOutput
+DEBUG 2016-08-07 19:48:26,783 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Activity.Activities.Dtos.GetClassifyOutput
+DEBUG 2016-08-07 19:48:26,784 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Activity.Activities.Dtos.GetClassifyListOutput
+DEBUG 2016-08-07 19:48:26,786 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Product.Products.Dtos.CreateProductInput
+DEBUG 2016-08-07 19:48:26,795 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Product.Products.Dtos.UpdateProductInput
+DEBUG 2016-08-07 19:48:26,799 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Product.Products.Dtos.UpdateProductOutput
+DEBUG 2016-08-07 19:48:26,800 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Product.Products.Dtos.GetProductOutput
+DEBUG 2016-08-07 19:48:26,801 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Product.Products.Dtos.GetProductListOutput
+DEBUG 2016-08-07 19:48:26,802 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Product.Attributes.Dtos.CreateAttributeInput
+DEBUG 2016-08-07 19:48:26,804 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Product.Attributes.Dtos.UpdateAttributeInput
+DEBUG 2016-08-07 19:48:26,812 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Product.Attributes.Dtos.UpdateAttributeOutput
+DEBUG 2016-08-07 19:48:26,813 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Product.Attributes.Dtos.GetAttributeOutput
+DEBUG 2016-08-07 19:48:26,814 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Product.Attributes.Dtos.GetAttributeListOutput
+DEBUG 2016-08-07 19:48:26,815 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Product.Attributes.Dtos.CreateAttributeOptionInput
+DEBUG 2016-08-07 19:48:26,817 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Product.Attributes.Dtos.UpdateAttributeOptionInput
+DEBUG 2016-08-07 19:48:26,819 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Product.Attributes.Dtos.UpdateAttributeOptionOutput
+DEBUG 2016-08-07 19:48:26,820 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Product.Attributes.Dtos.GetAttributeOptionOutput
+DEBUG 2016-08-07 19:48:26,820 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Product.Attributes.Dtos.GetAttributeOptionListOutput
+DEBUG 2016-08-07 19:48:26,821 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Product.Attributes.Dtos.CreateProductClassifyInput
+DEBUG 2016-08-07 19:48:26,823 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Product.Attributes.Dtos.UpdateProductClassifyInput
+DEBUG 2016-08-07 19:48:26,824 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Product.Attributes.Dtos.UpdateProductClassifyOutput
+DEBUG 2016-08-07 19:48:26,826 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Product.Attributes.Dtos.GetProductClassifyOutput
+DEBUG 2016-08-07 19:48:26,829 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Product.Attributes.Dtos.GetProductClassifyListOutput
+DEBUG 2016-08-07 19:48:26,830 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Zero.Application.Users.Dtos.CreateUserInput
+DEBUG 2016-08-07 19:48:26,834 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Zero.Application.Users.Dtos.ValidateCodeInput
+DEBUG 2016-08-07 19:48:26,835 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Zero.Users.Dtos.GetUserListOutput
+DEBUG 2016-08-07 19:48:26,836 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Zero.Roles.Dtos.CreateRoleInput
+DEBUG 2016-08-07 19:48:26,839 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Zero.Roles.Dtos.UpdateRoleInput
+DEBUG 2016-08-07 19:48:26,840 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Zero.Roles.Dtos.UpdateRoleOutput
+DEBUG 2016-08-07 19:48:26,842 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Zero.Roles.Dtos.GetRoleOutput
+DEBUG 2016-08-07 19:48:26,843 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Zero.Roles.Dtos.GetRoleListOutput
+DEBUG 2016-08-07 19:48:26,844 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Zero.Permissions.Dtos.PermissionBriefOutPut
+DEBUG 2016-08-07 19:48:26,849 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Zero.Organizations.Dtos.OrganizationUnitDto
+DEBUG 2016-08-07 19:48:26,853 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Zero.Auditing.Dtos.GetAuditLogListOutput
+DEBUG 2016-08-07 19:48:26,915 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'BodeAbp.Zero.Users.IUserAppService' with service name 'zero/user'.
+DEBUG 2016-08-07 19:48:26,916 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'BodeAbp.Zero.Settings.ISettingsAppService' with service name 'zero/settings'.
+DEBUG 2016-08-07 19:48:26,917 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'BodeAbp.Zero.Roles.IRoleAppService' with service name 'zero/role'.
+DEBUG 2016-08-07 19:48:26,918 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'BodeAbp.Zero.Permissions.IPermissionAppService' with service name 'zero/permission'.
+DEBUG 2016-08-07 19:48:26,919 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'BodeAbp.Zero.Organizations.IOrganizationAppService' with service name 'zero/organization'.
+DEBUG 2016-08-07 19:48:26,920 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'BodeAbp.Zero.Auditing.IAuditingAppService' with service name 'zero/auditing'.
+DEBUG 2016-08-07 19:48:26,921 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'BodeAbp.Activity.Interactions.IInteractionsAppService' with service name 'activity/interactions'.
+DEBUG 2016-08-07 19:48:26,923 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'BodeAbp.Activity.Activities.IActivitiesAppService' with service name 'activity/activities'.
+DEBUG 2016-08-07 19:48:26,924 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'BodeAbp.Product.Products.IProductsAppService' with service name 'product/products'.
+DEBUG 2016-08-07 19:48:26,925 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'BodeAbp.Product.Attributes.IAttributesAppService' with service name 'product/attributes'.
+ERROR 2016-08-07 19:53:18,512 [6    ] lers.Filters.AbpExceptionFilterAttribute - An error occurred while updating the entries. See the inner exception for details.
+System.Data.Entity.Infrastructure.DbUpdateException: An error occurred while updating the entries. See the inner exception for details. ---> System.Data.Entity.Core.UpdateException: An error occurred while updating the entries. See the inner exception for details. ---> System.Data.SqlClient.SqlException: The INSERT statement conflicted with the FOREIGN KEY constraint "FK_dbo.Product#Product_dbo.Product#Classify_ClassifyId". The conflict occurred in database "BodeAbp", table "dbo.Product#Classify", column 'Id'.
+The statement has been terminated.
+   at System.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__167_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.Tasks.Task.Execute()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Data.Entity.Core.Mapping.Update.Internal.DynamicUpdateCommand.<ExecuteAsync>d__0.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Data.Entity.Core.Mapping.Update.Internal.UpdateTranslator.<UpdateAsync>d__0.MoveNext()
+   --- End of inner exception stack trace ---
+   at System.Data.Entity.Core.Mapping.Update.Internal.UpdateTranslator.<UpdateAsync>d__0.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Data.Entity.Core.Objects.ObjectContext.<ExecuteInTransactionAsync>d__3d`1.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Data.Entity.Core.Objects.ObjectContext.<SaveChangesToStoreAsync>d__39.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Data.Entity.SqlServer.DefaultSqlExecutionStrategy.<ExecuteAsyncImplementation>d__9`1.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Data.Entity.Core.Objects.ObjectContext.<SaveChangesInternalAsync>d__31.MoveNext()
+   --- End of inner exception stack trace ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at Abp.EntityFramework.AbpDbContext.<SaveChangesAsync>d__34.MoveNext() in D:\GitHub\BodeAbp\BodeAbp.Frame\Abp.EntityFramework\AbpDbContext.cs:line 212
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at Abp.EntityFramework.Uow.EfUnitOfWork.<SaveChangesInDbContextAsync>d__22.MoveNext() in D:\GitHub\BodeAbp\BodeAbp.Frame\Abp.EntityFramework\Uow\EfUnitOfWork.cs:line 192
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   at Abp.EntityFramework.Uow.EfUnitOfWork.<SaveChangesAsync>d__13.MoveNext() in D:\GitHub\BodeAbp\BodeAbp.Frame\Abp.EntityFramework\Uow\EfUnitOfWork.cs:line 74
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   at Abp.EntityFramework.Uow.EfUnitOfWork.<CompleteUowAsync>d__15.MoveNext() in D:\GitHub\BodeAbp\BodeAbp.Frame\Abp.EntityFramework\Uow\EfUnitOfWork.cs:line 91
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   at Abp.Domain.Uow.UnitOfWorkBase.<CompleteAsync>d__49.MoveNext() in D:\GitHub\BodeAbp\BodeAbp.Frame\Abp\Domain\Uow\UnitOfWorkBase.cs:line 219
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   at Abp.Domain.Uow.UnitOfWorkInterceptor.<>c__DisplayClass5_0.<<PerformAsyncUow>b__0>d.MoveNext() in D:\GitHub\BodeAbp\BodeAbp.Frame\Abp\Domain\Uow\UnitOfWorkInterceptor.cs:line 68
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   at Abp.Threading.InternalAsyncHelper.<AwaitTaskWithPostActionAndFinally>d__1.MoveNext() in D:\GitHub\BodeAbp\BodeAbp.Frame\Abp\Threading\InternalAsyncHelper.cs:line 40
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Threading.Tasks.TaskHelpersExtensions.<CastToObject>d__0.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Controllers.ApiControllerActionInvoker.<InvokeActionAsyncCore>d__0.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Controllers.ActionFilterResult.<ExecuteAsync>d__2.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Controllers.AuthenticationFilterResult.<ExecuteAsync>d__0.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Controllers.ExceptionFilterResult.<ExecuteAsync>d__0.MoveNext()
+ERROR 2016-08-07 19:55:34,561 [5    ] lers.Filters.AbpExceptionFilterAttribute - An error occurred while updating the entries. See the inner exception for details.
+System.Data.Entity.Infrastructure.DbUpdateException: An error occurred while updating the entries. See the inner exception for details. ---> System.Data.Entity.Core.UpdateException: An error occurred while updating the entries. See the inner exception for details. ---> System.Data.SqlClient.SqlException: The INSERT statement conflicted with the FOREIGN KEY constraint "FK_dbo.Product#Product_dbo.Product#Classify_ClassifyId". The conflict occurred in database "BodeAbp", table "dbo.Product#Classify", column 'Id'.
+The statement has been terminated.
+   at System.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__167_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.Tasks.Task.Execute()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Data.Entity.Core.Mapping.Update.Internal.DynamicUpdateCommand.<ExecuteAsync>d__0.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Data.Entity.Core.Mapping.Update.Internal.UpdateTranslator.<UpdateAsync>d__0.MoveNext()
+   --- End of inner exception stack trace ---
+   at System.Data.Entity.Core.Mapping.Update.Internal.UpdateTranslator.<UpdateAsync>d__0.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Data.Entity.Core.Objects.ObjectContext.<ExecuteInTransactionAsync>d__3d`1.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Data.Entity.Core.Objects.ObjectContext.<SaveChangesToStoreAsync>d__39.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Data.Entity.SqlServer.DefaultSqlExecutionStrategy.<ExecuteAsyncImplementation>d__9`1.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Data.Entity.Core.Objects.ObjectContext.<SaveChangesInternalAsync>d__31.MoveNext()
+   --- End of inner exception stack trace ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at Abp.EntityFramework.AbpDbContext.<SaveChangesAsync>d__34.MoveNext() in D:\GitHub\BodeAbp\BodeAbp.Frame\Abp.EntityFramework\AbpDbContext.cs:line 212
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at Abp.EntityFramework.Uow.EfUnitOfWork.<SaveChangesInDbContextAsync>d__22.MoveNext() in D:\GitHub\BodeAbp\BodeAbp.Frame\Abp.EntityFramework\Uow\EfUnitOfWork.cs:line 192
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   at Abp.EntityFramework.Uow.EfUnitOfWork.<SaveChangesAsync>d__13.MoveNext() in D:\GitHub\BodeAbp\BodeAbp.Frame\Abp.EntityFramework\Uow\EfUnitOfWork.cs:line 74
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   at Abp.EntityFramework.Uow.EfUnitOfWork.<CompleteUowAsync>d__15.MoveNext() in D:\GitHub\BodeAbp\BodeAbp.Frame\Abp.EntityFramework\Uow\EfUnitOfWork.cs:line 91
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   at Abp.Domain.Uow.UnitOfWorkBase.<CompleteAsync>d__49.MoveNext() in D:\GitHub\BodeAbp\BodeAbp.Frame\Abp\Domain\Uow\UnitOfWorkBase.cs:line 219
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   at Abp.Domain.Uow.UnitOfWorkInterceptor.<>c__DisplayClass5_0.<<PerformAsyncUow>b__0>d.MoveNext() in D:\GitHub\BodeAbp\BodeAbp.Frame\Abp\Domain\Uow\UnitOfWorkInterceptor.cs:line 68
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   at Abp.Threading.InternalAsyncHelper.<AwaitTaskWithPostActionAndFinally>d__1.MoveNext() in D:\GitHub\BodeAbp\BodeAbp.Frame\Abp\Threading\InternalAsyncHelper.cs:line 40
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Threading.Tasks.TaskHelpersExtensions.<CastToObject>d__0.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Controllers.ApiControllerActionInvoker.<InvokeActionAsyncCore>d__0.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Controllers.ActionFilterResult.<ExecuteAsync>d__2.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Controllers.AuthenticationFilterResult.<ExecuteAsync>d__0.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Controllers.ExceptionFilterResult.<ExecuteAsync>d__0.MoveNext()
+DEBUG 2016-08-07 19:57:02,434 [1    ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2016-08-07 19:57:06,036 [1    ] Abp.Modules.AbpModuleManager             - Found 17 ABP modules in total.
+DEBUG 2016-08-07 19:57:06,040 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AutoMapper.AbpAutoMapperModule, Abp.AutoMapper, Version=0.8.4.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-08-07 19:57:06,044 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=0.8.4.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-08-07 19:57:06,045 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkModule, Abp.EntityFramework, Version=0.8.4.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-08-07 19:57:06,045 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Hangfire.AbpHangfireModule, Abp.HangFire, Version=0.8.4.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-08-07 19:57:06,045 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Owin.AbpOwinModule, Abp.Owin, Version=0.8.4.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-08-07 19:57:06,046 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.WebApi.AbpWebApiModule, Abp.Web.Api, Version=0.8.4.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-08-07 19:57:06,046 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebModule, Abp.Web, Version=0.8.4.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-08-07 19:57:06,047 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.Mvc.AbpWebMvcModule, Abp.Web.Mvc, Version=0.8.4.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-08-07 19:57:06,047 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.SignalR.AbpWebSignalRModule, Abp.Web.SignalR, Version=0.8.4.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-08-07 19:57:06,047 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: BodeAbp.Activity.BodeAbpActivityModule, BodeAbp.Activity, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-08-07 19:57:06,047 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: BodeAbp.Plugins.Core.BodeAbpPluginsCoreModule, BodeAbp.Plugins.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-08-07 19:57:06,047 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: BodeAbp.Product.BodeAbpProductModule, BodeAbp.Product, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-08-07 19:57:06,048 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: BodeAbp.Sms.Juhe.BodeAbpSmsJuheModule, BodeAbp.Sms.Juhe, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-08-07 19:57:06,048 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: BodeAbp.Zero.BodeAbpZeroModule, BodeAbp.Zero, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-08-07 19:57:06,048 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: WebDemo.WebDemoCoreModule, WebDemo.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-08-07 19:57:06,048 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: WebDemo.Web.WebDemoWebModule, WebDemo.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-08-07 19:57:06,048 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: WebDemo.WebApi.WebDemoWebApiModule, WebDemo.WebApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-08-07 19:57:06,054 [1    ] Abp.Modules.AbpModuleManager             - 17 modules loaded.
+DEBUG 2016-08-07 19:57:11,650 [1    ] Abp.Localization.LocalizationManager     - Initializing 6 localization sources.
+DEBUG 2016-08-07 19:57:11,660 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2016-08-07 19:57:11,662 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpWeb
+DEBUG 2016-08-07 19:57:11,662 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: BodeAbpActivity
+DEBUG 2016-08-07 19:57:11,662 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: BodeAbpProduct
+DEBUG 2016-08-07 19:57:11,662 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: BodeAbpZero
+DEBUG 2016-08-07 19:57:11,662 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: WebDemo
+DEBUG 2016-08-07 19:57:12,222 [1    ] Abp.BackgroundJobs.BackgroundJobManager  - Start background worker: Abp.BackgroundJobs.BackgroundJobManager
+DEBUG 2016-08-07 19:57:12,394 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Found 43 classes defines auto mapping attributes
+DEBUG 2016-08-07 19:57:12,394 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Activity.Interactions.Dtos.CreateCommentInput
+DEBUG 2016-08-07 19:57:12,524 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Activity.Interactions.Dtos.CreateReplyInput
+DEBUG 2016-08-07 19:57:12,525 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Activity.Activities.Dtos.CreateActivityInput
+DEBUG 2016-08-07 19:57:12,532 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Activity.Activities.Dtos.UpdateActivityInput
+DEBUG 2016-08-07 19:57:12,536 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Activity.Activities.Dtos.UpdateActivityOutput
+DEBUG 2016-08-07 19:57:12,537 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Activity.Activities.Dtos.GetActivityOutput
+DEBUG 2016-08-07 19:57:12,538 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Activity.Activities.Dtos.GetActivityListOutput
+DEBUG 2016-08-07 19:57:12,539 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Activity.Activities.Dtos.CreateClassifyInput
+DEBUG 2016-08-07 19:57:12,541 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Activity.Activities.Dtos.UpdateClassifyInput
+DEBUG 2016-08-07 19:57:12,543 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Activity.Activities.Dtos.UpdateClassifyOutput
+DEBUG 2016-08-07 19:57:12,544 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Activity.Activities.Dtos.GetClassifyOutput
+DEBUG 2016-08-07 19:57:12,544 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Activity.Activities.Dtos.GetClassifyListOutput
+DEBUG 2016-08-07 19:57:12,545 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Product.Products.Dtos.CreateProductInput
+DEBUG 2016-08-07 19:57:12,577 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Product.Products.Dtos.UpdateProductInput
+DEBUG 2016-08-07 19:57:12,580 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Product.Products.Dtos.UpdateProductOutput
+DEBUG 2016-08-07 19:57:12,582 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Product.Products.Dtos.GetProductOutput
+DEBUG 2016-08-07 19:57:12,583 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Product.Products.Dtos.GetProductListOutput
+DEBUG 2016-08-07 19:57:12,585 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Product.Attributes.Dtos.CreateAttributeInput
+DEBUG 2016-08-07 19:57:12,589 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Product.Attributes.Dtos.UpdateAttributeInput
+DEBUG 2016-08-07 19:57:12,592 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Product.Attributes.Dtos.UpdateAttributeOutput
+DEBUG 2016-08-07 19:57:12,594 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Product.Attributes.Dtos.GetAttributeOutput
+DEBUG 2016-08-07 19:57:12,595 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Product.Attributes.Dtos.GetAttributeListOutput
+DEBUG 2016-08-07 19:57:12,597 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Product.Attributes.Dtos.CreateAttributeOptionInput
+DEBUG 2016-08-07 19:57:12,601 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Product.Attributes.Dtos.UpdateAttributeOptionInput
+DEBUG 2016-08-07 19:57:12,603 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Product.Attributes.Dtos.UpdateAttributeOptionOutput
+DEBUG 2016-08-07 19:57:12,605 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Product.Attributes.Dtos.GetAttributeOptionOutput
+DEBUG 2016-08-07 19:57:12,606 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Product.Attributes.Dtos.GetAttributeOptionListOutput
+DEBUG 2016-08-07 19:57:12,607 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Product.Attributes.Dtos.CreateProductClassifyInput
+DEBUG 2016-08-07 19:57:12,611 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Product.Attributes.Dtos.UpdateProductClassifyInput
+DEBUG 2016-08-07 19:57:12,616 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Product.Attributes.Dtos.UpdateProductClassifyOutput
+DEBUG 2016-08-07 19:57:12,618 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Product.Attributes.Dtos.GetProductClassifyOutput
+DEBUG 2016-08-07 19:57:12,619 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Product.Attributes.Dtos.GetProductClassifyListOutput
+DEBUG 2016-08-07 19:57:12,620 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Zero.Application.Users.Dtos.CreateUserInput
+DEBUG 2016-08-07 19:57:12,627 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Zero.Application.Users.Dtos.ValidateCodeInput
+DEBUG 2016-08-07 19:57:12,630 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Zero.Users.Dtos.GetUserListOutput
+DEBUG 2016-08-07 19:57:12,631 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Zero.Roles.Dtos.CreateRoleInput
+DEBUG 2016-08-07 19:57:12,633 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Zero.Roles.Dtos.UpdateRoleInput
+DEBUG 2016-08-07 19:57:12,635 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Zero.Roles.Dtos.UpdateRoleOutput
+DEBUG 2016-08-07 19:57:12,636 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Zero.Roles.Dtos.GetRoleOutput
+DEBUG 2016-08-07 19:57:12,637 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Zero.Roles.Dtos.GetRoleListOutput
+DEBUG 2016-08-07 19:57:12,639 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Zero.Permissions.Dtos.PermissionBriefOutPut
+DEBUG 2016-08-07 19:57:12,640 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Zero.Organizations.Dtos.OrganizationUnitDto
+DEBUG 2016-08-07 19:57:12,642 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Zero.Auditing.Dtos.GetAuditLogListOutput
+DEBUG 2016-08-07 19:57:12,667 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'BodeAbp.Zero.Users.IUserAppService' with service name 'zero/user'.
+DEBUG 2016-08-07 19:57:12,668 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'BodeAbp.Zero.Settings.ISettingsAppService' with service name 'zero/settings'.
+DEBUG 2016-08-07 19:57:12,669 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'BodeAbp.Zero.Roles.IRoleAppService' with service name 'zero/role'.
+DEBUG 2016-08-07 19:57:12,670 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'BodeAbp.Zero.Permissions.IPermissionAppService' with service name 'zero/permission'.
+DEBUG 2016-08-07 19:57:12,670 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'BodeAbp.Zero.Organizations.IOrganizationAppService' with service name 'zero/organization'.
+DEBUG 2016-08-07 19:57:12,671 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'BodeAbp.Zero.Auditing.IAuditingAppService' with service name 'zero/auditing'.
+DEBUG 2016-08-07 19:57:12,672 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'BodeAbp.Activity.Interactions.IInteractionsAppService' with service name 'activity/interactions'.
+DEBUG 2016-08-07 19:57:12,672 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'BodeAbp.Activity.Activities.IActivitiesAppService' with service name 'activity/activities'.
+DEBUG 2016-08-07 19:57:12,673 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'BodeAbp.Product.Products.IProductsAppService' with service name 'product/products'.
+DEBUG 2016-08-07 19:57:12,674 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'BodeAbp.Product.Attributes.IAttributesAppService' with service name 'product/attributes'.
+DEBUG 2016-08-07 20:24:06,397 [1    ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2016-08-07 20:24:20,854 [1    ] Abp.Modules.AbpModuleManager             - Found 17 ABP modules in total.
+DEBUG 2016-08-07 20:24:20,858 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AutoMapper.AbpAutoMapperModule, Abp.AutoMapper, Version=0.8.4.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-08-07 20:24:20,860 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=0.8.4.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-08-07 20:24:20,860 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkModule, Abp.EntityFramework, Version=0.8.4.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-08-07 20:24:20,860 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Hangfire.AbpHangfireModule, Abp.HangFire, Version=0.8.4.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-08-07 20:24:20,860 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Owin.AbpOwinModule, Abp.Owin, Version=0.8.4.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-08-07 20:24:20,861 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.WebApi.AbpWebApiModule, Abp.Web.Api, Version=0.8.4.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-08-07 20:24:20,861 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebModule, Abp.Web, Version=0.8.4.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-08-07 20:24:20,861 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.Mvc.AbpWebMvcModule, Abp.Web.Mvc, Version=0.8.4.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-08-07 20:24:20,861 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.SignalR.AbpWebSignalRModule, Abp.Web.SignalR, Version=0.8.4.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-08-07 20:24:20,861 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: BodeAbp.Activity.BodeAbpActivityModule, BodeAbp.Activity, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-08-07 20:24:20,861 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: BodeAbp.Plugins.Core.BodeAbpPluginsCoreModule, BodeAbp.Plugins.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-08-07 20:24:20,861 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: BodeAbp.Product.BodeAbpProductModule, BodeAbp.Product, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-08-07 20:24:20,862 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: BodeAbp.Sms.Juhe.BodeAbpSmsJuheModule, BodeAbp.Sms.Juhe, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-08-07 20:24:20,862 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: BodeAbp.Zero.BodeAbpZeroModule, BodeAbp.Zero, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-08-07 20:24:20,862 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: WebDemo.WebDemoCoreModule, WebDemo.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-08-07 20:24:20,862 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: WebDemo.Web.WebDemoWebModule, WebDemo.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-08-07 20:24:20,862 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: WebDemo.WebApi.WebDemoWebApiModule, WebDemo.WebApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-08-07 20:24:20,876 [1    ] Abp.Modules.AbpModuleManager             - 17 modules loaded.
+DEBUG 2016-08-07 20:24:24,314 [1    ] Abp.Localization.LocalizationManager     - Initializing 6 localization sources.
+DEBUG 2016-08-07 20:24:24,323 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2016-08-07 20:24:24,326 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpWeb
+DEBUG 2016-08-07 20:24:24,326 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: BodeAbpActivity
+DEBUG 2016-08-07 20:24:24,326 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: BodeAbpProduct
+DEBUG 2016-08-07 20:24:24,326 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: BodeAbpZero
+DEBUG 2016-08-07 20:24:24,326 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: WebDemo
+DEBUG 2016-08-07 20:24:24,876 [1    ] Abp.BackgroundJobs.BackgroundJobManager  - Start background worker: Abp.BackgroundJobs.BackgroundJobManager
+DEBUG 2016-08-07 20:24:25,056 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Found 43 classes defines auto mapping attributes
+DEBUG 2016-08-07 20:24:25,056 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Activity.Interactions.Dtos.CreateCommentInput
+DEBUG 2016-08-07 20:24:25,212 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Activity.Interactions.Dtos.CreateReplyInput
+DEBUG 2016-08-07 20:24:25,214 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Activity.Activities.Dtos.CreateActivityInput
+DEBUG 2016-08-07 20:24:25,220 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Activity.Activities.Dtos.UpdateActivityInput
+DEBUG 2016-08-07 20:24:25,225 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Activity.Activities.Dtos.UpdateActivityOutput
+DEBUG 2016-08-07 20:24:25,227 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Activity.Activities.Dtos.GetActivityOutput
+DEBUG 2016-08-07 20:24:25,228 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Activity.Activities.Dtos.GetActivityListOutput
+DEBUG 2016-08-07 20:24:25,229 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Activity.Activities.Dtos.CreateClassifyInput
+DEBUG 2016-08-07 20:24:25,231 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Activity.Activities.Dtos.UpdateClassifyInput
+DEBUG 2016-08-07 20:24:25,234 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Activity.Activities.Dtos.UpdateClassifyOutput
+DEBUG 2016-08-07 20:24:25,235 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Activity.Activities.Dtos.GetClassifyOutput
+DEBUG 2016-08-07 20:24:25,237 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Activity.Activities.Dtos.GetClassifyListOutput
+DEBUG 2016-08-07 20:24:25,237 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Product.Products.Dtos.CreateProductInput
+DEBUG 2016-08-07 20:24:25,241 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Product.Products.Dtos.UpdateProductInput
+DEBUG 2016-08-07 20:24:25,244 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Product.Products.Dtos.UpdateProductOutput
+DEBUG 2016-08-07 20:24:25,245 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Product.Products.Dtos.GetProductOutput
+DEBUG 2016-08-07 20:24:25,247 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Product.Products.Dtos.GetProductListOutput
+DEBUG 2016-08-07 20:24:25,248 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Product.Attributes.Dtos.CreateAttributeInput
+DEBUG 2016-08-07 20:24:25,251 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Product.Attributes.Dtos.UpdateAttributeInput
+DEBUG 2016-08-07 20:24:25,254 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Product.Attributes.Dtos.UpdateAttributeOutput
+DEBUG 2016-08-07 20:24:25,255 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Product.Attributes.Dtos.GetAttributeOutput
+DEBUG 2016-08-07 20:24:25,257 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Product.Attributes.Dtos.GetAttributeListOutput
+DEBUG 2016-08-07 20:24:25,258 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Product.Attributes.Dtos.CreateAttributeOptionInput
+DEBUG 2016-08-07 20:24:25,261 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Product.Attributes.Dtos.UpdateAttributeOptionInput
+DEBUG 2016-08-07 20:24:25,262 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Product.Attributes.Dtos.UpdateAttributeOptionOutput
+DEBUG 2016-08-07 20:24:25,264 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Product.Attributes.Dtos.GetAttributeOptionOutput
+DEBUG 2016-08-07 20:24:25,265 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Product.Attributes.Dtos.GetAttributeOptionListOutput
+DEBUG 2016-08-07 20:24:25,267 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Product.Attributes.Dtos.CreateProductClassifyInput
+DEBUG 2016-08-07 20:24:25,270 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Product.Attributes.Dtos.UpdateProductClassifyInput
+DEBUG 2016-08-07 20:24:25,273 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Product.Attributes.Dtos.UpdateProductClassifyOutput
+DEBUG 2016-08-07 20:24:25,275 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Product.Attributes.Dtos.GetProductClassifyOutput
+DEBUG 2016-08-07 20:24:25,277 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Product.Attributes.Dtos.GetProductClassifyListOutput
+DEBUG 2016-08-07 20:24:25,278 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Zero.Application.Users.Dtos.CreateUserInput
+DEBUG 2016-08-07 20:24:25,287 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Zero.Application.Users.Dtos.ValidateCodeInput
+DEBUG 2016-08-07 20:24:25,290 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Zero.Users.Dtos.GetUserListOutput
+DEBUG 2016-08-07 20:24:25,292 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Zero.Roles.Dtos.CreateRoleInput
+DEBUG 2016-08-07 20:24:25,297 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Zero.Roles.Dtos.UpdateRoleInput
+DEBUG 2016-08-07 20:24:25,299 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Zero.Roles.Dtos.UpdateRoleOutput
+DEBUG 2016-08-07 20:24:25,302 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Zero.Roles.Dtos.GetRoleOutput
+DEBUG 2016-08-07 20:24:25,303 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Zero.Roles.Dtos.GetRoleListOutput
+DEBUG 2016-08-07 20:24:25,304 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Zero.Permissions.Dtos.PermissionBriefOutPut
+DEBUG 2016-08-07 20:24:25,307 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Zero.Organizations.Dtos.OrganizationUnitDto
+DEBUG 2016-08-07 20:24:25,309 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - BodeAbp.Zero.Auditing.Dtos.GetAuditLogListOutput
+DEBUG 2016-08-07 20:24:25,334 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'BodeAbp.Zero.Users.IUserAppService' with service name 'zero/user'.
+DEBUG 2016-08-07 20:24:25,335 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'BodeAbp.Zero.Settings.ISettingsAppService' with service name 'zero/settings'.
+DEBUG 2016-08-07 20:24:25,366 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'BodeAbp.Zero.Roles.IRoleAppService' with service name 'zero/role'.
+DEBUG 2016-08-07 20:24:25,367 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'BodeAbp.Zero.Permissions.IPermissionAppService' with service name 'zero/permission'.
+DEBUG 2016-08-07 20:24:25,368 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'BodeAbp.Zero.Organizations.IOrganizationAppService' with service name 'zero/organization'.
+DEBUG 2016-08-07 20:24:25,369 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'BodeAbp.Zero.Auditing.IAuditingAppService' with service name 'zero/auditing'.
+DEBUG 2016-08-07 20:24:25,369 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'BodeAbp.Activity.Interactions.IInteractionsAppService' with service name 'activity/interactions'.
+DEBUG 2016-08-07 20:24:25,370 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'BodeAbp.Activity.Activities.IActivitiesAppService' with service name 'activity/activities'.
+DEBUG 2016-08-07 20:24:25,371 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'BodeAbp.Product.Products.IProductsAppService' with service name 'product/products'.
+DEBUG 2016-08-07 20:24:25,372 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'BodeAbp.Product.Attributes.IAttributesAppService' with service name 'product/attributes'.

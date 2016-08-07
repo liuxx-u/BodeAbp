@@ -122,6 +122,7 @@
     <Compile Include="Domain\Entities\Asset\AssetType.cs" />
     <Compile Include="Domain\Entities\Asset\IAsset.cs" />
     <Compile Include="Extensions\CollectionExtensions.cs" />
+    <Compile Include="Extensions\EnumExtensions.cs" />
     <Compile Include="Extensions\ExpressionExtensions.cs" />
     <Compile Include="Extensions\ParamterCheckExtensions.cs" />
     <Compile Include="Extensions\TypeExtensions.cs" />

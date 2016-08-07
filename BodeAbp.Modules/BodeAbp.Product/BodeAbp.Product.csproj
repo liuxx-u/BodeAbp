@@ -68,6 +68,7 @@
     <Compile Include="Attributes\Domain\Attribute.cs" />
     <Compile Include="Attributes\Domain\AttributeOption.cs" />
     <Compile Include="Attributes\Domain\ProductClassify.cs" />
+    <Compile Include="Products\Dtos\ProductDto.cs" />
     <Compile Include="Skus\Domain\SkuAttribute.cs" />
     <Compile Include="Skus\Domain\SkuAttributeOption.cs" />
     <Compile Include="Attributes\Dtos\AttributeTemplateDto.cs" />
@@ -106,7 +107,6 @@
     <Compile Include="Skus\ModelConfigs\GoodsSkuAttributeConfiguration.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Products\Dtos\" />
     <Folder Include="Skus\Dtos\" />
   </ItemGroup>
   <ItemGroup>
