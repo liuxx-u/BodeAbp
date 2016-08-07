@@ -1,0 +1,134 @@
+﻿/***********头部样式***********/
+.header {
+    height: 74px;
+    background: url(/Content/imgs/admin/topbg.png) repeat-x;
+}
+.header .header-waper {
+    position: relative;
+    height: 74px;
+    background: url(/Content/imgs/admin/topline.png) no-repeat left bottom;
+}
+.header .header-waper .top-light {
+    position: absolute;
+    width: 346px;
+    height: 74px;
+    background: url(/Content/imgs/admin/toplight.png);
+    top: 0;
+    left: 0;
+}
+.header .header-waper .logo {
+    float: left;
+    margin: 14px 0 0 24px;
+    width: 246px;
+    height: 54px;
+    background: url(/Content/imgs/admin/logo.png);
+    position: relative;
+}
+.header .header-navigation {
+    float: left;
+    margin: 34px 0 0 23px;
+    height: 38px;
+}
+.topnav {
+    display: block;
+    float: left;
+    height: 100%;
+    border-right: 1px solid #4dc4f0;
+}
+.topnav li {
+    display: block;
+    float: left;
+    margin: 0;
+    padding: 0px 15px;
+    border-top: 1px solid #2D96DC;
+    border-left: 1px solid #2D96DC;
+    border-right: 1px solid #2D96DC;
+    color: #fff;
+    cursor: pointer;
+    font-size: 14px;
+    height: 42px;
+    line-height: 42px;
+    vertical-align: middle;
+}
+.topnav li span {
+    padding-left: 5px;
+    line-height: 40px;
+}
+.topnav .selected {
+background: #16a0d3;
+}
+.header .toolbar {
+    float: right;
+    margin: 20px 14px 0 0;
+}
+.toolbar a {
+    float: left;
+    height: 42px;
+    line-height: 42px;
+}
+.toolbar a.home-btn {
+    width: 85px;
+    padding-left: 46px;
+    background: url(/Content/imgs/admin/home.png) no-repeat left top;
+    color: #fff;
+    font-size: 14px;
+}
+.toolbar a.quit-btn {
+    width: 39px;
+    background: url(/Content/imgs/admin/exit.png) no-repeat left top;
+}
+
+/***********body样式***********/
+.main-container{ background:#fff url(/Content/imgs/admin/centertopbg.png) repeat-x left top;}
+.main-container .wrap{ background:url(/Content/imgs/admin/centerbottombg.png) repeat-x left bottom;}
+
+/*左侧栏导航*/
+.sidebar{ height:100%; float:left; width:175px; overflow-y:auto;}
+.sidebar h2{   padding-left:20px;color:#fff; font-size:14px; font-weight:bold;line-height:40px;background:url(/Content/imgs/admin/lefttop.gif) repeat-x; }
+.sidebar h2 span{ margin-left:5px;}
+
+/*主导航*/
+.sidebar .menu{ border:1px solid #bdd0db; border-top:none; background:#f1f8fc;}
+.sidebar .menu>li{background: url(/Content/imgs/admin/leftmenubg.gif) repeat-x;line-height: 35px;font-weight: bold;border-bottom: 1px solid #dbe9f1;cursor:pointer;}
+
+.sidebar .menu a {color:#737373;text-decoration:none;margin-left:28px;}
+.sidebar .menu > li.open {display:block;}
+.sidebar .menu > li > a:hover {color:#262626;}
+.sidebar .menu > li > a>i {margin-right:5px;}
+
+.menu .submenu {display:none;}
+.menu > li.open .submenu {display:block;}
+.sidebar .submenu a{font-weight:normal;}
+.sidebar .submenu li.active {background:#d3eaf6}
+.sidebar .submenu li.active i {display: block;background: url(/Content/imgs/admin/sj.png) no-repeat;width: 6px;height: 11px;float: right;margin-top: 13px;}
+
+
+.content{ float:left; width:100%; overflow:auto;}
+.place {height: 40px;background: url(/Content/imgs/admin/righttop.gif) repeat-x;}
+
+/***********底部样式***********/
+.footer {
+    /* height: 25px; */
+    line-height: 22px;
+    background: url(/Content//imgs/admin/footbg.png) repeat-x;
+}
+.footer span {
+color: #08496e;
+}
+.footer em {
+    color: #d3eaf6;
+}
+.footer .footer-left {
+    float: left;
+}
+.footer-left span {
+    margin-left: 11px;
+    padding-left: 19px;
+    background: url(/Content//imgs/admin/foot01.png) no-repeat left center;
+}
+.footer .footer-right {
+    float:right;
+    margin: 0 11px 0 3px;
+    padding-right: 10px;
+    background: url(/Content/imgs/admin/foot02.png) no-repeat right center;
+}

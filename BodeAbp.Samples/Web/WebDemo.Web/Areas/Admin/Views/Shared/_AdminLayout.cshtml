@@ -1,0 +1,36 @@
+﻿@{
+    Layout = "";
+}
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>@ViewBag.Title</title>
+    <link href="~/Content/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/css/beyond/beyond.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+    <!--Fonts-->
+    <link href="http://fonts.useso.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,600,700,300" rel="stylesheet" type="text/css" />
+
+    <link href="~/Content/css/animate.min.css" rel="stylesheet" />
+
+    <script src="~/Content/js/jquery.min.js" type="text/javascript"></script>
+    <script src="~/Content/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="~/Content/js/beyond.min.js" type="text/javascript"></script>
+    <script src="~/Content/js/plugs/layer/layer.js" type="text/javascript"></script>
+
+    <script src="~/Content/js/bode/bode.js" type="text/javascript"></script>
+    <script src="~/Content/js/bode/bode.ajax.js" type="text/javascript"></script>
+
+    @RenderSection("header", false)
+
+</head>
+
+<body>
+    @RenderBody()
+
+    @RenderSection("footer", false)
+</body>
+</html>

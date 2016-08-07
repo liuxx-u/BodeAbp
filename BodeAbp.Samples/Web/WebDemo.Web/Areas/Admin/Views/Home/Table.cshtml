@@ -1,0 +1,38 @@
+﻿
+@{
+    ViewBag.Title = "Table";
+    Layout = "~/Areas/Admin/Views/Shared/_GridLayout.cshtml";
+}
+
+@section customScript{
+    <script type="text/javascript">
+        url = {
+            read: "/api/services/zero/role/GetRolePagedList",
+            add: "/api/services/zero/role/CreateRole",
+            edit: "/api/services/zero/role/UpdateRole",
+            delete: "/api/services/zero/role/DeleteRole"
+        };
+        columns = [
+                { data: "id", title: "编号" },
+                { data: "name", title: "角色名", type: "text", query: true, editor: {}, validation: { required: true } },
+                { data: "displayName", title: "显示名称", type: "text", query: true, editor: {}, validation: { required: true } },
+                { data: "isStatic", title: "是否静态角色", type: "switch", query: true, editor: {} },
+                { data: "isDefault", title: "是否默认角色", type: "switch", query: true, editor: {} },
+                {
+                    title: "操作选项",
+                    type: "command",
+                    actions: [
+                        {
+                            name: "操作",
+                            icon:"fa-trash-o",
+                            onClick: function (d) {
+
+                            }
+                        }
+                    ]
+                }
+        ];
+    </script>
+
+}
+

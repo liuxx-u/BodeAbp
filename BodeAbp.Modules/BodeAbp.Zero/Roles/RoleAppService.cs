@@ -43,7 +43,7 @@ namespace BodeAbp.Zero.Roles
         public async Task<PagedResultOutput<GetRoleListOutput>> GetRolePagedList(QueryListPagedRequestInput input)
         {
             int total;
-            var list = await _roleRepository.GetAll().Where(input, out total).ToListAsync();
+            var list = await _roleRepository.QueryWithNoTracking().Where(input, out total).ToListAsync();
             return new PagedResultOutput<GetRoleListOutput>(total, list.MapTo<List<GetRoleListOutput>>());
         }
 
