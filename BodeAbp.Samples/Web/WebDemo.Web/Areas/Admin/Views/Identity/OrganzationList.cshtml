@@ -1,0 +1,30 @@
+﻿
+@{
+    ViewBag.Title = "组织机构列表";
+    Layout = "~/Areas/Admin/Views/Shared/_TreeGridLayout.cshtml";
+}
+
+@section customScript{
+    <script type="text/javascript">
+        treeOption.title = "组织机构列表";
+        treeOption.url = "/api/services/zero/organization/GetOrganizationUnitTreeData";
+
+        tableOption.url = {
+            read: "/api/services/zero/organization/GetOrganizationUnitPagedList",
+            add: "/api/services/zero/organization/CreatOrganizationUnit",
+            edit: "/api/services/zero/organization/UpdateOrganizationUnit",
+            delete: "/api/services/zero/organization/DeleteOrganizationUnit",
+        };
+        tableOption.columns = [
+                { data: "id", title: "编号" },
+                { data: "displayName", title: "显示名", type: "text", query: true, editor: {} },
+                { data: "code", title: "编码", type: "text", query: true, editor: {} },
+                { data: "parentId", title: "父级id", type: "hide", editor: {} },
+                { title: "操作选项", type: "command", actions: [] }
+        ];
+    </script>
+}
+
+
+
+

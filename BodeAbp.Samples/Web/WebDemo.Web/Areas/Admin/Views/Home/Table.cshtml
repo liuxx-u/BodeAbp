@@ -1,5 +1,4 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "Table";
     Layout = "~/Areas/Admin/Views/Shared/_GridLayout.cshtml";
 }
@@ -7,14 +6,13 @@
 @section customScript{
     <script type="text/javascript">
         var enums = @Html.Raw(Json.Encode(@ViewBag.Enums));
-
-        url = {
+        tableOption.url = {
             read: "/api/services/product/products/GetProductPagedList",
             add: "/api/services/product/products/CreateProduct",
             edit: "/api/services/product/products/UpdateProduct",
             delete: "/api/services/product/products/DeleteProduct"
         };
-        columns = [
+        tableOption.columns = [
                 { data: "id", title: "编号" },
                 { data: "name", title: "商品名称", type: "text", query: true, editor: {} },
                 { data: "brief", title: "商品简介", type: "textarea", query: true, editor: {} },

@@ -1652,6 +1652,7 @@
     <Content Include="Content\js\beyond.js" />
     <Content Include="Content\js\beyond.min.js" />
     <Content Include="Content\js\admin\index.js" />
+    <Content Include="Content\js\bode\bode.tree.js" />
     <Content Include="Content\js\bootstrap.min.js" />
     <Content Include="Content\js\admin\cloud.js" />
     <Content Include="Content\js\plugs\colorpicker\jquery.minicolors.js" />
@@ -2008,6 +2009,8 @@
     <Content Include="Content\js\plugs\ueditor\third-party\video-js\font\vjs.eot" />
     <Content Include="Content\js\plugs\ueditor\third-party\video-js\font\vjs.ttf" />
     <Content Include="Content\js\plugs\ueditor\third-party\video-js\font\vjs.woff" />
+    <Content Include="Areas\Admin\Views\Shared\_TreeGridLayout.cshtml" />
+    <Content Include="Areas\Admin\Views\Identity\OrganzationList.cshtml" />
     <None Include="Properties\PublishProfiles\211.149.223.24.pubxml" />
     <Content Include="Content\js\bode\bode.js" />
     <Content Include="Content\js\plugs\layer\layer.js" />
@@ -2030,6 +2033,9 @@
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\AccountController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Admin\Controllers\Product\AttributeController.cs" />
+    <Compile Include="Areas\Admin\Controllers\Product\ProductController.cs" />
+    <Compile Include="Areas\Admin\Controllers\Zero\IdentityController.cs" />
     <Compile Include="Areas\Admin\ViewModels\NavigationViewModel.cs" />
     <Compile Include="Content\js\plugs\ueditor\net\App_Code\Config.cs" />
     <Compile Include="Content\js\plugs\ueditor\net\App_Code\ConfigHandler.cs" />
@@ -2124,6 +2130,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Areas\Admin\Views\Attribute\" />
+    <Folder Include="Areas\Admin\Views\Product\" />
     <Folder Include="Content\sound\" />
     <Folder Include="Views\Account\" />
   </ItemGroup>

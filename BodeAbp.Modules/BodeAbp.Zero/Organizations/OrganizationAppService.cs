@@ -51,7 +51,8 @@ namespace BodeAbp.Zero.Organizations
             {
                 Value = p.Id + "",
                 Text = p.DisplayName.ToString(),
-                Children = getChildOus(p.Id, ous)
+                Children = getChildOus(p.Id, ous),
+                ParentValue = p.ParentId.HasValue ? p.ParentId.Value.ToString() : "0"
             }).ToList();
 
             return result;
@@ -89,7 +90,8 @@ namespace BodeAbp.Zero.Organizations
                 {
                     Value = p.Id + "",
                     Text = p.DisplayName.ToString(),
-                    Children = getChildOus(p.Id, ous)
+                    Children = getChildOus(p.Id, ous),
+                    ParentValue = p.ParentId.HasValue ? p.ParentId.Value.ToString() : "0"
                 }).ToList();
                 return children;
             }

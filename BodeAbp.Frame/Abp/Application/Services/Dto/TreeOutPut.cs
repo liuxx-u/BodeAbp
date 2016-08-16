@@ -18,6 +18,11 @@ namespace Abp.Application.Services.Dto
         public string Text { get; set; }
 
         /// <summary>
+        /// 父级的值
+        /// </summary>
+        public string ParentValue { get; set; }
+
+        /// <summary>
         /// 是否选中
         /// </summary>
         public bool IsChecked { get; set; }

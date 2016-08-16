@@ -25,6 +25,7 @@ namespace BodeAbp.Zero.Organizations.Domain
         
         public virtual async Task CreateAsync(OrganizationUnit organizationUnit)
         {
+            if (organizationUnit.ParentId == 0) organizationUnit.ParentId = null;
             organizationUnit.Code = await GetNextChildCodeAsync(organizationUnit.ParentId);
             await ValidateOrganizationUnitAsync(organizationUnit);
             await OrganizationUnitRepository.InsertAsync(organizationUnit);
@@ -32,6 +33,7 @@ namespace BodeAbp.Zero.Organizations.Domain
 
         public virtual async Task UpdateAsync(OrganizationUnit organizationUnit)
         {
+            if (organizationUnit.ParentId == 0) organizationUnit.ParentId = null;
             await ValidateOrganizationUnitAsync(organizationUnit);
             await OrganizationUnitRepository.UpdateAsync(organizationUnit);
         }
@@ -41,7 +43,7 @@ namespace BodeAbp.Zero.Organizations.Domain
             var lastChild = await GetLastChildOrNullAsync(parentId);
             if (lastChild == null)
             {
-                var parentCode = parentId != null ? await GetCodeAsync(parentId.Value) : null;
+                var parentCode = parentId.HasValue && parentId.Value > 0 ? await GetCodeAsync(parentId.Value) : null;
                 return OrganizationUnit.AppendCode(parentCode, OrganizationUnit.CreateCode(1));
             }
 

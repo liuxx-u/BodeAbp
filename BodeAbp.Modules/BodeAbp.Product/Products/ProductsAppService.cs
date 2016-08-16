@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using Abp.Application.Services;
 using Abp.Application.Services.Dto;
@@ -29,7 +27,7 @@ namespace BodeAbp.Product.Products
             _productRepository = productRepository;
         }
 
-        #region 属性模版
+        #region 商品
 
         /// <inheritdoc/>
         public async Task<PagedResultOutput<GetProductListOutput>> GetProductPagedList(QueryListPagedRequestInput input)
@@ -62,13 +60,9 @@ namespace BodeAbp.Product.Products
         }
 
         /// <inheritdoc/>
-        public async Task DeleteProduct(List<IdInput> input)
+        public async Task DeleteProduct(IdInput input)
         {
-            var ids = input.Select(p => p.Id);
-            foreach (var item in input)
-            {
-                await _productRepository.DeleteAsync(item.Id);
-            }
+            await _productRepository.DeleteAsync(input.Id);
         }
 
         #endregion

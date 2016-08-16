@@ -11,7 +11,7 @@
 			contentType: "application/json; charset=utf-8",
 			success: function (data) {
 				if (data.success) {
-					func(data);
+					func(data.result);
 				}
 				else if (data.unAuthorizedRequest) {
 					//身份过期

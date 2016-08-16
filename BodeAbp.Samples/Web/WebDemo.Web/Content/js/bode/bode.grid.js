@@ -11,11 +11,12 @@
 		this.isBatch = conf.isBatch || false;//是否允许批量操作
 		this.originData = this.conf.data || [];//初始数据
 		this.actions = this.conf.actions || [];//右上角操作按钮
+		this.extraFilters = this.conf.extraFilters || [];//外部查询条件
 		this.imgSaveUrl = this.conf.imgSaveUrl || "/api/File/UploadPic";
 		this.formId = this.conf.formId || "bode-grid-autoform";//表单id
 		this.actionsContainerId = this.conf.actionsContainerId || "actionArea";
 		this.isFormInited = false;//表单是否初始化
-		this.formWidth = "40%";
+		this.formWidth = this.conf.formWidth || "40%";
 		this.curEditId = 0;//当前编辑数据的Id
 		this.queryParams = {
 			pageIndex: conf.pageIndex || 1,
@@ -204,6 +205,13 @@
                     data[dataField] =UE.getEditor(dataField).getContent();
                 }
             }
+
+            //添加额外属性
+            for (var j = 0, jLen = this.extraFilters.length; j < jLen; j++) {
+                var filter = this.extraFilters[j];
+                if (filter.operate !== "equal") continue;
+                data[filter.field] = filter.value;
+            }
             var url = this.curEditId === 0 ? this.conf.url.add : this.conf.url.edit;
 
             $.bode.ajax(url, data, function () {
@@ -302,7 +310,7 @@
                                 layer.confirm('是否确定删除该数据？此操作是不可恢复的。', {
                                     btn: ['确定', '取消'] //按钮
                                 }, function () {
-                                    $.bode.ajax(tab.conf.url.read, tab.queryParams, function (data){
+                                    $.bode.ajax(tab.conf.url.delete, { id: d.id }, function (data){
                                         layer.msg("删除成功");
                                     })
                                 });
@@ -425,12 +433,22 @@
             }
             //初始化数据
             if (typeof (tab.conf.url.read) != "undefined") {
-                $.bode.ajax(tab.conf.url.read, tab.queryParams, function (data) {
-                    tab.originData = data.result.items;
+                var queryFilters = tab.queryParams.filterGroup.rules || [];
+                var query = {
+                    pageIndex: tab.queryParams.pageIndex,
+                    pageSize: tab.queryParams.pageSize,
+                    sortConditions: tab.queryParams.sortConditions,
+                    filterGroup: {
+                        rules: queryFilters.concat(tab.extraFilters)
+                    } 
+                }
+
+                $.bode.ajax(tab.conf.url.read, query, function (data) {
+                    tab.originData = data.items;
                     tab.loadData();
 
                     //绑定分页控件
-                    tab.initFoot(data.result.totalCount);
+                    tab.initFoot(data.totalCount);
                     tab.loadDataComplete(data);
                 });
             }
@@ -592,6 +610,19 @@
             this.tab.find("tbody").empty();
             this.tab.next(".DTTTFooter").remove();
             this.initData();
+        }
+
+        this.setExtraFilter = function (extraFilter) {
+            if (!extraFilter.field || !extraFilter.operate) return;
+            var newFilters = [];
+            for (var i = 0, iLen = this.extraFilters.length; i < iLen; i++) {
+                var filter = this.extraFilters[i];
+                if (filter.field === treeOption.tableParamField) continue;
+                newFilters.push(filter);
+            }
+            newFilters.push(extraFilter);
+            this.extraFilters = newFilters;
+            this.reload();
         }
 
 	    //执行初始化

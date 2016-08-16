@@ -5,7 +5,7 @@
 @section header{
     <link href="~/Content/css/dataTables.bootstrap.css" rel="stylesheet" type="text/css" />
     <link href="~/Content/css/bootstrap-datetimepicker.min.css" rel="stylesheet" type="text/css" />
-    <link href="~/Content/js/plugs/webuploader/webuploader.css" rel="stylesheet" type="text/css"/>
+    <link href="~/Content/js/plugs/webuploader/webuploader.css" rel="stylesheet" type="text/css" />
     <style>
         .query-input {
             height: 32px;
@@ -25,9 +25,10 @@
     <script src="~/Content/js/plugs/ueditor/ueditor.all.min.js" type="text/javascript"></script>
     <script src="~/Content/js/plugs/textarea/jquery.autosize.js" type="text/javascript"></script>
     <script src="~/Content/js/bode/bode.grid.js" type="text/javascript"></script>
+    <script src="~/Content/js/bode/bode.tree.js" type="text/javascript"></script>
 
     <script type="text/javascript">
-        var datatable;
+        var datatable, tree;
 
         var tableOption = {
             url: {},
@@ -36,8 +37,30 @@
             actions: [],
             formWidth: "40%",
             isBatch: false,
+            extraFilters:[],
             imgSaveUrl: "/api/File/UploadPic",
             loadDataComplete: function (data) { }
+        };
+
+        var treeOption = {
+            title:"",
+            url: "",
+            valueField: "value",
+            textField: "text",
+            parentField: "parentValue",
+            tableParamField: "parentId",
+            initialValue: "0",
+            folderSelectEnable: false,
+            multiSelectEnable: false,
+            itemSelect: function (data) {
+                datatable.setExtraFilter({
+                    field: treeOption.tableParamField,
+                    operate: "equal",
+                    value: data[treeOption.valueField]
+                });
+            },
+            loadCompleted: function () { },
+            itemCancel: function (data) { }
         };
 
         var startfunction = function () { };
@@ -50,7 +73,7 @@
             startfunction();
             //初始化数据
             datatable = new $.bode.grid("#dataTable", tableOption);
-
+            tree = new $.bode.tree("#treeContent", treeOption);
             endfunction();
         });
     </script>
@@ -61,7 +84,21 @@
 <div class="page-container">
     <div class="page-body">
         <div class="row">
-            <div class="col-xs-12">
+
+            <div id="tree" class="col-xs-4 col-md-3 col-lg-2">
+                <div class="widget flat radius-bordered">
+                    <div class="widget-header bg-info">
+                        <span class="widget-caption">组织机构</span>
+                    </div>
+                    <div class="widget-body" style="overflow-y: auto;">
+                        <div id="treeContent" class="tree tree-solid-line">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xs-8 col-md-9 col-lg-10">
                 <div class="widget flat radius-bordered">
                     <div class="widget-header bg-info">
                         <span class="widget-caption"><strong>@ViewBag.Title</strong></span>
@@ -84,8 +121,7 @@
                                 <thead>
                                     <tr></tr>
                                 </thead>
-                                <tbody>
-                                </tbody>
+                                <tbody></tbody>
                             </table>
                         </div>
                     </div>
@@ -96,3 +132,9 @@
 </div>
 @RenderBody()
 @RenderSection("footHtml", false)
+<script type="text/javascript">
+    $(function () {
+        $("#tree .widget-caption>strong").text(treeOption.title);
+        $("#tree .widget-body").height(document.body.scrollHeight - 140);
+    });
+</script>

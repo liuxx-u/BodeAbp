@@ -52,7 +52,7 @@ namespace BodeAbp.Product.Products
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
-        Task DeleteProduct(List<IdInput> input);
+        Task DeleteProduct(IdInput input);
 
         #endregion
     }
