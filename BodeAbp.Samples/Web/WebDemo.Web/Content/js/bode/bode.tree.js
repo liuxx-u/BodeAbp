@@ -97,7 +97,6 @@
                 if ($(this).closest(".tree-folder-content").is(":hidden")) {
 
                 }
-
                 //开启多选时不执行itemSelect方法
                 if (tree.multiSelectEnable) {
                     if (!$(this).hasClass("bg-palegreen")) {
@@ -110,7 +109,6 @@
                 } else {
                     if (!$(this).hasClass("bg-palegreen")) fnSelect($(this));
                 }
-
                 return false;
             });
 
@@ -125,10 +123,8 @@
 
                 //如果开启多选，文件夹不能被选中(暂不支持)
                 if (tree.folderSelectEnable && !tree.multiSelectEnable && !$(this).children(".tree-folder-header").hasClass("bg-palegreen")) {
-
                     fnSelect($(this).children(".tree-folder-header"));
                 }
-
                 return false;
             });
         };

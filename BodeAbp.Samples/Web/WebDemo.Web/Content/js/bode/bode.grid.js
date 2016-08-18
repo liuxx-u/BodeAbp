@@ -166,13 +166,31 @@
                         $("#val_" + self.columns[i]["data"]).val(curValue);
                         var ue = UE.getEditor(self.columns[i]["data"]);
                         ue.addListener("ready", function () {
-                            ue.setContent($("#val_"+this.key).val());
+                            ue.setContent($("#val_" + this.key).val());
                         });
+                    }
+
+                    //处理新增、编辑模式下字段的可编辑性
+                    var fieldPatten = "";
+                    var editor = self.columns[i]["editor"];
+                    if (!editor) continue;
+                    fieldPatten = self.curEditId === 0 ? editor.ap : editor.ep;
+                    if (fieldPatten == "hide") {
+                        $("#" + dataField).closest(".form-group").hide();
+                    } else {
+                        $("#" + dataField).closest(".form-group").show();
+                    }
+
+                    if (fieldPatten == "disabled") {
+                        $("#" + dataField).attr("disabled", true);
+                    } else {
+                        $("#" + dataField).attr("disabled", false);
                     }
                 }
             }
 
             layer.open({
+                title: self.curEditId === 0 ? "新增" : "编辑",
                 type: 1,
                 area: self.formWidth,
                 content: $("#" + self.formId),

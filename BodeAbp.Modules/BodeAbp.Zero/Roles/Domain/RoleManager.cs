@@ -210,6 +210,7 @@ namespace BodeAbp.Zero.Roles.Domain
             {
                 await RolePermissionStore.AddPermissionAsync(role, new PermissionGrantInfo(permission.Name, true));
             }
+            await RemoveRolePermissionCacheItemAsync(role.Id);
         }
 
         /// <summary>
@@ -232,6 +233,8 @@ namespace BodeAbp.Zero.Roles.Domain
             {
                 await RolePermissionStore.RemovePermissionAsync(role, new PermissionGrantInfo(permission.Name, true));
             }
+
+            await RemoveRolePermissionCacheItemAsync(role.Id);
         }
 
         /// <summary>
@@ -403,9 +406,19 @@ namespace BodeAbp.Zero.Roles.Domain
                         newCacheItem.ProhibitedPermissions.Add(permissionInfo.Name);
                     }
                 }
-
                 return newCacheItem;
             });
+        }
+
+        /// <summary>
+        /// 移除角色权限缓存
+        /// </summary>
+        /// <param name="roleId">角色Id</param>
+        /// <returns></returns>
+        private async Task RemoveRolePermissionCacheItemAsync(int roleId)
+        {
+            var cacheKey = "role@" + roleId;
+            await _cacheManager.GetRolePermissionCache().RemoveAsync(cacheKey);
         }
 
         private string L(string name)

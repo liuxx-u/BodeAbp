@@ -2011,6 +2011,7 @@
     <Content Include="Content\js\plugs\ueditor\third-party\video-js\font\vjs.woff" />
     <Content Include="Areas\Admin\Views\Shared\_TreeGridLayout.cshtml" />
     <Content Include="Areas\Admin\Views\Identity\OrganzationList.cshtml" />
+    <Content Include="Areas\Admin\Views\Identity\RoleList.cshtml" />
     <None Include="Properties\PublishProfiles\211.149.223.24.pubxml" />
     <Content Include="Content\js\bode\bode.js" />
     <Content Include="Content\js\plugs\layer\layer.js" />

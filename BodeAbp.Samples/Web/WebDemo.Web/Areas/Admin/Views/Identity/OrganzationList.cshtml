@@ -6,7 +6,8 @@
 
 @section customScript{
     <script type="text/javascript">
-        treeOption.title = "组织机构列表";
+        treeOption.title = "组织机构树";
+        treeOption.tableParamField = "parentId";
         treeOption.url = "/api/services/zero/organization/GetOrganizationUnitTreeData";
 
         tableOption.url = {
