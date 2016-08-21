@@ -89,9 +89,9 @@ namespace BodeAbp.Zero.Users
         /// <summary>
         /// 设置 用户角色
         /// </summary>
-        /// <param name="roles">角色名集合</param>
+        /// <param name="input">用户角色Input</param>
         /// <returns>业务操作结果</returns>
-        Task SetUserRoles(string roleNames);
+        Task SetUserRoles(SetUserRoleInput input);
 
         #endregion
 

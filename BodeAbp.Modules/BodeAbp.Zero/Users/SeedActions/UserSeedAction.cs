@@ -19,12 +19,13 @@ namespace BodeAbp.Zero.Users.SeedActions
         public void Action(DbContext context)
         {
             //Admin user
-            var adminUser = context.Set<User>().FirstOrDefault(r => r.Name == BodeAbpZeroConsts.StaticUserName);
+            var adminUser = context.Set<User>().FirstOrDefault(r => r.UserName == BodeAbpZeroConsts.StaticUserName);
             if (adminUser == null)
             {
                 adminUser = context.Set<User>().Add(new User
                 {
                     UserName = BodeAbpZeroConsts.StaticUserName,
+                    NickName= BodeAbpZeroConsts.StaticUserName,
                     Password = new PasswordHasher().HashPassword(BodeAbpZeroConsts.StaticUserPassword),
                     IsActive = true
                 });

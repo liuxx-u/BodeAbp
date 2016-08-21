@@ -243,14 +243,12 @@ namespace BodeAbp.Zero.Users
         /// <summary>
         /// 设置 用户角色
         /// </summary>
-        /// <param name="roles">角色名集合</param>
+        /// <param name="input">用户角色Input</param>
         /// <returns>业务操作结果</returns>
-        [AbpAuthorize]
-        public async Task SetUserRoles(string roleNames)
+        public async Task SetUserRoles(SetUserRoleInput input)
         {
-            var roleArr = roleNames.Split(",", StringSplitOptions.RemoveEmptyEntries);
-            var user = await UserManager.GetUserByIdAsync(AbpSession.UserId.Value);
-            await UserManager.SetRoles(user, roleArr);
+            var user = await UserManager.GetUserByIdAsync(input.UserId);
+            await UserManager.SetRoles(user, input.RoleNames);
         }
 
         #endregion

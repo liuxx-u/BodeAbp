@@ -1,0 +1,26 @@
+﻿@{
+    ViewBag.Title = "审计日志列表";
+    Layout = "~/Areas/Admin/Views/Shared/_GridLayout.cshtml";
+}
+
+@section customScript{
+    <script type="text/javascript">
+        tableOption.url = {
+            read: "/api/services/zero/auditing/GetAuditLogPagedList",
+            delete: "/api/services/zero/auditing/DeleteAuditLog"
+        };
+        tableOption.columns = [
+            { title: "编号", data: "id", type: "hide" },
+            { title: "UserId", data: "userId", type: "int"},
+            { title: "服务名称", data: "serviceName", type: "text",query: true },
+            { title: "方法名称", data: "methodName", type: "text",query: true },
+            { title: "参数", data: "parameters", type: "text" },
+            { title: "执行时间", data: "executionTime", type: "datetimepicker",query: true },
+            { title: "耗时", data: "executionDuration", type: "int",query: true },
+            { title: "客户端ip", data: "clientIpAddress", type: "text",query: true },
+            { title: "客户端名称", data: "clientName", type: "text",query: true },
+            { title: "浏览器信息", data: "browserInfo", type: "text",query: true },
+            { title: "操作选项", type: "command" }
+        ];
+    </script>
+}

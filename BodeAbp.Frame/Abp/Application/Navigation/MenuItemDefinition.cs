@@ -110,5 +110,22 @@ namespace Abp.Application.Navigation
             Items.Add(menuItem);
             return this;
         }
+
+        /// <summary>
+        /// Adds a <see cref="MenuItemDefinition"/> to <see cref="Items"/>.
+        /// </summary>
+        /// <returns></returns>
+        public MenuItemDefinition AddItem(
+            string name,
+            ILocalizableString displayName,
+            string icon = null,
+            string url = null,
+            bool requiresAuthentication = false,
+            string requiredPermissionName = null,
+            int order = 0,
+            object customData = null)
+        {
+            return AddItem(new MenuItemDefinition(name, displayName, icon, url, requiresAuthentication, requiredPermissionName, order, customData));
+        }
     }
 }

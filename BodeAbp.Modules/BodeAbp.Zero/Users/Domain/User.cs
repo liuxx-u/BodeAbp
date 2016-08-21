@@ -89,7 +89,7 @@ namespace BodeAbp.Zero.Users.Domain
         /// Ãû³Æ
         /// </summary>
         [StringLength(MaxNameLength)]
-        public string Name { get; set; }
+        public string NickName { get; set; }
 
         /// <summary>
         /// ÓÃ»§ÃÜÂë

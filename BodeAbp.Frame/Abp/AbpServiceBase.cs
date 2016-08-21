@@ -20,6 +20,11 @@ namespace Abp
         public ISettingManager SettingManager { protected get; set; }
 
         /// <summary>
+        /// Reference to the localization context.
+        /// </summary>
+        public ILocalizationContext localizationContext { protected get; set; }
+
+        /// <summary>
         /// Reference to <see cref="IUnitOfWorkManager"/>.
         /// </summary>
         public IUnitOfWorkManager UnitOfWorkManager

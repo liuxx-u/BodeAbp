@@ -18,7 +18,7 @@ namespace Abp.Application.Navigation
             MenuDefinition menu;
             if (!manager.Menus.TryGetValue("admin", out menu))
             {
-                menu = new MenuDefinition(key, L("key"));
+                menu = new MenuDefinition(key, L("AdminNavigationName"));
                 manager.Menus.Add("admin", menu);
             }
             return menu;

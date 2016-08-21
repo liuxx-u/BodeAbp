@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using Abp.Application.Services;
 using Abp.Application.Services.Dto;
 using Abp.Configuration;
+using BodeAbp.Zero.Settings.Dtos;
 
 namespace BodeAbp.Zero.Settings
 {
@@ -17,6 +18,13 @@ namespace BodeAbp.Zero.Settings
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
-        Task<PagedResultOutput<SettingInfo>> GetApplicationSettingPagedList(QueryListPagedRequestInput input);
+        Task<PagedResultOutput<SettingDto>> GetApplicationSettingPagedList(QueryListPagedRequestInput input);
+
+        /// <summary>
+        /// 修改设置信息
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        Task ChangeSetting(SettingDto input);
     }
 }

@@ -18,7 +18,7 @@ namespace BodeAbp.Zero.Users.Dtos
         /// <summary>
         /// 名称
         /// </summary>
-        public string Name { get; set; }
+        public string NickName { get; set; }
 
         /// <summary>
         /// 手机号码

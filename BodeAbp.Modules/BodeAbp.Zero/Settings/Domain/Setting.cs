@@ -5,11 +5,13 @@ using Abp.Domain.Entities.Auditing;
 namespace BodeAbp.Zero.Settings.Domain
 {
     /// <summary>
-    /// Represents a setting for a tenant or user.
+    /// Represents a setting for a user.
     /// </summary>
     [Table("Zero#Setting")]
     public class Setting : AuditedEntity<long>
     {
+        #region 常量
+
         /// <summary>
         /// Maximum length of the <see cref="Name"/> property.
         /// </summary>
@@ -19,10 +21,14 @@ namespace BodeAbp.Zero.Settings.Domain
         /// Maximum length of the <see cref="Value"/> property.
         /// </summary>
         public const int MaxValueLength = 2000;
-        
+
+        #endregion
+
+        #region 属性
+
         /// <summary>
         /// UserId for this setting.
-        /// UserId is null if this setting is not user level.
+        /// UserId is null if this setting is application level.
         /// </summary>
         public virtual long? UserId { get; set; }
 
@@ -31,13 +37,27 @@ namespace BodeAbp.Zero.Settings.Domain
         /// </summary>
         [Required]
         [MaxLength(MaxNameLength)]
-        public virtual string Name { get; set; }
+        public string Name { get; set; }
 
         /// <summary>
         /// Value of the setting.
         /// </summary>
         [MaxLength(MaxValueLength)]
-        public virtual string Value { get; set; }
+        public string Value { get; set; }
+
+        /// <summary>
+        /// 显示名
+        /// </summary>
+        public string DisplayName { get; set; }
+
+        /// <summary>
+        /// 描述
+        /// </summary>
+        public string Description { get; set; }
+
+        #endregion
+
+        #region 构造函数
 
         /// <summary>
         /// Creates a new <see cref="Setting"/> object.
@@ -59,5 +79,7 @@ namespace BodeAbp.Zero.Settings.Domain
             Name = name;
             Value = value;
         }
+
+        #endregion
     }
 }

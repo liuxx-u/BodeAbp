@@ -101,6 +101,7 @@
     <Compile Include="Settings\Domain\Setting.cs" />
     <Compile Include="Settings\Domain\SettingExtensions.cs" />
     <Compile Include="Settings\Domain\SettingStore.cs" />
+    <Compile Include="Settings\Dtos\SettingDto.cs" />
     <Compile Include="Settings\ISettingsAppService.cs" />
     <Compile Include="Settings\ModelConfigs\SettingConfiguration.cs" />
     <Compile Include="Settings\SeedActions\DefaultSettingSeedAction.cs" />
@@ -110,6 +111,7 @@
     <Compile Include="Users\Dtos\ChangeUserNameInput.cs" />
     <Compile Include="Users\Dtos\CreateUserInput.cs" />
     <Compile Include="Users\Dtos\ResetPasswordInput.cs" />
+    <Compile Include="Users\Dtos\SetUserRoleInput.cs" />
     <Compile Include="Users\Dtos\UserDto.cs" />
     <Compile Include="Users\Dtos\UserRoleSelectOutPut.cs" />
     <Compile Include="Users\Dtos\ValidateCodeDto.cs" />

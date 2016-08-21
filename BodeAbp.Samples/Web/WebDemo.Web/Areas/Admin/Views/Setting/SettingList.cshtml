@@ -1,0 +1,21 @@
+﻿@{
+    ViewBag.Title = "系统设置列表";
+    Layout = "~/Areas/Admin/Views/Shared/_GridLayout.cshtml";
+}
+
+@section customScript{
+    <script type="text/javascript">
+        tableOption.url = {
+            read: "/api/services/zero/settings/GetApplicationSettingPagedList",
+            edit: "/api/services/zero/settings/ChangeSetting"
+        };
+        tableOption.columns = [
+            { data: "id", title: "编号", type: "hide" },
+            { data: "displayName", title: "名称", type: "text", query: true, editor: { ep: "disabled" }, sortDisable: true },
+            { data: "name", title: "唯一标识", type: "text", query: true, editor: { ep: "disabled" }, sortDisable: true },
+            { data: "value", title: "值", type: "text", query: true, sortDisable: true },
+            { data: "description", title: "描述", type: "text", query: true, editor: { ep: "disabled" }, sortDisable: true },
+            { title: "操作选项", type: "command", actions: [], sortDisable: true }
+        ];
+    </script>
+}

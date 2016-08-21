@@ -2012,6 +2012,9 @@
     <Content Include="Areas\Admin\Views\Shared\_TreeGridLayout.cshtml" />
     <Content Include="Areas\Admin\Views\Identity\OrganzationList.cshtml" />
     <Content Include="Areas\Admin\Views\Identity\RoleList.cshtml" />
+    <Content Include="Areas\Admin\Views\Identity\UserList.cshtml" />
+    <Content Include="Areas\Admin\Views\Setting\SettingList.cshtml" />
+    <Content Include="Areas\Admin\Views\Setting\AuditLogs.cshtml" />
     <None Include="Properties\PublishProfiles\211.149.223.24.pubxml" />
     <Content Include="Content\js\bode\bode.js" />
     <Content Include="Content\js\plugs\layer\layer.js" />
@@ -2037,6 +2040,7 @@
     <Compile Include="Areas\Admin\Controllers\Product\AttributeController.cs" />
     <Compile Include="Areas\Admin\Controllers\Product\ProductController.cs" />
     <Compile Include="Areas\Admin\Controllers\Zero\IdentityController.cs" />
+    <Compile Include="Areas\Admin\Controllers\Zero\SettingController.cs" />
     <Compile Include="Areas\Admin\ViewModels\NavigationViewModel.cs" />
     <Compile Include="Content\js\plugs\ueditor\net\App_Code\Config.cs" />
     <Compile Include="Content\js\plugs\ueditor\net\App_Code\ConfigHandler.cs" />

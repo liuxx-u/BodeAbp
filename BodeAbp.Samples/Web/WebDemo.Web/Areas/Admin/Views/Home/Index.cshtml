@@ -1,20 +1,22 @@
 ﻿@{
     Layout = "";
 }
-
 <!DOCTYPE html>
 <html>
-<head id="Head1" runat="server">
+<head>
     <title>管理信息系统</title>
     <script src="~/Content/js/jquery.min.js" type="text/javascript"></script>
     <script src="~/Content/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="~/Content/js/vue.js" type="text/javascript"></script>
+    <script src="~/Content/js/bode/bode.js" type="text/javascript"></script>
+    <script src="~/Content/js/bode/bode.ajax.js" type="text/javascript"></script>
     
     <link href="~/Content/css/bootstrap.min.css" rel="stylesheet" />
     <link href="~/Content/css/font-awesome.min.css" rel="stylesheet" />
     <link href="~/Content/css/admin/admin.css" rel="stylesheet" />
     <link href="~/Content/css/admin/index.css" rel="stylesheet" />
 </head>
-<body>
+<body id="index-page">
     <div class="header">
         <div class="header-waper ue-clear">
             <div class="top-light"></div>
@@ -23,19 +25,18 @@
             <div class="header-navigation ue-clear">
                 <div class="ue-clear">
                     <ul class="topnav">
-                        <li><i class="fa fa-bookmark"></i><span>菜单回复</span></li>
-                        <li><i class="fa fa-credit-card"></i><span>新闻中心</span></li>
-                        <li><i class="fa fa-envelope-o"></i><span>商品中心</span></li>
-                        <li class="selected"><i class="fa fa-calendar-o"></i><span>商户管理</span></li>
-                        <li><i class="fa fa-folder-open"></i><span>用户管理</span></li>
-                        <li><i class="fa  fa-tasks"></i><span>系统设置</span></li>
+                        <template v-for="nav in navs">
+                            <li v-bind:class="{'selected':nav.name==curFirstNav.name}" v-on:click="firstNavClick(nav);">
+                                <i v-bind:class="['fa',nav.icon]"></i><span>{{nav.displayName}}</span>
+                            </li>
+                        </template>
                     </ul>
                 </div>
             </div>
 
             <div class="toolbar ue-clear">
-                <a href="javascript:void(0);" class="home-btn">首页</a>
-                <a href="javascript:void(0);" class="quit-btn"></a>
+                <a href="javascript:void(0);" class="home"><i class="fa fa-home"></i>首页</a>
+                <a href="javascript:void(0);" class="quit"><i class="fa fa-power-off"></i></a>
             </div>
         </div>
     </div>
@@ -47,36 +48,23 @@
                     <span>功能导航</span>
                 </h2>
                 <ul class="menu">
-                    <li class="open">
-                        <a href="#"><i class="fa fa-bookmark"></i>日常办公</a>
-                        <ul class="submenu">
-                            <li class="active"><a href="#">菜单1</a><i></i></li>
-                            <li><a href="#">菜单2</a><i></i></li>
-                            <li><a href="#">菜单3</a><i></i></li>
-                            <li><a href="#">菜单4</a><i></i></li>
-                            <li><a href="#">菜单5</a><i></i></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#"><i class="fa fa-credit-card"></i>公文起草</a>
-                        <ul class="submenu">
-                            <li class="active"><a href="#">菜单1</a><i></i></li>
-                            <li><a href="#">菜单2</a><i></i></li>
-                            <li><a href="#">菜单3</a><i></i></li>
-                            <li><a href="#">菜单4</a><i></i></li>
-                            <li><a href="#">菜单5</a><i></i></li>
-                        </ul>
-                    </li>
-                    <li><a href="#"><i class="fa fa-envelope-o"></i>知识管理</a></li>
-                    <li><a href="#"><i class="fa fa-calendar-o"></i>组织结构</a></li>
-                    <li><a href="#"><i class="fa fa-folder-open"></i>邮件管理</a></li>
+                    <template v-for="nav in curFirstNav.items">
+                        <li v-bind:class="{'open':nav.name==openNav.name}" v-on:click="secondNavClick(nav);">
+                            <a href="#"><i  v-bind:class="['fa',nav.icon]"></i>{{nav.displayName}}</a>
+                            <ul class="submenu">
+                                <template v-for="subNav in nav.items">
+                                    <li v-bind:class="{'active':subNav.name==activeLeafNav.name}" v-on:click.stop="leafNavClick(subNav)"><a href="#">{{subNav.displayName}}</a><i></i></li>
+                                </template>
+                            </ul>
+                        </li>
+                    </template>
                 </ul>
             </div>
 
             <div class="content">
                 <div class="place">
                 </div>
-                <iframe src="@Url.Action("Table")" id="page" style="width:100%;height:100%" frameborder="0"></iframe>
+                <iframe src="{{activeLeafNav.url}}" id="page" style="width:100%;height:100%" frameborder="0"></iframe>
             </div>
         </div>
     </div>

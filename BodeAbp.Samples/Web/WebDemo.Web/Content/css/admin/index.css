@@ -59,23 +59,29 @@ background: #16a0d3;
 }
 .header .toolbar {
     float: right;
-    margin: 20px 14px 0 0;
+    margin: 20px 10px 0 0;
 }
 .toolbar a {
     float: left;
     height: 42px;
     line-height: 42px;
 }
-.toolbar a.home-btn {
+.toolbar a.home {
     width: 85px;
-    padding-left: 46px;
-    background: url(/Content/imgs/admin/home.png) no-repeat left top;
+    padding-left: 26px;
     color: #fff;
     font-size: 14px;
 }
-.toolbar a.quit-btn {
+.toolbar a.home>i {
+    color:#a0d468;
+    font-size:20px;
+    margin-right:3px;
+}
+.toolbar a.quit {
+    margin-left:15px;
     width: 39px;
-    background: url(/Content/imgs/admin/exit.png) no-repeat left top;
+    color:#a0d468;
+    font-size:18px;
 }
 
 /***********body样式***********/
