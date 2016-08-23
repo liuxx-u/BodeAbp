@@ -76,6 +76,13 @@
     <Compile Include="Auditing\Dtos\AuditLogDto.cs" />
     <Compile Include="Auditing\IAuditingAppService.cs" />
     <Compile Include="Auditing\ModelConfigs\AuditLogConfiguration.cs" />
+    <Compile Include="BackgroundJobs\BackgroundJobAppService.cs" />
+    <Compile Include="BackgroundJobs\Dtos\BackgroundJobDto.cs" />
+    <Compile Include="BackgroundJobs\IBackgroundJobAppService.cs" />
+    <Compile Include="Files\Domain\FileInfo.cs" />
+    <Compile Include="Files\FileAppService.cs" />
+    <Compile Include="Files\IFileAppService.cs" />
+    <Compile Include="Providers\BodeAbpZeroSettingProvider.cs" />
     <Compile Include="Providers\BodeAbpZeroAuthorizationProvider.cs" />
     <Compile Include="Providers\BodeAbpZeroNavigationProvider.cs" />
     <Compile Include="Providers\PermissionChecker.cs" />
@@ -91,6 +98,7 @@
     <Compile Include="Permissions\ModelConfigs\RolePermissionConfiguration.cs" />
     <Compile Include="Permissions\ModelConfigs\UserPermissionConfiguration.cs" />
     <Compile Include="Permissions\PermissionAppService.cs" />
+    <Compile Include="Providers\SettingNames.cs" />
     <Compile Include="Roles\Dtos\GrantRolePermissionInput.cs" />
     <Compile Include="Roles\Dtos\RoleDto.cs" />
     <Compile Include="Roles\Dtos\RoleQueryDto.cs" />
@@ -123,7 +131,6 @@
     <Compile Include="Roles\SeedActions\HostRoleSeedAction.cs" />
     <Compile Include="Users\SeedActions\UserSeedAction.cs" />
     <Compile Include="Users\UserAppService.cs" />
-    <Compile Include="Zero\Configuration\BodeAbpZeroSettingNames.cs" />
     <Compile Include="Auditing\Domain\AuditingStore.cs" />
     <Compile Include="Auditing\Domain\AuditLog.cs" />
     <Compile Include="Organizations\Domain\IMayHaveOrganizationUnit.cs" />
@@ -159,7 +166,6 @@
     <Compile Include="Runtime\Caching\AbpZeroCacheManagerExtensions.cs" />
     <Compile Include="Runtime\Session\AbpSessionExtensions.cs" />
     <Compile Include="Runtime\Session\IdentityFrameworkClaimsAbpSession.cs" />
-    <Compile Include="Zero\Configuration\BodeAbpZeroSettingProvider.cs" />
     <Compile Include="Zero\Configuration\IRoleManagementConfig.cs" />
     <Compile Include="Zero\Configuration\IUserManagementConfig.cs" />
     <Compile Include="Zero\Configuration\RoleManagementConfig.cs" />
@@ -192,7 +198,10 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Files\Dtos\" />
+    <Folder Include="Files\ModelConfigs\" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="Zero\Localization\Source\AbpZero.xml" />
     <Content Include="Zero\Localization\Source\AbpZero-en-US.xml" />

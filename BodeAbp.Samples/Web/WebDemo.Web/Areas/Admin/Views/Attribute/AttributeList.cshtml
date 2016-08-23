@@ -1,0 +1,74 @@
+﻿@{
+    ViewBag.Title = "属性列表";
+    Layout = "~/Areas/Admin/Views/Shared/_GridLayout.cshtml";
+}
+
+@section customScript{
+    <script type="text/javascript">
+        tableOption.url = {
+            read: "/api/services/product/attributes/GetAttributePagedList",
+            add: "/api/services/product/attributes/CreateAttribute",
+            edit: "/api/services/product/attributes/UpdateAttribute",
+            delete: "/api/services/product/attributes/DeleteAttribute"
+        };
+        tableOption.columns = [
+                { data: "id", title: "编号" },
+                { data: "name", title: "角色名称", type: "text", query: true, editor: { ap: "hide" } },
+                { data: "displayName", title: "显示名", type: "textarea", query: true },
+                { data: "isStatic", title: "是否静态角色", type: "switch", query: true },
+                { data: "isDefault", title: "是否默认角色", type: "switch", query: true },
+                {
+                    title: "操作选项",
+                    type: "command",
+                    actions: [
+                        {
+                            name: "设置权限",
+                            icon: "fa-trash-o",
+                            onClick: onPermissionClick
+                        }
+                    ]
+                }
+        ];
+    </script>
+}
+
+<div id="permissions" style="display:none;padding: 3px 16px 0 16px;">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="tabbable">
+                <ul class="nav nav-tabs tabs-flat">
+                    <template v-for="(index,item) in permissions">
+                        <li v-bind:class="['tab-sky',{'active':index==0}]">
+                            <a data-toggle="tab" href="#{{item.name}}" aria-expanded="true">
+                                {{item.displayName}}
+                            </a>
+                        </li>
+                    </template>
+                </ul>
+
+                <div class="tab-content  tabs-flat">
+                    <template v-for="(index,item) in permissions">
+                        <div id="{{item.name}}" v-bind:class="['tab-pane',{'active':index==0}]" style="width:99%">
+                            <template v-for="cp in item.children">
+
+                                <div class="row">
+                                    <template v-for="p in cp.children">
+                                        <div class="col-sm-4 col-md-3">
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" id="{{p.name}}" value="{{p.name}}" v-model="checkedPermissions">
+                                                    <span class="text">{{p.displayName}}</span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </template>
+                                </div>
+                                <hr class="wide" />
+                            </template>
+                        </div>
+                    </template>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

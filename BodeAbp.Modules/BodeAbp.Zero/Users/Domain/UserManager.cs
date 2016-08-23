@@ -22,6 +22,7 @@ using BodeAbp.Zero;
 using BodeAbp.Zero.Configuration;
 using BodeAbp.Zero.Organizations.Domain;
 using BodeAbp.Zero.Permissions.Domain;
+using BodeAbp.Zero.Providers;
 using BodeAbp.Zero.Roles.Domain;
 using BodeAbp.Zero.Runtime.Caching;
 using BodeAbp.Zero.Users.Domain;
@@ -689,7 +690,7 @@ namespace Abp.Authorization.Users.Domain
 
         private async Task<bool> IsEmailConfirmationRequiredForLoginAsync()
         {
-            return await SettingManager.GetSettingValueForApplicationAsync<bool>(BodeAbpZeroSettingNames.UserManagement.IsEmailConfirmationRequiredForLogin);
+            return await SettingManager.GetSettingValueForApplicationAsync<bool>(SettingNames.IsEmailConfirmationRequiredForLogin);
         }
 
         private async Task<UserPermissionCacheItem> GetUserPermissionCacheItemAsync(long userId)

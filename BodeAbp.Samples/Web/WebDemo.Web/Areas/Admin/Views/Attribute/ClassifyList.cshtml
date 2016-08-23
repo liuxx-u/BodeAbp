@@ -1,0 +1,37 @@
+﻿
+@{
+    ViewBag.Title = "ClassifyList";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+
+<script type="text/javascript">
+    var vm = new Vue({
+        el: "#classify-page",
+        data: {
+            classifys: []
+        },
+        methods: {
+            add: function (parentId) {
+
+            },
+            edit: function (id) {
+
+            },
+            del:function(id){
+            },
+            up: function (id) {
+            },
+            down: function (id) {
+
+            }
+        },
+        created: function () {
+            var self = this;
+            $.bode.ajax("/api/services/product/attributes/GetAllClassifies", {}, function (claasifys) {
+                self.classifys = claasifys;
+            })
+        }
+    })
+</script>

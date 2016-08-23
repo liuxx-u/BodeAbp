@@ -94,42 +94,34 @@ namespace BodeAbp.Product.Attributes
         #endregion
 
         #region 分类
-        
-        /// <summary>
-        /// 获取 分类分页
-        /// </summary>
-        /// <param name="input"></param>
-        /// <returns></returns>
-        Task<PagedResultOutput<GetProductClassifyListOutput>> GetClassifyPagedList(QueryListPagedRequestInput input);
 
         /// <summary>
-        /// 获取 分类详情
+        /// 获取 全部分类
         /// </summary>
-        /// <param name="id">id</param>
         /// <returns></returns>
-        Task<GetProductClassifyOutput> GetClassify(int id);
+        Task<ICollection<ProductClassifyListOutPut>> GetAllClassifies();
 
         /// <summary>
         /// 添加 分类
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
-        Task CreateClassify(CreateProductClassifyInput input);
+        Task CreateClassify(ProductClassifyInput input);
 
         /// <summary>
         /// 更新 分类
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
-        Task UpdateClassify(UpdateProductClassifyInput input);
+        Task UpdateClassify(ProductClassifyInput input);
 
 
         /// <summary>
         /// 删除 分类
         /// </summary>
-        /// <param name="classifyId">分类Id</param>
+        /// <param name="id">分类Id</param>
         /// <returns></returns>
-        Task DeleteClassify(int classifyId);
+        Task DeleteClassify(int id);
 
         #endregion
     }

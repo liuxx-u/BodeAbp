@@ -12,17 +12,18 @@ namespace Abp.Net.Mail
     {
         public override IEnumerable<SettingDefinition> GetSettingDefinitions(SettingDefinitionProviderContext context)
         {
+            var emailSettingGroup = new SettingDefinitionGroup(EmailSettingNames.GroupName, L("MailSettingGroupName"));
             return new[]
                    {
-                       new SettingDefinition(EmailSettingNames.Smtp.Host, "127.0.0.1", L("SmtpHost"), scopes: SettingScopes.Application),
-                       new SettingDefinition(EmailSettingNames.Smtp.Port, "25", L("SmtpPort"), scopes: SettingScopes.Application),
-                       new SettingDefinition(EmailSettingNames.Smtp.UserName, "", L("Username"), scopes: SettingScopes.Application),
-                       new SettingDefinition(EmailSettingNames.Smtp.Password, "", L("Password"), scopes: SettingScopes.Application),
-                       new SettingDefinition(EmailSettingNames.Smtp.Domain, "", L("DomainName"), scopes: SettingScopes.Application),
-                       new SettingDefinition(EmailSettingNames.Smtp.EnableSsl, "false", L("UseSSL"), scopes: SettingScopes.Application),
-                       new SettingDefinition(EmailSettingNames.Smtp.UseDefaultCredentials, "true", L("UseDefaultCredentials"), scopes: SettingScopes.Application),
-                       new SettingDefinition(EmailSettingNames.DefaultFromAddress, "", L("DefaultFromSenderEmailAddress"), scopes: SettingScopes.Application),
-                       new SettingDefinition(EmailSettingNames.DefaultFromDisplayName, "", L("DefaultFromSenderDisplayName"), scopes: SettingScopes.Application)
+                       new SettingDefinition(EmailSettingNames.Smtp.Host, "127.0.0.1", L("SmtpHost"),group:emailSettingGroup, scopes: SettingScopes.Application),
+                       new SettingDefinition(EmailSettingNames.Smtp.Port, "25", L("SmtpPort"), group:emailSettingGroup,scopes: SettingScopes.Application),
+                       new SettingDefinition(EmailSettingNames.Smtp.UserName, "", L("Username"), group:emailSettingGroup,scopes: SettingScopes.Application),
+                       new SettingDefinition(EmailSettingNames.Smtp.Password, "", L("Password"), group:emailSettingGroup,scopes: SettingScopes.Application),
+                       new SettingDefinition(EmailSettingNames.Smtp.Domain, "", L("DomainName"), group:emailSettingGroup,scopes: SettingScopes.Application),
+                       new SettingDefinition(EmailSettingNames.Smtp.EnableSsl, "false", L("UseSSL"),group:emailSettingGroup, scopes: SettingScopes.Application),
+                       new SettingDefinition(EmailSettingNames.Smtp.UseDefaultCredentials, "true", L("UseDefaultCredentials"),group:emailSettingGroup, scopes: SettingScopes.Application),
+                       new SettingDefinition(EmailSettingNames.DefaultFromAddress, "", L("DefaultFromSenderEmailAddress"), group:emailSettingGroup,scopes: SettingScopes.Application),
+                       new SettingDefinition(EmailSettingNames.DefaultFromDisplayName, "", L("DefaultFromSenderDisplayName"), group:emailSettingGroup,scopes: SettingScopes.Application)
                    };
         }
 

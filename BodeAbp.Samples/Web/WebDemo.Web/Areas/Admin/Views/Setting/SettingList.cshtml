@@ -1,21 +1,81 @@
 ﻿@{
     ViewBag.Title = "系统设置列表";
-    Layout = "~/Areas/Admin/Views/Shared/_GridLayout.cshtml";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
 
-@section customScript{
-    <script type="text/javascript">
-        tableOption.url = {
-            read: "/api/services/zero/settings/GetApplicationSettingPagedList",
-            edit: "/api/services/zero/settings/ChangeSetting"
-        };
-        tableOption.columns = [
-            { data: "id", title: "编号", type: "hide" },
-            { data: "displayName", title: "名称", type: "text", query: true, editor: { ep: "disabled" }, sortDisable: true },
-            { data: "name", title: "唯一标识", type: "text", query: true, editor: { ep: "disabled" }, sortDisable: true },
-            { data: "value", title: "值", type: "text", query: true, sortDisable: true },
-            { data: "description", title: "描述", type: "text", query: true, editor: { ep: "disabled" }, sortDisable: true },
-            { title: "操作选项", type: "command", actions: [], sortDisable: true }
-        ];
-    </script>
-}
+<div class="page-container">
+    <div class="page-body">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="widget flat radius-bordered">
+                    <div class="widget-header bg-themeprimary">
+                        <span class="widget-caption">设置管理</span>
+                    </div>
+                    <div class="widget-body">
+                        <div class="row" id="setting-page">
+                            <div class="col-sm-12">
+                                <div class="tabbable">
+                                    <ul class="nav nav-tabs tabs-flat">
+                                        <template v-for="(index,group) in groups">
+                                            <li v-bind:class="['tab-sky',{'active':index==0}]">
+                                                <a data-toggle="tab" href="#{{group.groupName}}" aria-expanded="true">
+                                                    {{group.groupName}}
+                                                </a>
+                                            </li>
+                                        </template>
+                                    </ul>
+
+                                    <div class="tab-content  tabs-flat">
+                                        <template v-for="(index,group) in groups">
+                                            <div id="{{group.groupName}}" v-bind:class="['tab-pane',{'active':index==0}]" style="width:99%">
+                                                <form class="form-horizontal form-bordered" role="form">
+                                                    <template v-for="setting in group.settings">
+                                                        <div class="form-group">
+                                                            <label for="{{setting.name}}" class="col-sm-2 control-label no-padding-right">{{setting.displayName}}</label>
+                                                            <div class="col-sm-10">
+                                                                <input type="text" class="form-control" id="{{setting.name}}" v-model="setting.value">
+                                                            </div>
+                                                        </div>
+                                                    </template>
+                                                    <div class="form-group">
+                                                        <div class="col-sm-offset-2 col-sm-10">
+                                                            <button type="submit" class="btn btn-palegreen" v-on:click.stop.prevent="save(group)">保 存</button>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </template>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    var vm = new Vue({
+        el: "#setting-page",
+        data: {
+            groups: []
+        },
+        methods:{
+            save: function (group) {
+                var a = group;
+                $.bode.ajax("/api/services/zero/settings/ChangeGroupSetting", group, function (result) {
+                    layer.msg("保存成功");
+                });
+            }
+        },
+        created: function () {
+            var self = this;
+            $.bode.ajax("/api/services/zero/settings/GetApplicationSettingGroups", {}, function (groups) {
+                self.groups = groups;
+            });
+        }
+    });
+</script>

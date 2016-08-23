@@ -6,6 +6,11 @@
     public static class EmailSettingNames
     {
         /// <summary>
+        /// Mail setting group name
+        /// </summary>
+        public const string GroupName = "Abp.Net.Mail.Setting.Group";
+
+        /// <summary>
         /// Abp.Net.Mail.DefaultFromAddress
         /// </summary>
         public const string DefaultFromAddress = "Abp.Net.Mail.DefaultFromAddress";

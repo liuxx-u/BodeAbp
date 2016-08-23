@@ -97,18 +97,35 @@
         }
     }; 
 
-    $.bode.data = {
-        filter: {
-            Rule: function (field, value, operate) {
-                this.Field = field;
-                this.Value = value;
-                this.Operate = operate || "equal";
-            },
-            Group: function () {
-                this.Rules = [];
-                this.Operate = "and";
-                this.Groups = [];
-            }
+    $.bode.store = {
+        set: function (key, value) {
+            localStorage.setItem(key, value);
+        },
+        get: function (key) {
+            var val = localStorage.getItem(key);
+            return val;
+        },
+        remove: function (key) {
+            localStorage.removeItem(key)
+        },
+        clear: function () {
+            localStorage.clear()
+        }
+    };
+
+    $.bode.auth = {
+        login: function (token) {
+            $.bode.store.set("BodeAbpAuthToken", token);
+        },
+        getToken: function () {
+            return $.bode.store.get("BodeAbpAuthToken");
+        },
+        isAuth: function () {
+            var token = $.bode.store.get("BodeAbpAuthToken");
+            return typeof (token) !== "undefined" && token != null && token.length > 0;
+        },
+        clearToken: function () {
+            $.bode.store.remove("BodeAbpAuthToken");
         }
     };
 

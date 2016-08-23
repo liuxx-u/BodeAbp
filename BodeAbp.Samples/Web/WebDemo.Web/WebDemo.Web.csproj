@@ -215,6 +215,7 @@
   <ItemGroup>
     <Content Include="Content\css\admin\admin.css" />
     <Content Include="Content\css\admin\index.css" />
+    <Content Include="Content\css\admin\login.css" />
     <Content Include="Content\css\beyond\4095-rtl.min.css" />
     <Content Include="Content\css\beyond\4095.min.css" />
     <Content Include="Content\css\animate.min.css" />
@@ -2015,6 +2016,12 @@
     <Content Include="Areas\Admin\Views\Identity\UserList.cshtml" />
     <Content Include="Areas\Admin\Views\Setting\SettingList.cshtml" />
     <Content Include="Areas\Admin\Views\Setting\AuditLogs.cshtml" />
+    <Content Include="Areas\Admin\Views\Attribute\AttributeList.cshtml" />
+    <Content Include="Areas\Admin\Views\Attribute\AttributeOptionList.cshtml" />
+    <Content Include="Areas\Admin\Views\Attribute\SkuAttributeList.cshtml" />
+    <Content Include="Areas\Admin\Views\Attribute\SkuAttributeOptionList.cshtml" />
+    <Content Include="Areas\Admin\Views\Attribute\ClassifyList.cshtml" />
+    <Content Include="Areas\Admin\Views\Setting\BackgroundJobList.cshtml" />
     <None Include="Properties\PublishProfiles\211.149.223.24.pubxml" />
     <Content Include="Content\js\bode\bode.js" />
     <Content Include="Content\js\plugs\layer\layer.js" />
@@ -2030,6 +2037,7 @@
     <Content Include="Views\_ViewStart.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\WebDemoNavigationProvider.cs" />
     <Compile Include="App_Start\WebDemoWebModule.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -2041,7 +2049,6 @@
     <Compile Include="Areas\Admin\Controllers\Product\ProductController.cs" />
     <Compile Include="Areas\Admin\Controllers\Zero\IdentityController.cs" />
     <Compile Include="Areas\Admin\Controllers\Zero\SettingController.cs" />
-    <Compile Include="Areas\Admin\ViewModels\NavigationViewModel.cs" />
     <Compile Include="Content\js\plugs\ueditor\net\App_Code\Config.cs" />
     <Compile Include="Content\js\plugs\ueditor\net\App_Code\ConfigHandler.cs" />
     <Compile Include="Content\js\plugs\ueditor\net\App_Code\CrawlerHandler.cs" />
@@ -2135,7 +2142,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Areas\Admin\Views\Attribute\" />
     <Folder Include="Areas\Admin\Views\Product\" />
     <Folder Include="Content\sound\" />
     <Folder Include="Views\Account\" />

@@ -46,6 +46,11 @@ namespace BodeAbp.Zero.Settings.Domain
         public string Value { get; set; }
 
         /// <summary>
+        /// 分组名
+        /// </summary>
+        public string GroupName { get; set; }
+
+        /// <summary>
         /// 显示名
         /// </summary>
         public string DisplayName { get; set; }

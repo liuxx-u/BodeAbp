@@ -5,6 +5,9 @@ using System.ComponentModel.DataAnnotations;
 
 namespace BodeAbp.Product.Attributes.Dtos
 {
+    /// <summary>
+    /// 属性Dto
+    /// </summary>
     public abstract class AttributeDto : EntityDto
     {
         /// <summary>

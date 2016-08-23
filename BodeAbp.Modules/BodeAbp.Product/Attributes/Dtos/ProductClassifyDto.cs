@@ -1,8 +1,7 @@
-﻿using System;
+﻿using Abp.Application.Services.Dto;
+using System.Collections.Generic;
 using Abp.AutoMapper;
 using BodeAbp.Product.Attributes.Domain;
-using Abp.Application.Services.Dto;
-using System.ComponentModel.DataAnnotations;
 
 namespace BodeAbp.Product.Attributes.Dtos
 {
@@ -22,32 +21,25 @@ namespace BodeAbp.Product.Attributes.Dtos
         /// 父级Id
         /// </summary>
         public int? ParentId { get; set; }
-
     }
 
-	[AutoMapTo(typeof(ProductClassify))]
-    public class CreateProductClassifyInput : ProductClassifyDto, IInputDto
+    public class ProductClassifyListOutPut: ProductClassifyDto,IOutputDto
     {
+        public ProductClassifyListOutPut()
+        {
+            Children = new List<ProductClassifyListOutPut>();
+        }
+        
+        /// <summary>
+        /// 子分类
+        /// </summary>
+        public ICollection<ProductClassifyListOutPut> Children { get; set; }
     }
 
-	[AutoMapTo(typeof(ProductClassify))]
-    public class UpdateProductClassifyInput : ProductClassifyDto, IInputDto
+    [AutoMapTo(typeof(ProductClassify))]
+    public class ProductClassifyInput : ProductClassifyDto, IInputDto
     {
-    }
 
-	[AutoMapFrom(typeof(ProductClassify))]
-    public class UpdateProductClassifyOutput : ProductClassifyDto, IOutputDto
-    {
-    }
-
-	[AutoMapFrom(typeof(ProductClassify))]
-    public class GetProductClassifyOutput : ProductClassifyDto, IOutputDto
-    {
-    }
-
-    [AutoMapFrom(typeof(ProductClassify))]
-    public class GetProductClassifyListOutput : ProductClassifyDto, IOutputDto
-    {
     }
 }
 

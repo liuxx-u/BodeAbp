@@ -2,6 +2,7 @@ using System.Threading.Tasks;
 using Abp.Configuration;
 using Abp.Dependency;
 using BodeAbp.Zero.Configuration;
+using BodeAbp.Zero.Providers;
 
 namespace BodeAbp.Zero.Organizations.Domain
 {
@@ -18,7 +19,7 @@ namespace BodeAbp.Zero.Organizations.Domain
         {
             get
             {
-                return _settingManager.GetSettingValue<int>(BodeAbpZeroSettingNames.OrganizationUnits.MaxUserMembershipCount);
+                return _settingManager.GetSettingValue<int>(SettingNames.MaxUserMembershipCount);
             }
         }
 
@@ -38,12 +39,12 @@ namespace BodeAbp.Zero.Organizations.Domain
         /// </summary>
         public async Task<int> GetMaxUserMembershipCountAsync()
         {
-            return await _settingManager.GetSettingValueForApplicationAsync<int>(BodeAbpZeroSettingNames.OrganizationUnits.MaxUserMembershipCount);
+            return await _settingManager.GetSettingValueForApplicationAsync<int>(SettingNames.MaxUserMembershipCount);
         }
 
         public async Task SetMaxUserMembershipCountAsync(int value)
         {
-            await _settingManager.ChangeSettingForApplicationAsync(BodeAbpZeroSettingNames.OrganizationUnits.MaxUserMembershipCount, value.ToString());
+            await _settingManager.ChangeSettingForApplicationAsync(SettingNames.MaxUserMembershipCount, value.ToString());
         }
     }
 }

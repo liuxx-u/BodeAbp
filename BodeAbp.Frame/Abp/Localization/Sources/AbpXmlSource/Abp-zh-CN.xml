@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <localizationDictionary culture="zh-CN">
   <texts>
+    <text name="MailSettingGroupName">邮件发送设置</text>
     <text name="SmtpHost">SMTP主机</text>
     <text name="SmtpPort">SMTP端口</text>
     <text name="Username">用户名</text>

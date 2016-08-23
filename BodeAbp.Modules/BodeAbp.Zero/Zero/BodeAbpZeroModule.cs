@@ -5,7 +5,6 @@ using Abp.Localization.Dictionaries;
 using Abp.Localization.Dictionaries.Xml;
 using Abp.Modules;
 using BodeAbp.Zero.Providers;
-using BodeAbp.Zero.Configuration;
 
 namespace BodeAbp.Zero
 {
@@ -28,10 +27,10 @@ namespace BodeAbp.Zero
                         )
                     )
                 );
-
-            Configuration.Settings.Providers.Add<BodeAbpZeroSettingProvider>();
+            
             Configuration.Navigation.Providers.Add<BodeAbpZeroNavigationProvider>();
             Configuration.Authorization.Providers.Add<BodeAbpZeroAuthorizationProvider>();
+            Configuration.Settings.Providers.Add<BodeAbpZeroSettingProvider>();
 
             DefaultDbContextInitializer.Instance.MapperAssemblies.Add(Assembly.GetExecutingAssembly());
         }

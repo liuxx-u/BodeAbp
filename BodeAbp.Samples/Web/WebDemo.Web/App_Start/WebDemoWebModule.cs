@@ -1,11 +1,13 @@
 ﻿using System.Reflection;
 using System.Web.Mvc;
+using System.Web.Optimization;
 using System.Web.Routing;
 using Abp.Hangfire;
 using Abp.Modules;
 using Abp.Web.Mvc;
 using Abp.Web.SignalR;
 using WebDemo.WebApi;
+using Abp.Configuration.Startup;
 
 namespace WebDemo.Web
 {
@@ -30,6 +32,9 @@ namespace WebDemo.Web
             //{
             //    configuration.GlobalConfiguration.UseSqlServerStorage("Default");
             //});
+
+            //发送所有错误消息至客户端
+            Configuration.Modules.AbpWeb().SendAllExceptionsToClients = true;
         }
 
         public override void Initialize()
@@ -38,6 +43,10 @@ namespace WebDemo.Web
 
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
+
+            //压缩输出
+            //BundleTable.EnableOptimizations = true;
+            BundleConfig.RegisterBundles(BundleTable.Bundles);
         }
     }
 }

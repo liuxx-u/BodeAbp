@@ -9,20 +9,20 @@ namespace BodeAbp.Zero.Providers
     internal class PermissionNames
     {
         //基础模块
-        public const string Zero = "Zero";
+        public const string Zero = "系统设置";
 
         //角色
-        public const string Zero_Role = "Zero.Role";
-        public const string Zero_Role_Crud = "Zero.Role.Crud";
-        public const string Zero_Role_Test = "Zero.Role.Test";
+        public const string Zero_Role = "角色";
+        public const string Zero_Role_Crud = "角色管理";
+        public const string Zero_Role_Test = "角色测试";
 
         //用户
-        public const string Zero_User = "Zero.User";
-        public const string Zero_User_Crud = "Zero.User.Crud";
+        public const string Zero_User = "用户";
+        public const string Zero_User_Crud = "用户管理";
 
 
         //审计日志
-        public const string Zero_AuditLog = "Zero.AuditLog";
-        public const string Zero_AuditLog_Crud = "Zero.AuditLog.Crud";
+        public const string Zero_AuditLog = "审计日志";
+        public const string Zero_AuditLog_Crud = "审计日志管理";
     }
 }

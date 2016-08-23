@@ -9,12 +9,11 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
-using Abp.Events.Bus;
-using BodeAbp.Product.Skus.Event;
+using System;
 
 namespace BodeAbp.Product.Attributes
 {
-	/// <summary>
+    /// <summary>
     ///  属性 服务
     /// </summary>
     public class AttributesAppService : ApplicationService,IAttributesAppService
@@ -23,11 +22,15 @@ namespace BodeAbp.Product.Attributes
         /// 产品属性 领域服务
         /// </summary>
         public AttributeManager attributeManager { get; set; }
+
         private readonly IRepository<ProductClassify> _classifyRepository;
         private readonly IRepository<AttributeOption> _attributeValueRepository;
-        private readonly IRepository<Attribute> _attributeTemplateRepository;
+        private readonly IRepository<Domain.Attribute> _attributeTemplateRepository;
 
-        public AttributesAppService(IRepository<Attribute> attributeTemplateRepository, IRepository<ProductClassify> classifyRepository, IRepository<AttributeOption> attributeValueRepository)
+        public AttributesAppService(
+            IRepository<Domain.Attribute> attributeTemplateRepository,
+            IRepository<ProductClassify> classifyRepository,
+            IRepository<AttributeOption> attributeValueRepository)
         {
             _classifyRepository = classifyRepository;
             _attributeValueRepository = attributeValueRepository;
@@ -54,7 +57,7 @@ namespace BodeAbp.Product.Attributes
         /// <inheritdoc/>
         public async Task CreateAttribute(CreateAttributeInput input)
         {
-            var attributeTemplate = input.MapTo<Attribute>();
+            var attributeTemplate = input.MapTo<Domain.Attribute>();
             await attributeManager.CreateAttributeTempateAsync(attributeTemplate);
         }
 
@@ -119,29 +122,43 @@ namespace BodeAbp.Product.Attributes
         #region 分类
 
         /// <inheritdoc/>
-        public async Task<PagedResultOutput<GetProductClassifyListOutput>> GetClassifyPagedList(QueryListPagedRequestInput input)
+        public async Task<ICollection<ProductClassifyListOutPut>> GetAllClassifies()
         {
-            int total;
-            var list = await _classifyRepository.GetAll().Where(input, out total).ToListAsync();
-            return new PagedResultOutput<GetProductClassifyListOutput>(total, list.MapTo<List<GetProductClassifyListOutput>>());
+            var classifies = await _classifyRepository.GetAll().OrderBy(p => p.OrderNo).Select(p => new ProductClassifyListOutPut
+            {
+                Id = p.Id,
+                Name = p.Name,
+                ParentId = p.ParentId
+            }).ToListAsync();
+
+            Func<int?, List<ProductClassifyListOutPut>> getChildren = null;
+            getChildren = parentId =>
+             {
+                 if (classifies.Any(m => m.ParentId == parentId))
+                 {
+                     return classifies.Where(m => m.ParentId == parentId).Select(m => new ProductClassifyListOutPut()
+                     {
+                         Id = m.Id,
+                         Name = m.Name,
+                         ParentId = m.ParentId,
+                         Children = getChildren(m.Id)
+                     }).ToList();
+                 }
+                 return new List<ProductClassifyListOutPut>();
+             };
+
+            return getChildren(null);
         }
 
         /// <inheritdoc/>
-        public async Task<GetProductClassifyOutput> GetClassify(int id)
-        {
-            var result = await _classifyRepository.GetAsync(id);
-            return result.MapTo<GetProductClassifyOutput>();
-        }
-
-        /// <inheritdoc/>
-        public async Task CreateClassify(CreateProductClassifyInput input)
+        public async Task CreateClassify(ProductClassifyInput input)
         {
             var classify = input.MapTo<ProductClassify>();
             await attributeManager.CreateClassifyAsync(classify);
         }
 
         /// <inheritdoc/>
-        public async Task UpdateClassify(UpdateProductClassifyInput input)
+        public async Task UpdateClassify(ProductClassifyInput input)
         {
             var classify = await _classifyRepository.GetAsync(input.Id);
             input.MapTo(classify);
@@ -149,9 +166,9 @@ namespace BodeAbp.Product.Attributes
         }
 
         /// <inheritdoc/>
-        public async Task DeleteClassify(int classifyId)
+        public async Task DeleteClassify(int id)
         {
-            await attributeManager.DeleteClassifyAsync(classifyId);
+            await attributeManager.DeleteClassifyAsync(id);
         }
 
         #endregion
