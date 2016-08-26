@@ -28,22 +28,24 @@ namespace WebDemo.WebApi
         {
             IocManager.RegisterAssemblyByConvention(Assembly.GetExecutingAssembly());
 
-            DynamicApiControllerBuilder
-                .ForAll<IApplicationService>(typeof(WebDemoCoreModule).Assembly, "app")
-                .Build();
+            //DynamicApiControllerBuilder
+            //    .ForAll<IApplicationService>(typeof(WebDemoCoreModule).Assembly, "app")
+            //    .Build();
 
-            DynamicApiControllerBuilder
-                .ForAll<IApplicationService>(typeof(BodeAbpZeroModule).Assembly, "zero")
-                .Build();
+            //DynamicApiControllerBuilder
+            //    .ForAll<IApplicationService>(typeof(BodeAbpZeroModule).Assembly, "zero")
+            //    .Build();
 
             DynamicApiControllerBuilder
                 .ForAll<IApplicationService>(typeof(BodeAbpActivityModule).Assembly, "activity")
                 .Build();
 
-            DynamicApiControllerBuilder
-                .ForAll<IApplicationService>(typeof(BodeAbpProductModule).Assembly, "product")
-                .Build();
+            //DynamicApiControllerBuilder
+            //    .ForAll<IApplicationService>(typeof(BodeAbpProductModule).Assembly, "product")
+            //    .Build();
 
+            //使用Rpc
+            Configuration.Modules.AbpWebApi().UseRpc = true;
 
             Configuration.Modules.AbpWebApi().HttpConfiguration.Filters.Add(new HostAuthenticationFilter("Bearer"));
 

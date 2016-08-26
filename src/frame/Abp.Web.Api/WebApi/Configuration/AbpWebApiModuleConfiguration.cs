@@ -10,5 +10,7 @@ namespace Abp.WebApi.Configuration
         {
             HttpConfiguration = GlobalConfiguration.Configuration;
         }
+
+       public bool UseRpc { get; set; }
     }
 }

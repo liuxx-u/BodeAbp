@@ -81,7 +81,7 @@ namespace Abp.Rpc.Server.ServiceDiscovery
                         var value = parameters[parameterInfo.Name];
                         var parameterType = parameterInfo.ParameterType;
 
-                        var parameter = value.To(parameterType);
+                        var parameter = value.ToJsonString().FromJsonString(parameterType);
                         list.Add(parameter);
                     }
 

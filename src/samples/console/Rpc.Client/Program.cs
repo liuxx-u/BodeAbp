@@ -31,11 +31,12 @@ namespace Rpc.Client
 
                         while (true)
                         {
-                            Task.Run(async () =>
+                            Task.Run(() =>
                             {
                                 try
                                 {
-                                    Console.WriteLine($"activitiesAppService.GetActivity:{await userService.GetActivity(new IdInput() { Id = 1 })}");
+                                    Console.WriteLine($"activitiesAppService.GetActivity:{userService.GetType().GetMethods().Last(p => p.Name.Contains("GetActivity")).Invoke(userService, new[] { new IdInput() { Id = 1 } })}");
+                                    //Console.WriteLine($"activitiesAppService.GetActivity:{await userService.GetActivity(new IdInput() { Id = 1 })}");
                                 }
                                 catch(Exception ex)
                                 {

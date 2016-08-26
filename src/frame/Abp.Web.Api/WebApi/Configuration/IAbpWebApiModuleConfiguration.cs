@@ -11,5 +11,10 @@ namespace Abp.WebApi.Configuration
         /// Gets/sets <see cref="HttpConfiguration"/>.
         /// </summary>
         HttpConfiguration HttpConfiguration { get; set; }
+
+        /// <summary>
+        /// 是否启用Rpc
+        /// </summary>
+        bool UseRpc { get; set; }
     }
 }

@@ -19,6 +19,8 @@ namespace Abp.Rpc.ProxyGenerator.Proxy
 
         private readonly IServiceIdGenerator _serviceIdGenerator;
 
+        private IEnumerable<Type> _proxysTypes = new List<Type>();
+
         #endregion Field
 
         #region Constructor
@@ -39,20 +41,20 @@ namespace Abp.Rpc.ProxyGenerator.Proxy
         /// <returns>服务代理实现。</returns>
         public IEnumerable<Type> GenerateProxys(IEnumerable<Type> interfacTypes)
         {
+            if (interfacTypes == null || !interfacTypes.Any()) { return _proxysTypes; }
+
             var assemblys = AppDomain.CurrentDomain.GetAssemblies();
             var trees = interfacTypes.Select(GenerateProxyTree).ToList();
             var stream = CompilationUtilitys.CompileClientProxy(trees,
                 assemblys.Where(a => !a.IsDynamic)
                     .Select(a => MetadataReference.CreateFromFile(a.Location))
-                    .Concat(new[]
-                    {
-                        MetadataReference.CreateFromFile(typeof(Task).GetTypeInfo().Assembly.Location)
-                    }));
+                    .Concat(new[] { MetadataReference.CreateFromFile(typeof(Task).GetTypeInfo().Assembly.Location) }));
 
             using (stream)
             {
                 var assembly = Assembly.Load(stream.ToArray());
-                return assembly.GetExportedTypes();
+                _proxysTypes = assembly.GetExportedTypes();
+                return _proxysTypes;
             }
         }
 

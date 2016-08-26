@@ -22,6 +22,10 @@ using Abp.Configuration.Startup;
 using Abp.Json;
 using Abp.Web.Api.Description;
 using Abp.WebApi.Controllers.Dynamic.Binders;
+using Abp.Rpc.Configuration;
+using Abp.Rpc.ProxyGenerator;
+using Abp.Rpc.Transport.Simple;
+using Abp.Rpc.ProxyGenerator.Proxy;
 
 namespace Abp.WebApi
 {
@@ -52,11 +56,23 @@ namespace Abp.WebApi
             InitializeFormatters(httpConfiguration);
             InitializeRoutes(httpConfiguration);
             InitializeModelBinders(httpConfiguration);
+            
+            //配置Rpc客户端
+            Configuration.Modules.AbpRpc()
+                .AddClient()
+                .UseSharedFileRouteManager()
+                .UseSimpleTransport();
         }
         
         public override void PostInitialize()
         {
-            foreach (var controllerInfo in DynamicApiControllerManager.GetAll())
+            var dynamicApiControllers = DynamicApiControllerManager.GetAll();
+
+            //生成Rpc代理服务
+            var serviceProxyGenerater = IocManager.Resolve<IServiceProxyGenerater>();
+            var services = serviceProxyGenerater.GenerateProxys(dynamicApiControllers.Select(p => p.ServiceInterfaceType)).ToArray();
+
+            foreach (var controllerInfo in dynamicApiControllers)
             {
                 IocManager.IocContainer.Register(
                     Component.For(controllerInfo.InterceptorType).LifestyleTransient(),
@@ -131,6 +147,10 @@ namespace Abp.WebApi
             var abpApiDateTimeBinder = new AbpApiDateTimeBinder();
             httpConfiguration.BindParameter(typeof(DateTime), abpApiDateTimeBinder);
             httpConfiguration.BindParameter(typeof(DateTime?), abpApiDateTimeBinder);
+        }
+
+        private static void ConfigRpcClient()
+        {
         }
     }
 }

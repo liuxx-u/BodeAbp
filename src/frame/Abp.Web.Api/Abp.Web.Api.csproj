@@ -143,6 +143,18 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\rpc\Abp.Rpc.ProxyGenerator\Abp.Rpc.ProxyGenerator.csproj">
+      <Project>{41251653-1219-4db1-a77b-fb6c932700b3}</Project>
+      <Name>Abp.Rpc.ProxyGenerator</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\rpc\Abp.Rpc.Transport.Simple\Abp.Rpc.Transport.Simple.csproj">
+      <Project>{d52aee53-199a-446e-a73b-dbca1670ef0f}</Project>
+      <Name>Abp.Rpc.Transport.Simple</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\rpc\Abp.Rpc\Abp.Rpc.csproj">
+      <Project>{51dec5ed-8897-43c4-a612-44a2dd9da07b}</Project>
+      <Name>Abp.Rpc</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Abp.Web\Abp.Web.csproj">
       <Project>{D37C09D8-2F18-4F0B-A4D3-7A12C124E070}</Project>
       <Name>Abp.Web</Name>

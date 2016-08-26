@@ -12,12 +12,6 @@ namespace Abp.Rpc.ProxyGenerator
     {
         public override void Initialize()
         {
-            IocManager.Register<IServiceProxyGenerater, ServiceProxyGenerater>();
-            IocManager.Register<IServiceProxyFactory, ServiceProxyFactory>();
-
-            //IocManager.Register<IHealthCheckService, DefaultHealthCheckService>();
-            //IocManager.Register<IAddressResolver, DefaultAddressResolver>();
-            //IocManager.Register<IRemoteInvokeService, RemoteInvokeService>();
         }
     }
 }

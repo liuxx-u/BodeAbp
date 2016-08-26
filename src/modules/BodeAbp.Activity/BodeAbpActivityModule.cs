@@ -1,13 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Reflection;
+using Abp.EntityFramework;
 using Abp.EntityFramework.Default;
 using Abp.Localization.Dictionaries;
 using Abp.Localization.Dictionaries.Xml;
 using Abp.Modules;
+using Abp.Rpc;
+using Abp.Rpc.Configuration;
+using Abp.Rpc.ProxyGenerator;
+using Abp.Rpc.Transport.Simple;
 using BodeAbp.Activity.Providers;
 
 namespace BodeAbp.Activity
@@ -31,7 +31,7 @@ namespace BodeAbp.Activity
                     )
                 );
 
-            //Configuration.Settings.Providers.Add<BodeAbpZeroSettingProvider>();
+            //Configuration.Settings.Providers.Add<BodeAbpActivitySettingProvider>();
             Configuration.Navigation.Providers.Add<BodeAbpActivityNavigationProvider>();
             Configuration.Authorization.Providers.Add<BodeAbpActivityAuthorizationProvider>();
 
