@@ -2,7 +2,7 @@
 using Abp.Rpc;
 using Abp.Rpc.Configuration;
 using Abp.Rpc.ProxyGenerator;
-using Abp.Rpc.Transport.Simple;
+using Abp.Rpc.Transport.DotNetty;
 
 namespace Rpc.Client
 {
@@ -14,7 +14,7 @@ namespace Rpc.Client
             Configuration.Modules.AbpRpc()
                 .AddClient()
                 .UseSharedFileRouteManager()
-                .UseSimpleTransport();
+                .UseDotNettyTransport();
         }
     }
 }

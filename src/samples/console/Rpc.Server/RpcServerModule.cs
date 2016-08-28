@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Abp.EntityFramework;
+﻿using Abp.EntityFramework;
 using Abp.Modules;
-using Abp.Rpc;
 using Abp.Rpc.Configuration;
-using Abp.Rpc.Transport.Simple;
+using Abp.Rpc.Transport.DotNetty;
 using BodeAbp.Activity;
 
 namespace Rpc.Server
@@ -22,7 +16,7 @@ namespace Rpc.Server
                 .UseJsonCodec()
                 .InitServerRuntime()
                 .UseSharedFileRouteManager()
-                .UseSimpleTransport();
+                .UseDotNettyTransport();
         }
     }
 }

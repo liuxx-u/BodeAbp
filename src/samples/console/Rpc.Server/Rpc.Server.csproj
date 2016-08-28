@@ -81,6 +81,10 @@
       <Project>{948f0caf-3382-4e03-9a0f-0ddb206fe40d}</Project>
       <Name>Abp.EntityFramework</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\..\rpc\Abp.Rpc.Transport.DotNetty\Abp.Rpc.Transport.DotNetty.csproj">
+      <Project>{38be1000-5478-48d3-9fc2-9fafb523dbcf}</Project>
+      <Name>Abp.Rpc.Transport.DotNetty</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\..\rpc\Abp.Rpc.Transport.Simple\Abp.Rpc.Transport.Simple.csproj">
       <Project>{d52aee53-199a-446e-a73b-dbca1670ef0f}</Project>
       <Name>Abp.Rpc.Transport.Simple</Name>

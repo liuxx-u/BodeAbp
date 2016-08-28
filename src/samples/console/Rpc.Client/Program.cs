@@ -4,7 +4,6 @@ using System.Reflection;
 using System.Threading.Tasks;
 using Abp;
 using Abp.Application.Services.Dto;
-using Abp.Rpc.Exceptions;
 using Abp.Rpc.ProxyGenerator.Proxy;
 using BodeAbp.Activity.Activities;
 
@@ -31,12 +30,12 @@ namespace Rpc.Client
 
                         while (true)
                         {
-                            Task.Run(() =>
+                            Task.Run(async() =>
                             {
                                 try
                                 {
-                                    Console.WriteLine($"activitiesAppService.GetActivity:{userService.GetType().GetMethods().Last(p => p.Name.Contains("GetActivity")).Invoke(userService, new[] { new IdInput() { Id = 1 } })}");
-                                    //Console.WriteLine($"activitiesAppService.GetActivity:{await userService.GetActivity(new IdInput() { Id = 1 })}");
+                                    //Console.WriteLine($"activitiesAppService.GetActivity:{userService.GetType().GetMethods().Last(p => p.Name.Contains("GetActivity")).Invoke(userService, new[] { new IdInput() { Id = 1 } })}");
+                                    Console.WriteLine($"activitiesAppService.GetActivity:{await userService.GetActivity(new IdInput() { Id = 1 })}");
                                 }
                                 catch(Exception ex)
                                 {
