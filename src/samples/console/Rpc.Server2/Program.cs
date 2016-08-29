@@ -8,7 +8,7 @@ using Abp.Rpc.Address;
 using Abp.Rpc.Routing;
 using Abp.Rpc.Server;
 
-namespace Rpc.Server
+namespace Rpc.Server2
 {
     class Program
     {
@@ -16,7 +16,7 @@ namespace Rpc.Server
         {
             //因为没有引用BodeAbp.Activity中的任何类型
             //所以强制加载BodeAbp.Activity程序集以保证BodeAbp.Activity在AppDomain中被加载。
-            Assembly.Load(new AssemblyName("BodeAbp.Activity"));
+            Assembly.Load(new AssemblyName("BodeAbp.Product"));
 
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.ForegroundColor = ConsoleColor.Gray;
@@ -29,7 +29,7 @@ namespace Rpc.Server
                         var serviceEntryManager = bootstrapper.IocManager.Resolve<IServiceEntryManager>();
                         var addressDescriptors = serviceEntryManager.GetEntries().Select(i => new ServiceRoute
                         {
-                            Address = new[] { new IpAddress { Ip = "127.0.0.1", Port = 9981 } },
+                            Address = new[] { new IpAddress { Ip = "127.0.0.1", Port = 9982 } },
                             ServiceDescriptor = i.Descriptor
                         });
 
@@ -42,8 +42,8 @@ namespace Rpc.Server
                     Task.Factory.StartNew(async () =>
                     {
                         //启动主机
-                        await serviceHost.StartAsync(new IPEndPoint(IPAddress.Parse("127.0.0.1"), 9981));
-                        Console.WriteLine($"服务端1启动成功，{DateTime.Now}。");
+                        await serviceHost.StartAsync(new IPEndPoint(IPAddress.Parse("127.0.0.1"), 9982));
+                        Console.WriteLine($"服务端2启动成功，{DateTime.Now}。");
                     });
                     Console.ReadLine();
                 }

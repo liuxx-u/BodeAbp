@@ -11,6 +11,6 @@ namespace Abp.Rpc
         /// <summary>
         /// "BodeAbpProduct"
         /// </summary>
-        public const string LocalizationSourceName = "AbpRpc";
+        public const string LocalizationSourceName = "Abp";
     }
 }

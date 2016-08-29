@@ -2,11 +2,11 @@
 using Abp.Modules;
 using Abp.Rpc.Configuration;
 using Abp.Rpc.Transport.DotNetty;
-using BodeAbp.Activity;
+using BodeAbp.Product;
 
-namespace Rpc.Server
+namespace Rpc.Server2
 {
-    [DependsOn(typeof(BodeAbpActivityModule),typeof(AbpEntityFrameworkModule))]
+    [DependsOn(typeof(BodeAbpProductModule), typeof(AbpEntityFrameworkModule))]
     public class RpcServerModule : AbpModule
     {
         public override void Initialize()
@@ -15,7 +15,7 @@ namespace Rpc.Server
                 .InitRpcCore()
                 .UseJsonCodec()
                 .InitServerRuntime()
-                .UseSharedFileRouteManager(@"d:\routes.txt")
+                .UseSharedFileRouteManager(@"d:\routes2.txt")
                 .UseDotNettyTransport();
         }
     }

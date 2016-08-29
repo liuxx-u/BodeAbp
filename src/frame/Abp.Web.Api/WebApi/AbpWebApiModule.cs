@@ -60,7 +60,7 @@ namespace Abp.WebApi
             //配置Rpc客户端
             Configuration.Modules.AbpRpc()
                 .AddClient()
-                .UseSharedFileRouteManager()
+                .UseSharedFileRouteManager(@"d:\routes.txt")
                 .UseSimpleTransport();
         }
         
@@ -69,8 +69,11 @@ namespace Abp.WebApi
             var dynamicApiControllers = DynamicApiControllerManager.GetAll();
 
             //生成Rpc代理服务
-            var serviceProxyGenerater = IocManager.Resolve<IServiceProxyGenerater>();
-            var services = serviceProxyGenerater.GenerateProxys(dynamicApiControllers.Select(p => p.ServiceInterfaceType)).ToArray();
+            if (Configuration.Modules.AbpWebApi().UseRpc)
+            {
+                var serviceProxyGenerater = IocManager.Resolve<IServiceProxyGenerater>();
+                serviceProxyGenerater.GenerateProxys(dynamicApiControllers.Select(p => p.ServiceInterfaceType));
+            }
 
             foreach (var controllerInfo in dynamicApiControllers)
             {

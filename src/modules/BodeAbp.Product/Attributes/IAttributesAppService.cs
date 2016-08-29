@@ -4,13 +4,15 @@ using Abp.Application.Services.Dto;
 using BodeAbp.Product.Attributes.Dtos;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Abp.Rpc.Server.Attributes;
 
 namespace BodeAbp.Product.Attributes
 {
-	/// <summary>
+    /// <summary>
     ///  属性 服务
     /// </summary>
-	[Description("属性接口")]
+    [RpcServiceBundle]
+    [Description("属性接口")]
     public interface IAttributesAppService : IApplicationService
     {
         #region 属性模版
@@ -47,9 +49,9 @@ namespace BodeAbp.Product.Attributes
         /// <summary>
         /// 删除 属性模版
         /// </summary>
-        /// <param name="input"></param>
+        /// <param name="input">id集合</param>
         /// <returns></returns>
-        Task DeleteAttribute(List<IdInput> input);
+        Task DeleteAttribute(IdInput[] input);
 
         #endregion
 
@@ -89,7 +91,7 @@ namespace BodeAbp.Product.Attributes
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
-        Task DeleteAttributeOption(List<IdInput> input);
+        Task DeleteAttributeOption(IdInput[] input);
 
         #endregion
 
@@ -119,7 +121,7 @@ namespace BodeAbp.Product.Attributes
         /// <summary>
         /// 删除 分类
         /// </summary>
-        /// <param name="id">分类Id</param>
+        /// <param name="id">分类id</param>
         /// <returns></returns>
         Task DeleteClassify(int id);
 

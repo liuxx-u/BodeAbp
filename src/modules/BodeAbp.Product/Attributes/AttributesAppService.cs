@@ -70,7 +70,7 @@ namespace BodeAbp.Product.Attributes
         }
 
         /// <inheritdoc/>
-        public async Task DeleteAttribute(List<IdInput> input)
+        public async Task DeleteAttribute(IdInput[] input)
         {
             var ids = input.Select(p => p.Id);
             await _attributeTemplateRepository.DeleteAsync(p => ids.Contains(p.Id));
@@ -111,7 +111,7 @@ namespace BodeAbp.Product.Attributes
         }
 
         /// <inheritdoc/>
-        public async Task DeleteAttributeOption(List<IdInput> input)
+        public async Task DeleteAttributeOption(IdInput[] input)
         {
             var ids = input.Select(p => p.Id);
             await _attributeValueRepository.DeleteAsync(p => ids.Contains(p.Id));

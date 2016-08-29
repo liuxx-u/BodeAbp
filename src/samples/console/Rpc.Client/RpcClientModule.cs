@@ -13,7 +13,7 @@ namespace Rpc.Client
         {
             Configuration.Modules.AbpRpc()
                 .AddClient()
-                .UseSharedFileRouteManager()
+                .UseSharedFileRouteManager(@"d:\routes.txt")
                 .UseDotNettyTransport();
         }
     }

@@ -69,6 +69,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Abp.Rpc.Transport.DotNetty"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Abp.Rpc.Coordinate.Zookeeper", "rpc\Abp.Rpc.Coordinate.Zookeeper\Abp.Rpc.Coordinate.Zookeeper.csproj", "{F6E83ADA-FBC0-4047-AD86-01B1E4503E88}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rpc.Server2", "samples\console\Rpc.Server2\Rpc.Server2.csproj", "{B1AF2109-3747-4DEF-8148-42FFE88A8BF5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -232,6 +234,12 @@ Global
 		{F6E83ADA-FBC0-4047-AD86-01B1E4503E88}.Publish|Any CPU.Build.0 = Release|Any CPU
 		{F6E83ADA-FBC0-4047-AD86-01B1E4503E88}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F6E83ADA-FBC0-4047-AD86-01B1E4503E88}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B1AF2109-3747-4DEF-8148-42FFE88A8BF5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B1AF2109-3747-4DEF-8148-42FFE88A8BF5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B1AF2109-3747-4DEF-8148-42FFE88A8BF5}.Publish|Any CPU.ActiveCfg = Release|Any CPU
+		{B1AF2109-3747-4DEF-8148-42FFE88A8BF5}.Publish|Any CPU.Build.0 = Release|Any CPU
+		{B1AF2109-3747-4DEF-8148-42FFE88A8BF5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B1AF2109-3747-4DEF-8148-42FFE88A8BF5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -265,5 +273,6 @@ Global
 		{D52AEE53-199A-446E-A73B-DBCA1670EF0F} = {7FB342C0-0105-43BA-B51F-C6BEEE1F5B71}
 		{38BE1000-5478-48D3-9FC2-9FAFB523DBCF} = {7FB342C0-0105-43BA-B51F-C6BEEE1F5B71}
 		{F6E83ADA-FBC0-4047-AD86-01B1E4503E88} = {7FB342C0-0105-43BA-B51F-C6BEEE1F5B71}
+		{B1AF2109-3747-4DEF-8148-42FFE88A8BF5} = {7BA035E5-65AA-4E96-A717-1F588BBCB1DB}
 	EndGlobalSection
 EndGlobal

@@ -18,7 +18,7 @@ namespace Abp.Rpc.Routing
     {
         #region Field
 
-        private readonly string _filePath;
+        internal static string _filePath;
         private readonly IServiceRouteFactory _serviceRouteFactory;
         private ServiceRoute[] _routes;
         private readonly FileSystemWatcher _fileSystemWatcher;
@@ -27,11 +27,9 @@ namespace Abp.Rpc.Routing
 
         #region Constructor
 
-        public SharedFileServiceRouteManager(ISettingManager settingManager, IServiceRouteFactory serviceRouteFactory)
+        public SharedFileServiceRouteManager(IServiceRouteFactory serviceRouteFactory)
         {
-            _filePath = settingManager.GetSettingValue(RpcSettingNames.RpcFilePath);
             _serviceRouteFactory = serviceRouteFactory;
-
             var directoryName = Path.GetDirectoryName(_filePath);
             if (!string.IsNullOrEmpty(directoryName))
                 _fileSystemWatcher = new FileSystemWatcher(directoryName, "*" + Path.GetExtension(_filePath));

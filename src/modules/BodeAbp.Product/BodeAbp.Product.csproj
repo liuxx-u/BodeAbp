@@ -126,6 +126,10 @@
       <Project>{2c221d3b-5f54-4c5b-8082-318636415132}</Project>
       <Name>Abp</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\rpc\Abp.Rpc\Abp.Rpc.csproj">
+      <Project>{51dec5ed-8897-43c4-a612-44a2dd9da07b}</Project>
+      <Name>Abp.Rpc</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Localization\Source\BodeAbpProduct-en.xml" />

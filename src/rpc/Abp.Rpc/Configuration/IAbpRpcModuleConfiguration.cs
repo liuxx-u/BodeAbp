@@ -39,6 +39,6 @@ namespace Abp.Rpc.Configuration
         /// <summary>
         ///使用共享文件路由管理者。
         /// </summary>
-        IAbpRpcModuleConfiguration UseSharedFileRouteManager();
+        IAbpRpcModuleConfiguration UseSharedFileRouteManager(string filePath);
     }
 }

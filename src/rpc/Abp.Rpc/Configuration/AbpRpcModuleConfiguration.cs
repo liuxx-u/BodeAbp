@@ -60,8 +60,9 @@ namespace Abp.Rpc.Configuration
             return this;
         }
 
-        public IAbpRpcModuleConfiguration UseSharedFileRouteManager()
+        public IAbpRpcModuleConfiguration UseSharedFileRouteManager(string filePath)
         {
+            SharedFileServiceRouteManager._filePath = filePath;
             IocManager.Register<IServiceRouteManager, SharedFileServiceRouteManager>();
             return this;
         }
