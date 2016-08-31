@@ -13,11 +13,6 @@ namespace BodeAbp.Product.Attributes.Dtos
         public string Name { get; set; }
 
         /// <summary>
-        /// 排序号
-        /// </summary>
-        public int OrderNo { get; set; }
-
-        /// <summary>
         /// 父级Id
         /// </summary>
         public int? ParentId { get; set; }

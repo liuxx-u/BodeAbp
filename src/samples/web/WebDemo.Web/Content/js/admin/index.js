@@ -17,7 +17,7 @@
         },
         methods:{
             firstNavClick: function (nav) {
-                if (this.curFirstNav.name == nav.name) return;
+                if (this.curFirstNav.id == nav.id) return;
                 this.curFirstNav = nav;
                 if (nav.items.length > 0) {
                     this.openNav = nav.items[0];
@@ -32,17 +32,13 @@
         },
         created: function () {
             var self = this;
-            $.bode.ajax("/api/services/zero/user/GetUserNavigations", {}, function (navs) {
-                for (var i = 0, iLen = navs.length; i < iLen; i++) {
-                    if (navs[i].name == "admin") {
-                        self.navs = navs[i].items;
-                        break;
-                    }
-                }
+            $.bode.ajax("/api/services/zero/navigation/GetAllNavigations", {}, function (navs) {
+                self.navs = navs;
+
                 if (self.navs.length > 1) {
                     self.curFirstNav = self.navs[0];
-                    if (self.curFirstNav.items.length > 0) {
-                        self.openNav = self.curFirstNav.items[0];
+                    if (self.curFirstNav.children.length > 0) {
+                        self.openNav = self.curFirstNav.children[0];
                     }
                 }
             });

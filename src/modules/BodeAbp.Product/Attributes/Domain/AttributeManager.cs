@@ -42,7 +42,7 @@ namespace BodeAbp.Product.Attributes.Domain
             attribute.CheckNotNull("attribute");
             attribute.Name.CheckNotNullOrEmpty("attribute.Name");
 
-            if (_attributeRepository.CheckExists(p=>p.Name== attribute.Name))
+            if (_attributeRepository.CheckExists(p => p.ProductClassifyId == attribute.ProductClassifyId && p.Name == attribute.Name))
             {
                 throw new UserFriendlyException("该属性已存在");
             }
@@ -59,7 +59,7 @@ namespace BodeAbp.Product.Attributes.Domain
             attribute.CheckNotNull("attribute");
             attribute.Name.CheckNotNullOrEmpty("attribute.Name");
 
-            if (_attributeRepository.CheckExists(p => p.Name == attribute.Name, attribute.Id))
+            if (_attributeRepository.CheckExists(p => p.ProductClassifyId == attribute.ProductClassifyId && p.Name == attribute.Name, attribute.Id))
             {
                 throw new UserFriendlyException("该属性已存在");
             }
@@ -77,7 +77,7 @@ namespace BodeAbp.Product.Attributes.Domain
             var classifyIds = classify.ParentIds.Split(",").Select(int.Parse).ToList();
             classifyIds.Add(classify.Id);
 
-            return await _attributeRepository.GetAllListAsync(p => p.ProductClassifyId == null || classifyIds.Contains(p.ProductClassifyId.Value));
+            return await _attributeRepository.GetAllListAsync(p => classifyIds.Contains(p.ProductClassifyId));
         }
 
         /// <summary>
@@ -164,6 +164,8 @@ namespace BodeAbp.Product.Attributes.Domain
             classify.CheckNotNull("classify");
 
             await CheckAndSetParentIds(classify);
+            var orderNos = _classifyRepository.GetAll().Where(p => (p.ParentId) == classify.ParentId).Select(p=>p.OrderNo).ToList();
+            classify.OrderNo = orderNos.Any() ? orderNos.Max() + 1 : 1;
             await _classifyRepository.InsertAsync(classify);
         }
 
@@ -178,6 +180,75 @@ namespace BodeAbp.Product.Attributes.Domain
 
             await CheckAndSetParentIds(classify);
             await _classifyRepository.UpdateAsync(classify);
+        }
+
+        /// <summary>
+        /// 分类升序
+        /// </summary>
+        /// <param name="classifyId">分类Id</param>
+        /// <returns></returns>
+        public async Task ClassifyUpAsync(int classifyId)
+        {
+            classifyId.CheckGreaterThan("classifyId",0);
+            var classify = await _classifyRepository.GetAsync(classifyId);
+            await ClassifyUpAsync(classify);
+        }
+
+        /// <summary>
+        /// 分类升序
+        /// </summary>
+        /// <param name="classify">分类</param>
+        /// <returns></returns>
+        public async Task ClassifyUpAsync(ProductClassify classify)
+        {
+            classify.CheckNotNull("classify");
+
+            var preClassify = _classifyRepository.GetAll().Where(p => p.OrderNo < classify.OrderNo && p.ParentId == classify.ParentId)
+                .OrderByDescending(p => p.OrderNo).Take(1).FirstOrDefault();
+
+            if (preClassify != null)
+            {
+                int orderNo = classify.OrderNo;
+                classify.OrderNo = preClassify.OrderNo;
+                preClassify.OrderNo = orderNo;
+
+                await _classifyRepository.UpdateAsync(classify);
+                await _classifyRepository.UpdateAsync(preClassify);
+            }
+        }
+
+        /// <summary>
+        /// 分类降序
+        /// </summary>
+        /// <param name="classifyId">分类Id</param>
+        /// <returns></returns>
+        public async Task ClassifyDownAsync(int classifyId)
+        {
+            classifyId.CheckGreaterThan("classifyId", 0);
+            var classify = await _classifyRepository.GetAsync(classifyId);
+            await ClassifyDownAsync(classify);
+        }
+
+        /// <summary>
+        /// 分类降序
+        /// </summary>
+        /// <param name="classify">分类</param>
+        /// <returns></returns>
+        public async Task ClassifyDownAsync(ProductClassify classify)
+        {
+            classify.CheckNotNull("classify");
+            var nextClassify = _classifyRepository.GetAll().Where(p => p.OrderNo > classify.OrderNo && p.ParentId == classify.ParentId)
+                .OrderBy(p => p.OrderNo).Take(1).FirstOrDefault();
+
+            if (nextClassify != null)
+            {
+                int orderNo = classify.OrderNo;
+                classify.OrderNo = nextClassify.OrderNo;
+                nextClassify.OrderNo = orderNo;
+
+                await _classifyRepository.UpdateAsync(classify);
+                await _classifyRepository.UpdateAsync(nextClassify);
+            }
         }
 
         /// <summary>

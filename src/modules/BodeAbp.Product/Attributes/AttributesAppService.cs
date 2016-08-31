@@ -10,6 +10,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
 using System;
+using Abp.Extensions;
 
 namespace BodeAbp.Product.Attributes
 {
@@ -21,11 +22,11 @@ namespace BodeAbp.Product.Attributes
         /// <summary>
         /// 产品属性 领域服务
         /// </summary>
-        public AttributeManager attributeManager { get; set; }
+        public AttributeManager attributeManager { protected get; set; }
 
         private readonly IRepository<ProductClassify> _classifyRepository;
-        private readonly IRepository<AttributeOption> _attributeValueRepository;
-        private readonly IRepository<Domain.Attribute> _attributeTemplateRepository;
+        private readonly IRepository<Domain.Attribute> _attributeRepository;
+        private readonly IRepository<AttributeOption> _attributeOptionRepository;
 
         public AttributesAppService(
             IRepository<Domain.Attribute> attributeTemplateRepository,
@@ -33,8 +34,8 @@ namespace BodeAbp.Product.Attributes
             IRepository<AttributeOption> attributeValueRepository)
         {
             _classifyRepository = classifyRepository;
-            _attributeValueRepository = attributeValueRepository;
-            _attributeTemplateRepository = attributeTemplateRepository;
+            _attributeOptionRepository = attributeValueRepository;
+            _attributeRepository = attributeTemplateRepository;
         }
 
         #region 属性模版
@@ -42,15 +43,22 @@ namespace BodeAbp.Product.Attributes
         /// <inheritdoc/>
         public async Task<PagedResultOutput<GetAttributeListOutput>> GetAttributePagedList(QueryListPagedRequestInput input)
         {
+            var query = _attributeRepository.GetAll();
+            //第一次查询只显示公共属性
+            if (input.FilterGroup == null || !input.FilterGroup.Rules.Any(p => p.Field == "productClassifyId"))
+            {
+                query = _attributeRepository.GetAll().Where(p => p.ProductClassifyId == null);
+            }
+
             int total;
-            var list = await _attributeTemplateRepository.GetAll().Where(input, out total).ToListAsync();
+            var list = await query.Where(input, out total).ToListAsync();
             return new PagedResultOutput<GetAttributeListOutput>(total, list.MapTo<List<GetAttributeListOutput>>());
         }
 
         /// <inheritdoc/>
         public async Task<GetAttributeOutput> GetAttribute(int id)
         {
-            var result = await _attributeTemplateRepository.GetAsync(id);
+            var result = await _attributeRepository.GetAsync(id);
             return result.MapTo<GetAttributeOutput>();
         }
 
@@ -64,17 +72,25 @@ namespace BodeAbp.Product.Attributes
         /// <inheritdoc/>
         public async Task UpdateAttribute(UpdateAttributeInput input)
         {
-            var attributeTemplate = await _attributeTemplateRepository.GetAsync(input.Id);
+            var attributeTemplate = await _attributeRepository.GetAsync(input.Id);
             input.MapTo(attributeTemplate);
             await attributeManager.UpdateAttributeTempateAsync(attributeTemplate);
         }
 
         /// <inheritdoc/>
-        public async Task DeleteAttribute(IdInput[] input)
-        {
-            var ids = input.Select(p => p.Id);
-            await _attributeTemplateRepository.DeleteAsync(p => ids.Contains(p.Id));
+        public async Task DeleteAttribute(IdInput input)
+        { 
+            await _attributeRepository.DeleteAsync(input.Id);
         }
+
+        //public async Task<ICollection<TreeOutPut>> GetOptionalAttributeTreeData()
+        //{
+        //    var attrbutes = await _attributeRepository.GetAll().AsNoTracking()
+        //        .Where(p => p.AttributeType == AttributeType.Switch || p.AttributeType == AttributeType.DropDown)
+        //        .Select(p => new { p.Id, p.Name, p.ProductClassifyId }).ToListAsync();
+
+
+        //}
 
         #endregion
 
@@ -84,14 +100,14 @@ namespace BodeAbp.Product.Attributes
         public async Task<PagedResultOutput<GetAttributeOptionListOutput>> GetAttributeOptionPagedList(QueryListPagedRequestInput input)
         {
             int total;
-            var list = await _attributeValueRepository.GetAll().Where(input, out total).ToListAsync();
+            var list = await _attributeOptionRepository.GetAll().Where(input, out total).ToListAsync();
             return new PagedResultOutput<GetAttributeOptionListOutput>(total, list.MapTo<List<GetAttributeOptionListOutput>>());
         }
 
         /// <inheritdoc/>
         public async Task<GetAttributeOptionOutput> GetAttributeOption(int id)
         {
-            var result = await _attributeValueRepository.GetAsync(id);
+            var result = await _attributeOptionRepository.GetAsync(id);
             return result.MapTo<GetAttributeOptionOutput>();
         }
 
@@ -105,7 +121,7 @@ namespace BodeAbp.Product.Attributes
         /// <inheritdoc/>
         public async Task UpdateAttributeOption(UpdateAttributeOptionInput input)
         {
-            var attributeValue = await _attributeValueRepository.GetAsync(input.Id);
+            var attributeValue = await _attributeOptionRepository.GetAsync(input.Id);
             input.MapTo(attributeValue);
             await attributeManager.UpdateAttributeOptionAsync(attributeValue);
         }
@@ -114,7 +130,7 @@ namespace BodeAbp.Product.Attributes
         public async Task DeleteAttributeOption(IdInput[] input)
         {
             var ids = input.Select(p => p.Id);
-            await _attributeValueRepository.DeleteAsync(p => ids.Contains(p.Id));
+            await _attributeOptionRepository.DeleteAsync(p => ids.Contains(p.Id));
         }
 
         #endregion
@@ -151,8 +167,23 @@ namespace BodeAbp.Product.Attributes
         }
 
         /// <inheritdoc/>
+        public async Task<TreeOutPut[]> GetClassifyTreeData()
+        {
+            var classifys = await _classifyRepository.GetAll().Select(p => new TreeOutPut()
+            {
+                Value = p.Id + "",
+                Text = p.Name,
+                ParentValue = p.ParentId == null ? "null" : p.ParentId + ""
+            }).ToListAsync();
+
+            classifys.Insert(0, new TreeOutPut() { Value = "0", Text = "公共属性", ParentValue = "null" });
+            return classifys.ToArray();
+        }
+
+        /// <inheritdoc/>
         public async Task CreateClassify(ProductClassifyInput input)
         {
+            input.CheckNotNull("input");
             var classify = input.MapTo<ProductClassify>();
             await attributeManager.CreateClassifyAsync(classify);
         }
@@ -160,6 +191,7 @@ namespace BodeAbp.Product.Attributes
         /// <inheritdoc/>
         public async Task UpdateClassify(ProductClassifyInput input)
         {
+            input.CheckNotNull("input");
             var classify = await _classifyRepository.GetAsync(input.Id);
             input.MapTo(classify);
             await attributeManager.UpdateClassifyAsync(classify);
@@ -168,7 +200,22 @@ namespace BodeAbp.Product.Attributes
         /// <inheritdoc/>
         public async Task DeleteClassify(int id)
         {
+            id.CheckGreaterThan("id", 0);
             await attributeManager.DeleteClassifyAsync(id);
+        }
+
+        /// <inheritdoc/>
+        public async Task ClassifyUp(IdInput input)
+        {
+            input.CheckNotNull("input");
+            await attributeManager.ClassifyUpAsync(input.Id);
+        }
+
+        /// <inheritdoc/>
+        public async Task ClassifyDown(IdInput input)
+        {
+            input.CheckNotNull("input");
+            await attributeManager.ClassifyDownAsync(input.Id);
         }
 
         #endregion

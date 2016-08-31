@@ -28,7 +28,6 @@ namespace BodeAbp.Zero
                     )
                 );
             
-            Configuration.Navigation.Providers.Add<BodeAbpZeroNavigationProvider>();
             Configuration.Authorization.Providers.Add<BodeAbpZeroAuthorizationProvider>();
             Configuration.Settings.Providers.Add<BodeAbpZeroSettingProvider>();
 

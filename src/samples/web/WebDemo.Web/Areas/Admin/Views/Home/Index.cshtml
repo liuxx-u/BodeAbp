@@ -26,8 +26,8 @@
                 <div class="ue-clear">
                     <ul class="topnav">
                         <template v-for="nav in navs">
-                            <li v-bind:class="{'selected':nav.name==curFirstNav.name}" v-on:click="firstNavClick(nav);">
-                                <i v-bind:class="['fa',nav.icon]"></i><span>{{nav.displayName}}</span>
+                            <li v-bind:class="{'selected':nav.id==curFirstNav.id}" v-on:click="firstNavClick(nav);">
+                                <i v-bind:class="['fa',nav.icon]"></i><span>{{nav.name}}</span>
                             </li>
                         </template>
                     </ul>
@@ -48,12 +48,12 @@
                     <span>功能导航</span>
                 </h2>
                 <ul class="menu">
-                    <template v-for="nav in curFirstNav.items">
-                        <li v-bind:class="{'open':nav.name==openNav.name}" v-on:click="secondNavClick(nav);">
-                            <a href="#"><i  v-bind:class="['fa',nav.icon]"></i>{{nav.displayName}}</a>
+                    <template v-for="nav in curFirstNav.children">
+                        <li v-bind:class="{'open':nav.id==openNav.id}" v-on:click="secondNavClick(nav);">
+                            <a href="#"><i  v-bind:class="['fa',nav.icon]"></i>{{nav.name}}</a>
                             <ul class="submenu">
-                                <template v-for="subNav in nav.items">
-                                    <li v-bind:class="{'active':subNav.name==activeLeafNav.name}" v-on:click.stop="leafNavClick(subNav)"><a href="#">{{subNav.displayName}}</a><i></i></li>
+                                <template v-for="subNav in nav.children">
+                                    <li v-bind:class="{'active':subNav.id==activeLeafNav.id}" v-on:click.stop="leafNavClick(subNav)"><a href="#">{{subNav.name}}</a><i></i></li>
                                 </template>
                             </ul>
                         </li>

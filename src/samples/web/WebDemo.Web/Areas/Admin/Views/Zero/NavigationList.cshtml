@@ -1,17 +1,17 @@
 ﻿
 @{
-    ViewBag.Title = "商品分类";
+    ViewBag.Title = "菜单管理";
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
-<div class="page-container" id="classifys">
+<div class="page-container" id="navigations">
     <div class="page-body">
         <div class="row">
             <div class="col-sm-8">
                 <div class="widget flat radius-bordered">
                     <div class="widget-header bg-blue">
-                        <span class="widget-caption">商品分类</span>
+                        <span class="widget-caption">菜单管理</span>
                         <div class="widget-buttons">
-                            <a href="#" style="margin-top:10px;" v-on:click="add(null);">
+                            <a href="#" style="margin-top:10px;" v-on:click="add(0);">
                                 <i class="fa fa-plus"></i>
                             </a>
                         </div>
@@ -19,7 +19,7 @@
 
                     <div class="widget-body">
                         <div class="tree tree-solid-line">
-                            <nodes :nodes="classifys"></nodes>
+                            <nodes :nodes="navigations"></nodes>
                         </div>
                     </div>
                 </div>
@@ -54,7 +54,7 @@
             <div class="tree-item">
                 <i class="tree-dot"></i>
                 <div class="tree-item-name">
-                    <span>{{node.name}}</span>
+                    <span>{{node.name}}【{{node.navigationType==2?"角色访问":node.navigationType==1?"登录访问":"匿名访问"}}】【{{node.url}}】</span>
                     <div class="tree-actions">
                         <i class="fa fa-plus" v-on:click="add(node.id);"></i>
                         <i class="fa fa-edit" v-on:click="edit(node);"></i>
@@ -73,9 +73,38 @@
         <div class="col-sm-12">
             <form class="form-horizontal form-bordered" role="form">
                 <div class="form-group">
-                    <label for="classifyName" class="col-sm-2 control-label no-padding-right">分类名称</label>
+                    <label for="name" class="col-sm-2 control-label no-padding-right">菜单名称</label>
                     <div class="col-sm-10">
-                        <input type="email" class="form-control" id="classifyName">
+                        <input type="text" class="form-control" id="name">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="url" class="col-sm-2 control-label no-padding-right">Url地址</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="url">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="navigationType" class="col-sm-2 control-label no-padding-right">访问类型</label>
+                    <div class="col-sm-10">
+                        <select class="form-control" id="navigationType">
+                            @foreach (var item in ViewBag.NavigationTypes)
+                            {
+                                <option value="@item.Value">@item.DisplayText</option>
+                            }
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="icon" class="col-sm-2 control-label no-padding-right">图标</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="icon">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="remark" class="col-sm-2 control-label no-padding-right">备注</label>
+                    <div class="col-sm-10">
+                        <input type="email" class="form-control" id="remark">
                     </div>
                 </div>
                 <hr class="wide" />
@@ -85,22 +114,32 @@
 </div>
 
 <script type="text/javascript">
-    function addClassify(parentId) {
+    function popup(navigation) {
         layer.open({
-            title: "新增分类",
+            title: navigation.title,
             type: 1,
             area: "40%",
             content: $("#model"),
             btn: ["保存", "取消"],
             success: function () {
-                $("#classifyName").val("");
+                $("#name").val(navigation.name);
+                $("#url").val(navigation.url);
+                $("#icon").val(navigation.icon);
+                $("#remark").val(navigation.remark);
+                $("#navigationType").val(navigation.navigationType);
             },
             yes: function (index, layero) {
                 var dto = {
-                    name: $("#classifyName").val(),
-                    parentId: parentId,
+                    id: navigation.id,
+                    name: $("#name").val(),
+                    url: $("#url").val(),
+                    icon: $("#icon").val(),
+                    remark: $("#remark").val(),
+                    navigationType: $("#navigationType").val(),
+                    parentId: navigation.parentId
                 }
-                $.bode.ajax("/api/services/product/attributes/CreateClassify", dto, function () {
+                var action = navigation.id > 0 ? "UpdateNavigation" : "CreateNavigation"
+                $.bode.ajax("/api/services/zero/navigation/"+action, dto, function () {
                     vm.reload();
                     layer.msg("保存成功");
                     layer.close(index);
@@ -110,45 +149,35 @@
         });
     }
 
+    function addNavigation(parentId) {
+        popup({
+            id: 0,
+            name: "",
+            url: "",
+            icon: "",
+            remark: "",
+            navigationType: 0,
+            parentId: parentId
+        });
+    }
+
     Vue.component('nodes', {
         template: '#node',
         data: function () { return {}; },
         props: ['nodes'],
         methods: {
-            add: addClassify,
-            edit: function (classify) {
-                layer.open({
-                    title: "编辑分类",
-                    type: 1,
-                    area: "40%",
-                    content: $("#model"),
-                    btn: ["保存", "取消"],
-                    success: function () {
-                        $("#classifyName").val(classify.name);
-                    },
-                    yes: function (index, layero) {
-                        var dto = {
-                            id: classify.id,
-                            name: $("#classifyName").val(),
-                            parentId: classify.parentId
-                        };
-                        $.bode.ajax("/api/services/product/attributes/UpdateClassify", dto, function () {
-                            vm.reload();
-                            layer.msg("保存成功");
-                            layer.close(index);
-                        });
-                    },
-                    cancel: function () { }
-                });
+            add: addNavigation,
+            edit: function (navigation) {
+                popup(navigation);
             },
             up: function (id) {
-                $.bode.ajax("/api/services/product/attributes/ClassifyUp", {id:id}, function () {
+                $.bode.ajax("/api/services/zero/navigation/NavigationUp", { id: id }, function () {
                     vm.reload();
                     layer.msg("保存成功");
                 });
             },
             down: function (id) {
-                $.bode.ajax("/api/services/product/attributes/ClassifyDown", { id: id }, function () {
+                $.bode.ajax("/api/services/zero/navigation/NavigationDown", { id: id }, function () {
                     vm.reload();
                     layer.msg("保存成功");
                 });
@@ -157,16 +186,16 @@
     });
 
     var vm = new Vue({
-        el: "#classifys",
+        el: "#navigations",
         data: {
-            classifys: []
+            navigations: []
         },
         methods: {
-            add: addClassify,
+            add: addNavigation,
             reload: function () {
                 var self = this;
-                $.bode.ajax("/api/services/product/attributes/GetAllClassifies", {}, function (classifys) {
-                    self.classifys = classifys;
+                $.bode.ajax("/api/services/zero/navigation/GetAllNavigations", {}, function (navigations) {
+                    self.navigations = navigations;
                 })
             }
         },

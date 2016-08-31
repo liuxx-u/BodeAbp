@@ -33,7 +33,6 @@ namespace BodeAbp.Product
                 );
 
             Configuration.Settings.Providers.Add<BodeAbpProductSettingProvider>();
-            Configuration.Navigation.Providers.Add<BodeAbpProductNavigationProvider>();
             Configuration.Authorization.Providers.Add<BodeAbpProductAuthorizationProvider>();
 
             DefaultDbContextInitializer.Instance.MapperAssemblies.Add(Assembly.GetExecutingAssembly());

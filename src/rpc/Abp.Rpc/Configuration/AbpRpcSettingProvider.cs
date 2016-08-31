@@ -8,7 +8,7 @@ namespace Abp.Rpc.Configuration
     {
         public override IEnumerable<SettingDefinition> GetSettingDefinitions(SettingDefinitionProviderContext context)
         {
-            var rpcSettingGroup = new SettingDefinitionGroup(RpcSettingNames.GroupName, L("RpcSettingGroupName"));
+            var rpcSettingGroup = new SettingDefinitionGroup(RpcSettingNames.GroupName, L("RPC设置"));
 
             return new[]
             {

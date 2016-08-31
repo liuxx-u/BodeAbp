@@ -51,7 +51,7 @@ namespace BodeAbp.Product.Attributes
         /// </summary>
         /// <param name="input">id集合</param>
         /// <returns></returns>
-        Task DeleteAttribute(IdInput[] input);
+        Task DeleteAttribute(IdInput input);
 
         #endregion
 
@@ -104,6 +104,12 @@ namespace BodeAbp.Product.Attributes
         Task<ICollection<ProductClassifyListOutPut>> GetAllClassifies();
 
         /// <summary>
+        /// 获取分类树数据
+        /// </summary>
+        /// <returns></returns>
+        Task<TreeOutPut[]> GetClassifyTreeData();
+
+        /// <summary>
         /// 添加 分类
         /// </summary>
         /// <param name="input"></param>
@@ -124,6 +130,20 @@ namespace BodeAbp.Product.Attributes
         /// <param name="id">分类id</param>
         /// <returns></returns>
         Task DeleteClassify(int id);
+
+        /// <summary>
+        /// 分类升序
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        Task ClassifyUp(IdInput input);
+
+        /// <summary>
+        /// 分类降序
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        Task ClassifyDown(IdInput input);
 
         #endregion
     }

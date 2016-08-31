@@ -71,8 +71,8 @@
     <Compile Include="Products\Dtos\ProductDto.cs" />
     <Compile Include="Skus\Domain\SkuAttribute.cs" />
     <Compile Include="Skus\Domain\SkuAttributeOption.cs" />
-    <Compile Include="Attributes\Dtos\AttributeTemplateDto.cs" />
-    <Compile Include="Attributes\Dtos\AttributeValueDto.cs" />
+    <Compile Include="Attributes\Dtos\AttributeDto.cs" />
+    <Compile Include="Attributes\Dtos\AttributeOptionDto.cs" />
     <Compile Include="Attributes\Dtos\ProductClassifyDto.cs" />
     <Compile Include="Attributes\IAttributesAppService.cs" />
     <Compile Include="Attributes\ModelConfigs\AttributeConfiguration.cs" />
@@ -85,7 +85,6 @@
     <Compile Include="Products\ModelConfigs\ProductAttributeConfiguration.cs" />
     <Compile Include="Products\ModelConfigs\ProductExtendAttributeConfiguration.cs" />
     <Compile Include="Providers\BodeAbpProductAuthorizationProvider.cs" />
-    <Compile Include="Providers\BodeAbpProductNavigationProvider.cs" />
     <Compile Include="Providers\BodeAbpProductSettingProvider.cs" />
     <Compile Include="Providers\PermissionNames.cs" />
     <Compile Include="BodeAbpProductConsts.cs" />

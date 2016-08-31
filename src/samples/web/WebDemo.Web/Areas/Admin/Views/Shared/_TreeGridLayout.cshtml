@@ -74,6 +74,8 @@
             //初始化数据
             datatable = new $.bode.grid("#dataTable", tableOption);
             tree = new $.bode.tree("#treeContent", treeOption);
+
+            $("#tree").find(".widget-caption").text(treeOption.title);
             endfunction();
         });
     </script>
@@ -88,7 +90,7 @@
             <div id="tree" class="col-xs-4 col-md-3 col-lg-2">
                 <div class="widget flat radius-bordered">
                     <div class="widget-header bg-info">
-                        <span class="widget-caption">组织机构</span>
+                        <span class="widget-caption">-</span>
                     </div>
                     <div class="widget-body" style="overflow-y: auto;">
                         <div id="treeContent" class="tree tree-solid-line">

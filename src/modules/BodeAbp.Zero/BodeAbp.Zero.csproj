@@ -82,9 +82,15 @@
     <Compile Include="Files\Domain\FileInfo.cs" />
     <Compile Include="Files\FileAppService.cs" />
     <Compile Include="Files\IFileAppService.cs" />
+    <Compile Include="Navigations\Domain\Navigation.cs" />
+    <Compile Include="Navigations\Domain\NavigationManager.cs" />
+    <Compile Include="Navigations\Dtos\NavigationDto.cs" />
+    <Compile Include="Navigations\INavigationAppService.cs" />
+    <Compile Include="Navigations\ModelConfigs\NavigationConfiguration.cs" />
+    <Compile Include="Navigations\NavigationAppService.cs" />
+    <Compile Include="Navigations\SeedActions\NavigationSeedAction.cs" />
     <Compile Include="Providers\BodeAbpZeroSettingProvider.cs" />
     <Compile Include="Providers\BodeAbpZeroAuthorizationProvider.cs" />
-    <Compile Include="Providers\BodeAbpZeroNavigationProvider.cs" />
     <Compile Include="Providers\PermissionChecker.cs" />
     <Compile Include="Providers\PermissionNames.cs" />
     <Compile Include="BackgroundJobs\ModelConfigs\BackgroundJobInfoConfiguration.cs" />

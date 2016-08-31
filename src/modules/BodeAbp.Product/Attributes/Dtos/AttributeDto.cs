@@ -17,20 +17,44 @@ namespace BodeAbp.Product.Attributes.Dtos
         public string Name { get; set; }
 
         /// <summary>
+        /// 默认值
+        /// </summary>
+        public string DefaultValue { get; set; }
+
+        /// <summary>
+        /// 提示
+        /// </summary>
+        public string Tips { get; set; }
+
+        /// <summary>
+        /// 验证规则(正则表达式)
+        /// </summary>
+        public string ValidateRegular { get; set; }
+
+        /// <summary>
+        /// 分组名
+        /// </summary>
+        public string GroupName { get; set; }
+
+        /// <summary>
         /// 是否必填项
         /// </summary>
         public bool IsRequired { get; set; }
 
         /// <summary>
-        /// 是否SKU属性
+        /// 属性类型
         /// </summary>
-        public bool IsSkuAttribute { get; set; }
+        public AttributeType AttributeType { get; set; }
 
         /// <summary>
         /// 是否在客户端展示
         /// </summary>
         public bool IsShowToClient { get; set; }
 
+        /// <summary>
+        /// 分类Id，null表示公共属性
+        /// </summary>
+        public int? ProductClassifyId { get; set; }
     }
 
 	[AutoMapTo(typeof(Attribute))]
@@ -40,11 +64,6 @@ namespace BodeAbp.Product.Attributes.Dtos
 
 	[AutoMapTo(typeof(Attribute))]
     public class UpdateAttributeInput : AttributeDto, IInputDto
-    {
-    }
-
-	[AutoMapFrom(typeof(Attribute))]
-    public class UpdateAttributeOutput : AttributeDto, IOutputDto
     {
     }
 
