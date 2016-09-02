@@ -25,11 +25,6 @@ namespace Abp.Configuration.Startup
         ILocalizationConfiguration Localization { get; }
 
         /// <summary>
-        /// Used to configure navigation.
-        /// </summary>
-        INavigationConfiguration Navigation { get; }
-
-        /// <summary>
         /// Used to configure <see cref="IEventBus"/>.
         /// </summary>
         IEventBusConfiguration EventBus { get; }

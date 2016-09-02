@@ -1,7 +1,7 @@
 .wrapper{margin: 5px 10px;}
 
 .searchBar{height:30px;padding:7px 0 3px;text-align:center;}
-.searchBtn{font-size:13px;height:24px;}
+.searchBtn{font-size:12px;height:24px;}
 
 .resultBar{width:460px;margin:5px auto;border: 1px solid #CCC;border-radius: 5px;box-shadow: 2px 2px 5px #D3D6DA;overflow: hidden;}
 

@@ -7,7 +7,6 @@ using Abp.Auditing;
 using Abp.Extensions;
 using Abp.Web.Authorization;
 using Abp.Web.Localization;
-using Abp.Web.Navigation;
 using Abp.Web.Sessions;
 using Abp.Web.Settings;
 using Abp.Web.Timing;
@@ -21,7 +20,6 @@ namespace Abp.Web.Mvc.Controllers
     public class AbpScriptsController : AbpController
     {
         private readonly ISettingScriptManager _settingScriptManager;
-        private readonly INavigationScriptManager _navigationScriptManager;
         private readonly ILocalizationScriptManager _localizationScriptManager;
         private readonly IAuthorizationScriptManager _authorizationScriptManager;
         private readonly ISessionScriptManager _sessionScriptManager;
@@ -32,14 +30,12 @@ namespace Abp.Web.Mvc.Controllers
         /// </summary>
         public AbpScriptsController(
             ISettingScriptManager settingScriptManager,
-            INavigationScriptManager navigationScriptManager,
             ILocalizationScriptManager localizationScriptManager,
             IAuthorizationScriptManager authorizationScriptManager,
             ISessionScriptManager sessionScriptManager, 
             ITimingScriptManager timingScriptManager)
         {
             _settingScriptManager = settingScriptManager;
-            _navigationScriptManager = navigationScriptManager;
             _localizationScriptManager = localizationScriptManager;
             _authorizationScriptManager = authorizationScriptManager;
             _sessionScriptManager = sessionScriptManager;
@@ -65,9 +61,6 @@ namespace Abp.Web.Mvc.Controllers
             sb.AppendLine();
 
             sb.AppendLine(await _authorizationScriptManager.GetScriptAsync());
-            sb.AppendLine();
-
-            sb.AppendLine(await _navigationScriptManager.GetScriptAsync());
             sb.AppendLine();
 
             sb.AppendLine(await _settingScriptManager.GetScriptAsync());

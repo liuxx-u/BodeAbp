@@ -77,7 +77,6 @@
     <Compile Include="Activities\ModelConfigs\ActivityConfiguration.cs" />
     <Compile Include="Activities\ModelConfigs\ClassifyConfiguration.cs" />
     <Compile Include="Providers\BodeAbpActivityAuthorizationProvider.cs" />
-    <Compile Include="Providers\BodeAbpActivityNavigationProvider.cs" />
     <Compile Include="Providers\PermissionNames.cs" />
     <Compile Include="BodeAbpActivityConsts.cs" />
     <Compile Include="BodeAbpActivityModule.cs" />

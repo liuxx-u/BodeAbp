@@ -23,10 +23,10 @@ namespace BodeAbp.Zero.Navigations.SeedActions
         {
             if (!context.Set<Navigation>().Any())
             {
-                context.Set<Navigation>().Add(new Navigation
-                {
+                //context.Set<Navigation>().Add(new Navigation
+                //{
                     
-                });
+                //});
             }
         }
     }

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Reflection;
-using Abp.Application.Navigation;
 using Abp.Application.Services;
 using Abp.Auditing;
 using Abp.Authorization;
@@ -83,7 +82,6 @@ namespace Abp
             IocManager.Resolve<PermissionManager>().Initialize();
             IocManager.Resolve<LocalizationManager>().Initialize();
             IocManager.Resolve<NotificationDefinitionManager>().Initialize();
-            IocManager.Resolve<NavigationManager>().Initialize();
 
             if (Configuration.BackgroundJobs.IsJobExecutionEnabled)
             {

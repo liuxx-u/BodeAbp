@@ -36,6 +36,7 @@
 
             <div class="toolbar ue-clear">
                 <a href="javascript:void(0);" class="home"><i class="fa fa-home"></i>首页</a>
+                <a href="javascript:void(0);" class="home"><i class="fa  fa-envelope"></i>消息</a>
                 <a href="javascript:void(0);" class="quit"><i class="fa fa-power-off"></i></a>
             </div>
         </div>
@@ -63,6 +64,8 @@
 
             <div class="content">
                 <div class="place">
+                    <span class="title">位置：</span>
+                    <span class="info" style="font-weight:normal;margin-left:5px;">{{curFirstNav.name}} > {{openNav.name}} > {{activeLeafNav.name}}</span>
                 </div>
                 <iframe v-bind:src="activeLeafNav.url" id="page" style="width:100%;height:100%" frameborder="0"></iframe>
             </div>
@@ -71,7 +74,7 @@
 
     <div class="footer ue-clear">
         <div class="footer-left">
-            <span>欢迎您,</span><a href="javascript:void(0);">Admin</a>
+            <span>欢迎您,</span><a href="javascript:void(0);" style="color:#fff">Admin</a>
             <em>Office&nbsp;System</em>
         </div>
         <div class="footer-right">

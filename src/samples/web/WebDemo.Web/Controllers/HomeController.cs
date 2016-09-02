@@ -10,8 +10,7 @@ namespace WebDemo.Web.Controllers
     {
         public ActionResult Index()
         {
-            var typeName = typeof(IEntity<>).FullName;
-            return Content(typeName);
+            return RedirectToAction("Login", "Account", new { area = "Admin" });
         }
 	}
 }

@@ -63,11 +63,6 @@ namespace Abp.Configuration.Startup
         public INotificationConfiguration Notifications { get; private set; }
 
         /// <summary>
-        /// Used to configure navigation.
-        /// </summary>
-        public INavigationConfiguration Navigation { get; private set; }
-
-        /// <summary>
         /// Used to configure <see cref="IEventBus"/>.
         /// </summary>
         public IEventBusConfiguration EventBus { get; private set; }
@@ -93,7 +88,6 @@ namespace Abp.Configuration.Startup
         {
             Localization = IocManager.Resolve<ILocalizationConfiguration>();
             Modules = IocManager.Resolve<IModuleConfigurations>();
-            Navigation = IocManager.Resolve<INavigationConfiguration>();
             Authorization = IocManager.Resolve<IAuthorizationConfiguration>();
             Settings = IocManager.Resolve<ISettingsConfiguration>();
             UnitOfWork = IocManager.Resolve<IUnitOfWorkDefaultOptions>();

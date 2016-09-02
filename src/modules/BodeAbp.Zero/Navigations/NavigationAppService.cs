@@ -1,21 +1,19 @@
 ﻿using Abp.Application.Services.Dto;
-using Abp.Application.Services.Query;
 using Abp.AutoMapper;
 using Abp.Domain.Repositories;
 using BodeAbp.Zero.Navigations.Domain;
 using BodeAbp.Zero.Navigations.Dtos;
-using System.Data.Entity;
-using System.Linq;
 using System.Threading.Tasks;
-using System;
 using Abp.Extensions;
+using Abp.Application.Services;
+using System.Collections.Generic;
 
 namespace BodeAbp.Zero.Navigations
 {
     /// <summary>
     ///  导航信息 服务
     /// </summary>
-    public class NavigationAppService : INavigationAppService
+    public class NavigationAppService : ApplicationService, INavigationAppService
     {
         /// <summary>
         /// 菜单 领域服务
@@ -32,43 +30,18 @@ namespace BodeAbp.Zero.Navigations
 		#region 导航信息
 
 		 /// <inheritdoc/>
-        public async Task<NavigationListOutput[]> GetAllNavigations()
+        public async Task<ICollection<NavigationInfo>> GetUserNavigations()
         {
-            var navigations = await _navigationRepository.GetAll().OrderBy(p => p.OrderNo).Select(p => new 
-            {
-                p.Id,
-                p.Name,
-                p.Url,
-                p.Remark,
-                p.Icon,
-                p.ParentId,
-                p.NavigationType
-            }).ToListAsync();
-
-            Func<int, NavigationListOutput[]> getChildren = null;
-            getChildren = parentId =>
-            {
-                if (navigations.Any(m => m.ParentId == parentId))
-                {
-                    return navigations.Where(m => m.ParentId == parentId).Select(m => new NavigationListOutput()
-                    {
-                        Id = m.Id,
-                        Name = m.Name,
-                        Url = m.Url,
-                        Remark = m.Remark,
-                        Icon = m.Icon,
-                        ParentId = m.ParentId,
-                        NavigationType = m.NavigationType,
-                        Children = getChildren(m.Id)
-                    }).ToArray();
-                }
-                return new NavigationListOutput[] { };
-            };
-
-            return getChildren(0);
+            return await navigationManager.GetUserNavigations();
         }
 
-		/// <inheritdoc/>
+        /// <inheritdoc/>
+        public async Task<ICollection<NavigationInfo>> GetAllNavigations()
+        {
+            return await navigationManager.GetAllNavigations();
+        }
+
+        /// <inheritdoc/>
         public async Task CreateNavigation(NavigationInput input)
         {
             var navigation = input.MapTo<Navigation>();

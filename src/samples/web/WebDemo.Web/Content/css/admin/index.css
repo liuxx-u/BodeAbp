@@ -22,6 +22,7 @@
     width: 246px;
     height: 54px;
     background: url(/Content/imgs/admin/logo.png);
+    background-repeat: no-repeat;
     position: relative;
 }
 .header .header-navigation {
@@ -50,6 +51,10 @@
     line-height: 42px;
     vertical-align: middle;
 }
+    .topnav li > i {
+        font-size:16px;
+    }
+
 .topnav li span {
     padding-left: 5px;
     line-height: 40px;
@@ -105,12 +110,14 @@ background: #16a0d3;
 .menu .submenu {display:none;}
 .menu > li.open .submenu {display:block;}
 .sidebar .submenu a{font-weight:normal;}
-.sidebar .submenu li.active {background:#d3eaf6}
+.sidebar .submenu li.active {background:#E0EEEE}
 .sidebar .submenu li.active i {display: block;background: url(/Content/imgs/admin/sj.png) no-repeat;width: 6px;height: 11px;float: right;margin-top: 13px;}
 
 
 .content{ float:left; width:100%; overflow:auto;}
 .place {height: 40px;background: url(/Content/imgs/admin/righttop.gif) repeat-x;}
+.place .title {line-height: 40px;font-weight: bold;float: left;margin-left: 12px;}
+.place .info {line-height: 40px;margin-left: 5px;}
 
 /***********底部样式***********/
 .footer {

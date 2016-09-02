@@ -32,7 +32,6 @@ namespace BodeAbp.Activity
                 );
 
             //Configuration.Settings.Providers.Add<BodeAbpActivitySettingProvider>();
-            Configuration.Navigation.Providers.Add<BodeAbpActivityNavigationProvider>();
             Configuration.Authorization.Providers.Add<BodeAbpActivityAuthorizationProvider>();
 
             DefaultDbContextInitializer.Instance.MapperAssemblies.Add(Assembly.GetExecutingAssembly());

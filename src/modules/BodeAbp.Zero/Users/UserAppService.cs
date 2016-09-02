@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Threading.Tasks;
-using Abp.Application.Navigation;
 using Abp.Application.Services;
 using Abp.Application.Services.Dto;
 using Abp.Application.Services.Query;
@@ -33,7 +32,6 @@ namespace BodeAbp.Zero.Users
         public AbpUserManager UserManager { protected get; set; }
         public IRepository<User, long> UserRepo { protected get; set; }
         public IRepository<Role, int> RoleRepo { protected get; set; }
-        public IUserNavigationManager UserNavigationManager { protected get; set; }
         public IRepository<ValidateCode, long> ValidateCodeRepo { protected get; set; }
 
         #region Account
@@ -195,16 +193,6 @@ namespace BodeAbp.Zero.Users
 
         #region Admin
         
-        /// <summary>
-        /// 获取用户导航栏
-        /// </summary>
-        /// <returns>目录集合</returns>
-        public async Task<IReadOnlyList<UserMenu>> GetUserNavigations()
-        {
-            var userMenus = await UserNavigationManager.GetMenusAsync(AbpSession.ToUserIdentifier());
-            return userMenus;
-        }
-
         /// <summary>
         /// 获取用户列表数据
         /// </summary>

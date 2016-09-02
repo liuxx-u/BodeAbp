@@ -23,10 +23,7 @@ namespace WebDemo.Web
         {
             //Enable database based localization
             //Configuration.Modules.Zero().LanguageManagement.EnableDbLocalization();
-
-            //Configure navigation/menu
-            Configuration.Navigation.Providers.Add<WebDemoNavigationProvider>();
-
+            
             //Configure Hangfire
             //Configuration.BackgroundJobs.UseHangfire(configuration =>
             //{

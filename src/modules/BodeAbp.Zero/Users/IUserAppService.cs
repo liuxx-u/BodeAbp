@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using Abp.Application.Navigation;
 using Abp.Application.Services;
 using Abp.Application.Services.Dto;
 using BodeAbp.Zero.Application.Users.Dtos;
@@ -55,15 +54,8 @@ namespace BodeAbp.Zero.Users
         Task ChangeUserName(ChangeUserNameInput input);
 
         #endregion
-
-
+        
         #region Admin
-
-        /// <summary>
-        /// 获取用户导航栏
-        /// </summary>
-        /// <returns>目录集合</returns>
-        Task<IReadOnlyList<UserMenu>> GetUserNavigations();
 
         /// <summary>
         /// 获取 用户信息 分页

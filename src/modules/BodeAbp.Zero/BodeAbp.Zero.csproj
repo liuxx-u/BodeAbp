@@ -83,10 +83,13 @@
     <Compile Include="Files\FileAppService.cs" />
     <Compile Include="Files\IFileAppService.cs" />
     <Compile Include="Navigations\Domain\Navigation.cs" />
+    <Compile Include="Navigations\Domain\NavigationInfo.cs" />
     <Compile Include="Navigations\Domain\NavigationManager.cs" />
+    <Compile Include="Navigations\Domain\RoleNavigation.cs" />
     <Compile Include="Navigations\Dtos\NavigationDto.cs" />
     <Compile Include="Navigations\INavigationAppService.cs" />
     <Compile Include="Navigations\ModelConfigs\NavigationConfiguration.cs" />
+    <Compile Include="Navigations\ModelConfigs\RoleNavigationConfiguration.cs" />
     <Compile Include="Navigations\NavigationAppService.cs" />
     <Compile Include="Navigations\SeedActions\NavigationSeedAction.cs" />
     <Compile Include="Providers\BodeAbpZeroSettingProvider.cs" />

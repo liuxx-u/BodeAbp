@@ -82,7 +82,6 @@
   <ItemGroup>
     <Compile Include="AbpConsts.cs" />
     <Compile Include="AbpServiceBase.cs" />
-    <Compile Include="Application\Navigation\NavigationManagerExtensions.cs" />
     <Compile Include="Application\Services\DisableDynamicWebApiAttribute.cs" />
     <Compile Include="Application\Services\Dto\QueryListPagedRequestInput.cs" />
     <Compile Include="Application\Services\Dto\QueryListRequestInput.cs" />
@@ -240,18 +239,6 @@
     <Compile Include="UI\Inputs\IInputType.cs" />
     <Compile Include="Runtime\Validation\AlwaysValidValueValidator.cs" />
     <Compile Include="Runtime\Validation\NumericValueValidator.cs" />
-    <Compile Include="Application\Navigation\HasMenuItemDefinitionsExtensions.cs" />
-    <Compile Include="Application\Navigation\IHasMenuItemDefinitions.cs" />
-    <Compile Include="Application\Navigation\INavigationManager.cs" />
-    <Compile Include="Application\Navigation\IUserNavigationManager.cs" />
-    <Compile Include="Application\Navigation\MenuDefinition.cs" />
-    <Compile Include="Application\Navigation\MenuItemDefinition.cs" />
-    <Compile Include="Application\Navigation\MenuItemDefinitionExtensions.cs" />
-    <Compile Include="Application\Navigation\UserNavigationManager.cs" />
-    <Compile Include="Application\Navigation\NavigationManager.cs" />
-    <Compile Include="Application\Navigation\NavigationProviderContext.cs" />
-    <Compile Include="Application\Navigation\UserMenu.cs" />
-    <Compile Include="Application\Navigation\UserMenuItem.cs" />
     <Compile Include="Application\Services\Dto\ComboboxItemDto.cs" />
     <Compile Include="Application\Services\Dto\EntityRequestInput.cs" />
     <Compile Include="Application\Services\Dto\EntityRequestInputOfTPrimaryKey.cs" />
@@ -382,13 +369,9 @@
     <Compile Include="Configuration\Startup\IAuthorizationConfiguration.cs" />
     <Compile Include="Configuration\Startup\IEventBusConfiguration.cs" />
     <Compile Include="Configuration\Startup\ILocalizationSourceList.cs" />
-    <Compile Include="Configuration\Startup\INavigationConfiguration.cs" />
-    <Compile Include="Application\Navigation\NavigationProvider.cs" />
-    <Compile Include="Application\Navigation\INavigationProviderContext.cs" />
     <Compile Include="Configuration\Startup\ISettingsConfiguration.cs" />
     <Compile Include="Configuration\Startup\LocalizationSourceList.cs" />
     <Compile Include="Configuration\Startup\ModuleConfigurations.cs" />
-    <Compile Include="Configuration\Startup\NavigationConfiguration.cs" />
     <Compile Include="Configuration\Startup\SettingsConfiguration.cs" />
     <Compile Include="Timing\DateTimeRange.cs" />
     <Compile Include="Domain\Entities\Auditing\AuditedEntity.cs" />
@@ -655,6 +638,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Timing\Timezone\Mapping\WindowsZones.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Application\Navigation\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />

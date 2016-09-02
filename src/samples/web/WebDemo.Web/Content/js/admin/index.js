@@ -32,7 +32,7 @@
         },
         created: function () {
             var self = this;
-            $.bode.ajax("/api/services/zero/navigation/GetAllNavigations", {}, function (navs) {
+            $.bode.ajax("/api/services/zero/navigation/GetUserNavigations", {}, function (navs) {
                 self.navs = navs;
 
                 if (self.navs.length > 1) {

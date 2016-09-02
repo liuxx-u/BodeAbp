@@ -153,7 +153,7 @@
                     if (!colType) continue;
 
                     var dataField = self.columns[i]["data"];
-                    var curValue = typeof (data[dataField]) === "undefined" ? "" : data[dataField].toString();
+                    var curValue = typeof (data[dataField]) === "undefined" || data[dataField]==null ? "" : data[dataField].toString();
 
                     if (["text", "number", "datepicker", "timepicker", "hide", "switch", "dropdown", "textarea"].indexOf(colType) >= 0) {
                         $("#" + dataField).val(curValue);
@@ -257,7 +257,7 @@
                     var r = this.columns[j]["render"];
                     var colType = this.columns[j]["type"];
                     //处理时间类型
-                    var v = d[this.columns[j]["data"]];
+                    var v = d[this.columns[j]["data"]] || "";
                     if (colType === "dropdown" || colType === "switch") {
                         var source = this.columns[j].source;
                         $('<td>' + this.tool.sourceRender(v, source, this.columns[j]["render"]) + '</td>').appendTo(tr);

@@ -131,6 +131,7 @@
             yes: function (index, layero) {
                 var dto = {
                     id: navigation.id,
+                    title:"编辑菜单",
                     name: $("#name").val(),
                     url: $("#url").val(),
                     icon: $("#icon").val(),
@@ -152,6 +153,7 @@
     function addNavigation(parentId) {
         popup({
             id: 0,
+            title:"新增菜单",
             name: "",
             url: "",
             icon: "",

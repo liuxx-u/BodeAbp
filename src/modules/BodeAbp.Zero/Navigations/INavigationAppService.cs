@@ -3,6 +3,8 @@ using System.ComponentModel;
 using Abp.Application.Services.Dto;
 using BodeAbp.Zero.Navigations.Dtos;
 using System.Threading.Tasks;
+using BodeAbp.Zero.Navigations.Domain;
+using System.Collections.Generic;
 
 namespace BodeAbp.Zero.Navigations
 {
@@ -15,12 +17,16 @@ namespace BodeAbp.Zero.Navigations
         #region 导航信息
 
         /// <summary>
-        /// 获取 导航信息分页
+        /// 获取 用户导航信息
         /// </summary>
         /// <returns></returns>
-        Task<NavigationListOutput[]> GetAllNavigations();
+        Task<ICollection<NavigationInfo>> GetUserNavigations();
 
-
+        /// <summary>
+        /// 获取 全部导航信息
+        /// </summary>
+        /// <returns></returns>
+        Task<ICollection<NavigationInfo>> GetAllNavigations();
 
         /// <summary>
         /// 添加 导航信息

@@ -664,11 +664,11 @@
     <Content Include="Areas\Admin\Views\Zero\UserList.cshtml" />
     <Content Include="Areas\Admin\Views\Zero\SettingList.cshtml" />
     <Content Include="Areas\Admin\Views\Zero\AuditLogs.cshtml" />
-    <Content Include="Areas\Admin\Views\Attribute\AttributeList.cshtml" />
-    <Content Include="Areas\Admin\Views\Attribute\AttributeOptionList.cshtml" />
-    <Content Include="Areas\Admin\Views\Attribute\SkuAttributeList.cshtml" />
-    <Content Include="Areas\Admin\Views\Attribute\SkuAttributeOptionList.cshtml" />
-    <Content Include="Areas\Admin\Views\Attribute\ClassifyList.cshtml" />
+    <Content Include="Areas\Admin\Views\Product\AttributeList.cshtml" />
+    <Content Include="Areas\Admin\Views\Product\AttributeOptionList.cshtml" />
+    <Content Include="Areas\Admin\Views\Product\SkuAttributeList.cshtml" />
+    <Content Include="Areas\Admin\Views\Product\SkuAttributeOptionList.cshtml" />
+    <Content Include="Areas\Admin\Views\Product\ClassifyList.cshtml" />
     <Content Include="Areas\Admin\Views\Zero\BackgroundJobList.cshtml" />
     <Content Include="Areas\Admin\Views\Zero\NavigationList.cshtml" />
     <None Include="Properties\PublishProfiles\211.149.223.24.pubxml" />
@@ -687,15 +687,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
-    <Compile Include="App_Start\WebDemoNavigationProvider.cs" />
     <Compile Include="App_Start\WebDemoWebModule.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\AccountController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
-    <Compile Include="Areas\Admin\Controllers\Product\AttributeController.cs" />
-    <Compile Include="Areas\Admin\Controllers\Product\ProductController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ProductController.cs" />
     <Compile Include="Areas\Admin\Controllers\ZeroController.cs" />
     <Compile Include="Content\js\plugs\ueditor\net\App_Code\Config.cs" />
     <Compile Include="Content\js\plugs\ueditor\net\App_Code\ConfigHandler.cs" />
@@ -790,7 +788,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Areas\Admin\Views\Product\" />
     <Folder Include="Content\sound\" />
     <Folder Include="Views\Account\" />
   </ItemGroup>

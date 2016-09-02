@@ -2673,7 +2673,7 @@ var domUtils = dom.domUtils = {
      * ```html
      * <span style="font-size:12px">ssss</span>
      * <span style="font-size:12px">bbbbb</span>
-     * <span style="font-size:13px">ssss</span>
+     * <span style="font-size:12px">ssss</span>
      * <span style="font-size:14px">bbbbb</span>
      *
      * <script>
@@ -2748,7 +2748,7 @@ var domUtils = dom.domUtils = {
      * ```html
      * <span style="font-size:12px">ssss</span>
      * <span style="font-size:12px">bbbbb</span>
-     * <span style="font-size:13px">ssss</span>
+     * <span style="font-size:12px">ssss</span>
      * <span style="font-size:14px">bbbbb</span>
      *
      * <script>
@@ -16233,7 +16233,7 @@ UE.plugins['list'] = function () {
                 lineWrapping:true
             });
             var dom = codeEditor.getWrapperElement();
-            dom.style.cssText = 'position:absolute;left:0;top:0;width:100%;height:100%;font-family:consolas,"Courier new",monospace;font-size:13px;';
+            dom.style.cssText = 'position:absolute;left:0;top:0;width:100%;height:100%;font-family:consolas,"Courier new",monospace;font-size:12px;';
             codeEditor.getScrollerElement().style.cssText = 'position:absolute;left:0;top:0;width:100%;height:100%;';
             codeEditor.refresh();
             return {
