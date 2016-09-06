@@ -15,7 +15,7 @@ namespace BodeAbp.Activity.Activities
 	/// <summary>
     ///  活动 服务
     /// </summary>
-    public class ActivitiesAppService : IActivitiesAppService
+    public class ActivitiesAppService : ApplicationService,IActivitiesAppService
     {
         private readonly IRepository<Classify> _classifyRepository;
         private readonly IRepository<Domain.Activity,long> _activityRepository;
