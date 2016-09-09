@@ -14,7 +14,6 @@ using Abp.Net.Mail;
 using Abp.Runtime.Session;
 using Abp.UI;
 using Abp.Utils.Drawing;
-using BodeAbp.Plugins.Core;
 using BodeAbp.Zero.Application.Users.Dtos;
 using BodeAbp.Zero.Roles.Domain;
 using BodeAbp.Zero.Users.Domain;
@@ -22,6 +21,7 @@ using BodeAbp.Zero.Users.Dtos;
 using Microsoft.AspNet.Identity;
 using System.Linq;
 using Abp.Extensions;
+using Abp.Plugins.SMS;
 
 namespace BodeAbp.Zero.Users
 {

@@ -4,10 +4,6 @@ using Abp.EntityFramework.Default;
 using Abp.Localization.Dictionaries;
 using Abp.Localization.Dictionaries.Xml;
 using Abp.Modules;
-using Abp.Rpc;
-using Abp.Rpc.Configuration;
-using Abp.Rpc.ProxyGenerator;
-using Abp.Rpc.Transport.Simple;
 using BodeAbp.Activity.Providers;
 
 namespace BodeAbp.Activity

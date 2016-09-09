@@ -2,7 +2,6 @@ using System.Linq;
 using System.Reflection;
 using Abp.Dependency;
 using Abp.Extensions;
-using Abp.Rpc.ProxyGenerator.Proxy;
 using Abp.WebApi.Configuration;
 using Abp.WebApi.Controllers.Dynamic.Builders;
 using Castle.DynamicProxy;
@@ -44,18 +43,18 @@ namespace Abp.WebApi.Controllers.Dynamic.Interceptors
                 try
                 {
                     var _config = IocManager.Instance.Resolve<IAbpWebApiModuleConfiguration>();
-                    if (_config.UseRpc)
-                    {
-                        var serviceProxyGenerater = IocManager.Instance.Resolve<IServiceProxyGenerater>();
-                        var serviceProxyFactory = IocManager.Instance.Resolve<IServiceProxyFactory>();
-                        var proxyService = serviceProxyGenerater.GenerateProxys(null).Single(invocation.Method.DeclaringType.IsAssignableFrom);
-                        var instance = serviceProxyFactory.CreateProxy(proxyService);
-                        invocation.ReturnValue = proxyService.GetMethods().Single(p => p.Name == invocation.Method.Name).Invoke(instance, invocation.Arguments);
-                    }
-                    else
-                    {
+                    //if (_config.UseRpc)
+                    //{
+                    //    var serviceProxyGenerater = IocManager.Instance.Resolve<IServiceProxyGenerater>();
+                    //    var serviceProxyFactory = IocManager.Instance.Resolve<IServiceProxyFactory>();
+                    //    var proxyService = serviceProxyGenerater.GenerateProxys(null).Single(invocation.Method.DeclaringType.IsAssignableFrom);
+                    //    var instance = serviceProxyFactory.CreateProxy(proxyService);
+                    //    invocation.ReturnValue = proxyService.GetMethods().Single(p => p.Name == invocation.Method.Name).Invoke(instance, invocation.Arguments);
+                    //}
+                    //else
+                    //{
                         invocation.ReturnValue = invocation.Method.Invoke(_proxiedObject, invocation.Arguments);
-                    }
+                    //}
                 }
                 catch (TargetInvocationException targetInvocation)
                 {

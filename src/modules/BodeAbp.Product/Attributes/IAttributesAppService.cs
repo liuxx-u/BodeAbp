@@ -4,14 +4,12 @@ using Abp.Application.Services.Dto;
 using BodeAbp.Product.Attributes.Dtos;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Abp.Rpc.Server.Attributes;
 
 namespace BodeAbp.Product.Attributes
 {
     /// <summary>
     ///  属性 服务
     /// </summary>
-    [RpcServiceBundle]
     [Description("属性接口")]
     public interface IAttributesAppService : IApplicationService
     {

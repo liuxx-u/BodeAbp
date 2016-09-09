@@ -22,10 +22,6 @@ using Abp.Configuration.Startup;
 using Abp.Json;
 using Abp.Web.Api.Description;
 using Abp.WebApi.Controllers.Dynamic.Binders;
-using Abp.Rpc.Configuration;
-using Abp.Rpc.ProxyGenerator;
-using Abp.Rpc.Transport.Simple;
-using Abp.Rpc.ProxyGenerator.Proxy;
 
 namespace Abp.WebApi
 {
@@ -58,10 +54,10 @@ namespace Abp.WebApi
             InitializeModelBinders(httpConfiguration);
             
             //配置Rpc客户端
-            Configuration.Modules.AbpRpc()
-                .AddClient()
-                .UseSharedFileRouteManager(@"d:\routes.txt")
-                .UseSimpleTransport();
+            //Configuration.Modules.AbpRpc()
+            //    .AddClient()
+            //    .UseSharedFileRouteManager(@"d:\routes.txt")
+            //    .UseSimpleTransport();
         }
         
         public override void PostInitialize()
@@ -69,11 +65,11 @@ namespace Abp.WebApi
             var dynamicApiControllers = DynamicApiControllerManager.GetAll();
 
             //生成Rpc代理服务
-            if (Configuration.Modules.AbpWebApi().UseRpc)
-            {
-                var serviceProxyGenerater = IocManager.Resolve<IServiceProxyGenerater>();
-                serviceProxyGenerater.GenerateProxys(dynamicApiControllers.Select(p => p.ServiceInterfaceType));
-            }
+            //if (Configuration.Modules.AbpWebApi().UseRpc)
+            //{
+            //    var serviceProxyGenerater = IocManager.Resolve<IServiceProxyGenerater>();
+            //    serviceProxyGenerater.GenerateProxys(dynamicApiControllers.Select(p => p.ServiceInterfaceType));
+            //}
 
             foreach (var controllerInfo in dynamicApiControllers)
             {

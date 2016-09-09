@@ -2,16 +2,13 @@
 using System.ComponentModel;
 using Abp.Application.Services.Dto;
 using BodeAbp.Activity.Activities.Dtos;
-using System.Collections.Generic;
 using System.Threading.Tasks;
-using Abp.Rpc.Server.Attributes;
 
 namespace BodeAbp.Activity.Activities
 {
     /// <summary>
     ///  活动 服务
     /// </summary>
-    [RpcServiceBundle]
     [Description("活动接口")]
     public interface IActivitiesAppService : IApplicationService
     {

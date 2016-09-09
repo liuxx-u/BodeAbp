@@ -1,4 +1,4 @@
-using System;
+锘縰sing System;
 using System.Linq;
 using System.Collections.Generic;
 using System.Globalization;
@@ -12,7 +12,7 @@ namespace Abp.Extensions
     /// </summary>
     public static class StringExtensions
     {
-        #region 字符串操作
+        #region 脳脰路没麓庐虏脵脳梅
         
         /// <summary>
         /// Adds a char to end of given string if it does not ends with the char.
@@ -387,10 +387,10 @@ namespace Abp.Extensions
         }
 
         /// <summary>
-        /// 将JSON字符串还原为对象
+        /// 陆芦JSON脳脰路没麓庐禄鹿脭颅脦陋露脭脧贸
         /// </summary>
-        /// <typeparam name="T">要转换的目标类型</typeparam>
-        /// <param name="json">JSON字符串 </param>
+        /// <typeparam name="T">脪陋脳陋禄禄碌脛脛驴卤锚脌脿脨脥</typeparam>
+        /// <param name="json">JSON脳脰路没麓庐 </param>
         /// <returns></returns>
         public static T FromJsonString<T>(this string json)
         {
@@ -398,10 +398,10 @@ namespace Abp.Extensions
         }
 
         /// <summary>
-        /// 将JSON字符串还原为对象
+        /// 陆芦JSON脳脰路没麓庐禄鹿脭颅脦陋露脭脧贸
         /// </summary>
-        /// <param name="json">JSON字符串 </param>
-        /// <param name="type">要转换的目标类型</param>
+        /// <param name="json">JSON脳脰路没麓庐 </param>
+        /// <param name="type">脪陋脳陋禄禄碌脛脛驴卤锚脌脿脨脥</param>
         /// <returns></returns>
         public static object FromJsonString(this string json,Type type)
         {
@@ -410,14 +410,14 @@ namespace Abp.Extensions
 
         #endregion
 
-        #region 正则表达式
+        #region 脮媒脭貌卤铆麓茂脢陆
 
         /// <summary>
-        /// 指示所指定的正则表达式在指定的输入字符串中是否找到了匹配项
+        /// 脰赂脢戮脣霉脰赂露篓碌脛脮媒脭貌卤铆麓茂脢陆脭脷脰赂露篓碌脛脢盲脠毛脳脰路没麓庐脰脨脢脟路帽脮脪碌陆脕脣脝楼脜盲脧卯
         /// </summary>
-        /// <param name="value">要搜索匹配项的字符串</param>
-        /// <param name="pattern">要匹配的正则表达式模式</param>
-        /// <returns>如果正则表达式找到匹配项，则为 true；否则，为 false</returns>
+        /// <param name="value">脪陋脣脩脣梅脝楼脜盲脧卯碌脛脳脰路没麓庐</param>
+        /// <param name="pattern">脪陋脝楼脜盲碌脛脮媒脭貌卤铆麓茂脢陆脛拢脢陆</param>
+        /// <returns>脠莽鹿没脮媒脭貌卤铆麓茂脢陆脮脪碌陆脝楼脜盲脧卯拢卢脭貌脦陋 true拢禄路帽脭貌拢卢脦陋 false</returns>
         public static bool IsMatch(this string value, string pattern)
         {
             if (value == null)
@@ -428,11 +428,11 @@ namespace Abp.Extensions
         }
 
         /// <summary>
-        /// 在指定的输入字符串中搜索指定的正则表达式的第一个匹配项
+        /// 脭脷脰赂露篓碌脛脢盲脠毛脳脰路没麓庐脰脨脣脩脣梅脰赂露篓碌脛脮媒脭貌卤铆麓茂脢陆碌脛碌脷脪禄赂枚脝楼脜盲脧卯
         /// </summary>
-        /// <param name="value">要搜索匹配项的字符串</param>
-        /// <param name="pattern">要匹配的正则表达式模式</param>
-        /// <returns>一个对象，包含有关匹配项的信息</returns>
+        /// <param name="value">脪陋脣脩脣梅脝楼脜盲脧卯碌脛脳脰路没麓庐</param>
+        /// <param name="pattern">脪陋脝楼脜盲碌脛脮媒脭貌卤铆麓茂脢陆脛拢脢陆</param>
+        /// <returns>脪禄赂枚露脭脧贸拢卢掳眉潞卢脫脨鹿脴脝楼脜盲脧卯碌脛脨脜脧垄</returns>
         public static string Match(this string value, string pattern)
         {
             if (value == null)
@@ -443,11 +443,11 @@ namespace Abp.Extensions
         }
 
         /// <summary>
-        /// 在指定的输入字符串中搜索指定的正则表达式的所有匹配项的字符串集合
+        /// 脭脷脰赂露篓碌脛脢盲脠毛脳脰路没麓庐脰脨脣脩脣梅脰赂露篓碌脛脮媒脭貌卤铆麓茂脢陆碌脛脣霉脫脨脝楼脜盲脧卯碌脛脳脰路没麓庐录炉潞脧
         /// </summary>
-        /// <param name="value"> 要搜索匹配项的字符串 </param>
-        /// <param name="pattern"> 要匹配的正则表达式模式 </param>
-        /// <returns> 一个集合，包含有关匹配项的字符串值 </returns>
+        /// <param name="value"> 脪陋脣脩脣梅脝楼脜盲脧卯碌脛脳脰路没麓庐 </param>
+        /// <param name="pattern"> 脪陋脝楼脜盲碌脛脮媒脭貌卤铆麓茂脢陆脛拢脢陆 </param>
+        /// <returns> 脪禄赂枚录炉潞脧拢卢掳眉潞卢脫脨鹿脴脝楼脜盲脧卯碌脛脳脰路没麓庐脰碌 </returns>
         public static IEnumerable<string> Matches(this string value, string pattern)
         {
             if (value == null)
@@ -459,7 +459,7 @@ namespace Abp.Extensions
         }
 
         /// <summary>
-        /// 是否电子邮件
+        /// 脢脟路帽碌莽脳脫脫脢录镁
         /// </summary>
         public static bool IsEmail(this string value)
         {
@@ -468,7 +468,7 @@ namespace Abp.Extensions
         }
 
         /// <summary>
-        /// 是否是IP地址
+        /// 脢脟路帽脢脟IP碌脴脰路
         /// </summary>
         public static bool IsIpAddress(this string value)
         {
@@ -477,7 +477,7 @@ namespace Abp.Extensions
         }
 
         /// <summary>
-        /// 是否是整数
+        /// 脢脟路帽脢脟脮没脢媒
         /// </summary>
         public static bool IsNumeric(this string value)
         {
@@ -486,7 +486,7 @@ namespace Abp.Extensions
         }
 
         /// <summary>
-        /// 是否是Unicode字符串
+        /// 脢脟路帽脢脟Unicode脳脰路没麓庐
         /// </summary>
         public static bool IsUnicode(this string value)
         {
@@ -495,7 +495,7 @@ namespace Abp.Extensions
         }
 
         /// <summary>
-        /// 是否Url字符串
+        /// 脢脟路帽Url脳脰路没麓庐
         /// </summary>
         public static bool IsUrl(this string value)
         {
@@ -504,10 +504,10 @@ namespace Abp.Extensions
         }
 
         /// <summary>
-        /// 是否身份证号，验证如下3种情况：
-        /// 1.身份证号码为15位数字；
-        /// 2.身份证号码为18位数字；
-        /// 3.身份证号码为17位数字+1个字母
+        /// 脢脟路帽脡铆路脻脰陇潞脜拢卢脩茅脰陇脠莽脧脗3脰脰脟茅驴枚拢潞
+        /// 1.脡铆路脻脰陇潞脜脗毛脦陋15脦禄脢媒脳脰拢禄
+        /// 2.脡铆路脻脰陇潞脜脗毛脦陋18脦禄脢媒脳脰拢禄
+        /// 3.脡铆路脻脰陇潞脜脗毛脦陋17脦禄脢媒脳脰+1赂枚脳脰脛赂
         /// </summary>
         public static bool IsIdentityCard(this string value)
         {
@@ -516,14 +516,37 @@ namespace Abp.Extensions
         }
 
         /// <summary>
-        /// 是否手机号码
+        /// 脢脟路帽脢脰禄煤潞脜脗毛
         /// </summary>
         /// <param name="value"></param>
-        /// <param name="isRestrict">是否按严格格式验证</param>
+        /// <param name="isRestrict">脢脟路帽掳麓脩脧赂帽赂帽脢陆脩茅脰陇</param>
         public static bool IsMobileNumber(this string value, bool isRestrict = false)
         {
             string pattern = isRestrict ? @"^[1][3-8]\d{9}$" : @"^[1]\d{10}$";
             return value.IsMatch(pattern);
+        }
+
+        /// <summary>杩斿洖骞冲彴鏃犲叧鐨凥ashcode
+        /// </summary>
+        /// <param name="s"></param>
+        /// <returns></returns>
+        public static int GetStringHashcode(this string s)
+        {
+            if (string.IsNullOrEmpty(s)) return 0;
+
+            unchecked
+            {
+                int hash = 23;
+                foreach (char c in s)
+                {
+                    hash = (hash << 5) - hash + c;
+                }
+                if (hash < 0)
+                {
+                    hash = Math.Abs(hash);
+                }
+                return hash;
+            }
         }
 
         #endregion

@@ -3,7 +3,5 @@
     public interface IAbpQueueModuleConfiguration
     {
         IAbpQueueModuleConfiguration InitQueue();
-
-        IAbpQueueModuleConfiguration RegisterUnhandledExceptionHandler();
     }
 }

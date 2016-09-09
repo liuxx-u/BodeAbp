@@ -1,11 +1,12 @@
-﻿using Abp.Dependency;
+﻿using Abp;
+using Abp.Dependency;
 using Abp.Modules;
+using Abp.Plugins.SMS;
 using Bode.Sms.Juhe;
-using BodeAbp.Plugins.Core;
 
 namespace BodeAbp.Sms.Juhe
 {
-    [DependsOn(typeof(BodeAbpPluginsCoreModule))]
+    [DependsOn(typeof(AbpKernelModule))]
     public class BodeAbpSmsJuheModule : AbpModule
     {
         public override void Initialize()

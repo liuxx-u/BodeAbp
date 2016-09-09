@@ -3,7 +3,7 @@
 namespace BodeAbp.Queue.Configuration
 {
     /// <summary>
-    /// Defines extension methods to <see cref="IModuleConfigurations"/> to allow to configure ABP Web module.
+    /// Defines extension methods to <see cref="IModuleConfigurations"/> to allow to configure ABP Queue module.
     /// </summary>
     public static class AbpQueueConfigurationExtensions
     {

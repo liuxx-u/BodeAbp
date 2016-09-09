@@ -20,6 +20,9 @@ using Abp.Runtime.Session;
 using Abp.Runtime.Validation.Interception;
 using Abp.Threading;
 using Abp.Threading.BackgroundWorkers;
+using Abp.Serialization;
+using Abp.Schedule;
+using Abp.Net.Sockets.Framing;
 
 namespace Abp
 {
@@ -121,6 +124,13 @@ namespace Abp
             IocManager.RegisterIfNot<IAbpSession, ClaimsAbpSession>(DependencyLifeStyle.Singleton);
             IocManager.RegisterIfNot<IRealTimeNotifier, NullRealTimeNotifier>(DependencyLifeStyle.Singleton);
             IocManager.RegisterIfNot<INotificationStore, NullNotificationStore>(DependencyLifeStyle.Singleton);
+
+            IocManager.RegisterIfNot<ISerializer<string>, JsonSerializer>(DependencyLifeStyle.Singleton);
+            IocManager.RegisterIfNot<ISerializer<byte[]>, BinarySerializer>(DependencyLifeStyle.Singleton);
+            IocManager.RegisterIfNot<ISerializer<object>, StringObjectSerializer>(DependencyLifeStyle.Singleton);
+            
+            IocManager.RegisterIfNot<IScheduleService, ScheduleService>(DependencyLifeStyle.Transient);
+            IocManager.RegisterIfNot<IMessageFramer, LengthPrefixMessageFramer>(DependencyLifeStyle.Transient);
 
             IocManager.RegisterIfNot<IBackgroundJobManager, BackgroundJobManager>(DependencyLifeStyle.Singleton);
 

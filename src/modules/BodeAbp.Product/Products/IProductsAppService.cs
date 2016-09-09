@@ -6,7 +6,6 @@ using System.Text;
 using System.Threading.Tasks;
 using Abp.Application.Services;
 using Abp.Application.Services.Dto;
-using Abp.Rpc.Server.Attributes;
 using BodeAbp.Product.Products.Dtos;
 
 namespace BodeAbp.Product.Products
@@ -14,7 +13,6 @@ namespace BodeAbp.Product.Products
     /// <summary>
     /// 商品  应用服务
     /// </summary>
-    [RpcServiceBundle]
     [Description("商品接口")]
     public interface IProductsAppService : IApplicationService
     {

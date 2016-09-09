@@ -121,6 +121,7 @@
     <Compile Include="Domain\Entities\Asset\AssetType.cs" />
     <Compile Include="Domain\Entities\Asset\IAsset.cs" />
     <Compile Include="Extensions\CollectionExtensions.cs" />
+    <Compile Include="Extensions\DictionaryExtensions.cs" />
     <Compile Include="Extensions\EnumExtensions.cs" />
     <Compile Include="Extensions\ExpressionExtensions.cs" />
     <Compile Include="Extensions\ParamterCheckExtensions.cs" />
@@ -160,6 +161,7 @@
     <Compile Include="Net\Remoting\SocketRequestHandlerContext.cs" />
     <Compile Include="Net\Sockets\Buffer\BufferItemCreator.cs" />
     <Compile Include="Net\Sockets\Buffer\BufferPool.cs" />
+    <Compile Include="Net\Sockets\Buffer\BufferQueue.cs" />
     <Compile Include="Net\Sockets\Buffer\IBufferPool.cs" />
     <Compile Include="Net\Sockets\Buffer\IntelliPool.cs" />
     <Compile Include="Net\Sockets\Buffer\IPool.cs" />
@@ -212,6 +214,8 @@
     <Compile Include="Notifications\UserNotificationInfoExtensions.cs" />
     <Compile Include="Notifications\UserNotificationManager.cs" />
     <Compile Include="Notifications\UserNotificationState.cs" />
+    <Compile Include="ObjectId.cs" />
+    <Compile Include="Plugins\SMS\ISms.cs" />
     <Compile Include="RealTime\OnlineClientManagerExtensions.cs" />
     <Compile Include="Reflection\FolderAssemblyFinder.cs" />
     <Compile Include="Reflection\MultiSourceAssemblyFinder.cs" />
@@ -232,6 +236,10 @@
     <Compile Include="RealTime\OnlineClient.cs" />
     <Compile Include="RealTime\OnlineClientManager.cs" />
     <Compile Include="Runtime\Serialization\BinarySerializationHelper.cs" />
+    <Compile Include="Serialization\JsonSerializer.cs" />
+    <Compile Include="Serialization\BinarySerializer.cs" />
+    <Compile Include="Serialization\StringObjectSerializer.cs" />
+    <Compile Include="Serialization\ISerializer.cs" />
     <Compile Include="Threading\ThreadCultureSanitizer.cs" />
     <Compile Include="Threading\BackgroundWorkers\BackgroundWorkerManager.cs" />
     <Compile Include="Threading\BackgroundWorkers\BackgroundWorkerBase.cs" />

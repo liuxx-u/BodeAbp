@@ -68,22 +68,6 @@
       <Project>{c771c4f7-465a-4778-a8ed-4fe7c50bb94a}</Project>
       <Name>BodeAbp.Product</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\rpc\Abp.Rpc.ProxyGenerator\Abp.Rpc.ProxyGenerator.csproj">
-      <Project>{41251653-1219-4db1-a77b-fb6c932700b3}</Project>
-      <Name>Abp.Rpc.ProxyGenerator</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\..\rpc\Abp.Rpc.Transport.DotNetty\Abp.Rpc.Transport.DotNetty.csproj">
-      <Project>{38be1000-5478-48d3-9fc2-9fafb523dbcf}</Project>
-      <Name>Abp.Rpc.Transport.DotNetty</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\..\rpc\Abp.Rpc.Transport.Simple\Abp.Rpc.Transport.Simple.csproj">
-      <Project>{d52aee53-199a-446e-a73b-dbca1670ef0f}</Project>
-      <Name>Abp.Rpc.Transport.Simple</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\..\rpc\Abp.Rpc\Abp.Rpc.csproj">
-      <Project>{51dec5ed-8897-43c4-a612-44a2dd9da07b}</Project>
-      <Name>Abp.Rpc</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\..\frame\Abp\Abp.csproj">
       <Project>{2c221d3b-5f54-4c5b-8082-318636415132}</Project>
       <Name>Abp</Name>

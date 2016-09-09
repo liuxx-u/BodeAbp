@@ -13,8 +13,7 @@ namespace RemotingPerformanceTest.Server
             IocManager.IocContainer.AddFacility<LoggingFacility>(f => f.UseLog4Net().WithConfig("log4net.config"));
 
             Configuration.Modules.AbpQueue()
-                .InitQueue()
-                .RegisterUnhandledExceptionHandler();
+                .InitQueue();
         }
     }
 }

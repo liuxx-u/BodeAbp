@@ -1,7 +1,6 @@
 ﻿using System.ComponentModel;
 using System.Threading.Tasks;
 using Abp.Application.Services;
-using Abp.Rpc.Server.Attributes;
 using BodeAbp.Activity.Interactions.Dtos;
 
 namespace BodeAbp.Activity.Interactions
@@ -9,7 +8,6 @@ namespace BodeAbp.Activity.Interactions
     /// <summary>
     /// 活动互动服务
     /// </summary>
-    [RpcServiceBundle]
     [Description("活动互动接口")]
     public interface IInteractionsAppService : IApplicationService
     {

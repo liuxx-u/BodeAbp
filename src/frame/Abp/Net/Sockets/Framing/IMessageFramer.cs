@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace Abp.Net.Sockets.Framing
 {
-    public interface IMessageFramer : ITransientDependency
+    public interface IMessageFramer
     {
         void UnFrameData(IEnumerable<ArraySegment<byte>> data);
         void UnFrameData(ArraySegment<byte> data);

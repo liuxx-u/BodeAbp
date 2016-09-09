@@ -1,8 +1,8 @@
 ﻿using Abp.Dependency;
-using Abp.Schedule;
-using Abp.Net.Sockets.Framing;
-using Castle.Core.Logging;
-using System;
+using BodeAbp.Queue.Broker.Client;
+using BodeAbp.Queue.Broker.LongPolling;
+using Castle.MicroKernel.Registration;
+using BodeAbp.Queue.Broker.DeleteMessageStrategies;
 
 namespace BodeAbp.Queue.Configuration
 {
@@ -11,16 +11,20 @@ namespace BodeAbp.Queue.Configuration
         public IIocManager IocManager { get; set; }
         public IAbpQueueModuleConfiguration InitQueue()
         {
-            //IocManager.Register<IScheduleService, ScheduleService>(DependencyLifeStyle.Transient);
-            //IocManager.Register<IMessageFramer, LengthPrefixMessageFramer>(DependencyLifeStyle.Transient);
+            IocManager.Register<ProducerManager, ProducerManager>();
+            IocManager.Register<ConsumerManager, ConsumerManager>();
+            IocManager.Register<SuspendedPullRequestManager, SuspendedPullRequestManager>();
             return this;
-
         }
 
-        public IAbpQueueModuleConfiguration RegisterUnhandledExceptionHandler()
+        public IAbpQueueModuleConfiguration UseDeleteMessageByTimeStrategy(int maxStorageHours = 24 * 30)
         {
-            var logger = IocManager.Resolve<ILoggerFactory>().Create(GetType().FullName);
-            AppDomain.CurrentDomain.UnhandledException += (sender, e) => logger.ErrorFormat("Unhandled exception: {0}", e.ExceptionObject);
+            IocManager.IocContainer.Register(Component.For<IDeleteMessageStrategy>().UsingFactoryMethod(() => new DeleteMessageByTimeStrategy(maxStorageHours)));
+            return this;
+        }
+        public IAbpQueueModuleConfiguration UseDeleteMessageByCountStrategy(int maxChunkCount = 100)
+        {
+            IocManager.IocContainer.Register(Component.For<IDeleteMessageStrategy>().UsingFactoryMethod(() => new DeleteMessageByCountStrategy(maxChunkCount)));
             return this;
         }
     }

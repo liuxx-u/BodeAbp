@@ -93,14 +93,6 @@
       <Project>{c771c4f7-465a-4778-a8ed-4fe7c50bb94a}</Project>
       <Name>BodeAbp.Product</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\rpc\Abp.Rpc.Transport.DotNetty\Abp.Rpc.Transport.DotNetty.csproj">
-      <Project>{38be1000-5478-48d3-9fc2-9fafb523dbcf}</Project>
-      <Name>Abp.Rpc.Transport.DotNetty</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\..\rpc\Abp.Rpc\Abp.Rpc.csproj">
-      <Project>{51dec5ed-8897-43c4-a612-44a2dd9da07b}</Project>
-      <Name>Abp.Rpc</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

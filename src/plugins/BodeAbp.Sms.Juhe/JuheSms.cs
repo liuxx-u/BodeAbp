@@ -1,6 +1,6 @@
 ﻿using Abp.Extensions;
 using Abp.Helper;
-using BodeAbp.Plugins.Core;
+using Abp.Plugins.SMS;
 using Newtonsoft.Json.Linq;
 using System.Configuration;
 using System.Text;
