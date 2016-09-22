@@ -68,7 +68,10 @@
     <Compile Include="Attributes\Domain\Attribute.cs" />
     <Compile Include="Attributes\Domain\AttributeOption.cs" />
     <Compile Include="Attributes\Domain\ProductClassify.cs" />
+    <Compile Include="Attributes\Dtos\OperableAttributeDto.cs" />
+    <Compile Include="Products\Dtos\ProductAttributeDto.cs" />
     <Compile Include="Products\Dtos\ProductDto.cs" />
+    <Compile Include="Products\Dtos\ProductExtendAttributeDto.cs" />
     <Compile Include="Skus\Domain\SkuAttribute.cs" />
     <Compile Include="Skus\Domain\SkuAttributeOption.cs" />
     <Compile Include="Attributes\Dtos\AttributeDto.cs" />
@@ -78,6 +81,9 @@
     <Compile Include="Attributes\ModelConfigs\AttributeConfiguration.cs" />
     <Compile Include="Attributes\ModelConfigs\AttributeOptionConfiguration.cs" />
     <Compile Include="Attributes\ModelConfigs\ProductClassifyConfiguration.cs" />
+    <Compile Include="Skus\Dtos\SkuAttributeDto.cs" />
+    <Compile Include="Skus\Dtos\SkuAttributeOptionDto.cs" />
+    <Compile Include="Skus\ISkusAppService.cs" />
     <Compile Include="Skus\ModelConfigs\SkuAttributeConfiguration.cs" />
     <Compile Include="Skus\ModelConfigs\SkuAttributeOptionConfiguration.cs" />
     <Compile Include="Products\Domain\ProductAttribute.cs" />
@@ -104,9 +110,10 @@
     <Compile Include="Skus\Event\AddStoreEventData.cs" />
     <Compile Include="Skus\ModelConfigs\GoodsConfiguration.cs" />
     <Compile Include="Skus\ModelConfigs\GoodsSkuAttributeConfiguration.cs" />
+    <Compile Include="Skus\SkusAppService.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Skus\Dtos\" />
+    <Folder Include="Configuration\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

@@ -2,6 +2,7 @@
 {
     public interface IAbpQueueModuleConfiguration
     {
+
         IAbpQueueModuleConfiguration InitQueue();
 
         IAbpQueueModuleConfiguration UseDeleteMessageByTimeStrategy(int maxStorageHours = 24 * 30);

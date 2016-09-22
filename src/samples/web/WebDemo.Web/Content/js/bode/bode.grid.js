@@ -257,12 +257,18 @@
                     var r = this.columns[j]["render"];
                     var colType = this.columns[j]["type"];
                     //处理时间类型
-                    var v = d[this.columns[j]["data"]] || "";
+                    var v = d[this.columns[j]["data"]];
                     if (colType === "dropdown" || colType === "switch") {
                         var source = this.columns[j].source;
                         $('<td>' + this.tool.sourceRender(v, source, this.columns[j]["render"]) + '</td>').appendTo(tr);
                     } else if (colType === "img") {
                         $('<td><img src="' + v + '" style="width:120px;height:80px;"/></td>').appendTo(tr);
+                    }
+                    else if (colType === "datepicker" || colType === "timepicker") {
+                        if (!v) return "";
+                        var date = new Date(v);
+                        var format = colType === "datepicker" ? "yyyy-MM-dd" : "yyyy-MM-dd hh:mm";
+                        $('<td>' + $.bode.tools.timeFormat(date, format) + '</td>').appendTo(tr);
                     }
                     else if (colType === "command") {
                         var self = this;

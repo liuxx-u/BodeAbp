@@ -7,6 +7,8 @@ namespace BodeAbp.Product.Products.ModelConfigs
     {
         public ProductAttributeConfiguration()
         {
+            HasRequired(p => p.Attribute);
+            HasOptional(p => p.AttributeOption);
             HasRequired(p => p.Product).WithMany(p => p.Attributes).HasForeignKey(p => p.ProductId);
         }
     }

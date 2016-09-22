@@ -5,12 +5,14 @@ using System.Web;
 using System.Web.Mvc;
 using Abp.Extensions;
 using BodeAbp.Product.Attributes.Domain;
+using System.Threading.Tasks;
+using Abp.Dependency;
+using BodeAbp.Product.Attributes;
 
 namespace WebDemo.Web.Areas.Admin.Controllers
 {
     public class ProductController : Controller
     {
-
         public ActionResult AttributeList()
         {
             ViewBag.AttributeTypes = typeof(AttributeType).ToDictionary().Select(p => new
@@ -40,5 +42,19 @@ namespace WebDemo.Web.Areas.Admin.Controllers
         {
             return View();
         }
+
+        public async Task<ActionResult> AddProduct()
+        {
+            var attributesService = IocManager.Instance.Resolve<IAttributesAppService>();
+            ViewBag.Classifies = await attributesService.GetClassifySelectedOptions();
+            return View();
+        }
+
+        public ActionResult ProductList()
+        {
+            return View();
+        }
+
+
     }
 }

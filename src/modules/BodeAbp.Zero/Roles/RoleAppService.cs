@@ -40,6 +40,7 @@ namespace BodeAbp.Zero.Roles
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
+        [AbpAuthorize]
         public async Task<PagedResultOutput<GetRoleListOutput>> GetRolePagedList(QueryListPagedRequestInput input)
         {
             int total;

@@ -57,7 +57,7 @@ namespace BodeAbp.Product.Skus.Domain
             skuAttribute.CheckNotNull("skuAttribute");
             skuAttribute.Name.CheckNotNullOrEmpty("skuAttribute.Name");
 
-            if (_skuAttributeRepository.CheckExists(p => p.Name == skuAttribute.Name))
+            if (_skuAttributeRepository.CheckExists(p => p.ProductClassifyId == skuAttribute.ProductClassifyId && p.Name == skuAttribute.Name))
             {
                 throw new UserFriendlyException("该SKU属性已存在");
             }
@@ -69,12 +69,12 @@ namespace BodeAbp.Product.Skus.Domain
         /// </summary>
         /// <param name="skuAttribute">SKU属性</param>
         /// <returns></returns>
-        public async Task UpdateSkuAttributeTempateAsync(SkuAttribute skuAttribute)
+        public async Task UpdateSkuAttributeAsync(SkuAttribute skuAttribute)
         {
             skuAttribute.CheckNotNull("skuAttribute");
             skuAttribute.Name.CheckNotNullOrEmpty("skuAttribute.Name");
 
-            if (_skuAttributeRepository.CheckExists(p => p.Name == skuAttribute.Name, skuAttribute.Id))
+            if (_skuAttributeRepository.CheckExists(p => p.ProductClassifyId == skuAttribute.ProductClassifyId && p.Name == skuAttribute.Name, skuAttribute.Id))
             {
                 throw new UserFriendlyException("该SKU属性已存在");
             }
@@ -86,13 +86,26 @@ namespace BodeAbp.Product.Skus.Domain
         /// </summary>
         /// <param name="classify">分类</param>
         /// <returns></returns>
-        public async Task<ICollection<SkuAttribute>> GetSkuAttributeByClassify(ProductClassify classify)
+        public ICollection<SkuAttribute> GetSkuAttributeByClassify(ProductClassify classify)
         {
-            classify.CheckNotNull("classify");
-            var classifyIds = classify.ParentIds.Split(",").Select(int.Parse).ToList();
-            classifyIds.Add(classify.Id);
 
-            return await _skuAttributeRepository.GetAllListAsync(p => p.ProductClassifyId == null || classifyIds.Contains(p.ProductClassifyId.Value));
+            classify.CheckNotNull("Classify");
+            var attributes = new List<SkuAttribute>();
+
+            var classifyIds = classify.ParentIds.IsNullOrWhiteSpace()
+                ? new List<int>()
+                : classify.ParentIds.Split(",", StringSplitOptions.RemoveEmptyEntries).Select(int.Parse).ToList();
+
+            classifyIds.Add(classify.Id);
+            classifyIds.Reverse();//将id集合倒序
+            classifyIds.Add(0);//在集合末尾添加公共属性的ClassifyId
+
+            foreach (var classifyId in classifyIds)
+            {
+                var existAttributeNames = attributes.Select(p => p.Name);
+                attributes.AddRange(_skuAttributeRepository.GetAllList(p => p.ProductClassifyId == classifyId && !existAttributeNames.Contains(p.Name)));
+            }
+            return attributes;
         }
 
         /// <summary>
@@ -104,7 +117,7 @@ namespace BodeAbp.Product.Skus.Domain
         {
             classifyId.CheckGreaterThan("classifyId", 0);
             var classify = await _classifyRepository.GetAsync(classifyId);
-            return await GetSkuAttributeByClassify(classify);
+            return GetSkuAttributeByClassify(classify);
         }
 
         #endregion

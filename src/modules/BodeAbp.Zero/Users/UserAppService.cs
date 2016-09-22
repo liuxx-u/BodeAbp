@@ -33,6 +33,8 @@ namespace BodeAbp.Zero.Users
         public IRepository<User, long> UserRepo { protected get; set; }
         public IRepository<Role, int> RoleRepo { protected get; set; }
         public IRepository<ValidateCode, long> ValidateCodeRepo { protected get; set; }
+        public IRepository<UserLoginAttempt, long> LoginAttemptRepo { protected get; set; }
+
 
         #region Account
         
@@ -237,6 +239,14 @@ namespace BodeAbp.Zero.Users
         {
             var user = await UserManager.GetUserByIdAsync(input.UserId);
             await UserManager.SetRoles(user, input.RoleNames);
+        }
+
+        /// <inheritdoc/>
+        public async Task<PagedResultOutput<UserLoginAttemptOutPut>> GetUserLoginLogList(QueryListPagedRequestInput input)
+        {
+            int total;
+            var list = await LoginAttemptRepo.GetAll().Where(input, out total).ToListAsync();
+            return new PagedResultOutput<UserLoginAttemptOutPut>(total, list.MapTo<List<UserLoginAttemptOutPut>>());
         }
 
         #endregion

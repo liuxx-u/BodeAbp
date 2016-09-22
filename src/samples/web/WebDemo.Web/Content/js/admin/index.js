@@ -13,14 +13,14 @@
             navs: [],
             curFirstNav: {},
             openNav: {},
-            activeLeafNav: {url:"/admin/home/table"}
+            activeLeafNav: {url:"/admin/home/default"}
         },
         methods:{
             firstNavClick: function (nav) {
                 if (this.curFirstNav.id == nav.id) return;
                 this.curFirstNav = nav;
-                if (nav.items.length > 0) {
-                    this.openNav = nav.items[0];
+                if (nav.children.length > 0) {
+                    this.openNav = nav.children[0];
                 }
             },
             secondNavClick: function (secNav) {

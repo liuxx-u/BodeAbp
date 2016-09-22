@@ -1,8 +1,27 @@
-﻿
-@{
-    ViewBag.Title = "SkuAttributeOptionList";
-    Layout = "~/Areas/Admin/Views/Shared/_GridLayout.cshtml";
+﻿@{
+    ViewBag.Title = "SKU属性选项列表";
+    Layout = "~/Areas/Admin/Views/Shared/_TreeGridLayout.cshtml";
 }
 
-<h2>SkuAttributeOptionList</h2>
+@section customScript{
+    <script type="text/javascript">
+        treeOption.title = "SKU属性";
+        treeOption.initialValue="null";
+        treeOption.tableParamField = "skuAttributeId";
+        treeOption.url = "/api/services/product/skus/GetOptionalSkuAttributeTreeData";
 
+        tableOption.url = {
+            read: "/api/services/product/skus/GetSkuAttributeOptionPagedList",
+            add: "/api/services/product/skus/CreateSkuAttributeOption",
+            edit: "/api/services/product/skus/UpdateSkuAttributeOption",
+            delete: "/api/services/product/skus/DeleteSkuAttributeOption",
+        };
+        tableOption.columns = [
+                { data: "id", title: "编号" },
+                { data: "value", title: "选项名称", type: "text", query: true },
+                { data: "orderNo", title: "排序号", type: "number", query: true },
+                { data: "remark", title: "备注", type: "text", query: true },
+                { title: "操作选项", type: "command", actions: [] }
+        ];
+    </script>
+}

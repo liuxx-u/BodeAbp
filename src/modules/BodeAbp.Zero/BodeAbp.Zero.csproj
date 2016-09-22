@@ -130,6 +130,7 @@
     <Compile Include="Users\Dtos\ResetPasswordInput.cs" />
     <Compile Include="Users\Dtos\SetUserRoleInput.cs" />
     <Compile Include="Users\Dtos\UserDto.cs" />
+    <Compile Include="Users\Dtos\UserLoginAttemptOutPut.cs" />
     <Compile Include="Users\Dtos\UserRoleSelectOutPut.cs" />
     <Compile Include="Users\Dtos\ValidateCodeDto.cs" />
     <Compile Include="Users\IUserAppService.cs" />

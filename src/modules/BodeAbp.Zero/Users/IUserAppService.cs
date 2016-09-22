@@ -85,6 +85,13 @@ namespace BodeAbp.Zero.Users
         /// <returns>业务操作结果</returns>
         Task SetUserRoles(SetUserRoleInput input);
 
+        /// <summary>
+        /// 获取用户登录日志 分页
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        Task<PagedResultOutput<UserLoginAttemptOutPut>> GetUserLoginLogList(QueryListPagedRequestInput input);
+
         #endregion
 
     }

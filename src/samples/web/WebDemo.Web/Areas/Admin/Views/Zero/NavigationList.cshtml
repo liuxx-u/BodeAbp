@@ -54,7 +54,7 @@
             <div class="tree-item">
                 <i class="tree-dot"></i>
                 <div class="tree-item-name">
-                    <span>{{node.name}}【{{node.navigationType==2?"角色访问":node.navigationType==1?"登录访问":"匿名访问"}}】【{{node.url}}】</span>
+                    <span>{{node.name}}【{{node.navigationType==2?"角色访问":node.navigationType==1?"登录访问":"游客访问"}}】【{{node.url}}】</span>
                     <div class="tree-actions">
                         <i class="fa fa-plus" v-on:click="add(node.id);"></i>
                         <i class="fa fa-edit" v-on:click="edit(node);"></i>

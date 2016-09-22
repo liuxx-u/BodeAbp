@@ -76,6 +76,18 @@
       <Project>{b60885e6-735e-4926-97a2-8699e6725f1f}</Project>
       <Name>BodeAbp.Activity</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\..\rpc\Abp.Rpc.ProxyGenerator\Abp.Rpc.ProxyGenerator.csproj">
+      <Project>{41251653-1219-4db1-a77b-fb6c932700b3}</Project>
+      <Name>Abp.Rpc.ProxyGenerator</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\rpc\Abp.Rpc.Transport.DotNetty\Abp.Rpc.Transport.DotNetty.csproj">
+      <Project>{38be1000-5478-48d3-9fc2-9fafb523dbcf}</Project>
+      <Name>Abp.Rpc.Transport.DotNetty</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\rpc\Abp.Rpc\Abp.Rpc.csproj">
+      <Project>{51dec5ed-8897-43c4-a612-44a2dd9da07b}</Project>
+      <Name>Abp.Rpc</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

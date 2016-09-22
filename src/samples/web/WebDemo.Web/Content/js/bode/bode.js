@@ -14,6 +14,7 @@
         },
         input: {
             formatDiscount: function (oObj) {
+                if (!oObj) return;
                 oObj.keyup(function () {
                     var reg = $(this).val().match(/\d+\.?\d{0,2}/);
                     var txt = '';
@@ -30,6 +31,7 @@
                 });
             },
             formatTime: function (oObj, showTime) {
+                if (!oObj) return;
                 var minView = showTime ? 1 : 2;
                 var format = showTime ? "yyyy-MM-dd hh:ii" : "yyyy-MM-dd";
                 oObj.datetimepicker({

@@ -74,9 +74,9 @@ namespace BodeAbp.Zero.Navigations.Domain
     public enum NavigationType
     {
         /// <summary>
-        /// 匿名用户可访问
+        /// 游客可访问
         /// </summary>
-        [Description("匿名访问")]
+        [Description("游客访问")]
         Anonymouse = 0,
 
         /// <summary>

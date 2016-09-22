@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Abp.Domain.Entities.Asset
+﻿namespace Abp.Domain.Entities.Asset
 {
     /// <summary>
     /// 资产类型
@@ -19,7 +13,7 @@ namespace Abp.Domain.Entities.Asset
         /// <summary>
         /// 视频
         /// </summary>
-        Vidio,
+        Video,
 
         /// <summary>
         /// 文档

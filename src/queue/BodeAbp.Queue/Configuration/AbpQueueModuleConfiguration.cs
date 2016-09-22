@@ -9,7 +9,8 @@ namespace BodeAbp.Queue.Configuration
 {
     public class AbpQueueModuleConfiguration : IAbpQueueModuleConfiguration
     {
-        public IIocManager IocManager { get; set; }
+        public IIocManager IocManager { protected get; set; }
+
         public IAbpQueueModuleConfiguration InitQueue()
         {
             IocManager.Register<ProducerManager, ProducerManager>();

@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using Abp.Domain.Entities;
 using Abp.Domain.Entities.Auditing;
 using Abp.Timing;
+using System.ComponentModel;
 
 namespace BodeAbp.Zero.Users.Domain
 {
@@ -98,18 +99,46 @@ namespace BodeAbp.Zero.Users.Domain
     /// </summary>
     public enum AbpLoginResultType : byte
     {
+        /// <summary>
+        /// 成功
+        /// </summary>
+        [Description("成功")]
         Success = 1,
 
+        /// <summary>
+        /// 用户名错误
+        /// </summary>
+        [Description("用户名错误")]
         InvalidUserName,
 
+        /// <summary>
+        /// 密码错误
+        /// </summary>
+        [Description("密码错误")]
         InvalidPassword,
 
+        /// <summary>
+        /// 用户未激活
+        /// </summary>
+        [Description("用户未激活")]
         UserIsNotActive,
 
+        /// <summary>
+        /// 邮箱未验证
+        /// </summary>
+        [Description("邮箱未验证")]
         EmailIsNotConfirmed,
 
+        /// <summary>
+        /// 手机号码未验证
+        /// </summary>
+        [Description("手机号码未验证")]
         PhoneNoIsNotConfirm,
-
+        
+        /// <summary>
+        /// 未知的三方登录
+        /// </summary>
+        [Description("未知的三方登录")]
         UnknownExternalLogin
     }
 }

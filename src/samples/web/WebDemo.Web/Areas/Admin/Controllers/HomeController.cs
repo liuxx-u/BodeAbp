@@ -18,11 +18,6 @@ namespace WebDemo.Web.Areas.Admin.Controllers
 
         public ActionResult Table()
         {
-            ViewBag.Enums = typeof(EnumTest).ToDictionary().Select(p => new
-            {
-                value = p.Key,
-                text = p.Value
-            }).ToList();
             return View();
         }
 

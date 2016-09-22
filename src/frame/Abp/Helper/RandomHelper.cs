@@ -1,7 +1,7 @@
 using System;
 using Abp.Collections.Extensions;
 
-namespace Abp
+namespace Abp.Helper
 {
     /// <summary>
     /// A shortcut to use <see cref="Random"/> class.

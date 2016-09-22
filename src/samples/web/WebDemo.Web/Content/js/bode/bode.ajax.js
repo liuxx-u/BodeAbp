@@ -15,7 +15,7 @@
             url: url,
             data: JSON.stringify(data),
             contentType: "application/json; charset=utf-8",
-            header: header,
+            headers: header,
             success: function (data) {
                 layer.close(loadIndex);
 
@@ -23,7 +23,7 @@
                     func(data.result);
                 }
                 else if (data.unAuthorizedRequest) {
-                    $.bode.auth.clearToken();
+                    //$.bode.auth.clearToken();
                     location.href = "/Admin/Accout/Login";
                 }
                 else {

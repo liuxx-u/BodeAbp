@@ -33,9 +33,10 @@ namespace BodeAbp.Zero.Navigations.Domain
         /// </summary>
         /// <param name="navigationRepository"></param>
         /// <param name="roleNavigationRepository"></param>
-        public NavigationManager(IRepository<Navigation> navigationRepository, IRepository<RoleNavigation> roleNavigationRepository)
+        public NavigationManager(IRepository<Navigation> navigationRepository, IRepository<RoleNavigation> roleNavigationRepository, IRepository<UserRole, long> userRoleRepository)
         {
             _navigationRepository = navigationRepository;
+            _userRoleRepository = userRoleRepository;
             _roleNavigationRepository = roleNavigationRepository;
         }
 
@@ -143,7 +144,6 @@ namespace BodeAbp.Zero.Navigations.Domain
             if (AbpSession.UserId.HasValue)
             {
                 exp.Or(p => p.NavigationType == NavigationType.Logined);
-
                 var roleIds = _userRoleRepository.GetAll().Where(p => p.UserId == AbpSession.UserId.Value).Select(p => p.RoleId);
                 var navigationIds = _roleNavigationRepository.GetAll().Where(p => roleIds.Contains(p.RoleId)).Select(p => p.NavigationId);
                 exp.Or(p => p.NavigationType == NavigationType.RoleLimit && navigationIds.Contains(p.Id));

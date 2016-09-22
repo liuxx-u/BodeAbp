@@ -37,14 +37,14 @@ namespace BodeAbp.Product.Products
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
-        Task CreateProduct(CreateProductInput input);
+        Task CreateProduct(OperableProductDto input);
 
         /// <summary>
         /// 更新 商品
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
-        Task UpdateProduct(UpdateProductInput input);
+        Task UpdateProduct(OperableProductDto input);
 
 
         /// <summary>

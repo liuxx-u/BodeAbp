@@ -11,13 +11,14 @@ using System.Linq;
 using System.Threading.Tasks;
 using System;
 using Abp.Extensions;
+using Abp;
 
 namespace BodeAbp.Product.Attributes
 {
     /// <summary>
     ///  属性 服务
     /// </summary>
-    public class AttributesAppService : ApplicationService,IAttributesAppService
+    public class AttributesAppService : ApplicationService, IAttributesAppService
     {
         /// <summary>
         /// 产品属性 领域服务
@@ -41,36 +42,29 @@ namespace BodeAbp.Product.Attributes
         #region 属性模版
 
         /// <inheritdoc/>
-        public async Task<PagedResultOutput<GetAttributeListOutput>> GetAttributePagedList(QueryListPagedRequestInput input)
+        public async Task<PagedResultOutput<AttributeDto>> GetAttributePagedList(QueryListPagedRequestInput input)
         {
             var query = _attributeRepository.GetAll();
             //第一次查询只显示公共属性
             if (input.FilterGroup == null || !input.FilterGroup.Rules.Any(p => p.Field == "productClassifyId"))
             {
-                query = _attributeRepository.GetAll().Where(p => p.ProductClassifyId == null);
+                query = _attributeRepository.GetAll().Where(p => p.ProductClassifyId == 0);
             }
 
             int total;
             var list = await query.Where(input, out total).ToListAsync();
-            return new PagedResultOutput<GetAttributeListOutput>(total, list.MapTo<List<GetAttributeListOutput>>());
+            return new PagedResultOutput<AttributeDto>(total, list.MapTo<List<AttributeDto>>());
         }
 
         /// <inheritdoc/>
-        public async Task<GetAttributeOutput> GetAttribute(int id)
-        {
-            var result = await _attributeRepository.GetAsync(id);
-            return result.MapTo<GetAttributeOutput>();
-        }
-
-        /// <inheritdoc/>
-        public async Task CreateAttribute(CreateAttributeInput input)
+        public async Task CreateAttribute(AttributeDto input)
         {
             var attributeTemplate = input.MapTo<Domain.Attribute>();
             await attributeManager.CreateAttributeTempateAsync(attributeTemplate);
         }
 
         /// <inheritdoc/>
-        public async Task UpdateAttribute(UpdateAttributeInput input)
+        public async Task UpdateAttribute(AttributeDto input)
         {
             var attributeTemplate = await _attributeRepository.GetAsync(input.Id);
             input.MapTo(attributeTemplate);
@@ -79,47 +73,113 @@ namespace BodeAbp.Product.Attributes
 
         /// <inheritdoc/>
         public async Task DeleteAttribute(IdInput input)
-        { 
+        {
             await _attributeRepository.DeleteAsync(input.Id);
         }
 
-        //public async Task<ICollection<TreeOutPut>> GetOptionalAttributeTreeData()
-        //{
-        //    var attrbutes = await _attributeRepository.GetAll().AsNoTracking()
-        //        .Where(p => p.AttributeType == AttributeType.Switch || p.AttributeType == AttributeType.DropDown)
-        //        .Select(p => new { p.Id, p.Name, p.ProductClassifyId }).ToListAsync();
+        /// <inheritdoc/>
+        public async Task<ICollection<TreeOutPut>> GetOptionalAttributeTreeData()
+        {
+            var attrbutes = await _attributeRepository.GetAll().AsNoTracking()
+                .Where(p => p.AttributeType == AttributeType.Switch)
+                .OrderBy(p => p.OrderNo)
+                .Select(p => new { p.Id, p.Name, p.ProductClassifyId }).ToListAsync();
 
+            var classifyIds = attrbutes.Where(p => p.ProductClassifyId > 0).Select(p => p.ProductClassifyId).Distinct().ToList();
+            var parentIds = await _classifyRepository.GetAll().AsNoTracking().Where(p => classifyIds.Contains(p.Id)).Select(p => p.ParentIds).ToListAsync();
+            foreach (var pId in parentIds)
+            {
+                if (pId.IsNullOrWhiteSpace()) continue;
+                var parentClassifyIds = pId.Split(",", StringSplitOptions.RemoveEmptyEntries);
+                foreach (var classifyId in parentClassifyIds)
+                {
+                    int id;
+                    if (int.TryParse(classifyId, out id) && !classifyIds.Contains(id)) classifyIds.Add(id);
+                }
+            }
+            var treeClassifies = await _classifyRepository.GetAll().AsNoTracking()
+                .Where(p => classifyIds.Contains(p.Id))
+                .Select(p => new
+                {
+                    p.Id,
+                    p.Name,
+                    p.ParentId,
+                    p.ParentIds
+                }).ToListAsync();
 
-        //}
+            var treeNodes = treeClassifies.Select(p =>
+            {
+                var level = p.ParentIds.IsNullOrWhiteSpace() ? 0 : p.ParentIds.Split(",", StringSplitOptions.RemoveEmptyEntries).Length;
+                return new TreeOutPut
+                {
+                    Value = string.Format("classify_{0}_{1}", level, p.Id),
+                    Text = p.Name,
+                    ParentValue = level == 0 ? "null" : string.Format("classify_{0}_{1}", level - 1, p.ParentId)
+                };
+            }).ToList();
+
+            if (attrbutes.Any(p => p.ProductClassifyId == 0))
+            {
+                treeNodes.Insert(0, new TreeOutPut() { Value = "classify_0_0", Text = "公共属性", ParentValue = "null" });
+            }
+            treeNodes.AddRange(attrbutes.Select(p =>
+            {
+                var classify = treeClassifies.SingleOrDefault(m => m.Id == p.ProductClassifyId);
+                var level = classify == null || classify.ParentIds.IsNullOrWhiteSpace() ? 0 : classify.ParentIds.Split(",", StringSplitOptions.RemoveEmptyEntries).Length;
+                return new TreeOutPut
+                {
+                    Value = p.Id + "",
+                    Text = p.Name,
+                    ParentValue = string.Format("classify_{0}_{1}", level, p.ProductClassifyId),
+                };
+            }));
+            return treeNodes;
+        }
+
+        /// <inheritdoc/>
+        public async Task<ICollection<OperableAttributeGroupDto>> GetClassifyGroupAttributes(IdInput input)
+        {
+            var attributes = await attributeManager.GetAttributeByClassifyId(input.Id);
+            //未设置分组名的属性默认为“基础属性”分组
+            attributes.Where(p => p.GroupName.IsNullOrWhiteSpace()).ToList().ForEach(p => p.GroupName = "基础属性");
+
+            var result = attributes.GroupBy(p => p.GroupName).Select(p =>
+                new OperableAttributeGroupDto
+                {
+                    GroupName = p.Key,
+                    Attributes = p.OrderBy(m => m.OrderNo).MapTo<List<OperableAttributeDto>>()
+                }).ToList();
+            return result;
+        }
 
         #endregion
 
-        #region 属性值
+        #region 属性选项
 
         /// <inheritdoc/>
-        public async Task<PagedResultOutput<GetAttributeOptionListOutput>> GetAttributeOptionPagedList(QueryListPagedRequestInput input)
+        public async Task<PagedResultOutput<AttributeOptionDto>> GetAttributeOptionPagedList(QueryListPagedRequestInput input)
         {
             int total;
-            var list = await _attributeOptionRepository.GetAll().Where(input, out total).ToListAsync();
-            return new PagedResultOutput<GetAttributeOptionListOutput>(total, list.MapTo<List<GetAttributeOptionListOutput>>());
+
+            var query = _attributeOptionRepository.GetAll().AsNoTracking();
+            //首次加载不显示属性选项
+            if (input.FilterGroup == null || !input.FilterGroup.Rules.Any(p => p.Field == "attributeId"))
+            {
+                query = query.Where(p => false);
+            }
+            var list = await query.Where(input, out total).ToListAsync();
+            return new PagedResultOutput<AttributeOptionDto>(total, list.MapTo<List<AttributeOptionDto>>());
         }
 
         /// <inheritdoc/>
-        public async Task<GetAttributeOptionOutput> GetAttributeOption(int id)
-        {
-            var result = await _attributeOptionRepository.GetAsync(id);
-            return result.MapTo<GetAttributeOptionOutput>();
-        }
-
-        /// <inheritdoc/>
-        public async Task CreateAttributeOption(CreateAttributeOptionInput input)
+        public async Task CreateAttributeOption(AttributeOptionDto input)
         {
             var attributeValue = input.MapTo<AttributeOption>();
             await attributeManager.CreateAttributeOptionAsync(attributeValue);
         }
 
         /// <inheritdoc/>
-        public async Task UpdateAttributeOption(UpdateAttributeOptionInput input)
+        public async Task UpdateAttributeOption(AttributeOptionDto input)
         {
             var attributeValue = await _attributeOptionRepository.GetAsync(input.Id);
             input.MapTo(attributeValue);
@@ -178,6 +238,26 @@ namespace BodeAbp.Product.Attributes
 
             classifys.Insert(0, new TreeOutPut() { Value = "0", Text = "公共属性", ParentValue = "null" });
             return classifys.ToArray();
+        }
+
+        /// <inheritdoc/>
+        public async Task<ICollection<NameValue>> GetClassifySelectedOptions()
+        {
+            var classifies = await _classifyRepository.GetAll().AsNoTracking().Select(p => new { p.Id, p.Name, p.ParentIds }).ToListAsync();
+            var result = classifies.Select(p =>
+              {
+                  var name = string.Empty;
+                  if (!p.ParentIds.IsNullOrWhiteSpace())
+                  {
+                      foreach (var parentId in p.ParentIds.Split(",", StringSplitOptions.RemoveEmptyEntries).Select(int.Parse))
+                      {
+                          name += classifies.Single(m => m.Id == parentId).Name + "/";
+                      }
+                  }
+                  name += p.Name;
+                  return new NameValue(name, p.Id.ToString());
+              });
+            return result.OrderBy(p => p.Name).ToArray();
         }
 
         /// <inheritdoc/>

@@ -1,10 +1,11 @@
-using System.Linq;
-using System.Reflection;
+﻿using System.Reflection;
 using Abp.Dependency;
 using Abp.Extensions;
 using Abp.WebApi.Configuration;
 using Abp.WebApi.Controllers.Dynamic.Builders;
 using Castle.DynamicProxy;
+using Abp.Rpc.ProxyGenerator.Proxy;
+using System.Linq;
 
 namespace Abp.WebApi.Controllers.Dynamic.Interceptors
 {
@@ -39,22 +40,21 @@ namespace Abp.WebApi.Controllers.Dynamic.Interceptors
             //If method call is for generic type (T)...
             if (DynamicApiControllerActionHelper.IsMethodOfType(invocation.Method, typeof(T)))
             {
-                //Call real object's method
                 try
                 {
-                    var _config = IocManager.Instance.Resolve<IAbpWebApiModuleConfiguration>();
-                    //if (_config.UseRpc)
-                    //{
-                    //    var serviceProxyGenerater = IocManager.Instance.Resolve<IServiceProxyGenerater>();
-                    //    var serviceProxyFactory = IocManager.Instance.Resolve<IServiceProxyFactory>();
-                    //    var proxyService = serviceProxyGenerater.GenerateProxys(null).Single(invocation.Method.DeclaringType.IsAssignableFrom);
-                    //    var instance = serviceProxyFactory.CreateProxy(proxyService);
-                    //    invocation.ReturnValue = proxyService.GetMethods().Single(p => p.Name == invocation.Method.Name).Invoke(instance, invocation.Arguments);
-                    //}
-                    //else
-                    //{
+                    var config = IocManager.Instance.Resolve<IAbpWebApiModuleConfiguration>();
+                    if (config.UseRpc)
+                    {
+                        var serviceProxyGenerater = IocManager.Instance.Resolve<IServiceProxyGenerater>();
+                        var serviceProxyFactory = IocManager.Instance.Resolve<IServiceProxyFactory>();
+                        var proxyService = serviceProxyGenerater.GenerateProxys(null).Single(invocation.Method.DeclaringType.IsAssignableFrom);
+                        var instance = serviceProxyFactory.CreateProxy(proxyService);
+                        invocation.ReturnValue = proxyService.GetMethods().Single(p => p.Name == invocation.Method.Name).Invoke(instance, invocation.Arguments);
+                    }
+                    else
+                    {
                         invocation.ReturnValue = invocation.Method.Invoke(_proxiedObject, invocation.Arguments);
-                    //}
+                    }
                 }
                 catch (TargetInvocationException targetInvocation)
                 {

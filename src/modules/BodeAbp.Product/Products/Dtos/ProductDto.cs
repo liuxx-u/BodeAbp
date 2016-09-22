@@ -1,33 +1,23 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using Abp.Application.Services.Dto;
 using Abp.AutoMapper;
-using BodeAbp.Product.Products.Domain;
+using Abp;
+using System.Collections.Generic;
+using BodeAbp.Product.Attributes.Dtos;
 
 namespace BodeAbp.Product.Products.Dtos
 {
     /// <summary>
-    /// 商品Dto
+    /// 产品Dto
     /// </summary>
     public abstract class ProductDto : EntityDto
     {
         /// <summary>
-        /// 商品名称
+        /// 产品名称
         /// </summary>
         [Required]
-        [StringLength(Domain.Product.MaxNameLength)]
+        [StringLength(AbpStringLength.MaxLength64)]
         public string Name { get; set; }
-
-        /// <summary>
-        /// 商品简介
-        /// </summary>
-        [StringLength(Domain.Product.MaxBriefLength)]
-        public string Brief { get; set; }
-
-        /// <summary>
-        /// 商品详情
-        /// </summary>
-        public string Detail { get; set; }
 
         /// <summary>
         /// 原价
@@ -35,9 +25,9 @@ namespace BodeAbp.Product.Products.Dtos
         public decimal Price { get; set; }
 
         /// <summary>
-        /// 封面(16:9)
+        /// 封面
         /// </summary>
-        public string Cover2 { get; set; }
+        public string Cover { get; set; }
 
         /// <summary>
         /// 是否上架
@@ -45,29 +35,31 @@ namespace BodeAbp.Product.Products.Dtos
         public bool IsOnShelf { get; set; }
 
         /// <summary>
-        /// 上架时间
+        /// 分类Id
         /// </summary>
-        public DateTime? OnShelfTime { get; set; }
+        public int ClassifyId { get; set; }
+    }
+    
+    /// <summary>
+    /// 产品操作Dto
+    /// </summary>
+    [AutoMap(typeof(Domain.Product))]
+    public class OperableProductDto : ProductDto, IDoubleWayDto
+    {
+        /// <summary>
+        /// 产品属性
+        /// </summary>
+        public ICollection<OperableAttributeGroupDto> GroupAttributes { get; set; }
 
         /// <summary>
-        /// 枚举测试
+        /// 产品额外属性
         /// </summary>
-        public EnumTest EnumTest { get; set; }
-    }
+        public ICollection<ProductExtendAttributeDto> ExtendAttributes { get; set; }
 
-    [AutoMapTo(typeof(Domain.Product))]
-    public class CreateProductInput : ProductDto, IInputDto
-    {
-    }
-
-    [AutoMapTo(typeof(Domain.Product))]
-    public class UpdateProductInput : ProductDto, IInputDto
-    {
-    }
-
-    [AutoMapFrom(typeof(Domain.Product))]
-    public class UpdateProductOutput : ProductDto, IOutputDto
-    {
+        /// <summary>
+        /// 产品图片集合
+        /// </summary>
+        public ICollection<string> Albums { get; set; }
     }
 
     [AutoMapFrom(typeof(Domain.Product))]

@@ -18,10 +18,13 @@ using Abp.WebApi.Runtime.Caching;
 using Castle.MicroKernel.Registration;
 using Newtonsoft.Json.Serialization;
 using System.Web.Http.Description;
-using Abp.Configuration.Startup;
 using Abp.Json;
 using Abp.Web.Api.Description;
 using Abp.WebApi.Controllers.Dynamic.Binders;
+using Abp.Rpc.ProxyGenerator.Proxy;
+using Abp.Rpc.Configuration;
+using Abp.Rpc.ProxyGenerator;
+using Abp.Rpc.Transport.DotNetty;
 
 namespace Abp.WebApi
 {
@@ -52,24 +55,26 @@ namespace Abp.WebApi
             InitializeFormatters(httpConfiguration);
             InitializeRoutes(httpConfiguration);
             InitializeModelBinders(httpConfiguration);
-            
+
             //配置Rpc客户端
-            //Configuration.Modules.AbpRpc()
-            //    .AddClient()
-            //    .UseSharedFileRouteManager(@"d:\routes.txt")
-            //    .UseSimpleTransport();
+            if (Configuration.Modules.AbpWebApi().UseRpc)
+            {
+                Configuration.Modules.AbpRpc()
+                .AddClient()
+                .UseSharedFileRouteManager(@"d:\routes.txt")
+                .UseDotNettyTransport();
+            }
         }
-        
+
         public override void PostInitialize()
         {
             var dynamicApiControllers = DynamicApiControllerManager.GetAll();
-
             //生成Rpc代理服务
-            //if (Configuration.Modules.AbpWebApi().UseRpc)
-            //{
-            //    var serviceProxyGenerater = IocManager.Resolve<IServiceProxyGenerater>();
-            //    serviceProxyGenerater.GenerateProxys(dynamicApiControllers.Select(p => p.ServiceInterfaceType));
-            //}
+            if (Configuration.Modules.AbpWebApi().UseRpc)
+            {
+                var serviceProxyGenerater = IocManager.Resolve<IServiceProxyGenerater>();
+                serviceProxyGenerater.GenerateProxys(dynamicApiControllers.Select(p => p.ServiceInterfaceType));
+            }
 
             foreach (var controllerInfo in dynamicApiControllers)
             {
@@ -83,7 +88,7 @@ namespace Abp.WebApi
 
                 LogHelper.Logger.DebugFormat("Dynamic web api controller is created for type '{0}' with service name '{1}'.", controllerInfo.ServiceInterfaceType.FullName, controllerInfo.ServiceName);
             }
-
+            
             Configuration.Modules.AbpWebApi().HttpConfiguration.EnsureInitialized();
         }
 
@@ -147,9 +152,6 @@ namespace Abp.WebApi
             httpConfiguration.BindParameter(typeof(DateTime), abpApiDateTimeBinder);
             httpConfiguration.BindParameter(typeof(DateTime?), abpApiDateTimeBinder);
         }
-
-        private static void ConfigRpcClient()
-        {
-        }
+        
     }
 }

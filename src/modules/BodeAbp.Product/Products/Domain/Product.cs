@@ -2,12 +2,10 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Abp.Domain.Entities.Auditing;
 using BodeAbp.Product.Attributes.Domain;
 using BodeAbp.Product.Skus.Domain;
+using Abp;
 
 namespace BodeAbp.Product.Products.Domain
 {
@@ -17,70 +15,32 @@ namespace BodeAbp.Product.Products.Domain
     [Table("Product#Product")]
     public class Product : FullAuditedEntity<long>
     {
-        #region 常量
-
         /// <summary>
-        /// 商品名称<see cref="Name"/>最大长度
+        /// 构造函数
         /// </summary>
-        public const int MaxNameLength = 64;
+        public Product()
+        {
+            Assets = new List<ProductAsset>();
+            Attributes = new List<ProductAttribute>();
+            ExtendAttributes = new List<ProductExtendAttribute>();
+        }
 
         /// <summary>
-        /// 商品简介<see cref="Brief"/>最大长度
-        /// </summary>
-        public const int MaxBriefLength = 128;
-
-        /// <summary>
-        /// 商品编号<see cref="ProductNo"/>最大长度
-        /// </summary>
-        public const int MaxProductNoLength = 32;
-
-        #endregion
-
-        #region 属性
-
-        /// <summary>
-        /// 商品名称
+        /// 产品名称
         /// </summary>
         [Required]
-        [StringLength(MaxNameLength)]
+        [StringLength(AbpStringLength.MaxLength64)]
         public string Name { get; set; }
 
         /// <summary>
-        /// 商品简介
-        /// </summary>
-        [StringLength(MaxBriefLength)]
-        public string Brief { get; set; }
-
-        /// <summary>
-        /// 商品详情
-        /// </summary>
-        public string Detail { get; set; }
-
-        /// <summary>
-        /// 商品编号
-        /// </summary>
-        [StringLength(MaxProductNoLength)]
-        public string ProductNo { get; set; }
-
-        /// <summary>
-        /// 原价
+        /// 价格
         /// </summary>
         public decimal Price { get; set; }
 
         /// <summary>
-        /// 优惠价
+        /// 封面
         /// </summary>
-        public decimal PreferentialPrice { get; set; }
-
-        /// <summary>
-        /// 封面(1:1)
-        /// </summary>
-        public string Cover1 { get; set; }
-
-        /// <summary>
-        /// 封面(16:9)
-        /// </summary>
-        public string Cover2 { get; set; }
+        public string Cover { get; set; }
 
         /// <summary>
         /// 是否上架
@@ -93,6 +53,11 @@ namespace BodeAbp.Product.Products.Domain
         public DateTime? OnShelfTime { get; set; }
 
         /// <summary>
+        /// 下架时间
+        /// </summary>
+        public DateTime? OffShelfTime { get; set; }
+
+        /// <summary>
         /// 热度
         /// </summary>
         public int HotNo { get; set; }
@@ -103,20 +68,15 @@ namespace BodeAbp.Product.Products.Domain
         public int SalesNo { get; set; }
 
         /// <summary>
-        /// 枚举测试
+        /// 分类Id
         /// </summary>
-        public EnumTest EnumTest { get; set; }
+        public int ClassifyId { get; set; }
 
-        ///// <summary>
-        ///// 分类Id
-        ///// </summary>
-        //public int ClassifyId { get; set; }
-
-        ///// <summary>
-        ///// 分类
-        ///// </summary>
-        //[ForeignKey("ClassifyId")]
-        //public virtual ProductClassify Classify { get; set; }
+        /// <summary>
+        /// 分类
+        /// </summary>
+        [ForeignKey("ClassifyId")]
+        public virtual ProductClassify Classify { get; set; }
 
         /// <summary>
         /// 资源集合
@@ -135,23 +95,5 @@ namespace BodeAbp.Product.Products.Domain
         /// </summary>
         [ForeignKey("ProductId")]
         public virtual ICollection<ProductExtendAttribute> ExtendAttributes { get; set; }
-
-        /// <summary>
-        /// SKU集合
-        /// </summary>
-        [ForeignKey("ProductId")]
-        public virtual ICollection<Goods> Skus { get; set; }
-
-        #endregion
-    }
-
-    /// <summary>
-    /// 枚举测试
-    /// </summary>
-    public enum EnumTest
-    {
-        男装 = 1,
-        女装 = 2,
-        童装 = 3
     }
 }

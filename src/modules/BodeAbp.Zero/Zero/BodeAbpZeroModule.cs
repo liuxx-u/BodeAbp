@@ -5,10 +5,11 @@ using Abp.Localization.Dictionaries;
 using Abp.Localization.Dictionaries.Xml;
 using Abp.Modules;
 using BodeAbp.Zero.Providers;
+using Abp.EntityFramework;
 
 namespace BodeAbp.Zero
 {
-    [DependsOn(typeof(AbpKernelModule))]
+    [DependsOn(typeof(AbpEntityFrameworkModule))]
     public class BodeAbpZeroModule : AbpModule
     {
         /// <summary>

@@ -2,13 +2,15 @@
 using BodeAbp.Product.Attributes.Domain;
 using Abp.Application.Services.Dto;
 using System.ComponentModel.DataAnnotations;
+using System.Collections.Generic;
 
 namespace BodeAbp.Product.Attributes.Dtos
 {
     /// <summary>
     /// 属性Dto
     /// </summary>
-    public abstract class AttributeDto : EntityDto
+    [AutoMap(typeof(Attribute))]
+    public class AttributeDto : EntityDto, IDoubleWayDto
     {
         /// <summary>
         /// 模版名称
@@ -42,6 +44,11 @@ namespace BodeAbp.Product.Attributes.Dtos
         public bool IsRequired { get; set; }
 
         /// <summary>
+        /// 排序号
+        /// </summary>
+        public int OrderNo { get; set; }
+
+        /// <summary>
         /// 属性类型
         /// </summary>
         public AttributeType AttributeType { get; set; }
@@ -55,26 +62,6 @@ namespace BodeAbp.Product.Attributes.Dtos
         /// 分类Id，null表示公共属性
         /// </summary>
         public int? ProductClassifyId { get; set; }
-    }
-
-	[AutoMapTo(typeof(Attribute))]
-    public class CreateAttributeInput : AttributeDto, IInputDto
-    {
-    }
-
-	[AutoMapTo(typeof(Attribute))]
-    public class UpdateAttributeInput : AttributeDto, IInputDto
-    {
-    }
-
-	[AutoMapFrom(typeof(Attribute))]
-    public class GetAttributeOutput : AttributeDto, IOutputDto
-    {
-    }
-
-    [AutoMapFrom(typeof(Attribute))]
-    public class GetAttributeListOutput : AttributeDto, IOutputDto
-    {
     }
 }
 

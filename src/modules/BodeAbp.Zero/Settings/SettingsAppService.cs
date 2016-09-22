@@ -2,14 +2,11 @@
 using System.Linq;
 using System.Threading.Tasks;
 using Abp.Application.Services;
-using Abp.Application.Services.Dto;
 using Abp.Application.Services.Query;
 using Abp.AutoMapper;
 using Abp.Configuration;
 using Abp.Domain.Repositories;
 using Abp.Extensions;
-using Abp.Runtime.Caching;
-using Abp.UI;
 using BodeAbp.Zero.Settings.Domain;
 using BodeAbp.Zero.Settings.Dtos;
 
@@ -29,16 +26,6 @@ namespace BodeAbp.Zero.Settings
         /// 设置信息仓储
         /// </summary>
         public IRepository<Setting, long> _settingRepository { protected get; set; }
-        
-        private readonly ITypedCache<string, Dictionary<string, SettingInfo>> _applicationSettingCache;
-
-        /// <summary>
-        /// 构造函数
-        /// </summary>
-        public SettingsAppService(ICacheManager cacheManager)
-        {
-            _applicationSettingCache = cacheManager.GetApplicationSettingsCache();
-        }
 
         /// <inheritdoc/>
         public async Task<IEnumerable<SettingGroup>> GetApplicationSettingGroups()

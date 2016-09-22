@@ -5,6 +5,8 @@ using Abp.Domain.Services;
 using Abp.Extensions;
 using Abp.UI;
 using System.Linq;
+using Abp.Runtime.Caching;
+using System;
 
 namespace BodeAbp.Product.Attributes.Domain
 {
@@ -17,17 +19,21 @@ namespace BodeAbp.Product.Attributes.Domain
         private readonly IRepository<AttributeOption> _attributeOptionRepository;
         private readonly IRepository<Attribute> _attributeRepository;
 
+        private readonly ICache _cache;
+
         /// <summary>
         /// 构造函数
         /// </summary>
         public AttributeManager(
             IRepository<Attribute> attributeRepository,
             IRepository<ProductClassify> classifyRepository,
-            IRepository<AttributeOption> attributeOptionRepository)
+            IRepository<AttributeOption> attributeOptionRepository,
+            ICacheManager cacheManager)
         {
             _classifyRepository = classifyRepository;
             _attributeOptionRepository = attributeOptionRepository;
             _attributeRepository = attributeRepository;
+            _cache = cacheManager.GetCache("BodeAbpProduct");
         }
 
         #region 属性
@@ -71,13 +77,25 @@ namespace BodeAbp.Product.Attributes.Domain
         /// </summary>
         /// <param name="classify">分类</param>
         /// <returns></returns>
-        public async Task<ICollection<Attribute>> GetAttributeByClassify(ProductClassify classify)
+        public ICollection<Attribute> GetAttributeByClassify(ProductClassify classify)
         {
             classify.CheckNotNull("Classify");
-            var classifyIds = classify.ParentIds.Split(",").Select(int.Parse).ToList();
-            classifyIds.Add(classify.Id);
+            var attributes = new List<Attribute>();
 
-            return await _attributeRepository.GetAllListAsync(p => classifyIds.Contains(p.ProductClassifyId));
+            var classifyIds = classify.ParentIds.IsNullOrWhiteSpace()
+                ? new List<int>()
+                :classify.ParentIds.Split(",",StringSplitOptions.RemoveEmptyEntries).Select(int.Parse).ToList();
+
+            classifyIds.Add(classify.Id);
+            classifyIds.Reverse();//将id集合倒序
+            classifyIds.Add(0);//在集合末尾添加公共属性的ClassifyId
+
+            foreach (var classifyId in classifyIds)
+            {
+                var existAttributeNames = attributes.Select(p => p.Name);
+                attributes.AddRange(_attributeRepository.GetAllList(p => p.ProductClassifyId == classifyId && !existAttributeNames.Contains(p.Name)));
+            }
+            return attributes;
         }
 
         /// <summary>
@@ -89,7 +107,7 @@ namespace BodeAbp.Product.Attributes.Domain
         {
             classifyId.CheckGreaterThan("classifyId", 0);
             var classify = await _classifyRepository.GetAsync(classifyId);
-            return await GetAttributeByClassify(classify);
+            return GetAttributeByClassify(classify);
         }
 
         #endregion

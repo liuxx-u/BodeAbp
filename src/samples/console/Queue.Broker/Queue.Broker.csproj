@@ -80,10 +80,6 @@
       <Project>{2c221d3b-5f54-4c5b-8082-318636415132}</Project>
       <Name>Abp</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\queue\BodeAbp.Queue\BodeAbp.Queue.csproj">
-      <Project>{e949b3fe-306e-47d4-b0a3-fc33de344c30}</Project>
-      <Name>BodeAbp.Queue</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

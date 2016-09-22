@@ -50,6 +50,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Application\Protocols\ApplicationInvokeMessage.cs" />
+    <Compile Include="Application\RequestHandlers\ApplicationServiceInvokeRequestHandler.cs" />
+    <Compile Include="Application\ResponsHandlers\ApplicationServiceInvokeResponsHandler.cs" />
     <Compile Include="BodeAbpQueueModule.cs" />
     <Compile Include="Broker\BrokerController.cs" />
     <Compile Include="Broker\BrokerSetting.cs" />
@@ -190,6 +193,7 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

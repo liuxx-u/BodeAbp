@@ -22,12 +22,28 @@ namespace BodeAbp.Product.Products.Domain
         public virtual Product Product { get; set; }
 
         /// <summary>
-        /// 属性值Id
+        /// 属性Id
         /// </summary>
-        public int AttributeOptionId { get; set; }
+        public int AttributeId { get; set; }
+
+        /// <summary>
+        /// 属性
+        /// </summary>
+        [ForeignKey("AttributeId")]
+        public virtual Attribute Attribute { get; set; }
 
         /// <summary>
         /// 属性值
+        /// </summary>
+        public string Value { get; set; }
+
+        /// <summary>
+        /// 属性选项Id
+        /// </summary>
+        public int? AttributeOptionId { get; set; }
+
+        /// <summary>
+        /// 属性选项（属性为单选/多选时的值）
         /// </summary>
         [ForeignKey("AttributeOptionId")]
         public virtual AttributeOption AttributeOption { get; set; }

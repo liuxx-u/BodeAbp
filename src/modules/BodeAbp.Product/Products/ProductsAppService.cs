@@ -45,14 +45,14 @@ namespace BodeAbp.Product.Products
         }
 
         /// <inheritdoc/>
-        public async Task CreateProduct(CreateProductInput input)
+        public async Task CreateProduct(OperableProductDto input)
         {
             var product = input.MapTo<Domain.Product>();
             await _productRepository.InsertAsync(product);
         }
 
         /// <inheritdoc/>
-        public async Task UpdateProduct(UpdateProductInput input)
+        public async Task UpdateProduct(OperableProductDto input)
         {
             var product = await _productRepository.GetAsync(input.Id);
             input.MapTo(product);

@@ -2,6 +2,8 @@
 using System.ComponentModel.DataAnnotations.Schema;
 using Abp.Domain.Entities.Auditing;
 using BodeAbp.Product.Attributes.Domain;
+using System.ComponentModel.DataAnnotations;
+using Abp;
 
 namespace BodeAbp.Product.Skus.Domain
 {
@@ -14,6 +16,8 @@ namespace BodeAbp.Product.Skus.Domain
         /// <summary>
         /// SKU属性名称
         /// </summary>
+        [Required]
+        [StringLength(AbpStringLength.MaxLength32)]
         public string Name { get; set; }
         
         /// <summary>

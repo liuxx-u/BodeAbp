@@ -120,6 +120,7 @@
     <Compile Include="Domain\Entities\Asset\AssetEntity.cs" />
     <Compile Include="Domain\Entities\Asset\AssetType.cs" />
     <Compile Include="Domain\Entities\Asset\IAsset.cs" />
+    <Compile Include="AbpStringLength.cs" />
     <Compile Include="Extensions\CollectionExtensions.cs" />
     <Compile Include="Extensions\DictionaryExtensions.cs" />
     <Compile Include="Extensions\EnumExtensions.cs" />
@@ -461,7 +462,7 @@
     <Compile Include="Net\Mail\Smtp\SmtpEmailSender.cs" />
     <Compile Include="Net\Mail\Smtp\SmtpEmailSenderConfiguration.cs" />
     <Compile Include="Net\Mail\IEmailSender.cs" />
-    <Compile Include="RandomHelper.cs" />
+    <Compile Include="Helper\RandomHelper.cs" />
     <Compile Include="Runtime\Session\AbpSessionExtensions.cs" />
     <Compile Include="Threading\InternalAsyncHelper.cs" />
     <Compile Include="Extensions\DateTimeRangeExtensions.cs" />

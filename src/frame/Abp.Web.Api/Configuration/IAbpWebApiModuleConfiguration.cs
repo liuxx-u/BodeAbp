@@ -13,7 +13,7 @@ namespace Abp.WebApi.Configuration
         HttpConfiguration HttpConfiguration { get; set; }
 
         /// <summary>
-        /// 是否启用Rpc
+        /// 是否启用Rpc远程调度
         /// </summary>
         bool UseRpc { get; set; }
     }

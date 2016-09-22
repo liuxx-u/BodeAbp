@@ -1,7 +1,6 @@
 ﻿using System.Reflection;
 using System.Web.Http;
 using Abp.Application.Services;
-using Abp.Configuration.Startup;
 using Abp.Modules;
 using Abp.WebApi;
 using Abp.WebApi.Controllers.Dynamic.Builders;
@@ -13,6 +12,7 @@ using System;
 using WebDemo.WebApi.Swagger;
 using BodeAbp.Activity;
 using BodeAbp.Product;
+using Abp.WebApi.Configuration;
 
 namespace WebDemo.WebApi
 {
@@ -44,7 +44,7 @@ namespace WebDemo.WebApi
                 .ForAll<IApplicationService>(typeof(BodeAbpProductModule).Assembly, "product")
                 .Build();
 
-            //使用Rpc
+            //是否使用Rpc
             Configuration.Modules.AbpWebApi().UseRpc = false;
 
             Configuration.Modules.AbpWebApi().HttpConfiguration.Filters.Add(new HostAuthenticationFilter("Bearer"));

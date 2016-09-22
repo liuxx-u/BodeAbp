@@ -4,6 +4,7 @@ using Abp.Application.Services.Dto;
 using BodeAbp.Product.Attributes.Dtos;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Abp;
 
 namespace BodeAbp.Product.Attributes
 {
@@ -20,28 +21,21 @@ namespace BodeAbp.Product.Attributes
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
-        Task<PagedResultOutput<GetAttributeListOutput>> GetAttributePagedList(QueryListPagedRequestInput input);
-
-        /// <summary>
-        /// 获取 属性模版详情
-        /// </summary>
-        /// <param name="id">id</param>
-        /// <returns></returns>
-        Task<GetAttributeOutput> GetAttribute(int id);
-
+        Task<PagedResultOutput<AttributeDto>> GetAttributePagedList(QueryListPagedRequestInput input);
+        
         /// <summary>
         /// 添加 属性模版
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
-        Task CreateAttribute(CreateAttributeInput input);
+        Task CreateAttribute(AttributeDto input);
 
         /// <summary>
         /// 更新 属性模版
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
-        Task UpdateAttribute(UpdateAttributeInput input);
+        Task UpdateAttribute(AttributeDto input);
 
 
         /// <summary>
@@ -51,37 +45,43 @@ namespace BodeAbp.Product.Attributes
         /// <returns></returns>
         Task DeleteAttribute(IdInput input);
 
+        /// <summary>
+        /// 获取可选的属性模板树
+        /// </summary>
+        /// <returns></returns>
+        Task<ICollection<TreeOutPut>> GetOptionalAttributeTreeData();
+
+        /// <summary>
+        /// 根据分类Id获取属性分组
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        Task<ICollection<OperableAttributeGroupDto>> GetClassifyGroupAttributes(IdInput input);
+
         #endregion
 
-        #region 属性值
+        #region 属性选项
 
         /// <summary>
         /// 获取 属性值分页
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
-        Task<PagedResultOutput<GetAttributeOptionListOutput>> GetAttributeOptionPagedList(QueryListPagedRequestInput input);
-
-        /// <summary>
-        /// 获取 属性值详情
-        /// </summary>
-        /// <param name="id">id</param>
-        /// <returns></returns>
-        Task<GetAttributeOptionOutput> GetAttributeOption(int id);
-
+        Task<PagedResultOutput<AttributeOptionDto>> GetAttributeOptionPagedList(QueryListPagedRequestInput input);
+        
         /// <summary>
         /// 添加 属性值
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
-        Task CreateAttributeOption(CreateAttributeOptionInput input);
+        Task CreateAttributeOption(AttributeOptionDto input);
 
         /// <summary>
         /// 更新 属性值
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
-        Task UpdateAttributeOption(UpdateAttributeOptionInput input);
+        Task UpdateAttributeOption(AttributeOptionDto input);
 
 
         /// <summary>
@@ -106,6 +106,12 @@ namespace BodeAbp.Product.Attributes
         /// </summary>
         /// <returns></returns>
         Task<TreeOutPut[]> GetClassifyTreeData();
+
+        /// <summary>
+        /// 获取分类下拉选择框数据
+        /// </summary>
+        /// <returns></returns>
+        Task<ICollection<NameValue>> GetClassifySelectedOptions();
 
         /// <summary>
         /// 添加 分类

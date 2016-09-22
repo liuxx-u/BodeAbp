@@ -1,6 +1,6 @@
-﻿using Abp.WebApi.Configuration;
+﻿using Abp.Configuration.Startup;
 
-namespace Abp.Configuration.Startup
+namespace Abp.WebApi.Configuration
 {
     /// <summary>
     /// Defines extension methods to <see cref="IModuleConfigurations"/> to allow to configure Abp.Web.Api module.

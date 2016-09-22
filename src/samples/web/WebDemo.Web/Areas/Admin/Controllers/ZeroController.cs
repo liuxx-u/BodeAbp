@@ -5,6 +5,7 @@ using Abp.Application.Services.Dto;
 using Abp.BackgroundJobs;
 using Abp.Extensions;
 using BodeAbp.Zero.Navigations.Domain;
+using BodeAbp.Zero.Users.Domain;
 
 namespace WebDemo.Web.Areas.Admin.Controllers
 {
@@ -37,6 +38,16 @@ namespace WebDemo.Web.Areas.Admin.Controllers
         [Description("审计日志")]
         public ActionResult AuditLogs()
         {
+            return View();
+        }
+
+        public ActionResult UserLoginLogs()
+        {
+            ViewBag.LoginResults = typeof(AbpLoginResultType).ToDictionary().Select(p => new
+            {
+                value = p.Key,
+                text = p.Value
+            }).ToArray();
             return View();
         }
 

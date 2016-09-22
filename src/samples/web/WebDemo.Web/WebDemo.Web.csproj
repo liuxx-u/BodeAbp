@@ -302,6 +302,7 @@
     <Content Include="Content\js\beyond.min.js" />
     <Content Include="Content\js\admin\index.js" />
     <Content Include="Content\js\bode\bode.tree.js" />
+    <Content Include="Content\js\bode\bode.wizard.js" />
     <Content Include="Content\js\bootstrap.min.js" />
     <Content Include="Content\js\admin\cloud.js" />
     <Content Include="Content\js\plugs\colorpicker\jquery.minicolors.js" />
@@ -671,6 +672,8 @@
     <Content Include="Areas\Admin\Views\Product\ClassifyList.cshtml" />
     <Content Include="Areas\Admin\Views\Zero\BackgroundJobList.cshtml" />
     <Content Include="Areas\Admin\Views\Zero\NavigationList.cshtml" />
+    <Content Include="Areas\Admin\Views\Product\AddProduct.cshtml" />
+    <Content Include="Areas\Admin\Views\Zero\UserLoginLogs.cshtml" />
     <None Include="Properties\PublishProfiles\211.149.223.24.pubxml" />
     <Content Include="Content\js\bode\bode.js" />
     <Content Include="Content\js\plugs\layer\layer.js" />
