@@ -1,6 +1,8 @@
 using System;
 using System.Threading.Tasks;
 using Abp.Collections.Extensions;
+using Abp.Dependency;
+using Abp.Localization;
 using Abp.Threading;
 
 namespace Abp.Authorization
@@ -30,7 +32,7 @@ namespace Abp.Authorization
         {
             return AsyncHelper.RunSync(() => permissionChecker.IsGrantedAsync(user, permissionName));
         }
-
+        
         /// <summary>
         /// Checks if given user is granted for given permission.
         /// </summary>
@@ -197,16 +199,33 @@ namespace Abp.Authorization
             if (requireAll)
             {
                 throw new AbpAuthorizationException(
-                    "Required permissions are not granted. All of these permissions must be granted: " +
-                    string.Join(", ", permissionNames)
-                    );
+                    string.Format(
+                        L(permissionChecker, "AllOfThesePermissionsMustBeGranted", "Required permissions are not granted. All of these permissions must be granted: {0}"),
+                        string.Join(", ", permissionNames)
+                    )
+                );
             }
             else
             {
                 throw new AbpAuthorizationException(
-                    "Required permissions are not granted. At least one of these permissions must be granted: " +
-                    string.Join(", ", permissionNames)
-                    );
+                    string.Format(
+                        L(permissionChecker, "AtLeastOneOfThesePermissionsMustBeGranted", "Required permissions are not granted. At least one of these permissions must be granted: {0}"),
+                        string.Join(", ", permissionNames)
+                    )
+                );
+            }
+        }
+
+        public static string L(IPermissionChecker permissionChecker, string name, string defaultValue)
+        {
+            if (!(permissionChecker is IIocManagerAccessor))
+            {
+                return defaultValue;
+            }
+
+            using (var localizationManager = (permissionChecker as IIocManagerAccessor).IocManager.ResolveAsDisposable<ILocalizationManager>())
+            {
+                return localizationManager.Object.GetString(AbpConsts.LocalizationSourceName, name);
             }
         }
     }

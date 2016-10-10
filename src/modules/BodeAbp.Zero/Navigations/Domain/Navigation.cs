@@ -8,7 +8,7 @@ namespace BodeAbp.Zero.Navigations.Domain
     /// <summary>
     /// 导航信息
     /// </summary>
-    [Table("Zero#Navigation")]
+    [Table("Zero_Navigation")]
     public class Navigation : FullAuditedEntity
     {
         #region 常量

@@ -10,7 +10,7 @@ namespace BodeAbp.Zero.Roles.Domain
     /// <summary>
     /// 实体——角色信息
     /// </summary>
-    [Table("Zero#Role")]
+    [Table("Zero_Role")]
     public class Role : FullAuditedEntity<int>, IRole<int>
     {
         #region 常量

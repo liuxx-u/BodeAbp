@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Configuration;
 using Abp.Owin;
-using WebDemo.Api.Controllers;
-using WebDemo.Web;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
 using Owin;
+using WebDemo.Web;
+using WebDemo.Api.Controllers;
 
 [assembly: OwinStartup(typeof(Startup))]
 
@@ -27,6 +27,8 @@ namespace WebDemo.Web
             });
 
             app.UseExternalSignInCookie(DefaultAuthenticationTypes.ExternalCookie);
+            
+            //app.MapSignalR();
         }
 
         private static bool IsTrue(string appSettingName)

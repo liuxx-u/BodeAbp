@@ -62,7 +62,7 @@ namespace BodeAbp.Zero.Users
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
-        Task<PagedResultOutput<GetUserListOutput>> GetUserPagedList(QueryListPagedRequestInput input);
+        Task<PagedResultDto<GetUserListOutput>> GetUserPagedList(QueryListPagedRequestInput input);
 
         /// <summary>
         /// 锁定  用户
@@ -90,7 +90,7 @@ namespace BodeAbp.Zero.Users
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
-        Task<PagedResultOutput<UserLoginAttemptOutPut>> GetUserLoginLogList(QueryListPagedRequestInput input);
+        Task<PagedResultDto<UserLoginAttemptOutPut>> GetUserLoginLogList(QueryListPagedRequestInput input);
 
         #endregion
 

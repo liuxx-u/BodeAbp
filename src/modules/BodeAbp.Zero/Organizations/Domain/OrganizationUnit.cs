@@ -13,7 +13,7 @@ namespace BodeAbp.Zero.Organizations.Domain
     /// <summary>
     /// Represents an organization unit (OU).
     /// </summary>
-    [Table("Zero#OrganizationUnit")]
+    [Table("Zero_OrganizationUnit")]
     public class OrganizationUnit : FullAuditedEntity<long>
     {
         /// <summary>

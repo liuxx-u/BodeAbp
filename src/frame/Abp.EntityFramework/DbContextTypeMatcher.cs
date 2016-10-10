@@ -1,8 +1,9 @@
 using System;
 using System.Collections.Generic;
-using Abp.Collections.Extensions;
 using Abp.Dependency;
 using Abp.Domain.Uow;
+using Abp.Extensions;
+using Abp.Collections.Extensions;
 
 namespace Abp.EntityFramework
 {

@@ -19,7 +19,7 @@ namespace BodeAbp.Activity.Activities
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
-        Task<PagedResultOutput<GetActivityListOutput>> GetActivityPagedList(QueryListPagedRequestInput input);
+        Task<PagedResultDto<GetActivityListOutput>> GetActivityPagedList(QueryListPagedRequestInput input);
 
         /// <summary>
         /// 获取 活动详情
@@ -59,7 +59,7 @@ namespace BodeAbp.Activity.Activities
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
-        Task<PagedResultOutput<GetClassifyListOutput>> GetClassifyPagedList(QueryListPagedRequestInput input);
+        Task<PagedResultDto<GetClassifyListOutput>> GetClassifyPagedList(QueryListPagedRequestInput input);
 
         /// <summary>
         /// 获取 活动类型详情

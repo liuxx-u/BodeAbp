@@ -4,6 +4,9 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Text.RegularExpressions;
 using Newtonsoft.Json;
+using Abp.Collections.Extensions;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace Abp.Extensions
 {
@@ -177,6 +180,64 @@ namespace Abp.Extensions
         }
 
         /// <summary>
+        /// Removes first occurrence of the given postfixes from end of the given string.
+        /// </summary>
+        /// <param name="str">The string.</param>
+        /// <param name="postFixes">one or more postfix.</param>
+        /// <returns>Modified string or the same string if it has not any of given postfixes</returns>
+        public static string RemovePostFix(this string str, params string[] postFixes)
+        {
+            if (str.IsNullOrEmpty())
+            {
+                return null;
+            }
+
+            if (postFixes.IsNullOrEmpty())
+            {
+                return str;
+            }
+
+            foreach (var postFix in postFixes)
+            {
+                if (str.EndsWith(postFix))
+                {
+                    return str.Left(str.Length - postFix.Length);
+                }
+            }
+
+            return str;
+        }
+
+        /// <summary>
+        /// Removes first occurrence of the given prefixes from beginning of the given string.
+        /// </summary>
+        /// <param name="str">The string.</param>
+        /// <param name="preFixes">one or more prefix.</param>
+        /// <returns>Modified string or the same string if it has not any of given prefixes</returns>
+        public static string RemovePreFix(this string str, params string[] preFixes)
+        {
+            if (str.IsNullOrEmpty())
+            {
+                return null;
+            }
+
+            if (preFixes.IsNullOrEmpty())
+            {
+                return str;
+            }
+
+            foreach (var preFix in preFixes)
+            {
+                if (str.StartsWith(preFix))
+                {
+                    return str.Right(str.Length - preFix.Length);
+                }
+            }
+
+            return str;
+        }
+
+        /// <summary>
         /// Gets a substring of a string from end of the string.
         /// </summary>
         /// <exception cref="ArgumentNullException">Thrown if <paramref name="str"/> is null</exception>
@@ -260,6 +321,32 @@ namespace Abp.Extensions
         }
 
         /// <summary>
+        /// Converts given PascalCase/camelCase string to sentence (by splitting words by space).
+        /// Example: "ThisIsSampleSentence" is converted to "This is a sample sentence".
+        /// </summary>
+        /// <param name="str">String to convert.</param>
+        public static string ToSentenceCase(this string str)
+        {
+            return str.ToSentenceCase(CultureInfo.InvariantCulture);
+        }
+
+        /// <summary>
+        /// Converts given PascalCase/camelCase string to sentence (by splitting words by space).
+        /// Example: "ThisIsSampleSentence" is converted to "This is a sample sentence".
+        /// </summary>
+        /// <param name="str">String to convert.</param>
+        /// <param name="culture">An object that supplies culture-specific casing rules.</param>
+        public static string ToSentenceCase(this string str, CultureInfo culture)
+        {
+            if (string.IsNullOrWhiteSpace(str))
+            {
+                return str;
+            }
+
+            return Regex.Replace(str, "[a-z][A-Z]", m => m.Value[0] + " " + char.ToLower(m.Value[1], culture));
+        }
+
+        /// <summary>
         /// Converts string to enum value.
         /// </summary>
         /// <typeparam name="T">Type of enum</typeparam>
@@ -292,6 +379,23 @@ namespace Abp.Extensions
             }
 
             return (T)Enum.Parse(typeof(T), value, ignoreCase);
+        }
+
+        public static string ToMd5(this string str)
+        {
+            using (var md5 = MD5.Create())
+            {
+                var inputBytes = Encoding.UTF8.GetBytes(str);
+                var hashBytes = md5.ComputeHash(inputBytes);
+
+                var sb = new StringBuilder();
+                foreach (var hashByte in hashBytes)
+                {
+                    sb.Append(hashByte.ToString("X2"));
+                }
+
+                return sb.ToString();
+            }
         }
 
         /// <summary>

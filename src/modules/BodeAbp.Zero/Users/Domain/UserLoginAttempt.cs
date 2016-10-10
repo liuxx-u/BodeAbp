@@ -11,7 +11,7 @@ namespace BodeAbp.Zero.Users.Domain
     /// <summary>
     /// 实体——用户登录信息
     /// </summary>
-    [Table("Zero#UserLoginAttempt")]
+    [Table("Zero_UserLoginAttempt")]
     public class UserLoginAttempt : Entity<long>, IHasCreationTime
     {
         #region 常量

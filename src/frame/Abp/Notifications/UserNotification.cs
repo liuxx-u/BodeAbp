@@ -9,6 +9,11 @@ namespace Abp.Notifications
     public class UserNotification : EntityDto<Guid>, IUserIdentifier
     {
         /// <summary>
+        /// TenantId.
+        /// </summary>
+        public int? TenantId { get; set; }
+
+        /// <summary>
         /// User Id.
         /// </summary>
         public long UserId { get; set; }
@@ -21,6 +26,6 @@ namespace Abp.Notifications
         /// <summary>
         /// The notification.
         /// </summary>
-        public Notification Notification { get; set; }
+        public TenantNotification Notification { get; set; }
     }
 }

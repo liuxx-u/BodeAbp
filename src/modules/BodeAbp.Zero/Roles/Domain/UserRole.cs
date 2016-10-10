@@ -6,7 +6,7 @@ namespace BodeAbp.Zero.Roles.Domain
     /// <summary>
     /// 实体——用户角色关系
     /// </summary>
-    [Table("Zero#UserRole")]
+    [Table("Zero_UserRole")]
     public class UserRole: CreationAuditedEntity<long>
     {
         /// <summary>

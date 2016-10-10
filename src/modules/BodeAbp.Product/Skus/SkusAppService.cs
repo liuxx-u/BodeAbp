@@ -42,7 +42,7 @@ namespace BodeAbp.Product.Skus
         #region SKU属性
 
         /// <inheritdoc/>
-        public async Task<PagedResultOutput<SkuAttributeDto>> GetSkuAttributePagedList(QueryListPagedRequestInput input)
+        public async Task<PagedResultDto<SkuAttributeDto>> GetSkuAttributePagedList(QueryListPagedRequestInput input)
         {
             var query = _skuAttributeRepository.GetAll();
             //第一次查询只显示公共属性
@@ -53,7 +53,7 @@ namespace BodeAbp.Product.Skus
 
             int total;
             var list = await query.Where(input, out total).ToListAsync();
-            return new PagedResultOutput<SkuAttributeDto>(total, list.MapTo<List<SkuAttributeDto>>());
+            return new PagedResultDto<SkuAttributeDto>(total, list.MapTo<List<SkuAttributeDto>>());
         }
 
         /// <inheritdoc/>
@@ -141,7 +141,7 @@ namespace BodeAbp.Product.Skus
 
 
         /// <inheritdoc/>
-        public async Task<PagedResultOutput<SkuAttributeOptionDto>> GetSkuAttributeOptionPagedList(QueryListPagedRequestInput input)
+        public async Task<PagedResultDto<SkuAttributeOptionDto>> GetSkuAttributeOptionPagedList(QueryListPagedRequestInput input)
         {
             int total;
 
@@ -152,7 +152,7 @@ namespace BodeAbp.Product.Skus
                 query = query.Where(p => false);
             }
             var list = await query.Where(input, out total).ToListAsync();
-            return new PagedResultOutput<SkuAttributeOptionDto>(total, list.MapTo<List<SkuAttributeOptionDto>>());
+            return new PagedResultDto<SkuAttributeOptionDto>(total, list.MapTo<List<SkuAttributeOptionDto>>());
         }
 
         /// <inheritdoc/>

@@ -8,7 +8,7 @@ namespace BodeAbp.Zero.Organizations.Dtos
     /// 组织机构Dto
     /// </summary>
     [AutoMap(typeof(OrganizationUnit))]
-    public class OrganizationUnitDto : EntityDto<long>, IDoubleWayDto
+    public class OrganizationUnitDto : EntityDto<long>
     {
         /// <summary>
         /// 显示名称

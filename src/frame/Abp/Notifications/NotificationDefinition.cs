@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using Abp.Application.Features;
 using Abp.Authorization;
 using Abp.Collections.Extensions;
 using Abp.Localization;
+using Abp.Extensions;
 
 namespace Abp.Notifications
 {
@@ -38,6 +40,12 @@ namespace Abp.Notifications
         /// Optional.
         /// </summary>
         public IPermissionDependency PermissionDependency { get; set; }
+        
+        /// <summary>
+        /// A feature dependency. This notification will be available to a tenant if this feature is enabled.
+        /// Optional.
+        /// </summary>
+        public IFeatureDependency FeatureDependency { get; set; }
 
         /// <summary>
         /// Gets/sets arbitrary objects related to this object.
@@ -65,7 +73,8 @@ namespace Abp.Notifications
         /// <param name="displayName">Display name of the notification.</param>
         /// <param name="description">Description for the notification</param>
         /// <param name="permissionDependency">A permission dependency. This notification will be available to a user if this dependency is satisfied.</param>
-        public NotificationDefinition(string name, Type entityType = null, ILocalizableString displayName = null, ILocalizableString description = null, IPermissionDependency permissionDependency = null)
+        /// <param name="featureDependency">A feature dependency. This notification will be available to a tenant if this feature is enabled.</param>
+        public NotificationDefinition(string name, Type entityType = null, ILocalizableString displayName = null, ILocalizableString description = null, IPermissionDependency permissionDependency = null, IFeatureDependency featureDependency = null)
         {
             if (string.IsNullOrWhiteSpace(name))
             {
@@ -77,6 +86,7 @@ namespace Abp.Notifications
             DisplayName = displayName;
             Description = description;
             PermissionDependency = permissionDependency;
+            FeatureDependency = featureDependency;
 
             Attributes = new Dictionary<string, object>();
         }

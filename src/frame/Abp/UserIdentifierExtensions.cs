@@ -11,7 +11,7 @@
         /// <param name="userIdentifier">User identifier.</param>
         public static UserIdentifier ToUserIdentifier(this IUserIdentifier userIdentifier)
         {
-            return new UserIdentifier(userIdentifier.UserId);
+            return new UserIdentifier(userIdentifier.TenantId, userIdentifier.UserId);
         }
     }
 }

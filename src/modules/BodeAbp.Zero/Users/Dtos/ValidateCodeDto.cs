@@ -32,7 +32,7 @@ namespace BodeAbp.Zero.Application.Users.Dtos
     }
 
     [AutoMapTo(typeof(ValidateCode))]
-    public class ValidateCodeInput : ValidateCodeDto, IInputDto
+    public class ValidateCodeInput : ValidateCodeDto
     {
 
     }

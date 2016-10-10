@@ -8,7 +8,7 @@ namespace BodeAbp.Product.Skus.Dtos
     /// SKU属性Dto
     /// </summary>
     [AutoMap(typeof(SkuAttribute))]
-    public class SkuAttributeDto : EntityDto, IDoubleWayDto
+    public class SkuAttributeDto : EntityDto
     {
         /// <summary>
         /// SKU属性名称

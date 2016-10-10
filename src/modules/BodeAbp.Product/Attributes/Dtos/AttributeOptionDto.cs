@@ -8,7 +8,7 @@ namespace BodeAbp.Product.Attributes.Dtos
     /// <summary>
     /// 属性选项Dto
     /// </summary>
-    public class AttributeOptionDto : EntityDto,IDoubleWayDto
+    public class AttributeOptionDto : EntityDto
     {
         /// <summary>
         /// 属性值

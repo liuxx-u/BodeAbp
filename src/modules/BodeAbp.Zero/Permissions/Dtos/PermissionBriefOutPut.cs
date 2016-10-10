@@ -9,7 +9,7 @@ namespace BodeAbp.Zero.Permissions.Dtos
     /// 权限基本信息
     /// </summary>
     [AutoMapFrom(typeof(Permission))]
-    public class PermissionBriefOutPut: IOutputDto
+    public class PermissionBriefOutPut
     {
         /// <summary>
         /// 权限名

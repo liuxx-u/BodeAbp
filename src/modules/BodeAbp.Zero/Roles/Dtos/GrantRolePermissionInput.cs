@@ -3,7 +3,7 @@ using Abp.Application.Services.Dto;
 
 namespace BodeAbp.Zero.Roles.Dtos
 {
-    public class GrantRolePermissionInput : IInputDto
+    public class GrantRolePermissionInput
     {
         public GrantRolePermissionInput()
         {

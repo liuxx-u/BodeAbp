@@ -30,17 +30,17 @@ namespace BodeAbp.Zero.Organizations
         }
 
         /// <inheritdoc/>
-        public async Task<PagedResultOutput<OrganizationUnitDto>> GetOrganizationUnitPagedList(QueryListPagedRequestInput input)
+        public async Task<PagedResultDto<OrganizationUnitDto>> GetOrganizationUnitPagedList(QueryListPagedRequestInput input)
         {
             int total;
             var list = await _ouRepository.GetAll().Where(input, out total).ToListAsync();
-            return new PagedResultOutput<OrganizationUnitDto>(total, list.MapTo<List<OrganizationUnitDto>>());
+            return new PagedResultDto<OrganizationUnitDto>(total, list.MapTo<List<OrganizationUnitDto>>());
         }
 
         /// <inheritdoc/>
         public async Task<List<TreeOutPut>> GetOrganizationUnitTreeData()
         {
-            var ous = await _ouRepository.QueryWithNoTracking().Select(p => new OrganizationUnitDto
+            var ous = await _ouRepository.GetAll().AsNoTracking().Select(p => new OrganizationUnitDto
             {
                 Id = p.Id,
                 DisplayName = p.DisplayName,

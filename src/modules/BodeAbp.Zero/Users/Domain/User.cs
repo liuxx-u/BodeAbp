@@ -16,7 +16,7 @@ namespace BodeAbp.Zero.Users.Domain
     /// <summary>
     /// 实体——用户信息
     /// </summary>
-    [Table("Zero#User")]
+    [Table("Zero_User")]
     public class User : FullAuditedEntity<long>, IUser<long>, IPassivable
     {
         #region 常量
@@ -176,14 +176,6 @@ namespace BodeAbp.Zero.Users.Domain
 
         #region 公共方法
         
-        /// <summary>
-        /// 创建用户标识符 <see cref="UserIdentifier"/>
-        /// </summary>
-        /// <returns></returns>
-        public UserIdentifier ToUserIdentifier()
-        {
-            return new UserIdentifier(Id);
-        }
 
         #endregion
 

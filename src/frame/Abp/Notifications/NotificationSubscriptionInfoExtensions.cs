@@ -21,6 +21,7 @@ namespace Abp.Notifications
 
             return new NotificationSubscription
             {
+                TenantId = subscriptionInfo.TenantId,
                 UserId = subscriptionInfo.UserId,
                 NotificationName = subscriptionInfo.NotificationName,
                 EntityType = entityType,

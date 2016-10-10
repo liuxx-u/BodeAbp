@@ -18,7 +18,18 @@ namespace Abp.Notifications
     public class NotificationPublisher : AbpServiceBase, INotificationPublisher, ITransientDependency
     {
         public const int MaxUserCountToDirectlyDistributeANotification = 5;
-        
+
+        /// <summary>
+        /// Indicates all tenants.
+        /// </summary>
+        public static int[] AllTenants
+        {
+            get
+            {
+                return new[] { NotificationInfo.AllTenantIds.To<int>() };
+            }
+        }
+
         /// <summary>
         /// Reference to ABP session.
         /// </summary>
@@ -50,16 +61,22 @@ namespace Abp.Notifications
             EntityIdentifier entityIdentifier = null,
             NotificationSeverity severity = NotificationSeverity.Info,
             UserIdentifier[] userIds = null,
-            UserIdentifier[] excludedUserIds = null)
+            UserIdentifier[] excludedUserIds = null,
+            int?[] tenantIds = null)
         {
             if (notificationName.IsNullOrEmpty())
             {
                 throw new ArgumentException("NotificationName can not be null or whitespace!", "notificationName");
             }
 
-            if (userIds.IsNullOrEmpty())
+            if (!tenantIds.IsNullOrEmpty() && !userIds.IsNullOrEmpty())
             {
-                throw new ArgumentException("userIds is not set!", "userIds");
+                throw new ArgumentException("tenantIds can be set only if userIds is not set!", "tenantIds");
+            }
+
+            if (tenantIds.IsNullOrEmpty() && userIds.IsNullOrEmpty())
+            {
+                tenantIds = new[] {AbpSession.TenantId};
             }
 
             var notificationInfo = new NotificationInfo
@@ -71,6 +88,7 @@ namespace Abp.Notifications
                 Severity = severity,
                 UserIds = userIds.IsNullOrEmpty() ? null : userIds.Select(uid => uid.ToUserIdentifierString()).JoinAsString(","),
                 ExcludedUserIds = excludedUserIds.IsNullOrEmpty() ? null : excludedUserIds.Select(uid => uid.ToUserIdentifierString()).JoinAsString(","),
+                TenantIds = tenantIds.IsNullOrEmpty() ? null : tenantIds.JoinAsString(","),
                 Data = data == null ? null : data.ToJsonString(),
                 DataTypeName = data == null ? null : data.GetType().AssemblyQualifiedName
             };

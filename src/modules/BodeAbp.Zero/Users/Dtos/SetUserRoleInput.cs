@@ -6,7 +6,7 @@ namespace BodeAbp.Zero.Users.Dtos
     /// <summary>
     /// 设置用户角色Input
     /// </summary>
-    public class SetUserRoleInput: IInputDto
+    public class SetUserRoleInput
     {
         /// <summary>
         /// 用户Id

@@ -3,7 +3,7 @@ using Abp.Application.Services.Query;
 
 namespace Abp.Application.Services.Dto
 {
-    public class QueryListRequestInput : IInputDto
+    public class QueryListRequestInput
     {
         /// <summary>
         /// 构造函数

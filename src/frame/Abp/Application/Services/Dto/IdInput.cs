@@ -1,11 +1,10 @@
 namespace Abp.Application.Services.Dto
 {
     /// <summary>
-    /// This <see cref="IInputDto"/> can be directly used (or inherited)
     /// to pass an Id value to an application service method.
     /// </summary>
     /// <typeparam name="TId">Type of the Id</typeparam>
-    public class IdInput<TId> : IInputDto
+    public class IdInput<TId>
     {
         public TId Id { get; set; }
 

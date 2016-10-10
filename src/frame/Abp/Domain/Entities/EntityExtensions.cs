@@ -1,6 +1,6 @@
-﻿using System;
-using Abp.Domain.Entities.Auditing;
+﻿using Abp.Domain.Entities.Auditing;
 using Abp.Extensions;
+using System;
 
 namespace Abp.Domain.Entities
 {
@@ -31,7 +31,7 @@ namespace Abp.Domain.Entities
                 deletionAuditedEntity.DeleterUserId = null;
             }
         }
-
+        
         /// <summary>
         /// 判断指定类型是否为<see cref="IEntity{TKey}"/>实体类型
         /// </summary>

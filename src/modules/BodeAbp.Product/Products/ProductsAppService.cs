@@ -30,11 +30,11 @@ namespace BodeAbp.Product.Products
         #region 商品
 
         /// <inheritdoc/>
-        public async Task<PagedResultOutput<GetProductListOutput>> GetProductPagedList(QueryListPagedRequestInput input)
+        public async Task<PagedResultDto<GetProductListOutput>> GetProductPagedList(QueryListPagedRequestInput input)
         {
             int total;
             var list = await _productRepository.GetAll().Where(input, out total).ToListAsync();
-            return new PagedResultOutput<GetProductListOutput>(total, list.MapTo<List<GetProductListOutput>>());
+            return new PagedResultDto<GetProductListOutput>(total, list.MapTo<List<GetProductListOutput>>());
         }
 
         /// <inheritdoc/>

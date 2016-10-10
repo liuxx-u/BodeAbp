@@ -6,7 +6,7 @@ using BodeAbp.Zero.Users.Domain;
 namespace BodeAbp.Zero.Application.Users.Dtos
 {
     [AutoMapTo(typeof(User))]
-    public class CreateUserInput : IInputDto
+    public class CreateUserInput
     {
         /// <summary>
         /// 用户名

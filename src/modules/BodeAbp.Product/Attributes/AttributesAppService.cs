@@ -42,7 +42,7 @@ namespace BodeAbp.Product.Attributes
         #region 属性模版
 
         /// <inheritdoc/>
-        public async Task<PagedResultOutput<AttributeDto>> GetAttributePagedList(QueryListPagedRequestInput input)
+        public async Task<PagedResultDto<AttributeDto>> GetAttributePagedList(QueryListPagedRequestInput input)
         {
             var query = _attributeRepository.GetAll();
             //第一次查询只显示公共属性
@@ -53,7 +53,7 @@ namespace BodeAbp.Product.Attributes
 
             int total;
             var list = await query.Where(input, out total).ToListAsync();
-            return new PagedResultOutput<AttributeDto>(total, list.MapTo<List<AttributeDto>>());
+            return new PagedResultDto<AttributeDto>(total, list.MapTo<List<AttributeDto>>());
         }
 
         /// <inheritdoc/>
@@ -157,7 +157,7 @@ namespace BodeAbp.Product.Attributes
         #region 属性选项
 
         /// <inheritdoc/>
-        public async Task<PagedResultOutput<AttributeOptionDto>> GetAttributeOptionPagedList(QueryListPagedRequestInput input)
+        public async Task<PagedResultDto<AttributeOptionDto>> GetAttributeOptionPagedList(QueryListPagedRequestInput input)
         {
             int total;
 
@@ -168,7 +168,7 @@ namespace BodeAbp.Product.Attributes
                 query = query.Where(p => false);
             }
             var list = await query.Where(input, out total).ToListAsync();
-            return new PagedResultOutput<AttributeOptionDto>(total, list.MapTo<List<AttributeOptionDto>>());
+            return new PagedResultDto<AttributeOptionDto>(total, list.MapTo<List<AttributeOptionDto>>());
         }
 
         /// <inheritdoc/>

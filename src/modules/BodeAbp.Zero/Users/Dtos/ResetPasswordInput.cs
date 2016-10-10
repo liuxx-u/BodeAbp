@@ -4,7 +4,7 @@ using BodeAbp.Zero.Users.Domain;
 
 namespace BodeAbp.Zero.Application.Users.Dtos
 {
-    public class ResetPasswordInput : IInputDto
+    public class ResetPasswordInput
     {
         /// <summary>
         /// 新密码

@@ -18,7 +18,7 @@ namespace BodeAbp.Zero.Organizations
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
-        Task<PagedResultOutput<OrganizationUnitDto>> GetOrganizationUnitPagedList(QueryListPagedRequestInput input);
+        Task<PagedResultDto<OrganizationUnitDto>> GetOrganizationUnitPagedList(QueryListPagedRequestInput input);
 
         /// <summary>
         /// 获取组织机构树数据

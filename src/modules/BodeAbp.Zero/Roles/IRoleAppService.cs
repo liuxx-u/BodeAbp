@@ -18,7 +18,7 @@ namespace BodeAbp.Zero.Roles
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
-        Task<PagedResultOutput<GetRoleListOutput>> GetRolePagedList(QueryListPagedRequestInput input);
+        Task<PagedResultDto<GetRoleListOutput>> GetRolePagedList(QueryListPagedRequestInput input);
 
         /// <summary>
         /// 获取所有角色

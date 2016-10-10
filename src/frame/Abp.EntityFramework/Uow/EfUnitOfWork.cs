@@ -10,6 +10,7 @@ using Abp.Domain.Uow;
 using Abp.EntityFramework.Utils;
 using Abp.Reflection;
 using Castle.Core.Internal;
+using System.Collections.Immutable;
 using EntityFramework.DynamicFilters;
 
 namespace Abp.EntityFramework.Uow
@@ -30,10 +31,14 @@ namespace Abp.EntityFramework.Uow
         /// Creates a new <see cref="EfUnitOfWork"/>.
         /// </summary>
         public EfUnitOfWork(
-            IIocResolver iocResolver, 
-            IDbContextResolver dbContextResolver, 
-            IUnitOfWorkDefaultOptions defaultOptions)
-            : base(defaultOptions)
+            IIocResolver iocResolver,
+            IDbContextResolver dbContextResolver,
+            IEfUnitOfWorkFilterExecuter filterExecuter,
+            IUnitOfWorkDefaultOptions defaultOptions,
+            IDbContextTypeMatcher dbContextTypeMatcher)
+            : base(
+                  defaultOptions,
+                  filterExecuter)
         {
             IocResolver = iocResolver;
             _dbContextResolver = dbContextResolver;
@@ -73,6 +78,10 @@ namespace Abp.EntityFramework.Uow
             {
                 await SaveChangesInDbContextAsync(dbContext);
             }
+        }
+        public IReadOnlyList<DbContext> GetAllActiveDbContexts()
+        {
+            return ActiveDbContexts.Values.ToImmutableList();
         }
 
         protected override void CompleteUow()

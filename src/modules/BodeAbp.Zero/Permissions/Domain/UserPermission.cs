@@ -5,7 +5,7 @@ namespace BodeAbp.Zero.Permissions.Domain
     /// <summary>
     /// 实体——用户权限
     /// </summary>
-    [Table("Zero#UserPermission")]
+    [Table("Zero_UserPermission")]
     public class UserPermission : PermissionBase
     {
         /// <summary>

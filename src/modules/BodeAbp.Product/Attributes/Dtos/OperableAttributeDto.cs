@@ -9,7 +9,7 @@ namespace BodeAbp.Product.Attributes.Dtos
     /// 商品操作  属性Dto
     /// </summary>
     [AutoMap(typeof(Attribute))]
-    public class OperableAttributeDto : EntityDto, IDoubleWayDto
+    public class OperableAttributeDto : EntityDto
     {
         /// <summary>
         /// 属性名称
@@ -55,7 +55,7 @@ namespace BodeAbp.Product.Attributes.Dtos
     /// <summary>
     /// 属性分组Dto
     /// </summary>
-    public class OperableAttributeGroupDto : IDoubleWayDto
+    public class OperableAttributeGroupDto
     {
         /// <summary>
         /// 分组名

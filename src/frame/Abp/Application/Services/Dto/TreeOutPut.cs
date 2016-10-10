@@ -5,7 +5,7 @@ namespace Abp.Application.Services.Dto
     /// <summary>
     /// 树 OutputDto
     /// </summary>
-    public class TreeOutPut : IOutputDto
+    public class TreeOutPut
     {
         /// <summary>
         /// 值

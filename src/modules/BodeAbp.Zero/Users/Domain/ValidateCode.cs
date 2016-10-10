@@ -8,7 +8,7 @@ namespace BodeAbp.Zero.Users.Domain
     /// <summary>
     /// 实体——验证码
     /// </summary>
-    [Table("Zero#ValidateCode")]
+    [Table("Zero_ValidateCode")]
     public class ValidateCode : CreationAuditedEntity<long>
     {
         /// <summary>

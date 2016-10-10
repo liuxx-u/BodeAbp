@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Abp.MultiTenancy;
 
 namespace Abp.Authorization
 {
@@ -24,6 +25,13 @@ namespace Abp.Authorization
         /// <summary>
         /// Gets all permissions.
         /// </summary>
-        IReadOnlyList<Permission> GetAllPermissions();
+        /// <param name="tenancyFilter">Can be passed false to disable tenancy filter.</param>
+        IReadOnlyList<Permission> GetAllPermissions(bool tenancyFilter = true);
+
+        /// <summary>
+        /// Gets all permissions.
+        /// </summary>
+        /// <param name="multiTenancySides">Multi-tenancy side to filter</param>
+        IReadOnlyList<Permission> GetAllPermissions(MultiTenancySides multiTenancySides);
     }
 }

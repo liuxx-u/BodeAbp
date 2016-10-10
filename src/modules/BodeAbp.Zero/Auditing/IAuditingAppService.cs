@@ -18,7 +18,7 @@ namespace BodeAbp.Zero.Auditing
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
-        Task<PagedResultOutput<GetAuditLogListOutput>> GetAuditLogPagedList(QueryListPagedRequestInput input);
+        Task<PagedResultDto<GetAuditLogListOutput>> GetAuditLogPagedList(QueryListPagedRequestInput input);
         
         /// <summary>
         /// 删除 审计日志

@@ -1,5 +1,6 @@
 ﻿using System.IO;
 using Abp.Localization.Dictionaries.Xml;
+using Abp.Localization.Sources;
 
 namespace Abp.Localization.Dictionaries.Json
 {
@@ -9,6 +10,15 @@ namespace Abp.Localization.Dictionaries.Json
     public class JsonFileLocalizationDictionaryProvider : LocalizationDictionaryProviderBase
     {
         private readonly string _directoryPath;
+
+        /// <summary>
+        ///     Creates a new <see cref="JsonFileLocalizationDictionaryProvider" />.
+        /// </summary>
+        /// <param name="directoryPath">Path of the dictionary that contains all related XML files</param>
+        public JsonFileLocalizationDictionaryProvider(string directoryPath)
+        {
+            _directoryPath = directoryPath;
+        }
         
         public override void Initialize(string sourceName)
         {

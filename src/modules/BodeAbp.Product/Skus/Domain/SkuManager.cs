@@ -233,7 +233,7 @@ namespace BodeAbp.Product.Skus.Domain
         private async Task<bool> CheckDuplicateSkuAttributeOptions(long productId, int[] attrValueIds)
         {
             var newIds = attrValueIds.OrderBy(p => p).ExpandAndToString();
-            var existAttrValueIds = await _goodsRepository.QueryWithNoTracking()
+            var existAttrValueIds = await _goodsRepository.GetAll().AsNoTracking()
                 .Where(p => p.ProductId == productId)
                 .Include(p => p.Details)
                 .Select(p => p.Details.Select(m => m.SkuAttributeOptionId))

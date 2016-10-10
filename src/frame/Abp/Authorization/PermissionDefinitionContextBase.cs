@@ -1,5 +1,8 @@
-﻿using Abp.Collections.Extensions;
+﻿using Abp.Application.Features;
+using Abp.Collections.Extensions;
+using Abp.Extensions;
 using Abp.Localization;
+using Abp.MultiTenancy;
 
 namespace Abp.Authorization
 {
@@ -15,15 +18,16 @@ namespace Abp.Authorization
         public Permission CreatePermission(
             string name, 
             ILocalizableString displayName = null, 
-            bool isGrantedByDefault = false, 
-            ILocalizableString description = null)
+            ILocalizableString description = null, 
+            MultiTenancySides multiTenancySides = MultiTenancySides.Host | MultiTenancySides.Tenant,
+            IFeatureDependency featureDependency = null)
         {
             if (Permissions.ContainsKey(name))
             {
                 throw new AbpException("There is already a permission with name: " + name);
             }
 
-            var permission = new Permission(name, displayName, isGrantedByDefault, description);
+            var permission = new Permission(name, displayName, description, false, multiTenancySides, featureDependency);
             Permissions[permission.Name] = permission;
             return permission;
         }

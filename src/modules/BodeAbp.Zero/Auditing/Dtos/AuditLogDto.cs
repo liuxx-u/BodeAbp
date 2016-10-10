@@ -10,7 +10,7 @@ namespace BodeAbp.Zero.Auditing.Dtos
     /// 输出列表Dto
     /// </summary>
     [AutoMapFrom(typeof(AuditLog))]
-    public class GetAuditLogListOutput : EntityDto, IOutputDto
+    public class GetAuditLogListOutput : EntityDto
     {
         /// <summary>
         /// UserId.

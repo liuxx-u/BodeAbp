@@ -21,7 +21,7 @@ namespace BodeAbp.Product.Attributes
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
-        Task<PagedResultOutput<AttributeDto>> GetAttributePagedList(QueryListPagedRequestInput input);
+        Task<PagedResultDto<AttributeDto>> GetAttributePagedList(QueryListPagedRequestInput input);
         
         /// <summary>
         /// 添加 属性模版
@@ -67,7 +67,7 @@ namespace BodeAbp.Product.Attributes
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
-        Task<PagedResultOutput<AttributeOptionDto>> GetAttributeOptionPagedList(QueryListPagedRequestInput input);
+        Task<PagedResultDto<AttributeOptionDto>> GetAttributeOptionPagedList(QueryListPagedRequestInput input);
         
         /// <summary>
         /// 添加 属性值

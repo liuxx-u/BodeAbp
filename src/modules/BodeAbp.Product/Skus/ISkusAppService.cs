@@ -20,7 +20,7 @@ namespace BodeAbp.Product.Skus
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
-        Task<PagedResultOutput<SkuAttributeDto>> GetSkuAttributePagedList(QueryListPagedRequestInput input);
+        Task<PagedResultDto<SkuAttributeDto>> GetSkuAttributePagedList(QueryListPagedRequestInput input);
 
         /// <summary>
         /// 添加 SKU属性模版
@@ -59,7 +59,7 @@ namespace BodeAbp.Product.Skus
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
-        Task<PagedResultOutput<SkuAttributeOptionDto>> GetSkuAttributeOptionPagedList(QueryListPagedRequestInput input);
+        Task<PagedResultDto<SkuAttributeOptionDto>> GetSkuAttributeOptionPagedList(QueryListPagedRequestInput input);
 
         /// <summary>
         /// 新增 SKU属性选项

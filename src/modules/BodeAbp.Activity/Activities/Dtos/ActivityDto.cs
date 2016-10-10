@@ -62,27 +62,27 @@ namespace BodeAbp.Activity.Activities.Dtos
     }
 
 	[AutoMapTo(typeof(Domain.Activity))]
-    public class CreateActivityInput : ActivityDto, IInputDto
+    public class CreateActivityInput : ActivityDto
     {
     }
 
 	[AutoMapTo(typeof(Domain.Activity))]
-    public class UpdateActivityInput : ActivityDto, IInputDto
+    public class UpdateActivityInput : ActivityDto
     {
     }
 
 	[AutoMapFrom(typeof(Domain.Activity))]
-    public class UpdateActivityOutput : ActivityDto, IOutputDto
+    public class UpdateActivityOutput : ActivityDto
     {
     }
 
 	[AutoMapFrom(typeof(Domain.Activity))]
-    public class GetActivityOutput : ActivityDto, IOutputDto
+    public class GetActivityOutput : ActivityDto
     {
     }
 
     [AutoMapFrom(typeof(Domain.Activity))]
-    public class GetActivityListOutput : ActivityDto, IOutputDto
+    public class GetActivityListOutput : ActivityDto
     {
     }
 }

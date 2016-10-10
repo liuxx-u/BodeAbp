@@ -17,7 +17,12 @@ namespace Abp.RealTime
         /// IP address of this client.
         /// </summary>
         string IpAddress { get; }
-        
+
+        /// <summary>
+        /// Tenant Id.
+        /// </summary>
+        int? TenantId { get; }
+
         /// <summary>
         /// User Id.
         /// </summary>

@@ -54,6 +54,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Runtime\Caching\Redis\AbpRedisCache.cs" />
     <Compile Include="Runtime\Caching\Redis\AbpRedisCacheManager.cs" />
+    <Compile Include="Runtime\Caching\Redis\AbpRedisCacheOptions.cs" />
     <Compile Include="Runtime\Caching\Redis\IAbpRedisCacheDatabaseProvider.cs" />
     <Compile Include="Runtime\Caching\Redis\AbpRedisCacheDatabaseProvider.cs" />
     <Compile Include="Runtime\Caching\Redis\RedisCacheConfigurationExtensions.cs" />

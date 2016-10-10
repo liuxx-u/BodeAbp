@@ -45,11 +45,6 @@ namespace Abp.EntityFramework.Repositories
             return Table;
         }
 
-        public override IQueryable<TEntity> QueryWithNoTracking()
-        {
-            return Table.AsNoTracking();
-        }
-
         public override async Task<List<TEntity>> GetAllListAsync()
         {
             return await GetAll().ToListAsync();

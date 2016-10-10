@@ -1,4 +1,5 @@
-﻿using Abp.Dependency;
+﻿using Abp.Application.Features;
+using Abp.Dependency;
 
 namespace Abp.Authorization
 {
@@ -19,9 +20,12 @@ namespace Abp.Authorization
         /// The ioc resolver.
         /// </value>
         IIocResolver IocResolver { get; }
-        
+
+        /// <summary>
+        /// Gets the <see cref="IFeatureChecker"/>.
+        /// </summary>
         /// <value>
-        /// The permission checker.
+        /// The feature checker.
         /// </value>
         IPermissionChecker PermissionChecker { get; }
     }

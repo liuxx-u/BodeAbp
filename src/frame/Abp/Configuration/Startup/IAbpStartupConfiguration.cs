@@ -1,4 +1,5 @@
 ﻿using System;
+using Abp.Application.Features;
 using Abp.Auditing;
 using Abp.BackgroundJobs;
 using Abp.Dependency;
@@ -25,6 +26,11 @@ namespace Abp.Configuration.Startup
         ILocalizationConfiguration Localization { get; }
 
         /// <summary>
+        /// Used to configure navigation.
+        /// </summary>
+        INavigationConfiguration Navigation { get; }
+
+        /// <summary>
         /// Used to configure <see cref="IEventBus"/>.
         /// </summary>
         IEventBusConfiguration EventBus { get; }
@@ -40,9 +46,19 @@ namespace Abp.Configuration.Startup
         ICachingConfiguration Caching { get; }
 
         /// <summary>
+        /// Used to configure multi-tenancy.
+        /// </summary>
+        IMultiTenancyConfig MultiTenancy { get; }
+
+        /// <summary>
         /// Used to configure authorization.
         /// </summary>
         IAuthorizationConfiguration Authorization { get; }
+
+        /// <summary>
+        /// Used to configure validation.
+        /// </summary>
+        IValidationConfiguration Validation { get; }
 
         /// <summary>
         /// Used to configure settings.
@@ -67,6 +83,11 @@ namespace Abp.Configuration.Startup
         IUnitOfWorkDefaultOptions UnitOfWork { get; }
 
         /// <summary>
+        /// Used to configure features.
+        /// </summary>
+        IFeatureConfiguration Features { get; }
+
+        /// <summary>
         /// Used to configure background job system.
         /// </summary>
         IBackgroundJobConfiguration BackgroundJobs { get; }
@@ -78,9 +99,15 @@ namespace Abp.Configuration.Startup
 
         /// <summary>
         /// Used to replace a service type.
+        /// Given <see cref="replaceAction"/> should register an implementation for the <see cref="type"/>.
         /// </summary>
         /// <param name="type">The type to be replaced.</param>
         /// <param name="replaceAction">Replace action.</param>
         void ReplaceService(Type type, Action replaceAction);
+
+        /// <summary>
+        /// Gets a configuration object.
+        /// </summary>
+        T Get<T>();
     }
 }

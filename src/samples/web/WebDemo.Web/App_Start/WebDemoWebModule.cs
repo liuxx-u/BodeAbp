@@ -8,12 +8,14 @@ using Abp.Web.Mvc;
 using Abp.Web.SignalR;
 using WebDemo.WebApi;
 using Abp.Configuration.Startup;
+using Abp.AutoMapper;
 
 namespace WebDemo.Web
 {
     [DependsOn(
         typeof(WebDemoCoreModule),
         typeof(WebDemoWebApiModule),
+        typeof(AbpAutoMapperModule),
         typeof(AbpWebSignalRModule),
         typeof(AbpHangfireModule),
         typeof(AbpWebMvcModule))]
@@ -31,7 +33,7 @@ namespace WebDemo.Web
             //});
 
             //发送所有错误消息至客户端
-            Configuration.Modules.AbpWeb().SendAllExceptionsToClients = true;
+            Configuration.Modules.AbpWebCommon().SendAllExceptionsToClients = true;
         }
 
         public override void Initialize()

@@ -7,7 +7,7 @@ namespace BodeAbp.Zero.Organizations.Domain
     /// <summary>
     /// Represents membership of a User to an OU.
     /// </summary>
-    [Table("Zero#UserOrganizationUnit")]
+    [Table("Zero_UserOrganizationUnit")]
     public class UserOrganizationUnit : CreationAuditedEntity<long>
     {
         /// <summary>

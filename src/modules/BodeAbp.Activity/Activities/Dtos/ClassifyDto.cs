@@ -32,27 +32,27 @@ namespace BodeAbp.Activity.Activities.Dtos
     }
 
 	[AutoMapTo(typeof(Classify))]
-    public class CreateClassifyInput : ClassifyDto, IInputDto
+    public class CreateClassifyInput : ClassifyDto
     {
     }
 
 	[AutoMapTo(typeof(Classify))]
-    public class UpdateClassifyInput : ClassifyDto, IInputDto
+    public class UpdateClassifyInput : ClassifyDto
     {
     }
 
 	[AutoMapFrom(typeof(Classify))]
-    public class UpdateClassifyOutput : ClassifyDto, IOutputDto
+    public class UpdateClassifyOutput : ClassifyDto
     {
     }
 
 	[AutoMapFrom(typeof(Classify))]
-    public class GetClassifyOutput : ClassifyDto, IOutputDto
+    public class GetClassifyOutput : ClassifyDto
     {
     }
 
     [AutoMapFrom(typeof(Classify))]
-    public class GetClassifyListOutput : ClassifyDto, IOutputDto
+    public class GetClassifyListOutput : ClassifyDto
     {
     }
 }

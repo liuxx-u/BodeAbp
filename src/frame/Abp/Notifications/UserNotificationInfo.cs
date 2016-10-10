@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Abp.Domain.Entities;
 using Abp.Domain.Entities.Auditing;
@@ -11,13 +12,24 @@ namespace Abp.Notifications
     /// </summary>
     [Serializable]
     [Table("AbpUserNotifications")]
-    public class UserNotificationInfo : Entity<Guid>, IHasCreationTime
+    public class UserNotificationInfo : Entity<Guid>, IHasCreationTime, IMayHaveTenant
     {
+        /// <summary>
+        /// Tenant Id.
+        /// </summary>
+        public virtual int? TenantId { get; set; }
+
         /// <summary>
         /// User Id.
         /// </summary>
         public virtual long UserId { get; set; }
-        
+
+        /// <summary>
+        /// Notification Id.
+        /// </summary>
+        [Required]
+        public virtual Guid TenantNotificationId { get; set; }
+
         /// <summary>
         /// Current state of the user notification.
         /// </summary>

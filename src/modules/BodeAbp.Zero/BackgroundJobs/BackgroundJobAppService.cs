@@ -25,11 +25,11 @@ namespace BodeAbp.Zero.BackgroundJobs
         }
 
         /// <inheritdoc/>
-        public async Task<PagedResultOutput<GetBackgroundJobListOutput>> GetBackgroundJobPagedList(QueryListPagedRequestInput input)
+        public async Task<PagedResultDto<GetBackgroundJobListOutput>> GetBackgroundJobPagedList(QueryListPagedRequestInput input)
         {
             int total;
             var list = await _backgroundJobRepository.GetAll().Where(input, out total).ToListAsync();
-            return new PagedResultOutput<GetBackgroundJobListOutput>(total, list.MapTo<List<GetBackgroundJobListOutput>>());
+            return new PagedResultDto<GetBackgroundJobListOutput>(total, list.MapTo<List<GetBackgroundJobListOutput>>());
         }
 
         /// <inheritdoc/>

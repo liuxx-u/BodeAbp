@@ -32,11 +32,11 @@ namespace BodeAbp.Zero.Auditing
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
-        public async Task<PagedResultOutput<GetAuditLogListOutput>> GetAuditLogPagedList(QueryListPagedRequestInput input)
+        public async Task<PagedResultDto<GetAuditLogListOutput>> GetAuditLogPagedList(QueryListPagedRequestInput input)
         {
             int total;
             var list = await _auditLogRepository.GetAll().Where(input, out total).ToListAsync();
-            return new PagedResultOutput<GetAuditLogListOutput>(total, list.MapTo<List<GetAuditLogListOutput>>());
+            return new PagedResultDto<GetAuditLogListOutput>(total, list.MapTo<List<GetAuditLogListOutput>>());
         }
         
 		/// <summary>

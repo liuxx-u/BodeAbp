@@ -13,6 +13,7 @@ using WebDemo.WebApi.Swagger;
 using BodeAbp.Activity;
 using BodeAbp.Product;
 using Abp.WebApi.Configuration;
+using Abp.Configuration.Startup;
 
 namespace WebDemo.WebApi
 {
@@ -28,24 +29,11 @@ namespace WebDemo.WebApi
         {
             IocManager.RegisterAssemblyByConvention(Assembly.GetExecutingAssembly());
 
-            DynamicApiControllerBuilder
-                .ForAll<IApplicationService>(typeof(WebDemoCoreModule).Assembly, "app")
-                .Build();
-
-            DynamicApiControllerBuilder
-                .ForAll<IApplicationService>(typeof(BodeAbpZeroModule).Assembly, "zero")
-                .Build();
-
-            DynamicApiControllerBuilder
-                .ForAll<IApplicationService>(typeof(BodeAbpActivityModule).Assembly, "activity")
-                .Build();
-
-            DynamicApiControllerBuilder
-                .ForAll<IApplicationService>(typeof(BodeAbpProductModule).Assembly, "product")
-                .Build();
-
-            //是否使用Rpc
-            Configuration.Modules.AbpWebApi().UseRpc = false;
+            IDynamicApiControllerBuilder dynamicApiControllerBuilder = Configuration.Modules.AbpWebApi().DynamicApiControllerBuilder;
+            dynamicApiControllerBuilder.ForAll<IApplicationService>(typeof(WebDemoCoreModule).Assembly, "app").Build();
+            dynamicApiControllerBuilder.ForAll<IApplicationService>(typeof(BodeAbpZeroModule).Assembly, "zero").Build();
+            dynamicApiControllerBuilder.ForAll<IApplicationService>(typeof(BodeAbpActivityModule).Assembly, "activity").Build();
+            dynamicApiControllerBuilder.ForAll<IApplicationService>(typeof(BodeAbpProductModule).Assembly, "product").Build();
 
             Configuration.Modules.AbpWebApi().HttpConfiguration.Filters.Add(new HostAuthenticationFilter("Bearer"));
 

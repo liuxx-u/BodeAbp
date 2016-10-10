@@ -6,7 +6,7 @@ using System;
 namespace BodeAbp.Zero.Users.Dtos
 {
     [AutoMapFrom(typeof(UserLoginAttempt))]
-    public class UserLoginAttemptOutPut : EntityDto<long>, IOutputDto
+    public class UserLoginAttemptOutPut : EntityDto<long>
     {
         /// <summary>
         /// 用户名

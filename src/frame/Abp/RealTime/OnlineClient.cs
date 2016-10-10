@@ -22,6 +22,11 @@ namespace Abp.RealTime
         public string IpAddress { get; set; }
 
         /// <summary>
+        /// Tenant Id.
+        /// </summary>
+        public int? TenantId { get; set; }
+
+        /// <summary>
         /// User Id.
         /// </summary>
         public long? UserId { get; set; }
@@ -71,12 +76,14 @@ namespace Abp.RealTime
         /// </summary>
         /// <param name="connectionId">The connection identifier.</param>
         /// <param name="ipAddress">The ip address.</param>
+        /// <param name="tenantId">The tenant identifier.</param>
         /// <param name="userId">The user identifier.</param>
-        public OnlineClient(string connectionId, string ipAddress,long? userId)
+        public OnlineClient(string connectionId, string ipAddress, int? tenantId, long? userId)
             : this()
         {
             ConnectionId = connectionId;
             IpAddress = ipAddress;
+            TenantId = tenantId;
             UserId = userId;
 
             Properties = new Dictionary<string, object>();

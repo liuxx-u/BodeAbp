@@ -58,7 +58,7 @@ namespace BodeAbp.Zero.Users.Dtos
     }
 
     [AutoMapFrom(typeof(User))]
-    public class GetUserListOutput : UserDto, IOutputDto
+    public class GetUserListOutput : UserDto
     {
     }
 }

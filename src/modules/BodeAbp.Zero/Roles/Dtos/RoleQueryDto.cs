@@ -35,12 +35,12 @@ namespace BodeAbp.Zero.Roles.Dtos
     }
 	
 	[AutoMapFrom(typeof(Role))]
-    public class GetRoleOutput : RoleQueryDto, IOutputDto
+    public class GetRoleOutput : RoleQueryDto
     {
     }
 
 	[AutoMapFrom(typeof(Role))]
-    public class GetRoleListOutput : RoleQueryDto, IOutputDto
+    public class GetRoleListOutput : RoleQueryDto
     {
     }
 }

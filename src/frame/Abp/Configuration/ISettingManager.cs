@@ -11,7 +11,7 @@ namespace Abp.Configuration
     {
         /// <summary>
         /// Gets current value of a setting.
-        /// It gets the setting value, overwritten by application,  current user if exists.
+        /// It gets the setting value, overwritten by application, current tenant and current user if exists.
         /// </summary>
         /// <param name="name">Unique name of the setting</param>
         /// <returns>Current value of the setting</returns>
@@ -25,17 +25,27 @@ namespace Abp.Configuration
         Task<string> GetSettingValueForApplicationAsync(string name);
 
         /// <summary>
-        /// Gets current value of a setting for a user level.
-        /// It gets the setting value, overwritten by given user.
+        /// Gets current value of a setting for a tenant level.
+        /// It gets the setting value, overwritten by given tenant.
         /// </summary>
         /// <param name="name">Unique name of the setting</param>
+        /// <param name="tenantId">Tenant id</param>
+        /// <returns>Current value of the setting</returns>
+        Task<string> GetSettingValueForTenantAsync(string name, int tenantId);
+
+        /// <summary>
+        /// Gets current value of a setting for a user level.
+        /// It gets the setting value, overwritten by given tenant and user.
+        /// </summary>
+        /// <param name="name">Unique name of the setting</param>
+        /// <param name="tenantId">Tenant id</param>
         /// <param name="userId">User id</param>
         /// <returns>Current value of the setting for the user</returns>
-        Task<string> GetSettingValueForUserAsync(string name, long userId); //TODO: Can be overloaded for UserIdentifier.
+        Task<string> GetSettingValueForUserAsync(string name, int? tenantId, long userId); //TODO: Can be overloaded for UserIdentifier.
 
         /// <summary>
         /// Gets current values of all settings.
-        /// It gets all setting values, overwritten by application, current user (if exists).
+        /// It gets all setting values, overwritten by application, current tenant (if exists) and the current user (if exists).
         /// </summary>
         /// <returns>List of setting values</returns>
         Task<IReadOnlyList<ISettingValue>> GetAllSettingValuesAsync();
@@ -58,6 +68,16 @@ namespace Abp.Configuration
         Task<IReadOnlyList<ISettingValue>> GetAllSettingValuesForApplicationAsync();
 
         /// <summary>
+        /// Gets a list of all setting values specified for a tenant.
+        /// It returns only settings those are explicitly set for the tenant.
+        /// If a setting's default value is used, it's not included the result list.
+        /// If you want to get current values of all settings, use <see cref="GetAllSettingValuesAsync()"/> method.
+        /// </summary>
+        /// <param name="tenantId">Tenant to get settings</param>
+        /// <returns>List of setting values</returns>
+        Task<IReadOnlyList<ISettingValue>> GetAllSettingValuesForTenantAsync(int tenantId);
+
+        /// <summary>
         /// Gets a list of all setting values specified for a user.
         /// It returns only settings those are explicitly set for the user.
         /// If a setting's value is not set for the user (for example if user uses the default value), it's not included the result list.
@@ -73,7 +93,15 @@ namespace Abp.Configuration
         /// <param name="name">Unique name of the setting</param>
         /// <param name="value">Value of the setting</param>
         Task ChangeSettingForApplicationAsync(string name, string value);
-                
+
+        /// <summary>
+        /// Changes setting for a Tenant.
+        /// </summary>
+        /// <param name="tenantId">TenantId</param>
+        /// <param name="name">Unique name of the setting</param>
+        /// <param name="value">Value of the setting</param>
+        Task ChangeSettingForTenantAsync(int tenantId, string name, string value);
+
         /// <summary>
         /// Changes setting for a user.
         /// </summary>

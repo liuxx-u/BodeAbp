@@ -21,7 +21,7 @@ namespace BodeAbp.Zero.BackgroundJobs
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
-        Task<PagedResultOutput<GetBackgroundJobListOutput>> GetBackgroundJobPagedList(QueryListPagedRequestInput input);
+        Task<PagedResultDto<GetBackgroundJobListOutput>> GetBackgroundJobPagedList(QueryListPagedRequestInput input);
 
         /// <summary>
         /// 删除 审计日志

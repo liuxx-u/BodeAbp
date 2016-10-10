@@ -9,7 +9,7 @@ namespace Abp.BackgroundJobs
     /// <summary>
     /// Represents a background job info that is used to persist jobs.
     /// </summary>
-    [Table("Zero#BackgroundJob")]
+    [Table("Zero_BackgroundJob")]
     public class BackgroundJobInfo : CreationAuditedEntity<long>
     {
         /// <summary>

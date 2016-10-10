@@ -4,7 +4,7 @@ using Abp.BackgroundJobs;
 
 namespace BodeAbp.Zero.BackgroundJobs.Dtos
 {
-    public class GetBackgroundJobListOutput : EntityDto<long>,IOutputDto
+    public class GetBackgroundJobListOutput : EntityDto<long>
     {
         /// <summary>
         /// Type of the job.

@@ -1,9 +1,11 @@
 using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
+using Abp.Application.Features;
 using Abp.Authorization;
 using Abp.Collections.Extensions;
 using Abp.Dependency;
+using Abp.Extensions;
 
 namespace Abp.Notifications
 {
@@ -33,7 +35,7 @@ namespace Abp.Notifications
 
             foreach (var providerType in _configuration.Providers)
             {
-                _iocManager.RegisterIfNot(providerType, DependencyLifeStyle.Transient);
+                _iocManager.RegisterIfNot(providerType, DependencyLifeStyle.Transient); //TODO: Needed?
                 using (var provider = _iocManager.ResolveAsDisposable<NotificationProvider>(providerType))
                 {
                     provider.Object.SetNotifications(context);
@@ -80,6 +82,19 @@ namespace Abp.Notifications
                 return true;
             }
 
+            if (notificationDefinition.FeatureDependency != null)
+            {
+                using (var featureDependencyContext = _iocManager.ResolveAsDisposable<FeatureDependencyContext>())
+                {
+                    featureDependencyContext.Object.TenantId = user.TenantId;
+
+                    if (!await notificationDefinition.FeatureDependency.IsSatisfiedAsync(featureDependencyContext.Object))
+                    {
+                        return false;
+                    }
+                }
+            }
+
             if (notificationDefinition.PermissionDependency != null)
             {
                 using (var permissionDependencyContext = _iocManager.ResolveAsDisposable<PermissionDependencyContext>())
@@ -104,15 +119,27 @@ namespace Abp.Notifications
             {
                 permissionDependencyContext.Object.User = user;
 
-                foreach (var notificationDefinition in GetAll())
+                using (var featureDependencyContext = _iocManager.ResolveAsDisposable<FeatureDependencyContext>())
                 {
-                    if (notificationDefinition.PermissionDependency != null &&
-                        !await notificationDefinition.PermissionDependency.IsSatisfiedAsync(permissionDependencyContext.Object))
-                    {
-                        continue;
-                    }
+                    featureDependencyContext.Object.TenantId = user.TenantId;
 
-                    availableDefinitions.Add(notificationDefinition);
+                    foreach (var notificationDefinition in GetAll())
+                    {
+                        if (notificationDefinition.PermissionDependency != null &&
+                            !await notificationDefinition.PermissionDependency.IsSatisfiedAsync(permissionDependencyContext.Object))
+                        {
+                            continue;
+                        }
+
+                        if (user.TenantId.HasValue &&
+                            notificationDefinition.FeatureDependency != null &&
+                            !await notificationDefinition.FeatureDependency.IsSatisfiedAsync(featureDependencyContext.Object))
+                        {
+                            continue;
+                        }
+
+                        availableDefinitions.Add(notificationDefinition);
+                    }
                 }
             }
 

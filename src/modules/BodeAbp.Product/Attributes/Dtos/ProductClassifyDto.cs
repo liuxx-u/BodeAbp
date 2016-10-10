@@ -23,7 +23,7 @@ namespace BodeAbp.Product.Attributes.Dtos
         public int? ParentId { get; set; }
     }
 
-    public class ProductClassifyListOutPut: ProductClassifyDto,IOutputDto
+    public class ProductClassifyListOutPut: ProductClassifyDto
     {
         public ProductClassifyListOutPut()
         {
@@ -37,7 +37,7 @@ namespace BodeAbp.Product.Attributes.Dtos
     }
 
     [AutoMapTo(typeof(ProductClassify))]
-    public class ProductClassifyInput : ProductClassifyDto, IInputDto
+    public class ProductClassifyInput : ProductClassifyDto
     {
 
     }

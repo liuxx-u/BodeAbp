@@ -18,6 +18,15 @@ namespace Abp.Configuration
         }
 
         /// <summary>
+        /// Gets tenant settings cache.
+        /// </summary>
+        public static ITypedCache<int, Dictionary<string, SettingInfo>> GetTenantSettingsCache(this ICacheManager cacheManager)
+        {
+            return cacheManager
+                .GetCache<int, Dictionary<string, SettingInfo>>(AbpCacheNames.TenantSettings);
+        }
+
+        /// <summary>
         /// Gets user settings cache.
         /// </summary>
         public static ITypedCache<string, Dictionary<string, SettingInfo>> GetUserSettingsCache(this ICacheManager cacheManager)

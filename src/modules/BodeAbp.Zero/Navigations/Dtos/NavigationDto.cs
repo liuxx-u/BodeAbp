@@ -41,12 +41,12 @@ namespace BodeAbp.Zero.Navigations.Dtos
     }
 
 	[AutoMapTo(typeof(Navigation))]
-    public class NavigationInput : NavigationDto, IInputDto
+    public class NavigationInput : NavigationDto
     {
     }
 
     [AutoMapFrom(typeof(Navigation))]
-    public class NavigationListOutput : NavigationDto, IOutputDto
+    public class NavigationListOutput : NavigationDto
     {
         public NavigationListOutput()
         {

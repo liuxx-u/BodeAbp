@@ -1,14 +1,15 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Abp.Domain.Entities.Auditing;
+using Abp.Domain.Entities;
 
 namespace BodeAbp.Zero.Settings.Domain
 {
     /// <summary>
     /// Represents a setting for a user.
     /// </summary>
-    [Table("Zero#Setting")]
-    public class Setting : AuditedEntity<long>
+    [Table("Zero_Setting")]
+    public class Setting : AuditedEntity<long>, IMayHaveTenant
     {
         #region 常量
 
@@ -31,6 +32,12 @@ namespace BodeAbp.Zero.Settings.Domain
         /// UserId is null if this setting is application level.
         /// </summary>
         public virtual long? UserId { get; set; }
+
+        /// <summary>
+        /// TenantId for this setting.
+        /// TenantId is null if this setting is not Tenant level.
+        /// </summary>
+        public virtual int? TenantId { get; set; }
 
         /// <summary>
         /// Unique name of the setting.

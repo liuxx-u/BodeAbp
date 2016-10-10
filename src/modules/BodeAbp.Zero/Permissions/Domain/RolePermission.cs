@@ -5,7 +5,7 @@ namespace BodeAbp.Zero.Permissions.Domain
     /// <summary>
     /// 实体——角色权限
     /// </summary>
-    [Table("Zero#RolePermission")]
+    [Table("Zero_RolePermission")]
     public class RolePermission : PermissionBase
     {
         /// <summary>

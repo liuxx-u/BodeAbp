@@ -10,7 +10,7 @@ namespace BodeAbp.Product.Attributes.Dtos
     /// 属性Dto
     /// </summary>
     [AutoMap(typeof(Attribute))]
-    public class AttributeDto : EntityDto, IDoubleWayDto
+    public class AttributeDto : EntityDto
     {
         /// <summary>
         /// 模版名称

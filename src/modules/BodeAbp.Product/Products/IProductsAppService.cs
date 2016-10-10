@@ -23,7 +23,7 @@ namespace BodeAbp.Product.Products
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
-        Task<PagedResultOutput<GetProductListOutput>> GetProductPagedList(QueryListPagedRequestInput input);
+        Task<PagedResultDto<GetProductListOutput>> GetProductPagedList(QueryListPagedRequestInput input);
 
         /// <summary>
         /// 获取 商品详情

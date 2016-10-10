@@ -19,17 +19,17 @@ namespace Abp.Domain.Repositories
 
         /// <summary>
         /// Used to get a IQueryable that is used to retrieve entities from entire table.
-        /// <see cref="UnitOfWorkAttribute"/> attribute must be used to be able to call this method since this method
-        /// returns IQueryable and it requires open database connection to use it.
         /// </summary>
         /// <returns>IQueryable to be used to select entities from database</returns>
         IQueryable<TEntity> GetAll();
 
         /// <summary>
-        /// 获取 未跟踪状态的查询数据集
+        /// Used to get a IQueryable that is used to retrieve entities from entire table.
+        /// One or more 
         /// </summary>
-        /// <returns>查询数据集</returns>
-        IQueryable<TEntity> QueryWithNoTracking();
+        /// <param name="propertySelectors">A list of include expressions.</param>
+        /// <returns>IQueryable to be used to select entities from database</returns>
+        IQueryable<TEntity> GetAllIncluding(params Expression<Func<TEntity, object>>[] propertySelectors);
 
         /// <summary>
         /// Used to get all entities.
@@ -127,7 +127,6 @@ namespace Abp.Domain.Repositories
         /// <param name="id">Primary key of the entity to load</param>
         /// <returns>Entity</returns>
         TEntity Load(TPrimaryKey id);
-        
         /// <summary>
         /// 检查实体是否存在
         /// </summary>

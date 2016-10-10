@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Abp.Extensions;
 using Abp.Runtime.Session;
+using Castle.Core;
 
 namespace Abp.Domain.Uow
 {
@@ -15,6 +16,7 @@ namespace Abp.Domain.Uow
     {
         public string Id { get; private set; }
 
+        [DoNotWire]
         public IUnitOfWork Outer { get; set; }
 
         /// <inheritdoc/>
@@ -39,7 +41,7 @@ namespace Abp.Domain.Uow
         /// <summary>
         /// Gets default UOW options.
         /// </summary>
-        protected IUnitOfWorkDefaultOptions DefaultOptions { get; private set; }
+        protected IUnitOfWorkDefaultOptions DefaultOptions { get; }
 
         /// <summary>
         /// Gets a value indicates that this unit of work is disposed or not.
@@ -49,7 +51,9 @@ namespace Abp.Domain.Uow
         /// <summary>
         /// Reference to current ABP session.
         /// </summary>
-        public IAbpSession AbpSession { private get; set; }
+        public IAbpSession AbpSession { protected get; set; }
+
+        protected IUnitOfWorkFilterExecuter FilterExecuter { get; }
 
         /// <summary>
         /// Is <see cref="Begin"/> method called before?
@@ -71,15 +75,21 @@ namespace Abp.Domain.Uow
         /// </summary>
         private Exception _exception;
 
+        private int? _tenantId;
+
         /// <summary>
         /// Constructor.
         /// </summary>
-        protected UnitOfWorkBase(IUnitOfWorkDefaultOptions defaultOptions)
+        protected UnitOfWorkBase(
+            IUnitOfWorkDefaultOptions defaultOptions,
+            IUnitOfWorkFilterExecuter filterExecuter)
         {
+            FilterExecuter = filterExecuter;
             DefaultOptions = defaultOptions;
 
             Id = Guid.NewGuid().ToString("N");
             _filters = defaultOptions.Filters.ToList();
+
             AbpSession = NullAbpSession.Instance;
         }
 
@@ -95,6 +105,8 @@ namespace Abp.Domain.Uow
             Options = options; //TODO: Do not set options like that, instead make a copy?
 
             SetFilters(options.FilterOverrides);
+
+            SetTenantId(AbpSession.TenantId);
 
             BeginUow();
         }
@@ -118,7 +130,7 @@ namespace Abp.Domain.Uow
                 if (_filters[filterIndex].IsEnabled)
                 {
                     disabledFilters.Add(filterName);
-                    _filters[filterIndex] = new DataFilterConfiguration(filterName, false);
+                    _filters[filterIndex] = new DataFilterConfiguration(_filters[filterIndex], false);
                 }
             }
 
@@ -140,7 +152,7 @@ namespace Abp.Domain.Uow
                 if (!_filters[filterIndex].IsEnabled)
                 {
                     enabledFilters.Add(filterName);
-                    _filters[filterIndex] = new DataFilterConfiguration(filterName, true);
+                    _filters[filterIndex] = new DataFilterConfiguration(_filters[filterIndex], true);
                 }
             }
 
@@ -184,6 +196,32 @@ namespace Abp.Domain.Uow
                     SetFilterParameter(filterName, parameterName, oldValue);
                 }
             });
+        }
+
+        public IDisposable SetTenantId(int? tenantId)
+        {
+            var oldTenantId = _tenantId;
+            _tenantId = tenantId;
+
+            var mustHaveTenantEnableChange = tenantId == null
+                ? DisableFilter(AbpDataFilters.MustHaveTenant)
+                : EnableFilter(AbpDataFilters.MustHaveTenant);
+
+            var mayHaveTenantChange = SetFilterParameter(AbpDataFilters.MayHaveTenant, AbpDataFilters.Parameters.TenantId, tenantId);
+            var mustHaveTenantChange = SetFilterParameter(AbpDataFilters.MustHaveTenant, AbpDataFilters.Parameters.TenantId, tenantId ?? 0);
+
+            return new DisposeAction(() =>
+            {
+                mayHaveTenantChange.Dispose();
+                mustHaveTenantChange.Dispose();
+                mustHaveTenantEnableChange.Dispose();
+                _tenantId = oldTenantId;
+            });
+        }
+
+        public int? GetTenantId()
+        {
+            return _tenantId;
         }
 
         /// <inheritdoc/>
@@ -240,9 +278,12 @@ namespace Abp.Domain.Uow
         }
 
         /// <summary>
-        /// Should be implemented by derived classes to start UOW.
+        /// Can be implemented by derived classes to start UOW.
         /// </summary>
-        protected abstract void BeginUow();
+        protected virtual void BeginUow()
+        {
+            
+        }
 
         /// <summary>
         /// Should be implemented by derived classes to complete UOW.
@@ -259,36 +300,19 @@ namespace Abp.Domain.Uow
         /// </summary>
         protected abstract void DisposeUow();
 
-        /// <summary>
-        /// Concrete Unit of work classes should implement this
-        /// method in order to disable a filter.
-        /// Should not call base method since it throws <see cref="NotImplementedException"/>.
-        /// </summary>
-        /// <param name="filterName">Filter name</param>
         protected virtual void ApplyDisableFilter(string filterName)
         {
-            //throw new NotImplementedException("DisableFilter is not implemented for " + GetType().FullName);
+            FilterExecuter.ApplyDisableFilter(this, filterName);
         }
 
-        /// <summary>
-        /// Concrete Unit of work classes should implement this
-        /// method in order to enable a filter.
-        /// Should not call base method since it throws <see cref="NotImplementedException"/>.
-        /// </summary>
-        /// <param name="filterName">Filter name</param>
         protected virtual void ApplyEnableFilter(string filterName)
         {
-            //throw new NotImplementedException("EnableFilter is not implemented for " + GetType().FullName);
+            FilterExecuter.ApplyEnableFilter(this, filterName);
         }
-        
-        /// <summary>
-        /// Concrete Unit of work classes should implement this
-        /// method in order to set a parameter's value.
-        /// Should not call base method since it throws <see cref="NotImplementedException"/>.
-        /// </summary>
+
         protected virtual void ApplyFilterParameterValue(string filterName, string parameterName, object value)
         {
-            //throw new NotImplementedException("SetFilterParameterValue is not implemented for " + GetType().FullName);
+            FilterExecuter.ApplyFilterParameterValue(this, filterName, parameterName, value);
         }
 
         /// <summary>
@@ -345,6 +369,11 @@ namespace Abp.Domain.Uow
                 {
                     _filters[i] = filterOverride;
                 }
+            }
+
+            if (AbpSession.TenantId == null)
+            {
+                ChangeFilterIsEnabledIfNotOverrided(filterOverrides, AbpDataFilters.MustHaveTenant, false);
             }
         }
 

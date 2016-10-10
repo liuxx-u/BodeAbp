@@ -24,7 +24,7 @@ namespace BodeAbp.Zero.Settings.Domain
         {
             return setting == null
                 ? null
-                : new SettingInfo(setting.UserId, setting.Name, setting.Value);
+                : new SettingInfo(setting.TenantId,setting.UserId, setting.Name, setting.Value);
         }
     }
 }

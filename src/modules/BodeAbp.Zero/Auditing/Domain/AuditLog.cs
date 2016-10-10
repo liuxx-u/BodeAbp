@@ -10,7 +10,7 @@ namespace BodeAbp.Zero.Auditing.Domain
     /// <summary>
     /// 审计日志
     /// </summary>
-    [Table("Zero#AuditLog")]
+    [Table("Zero_AuditLog")]
     public class AuditLog : Entity<long>
     {
         /// <summary>

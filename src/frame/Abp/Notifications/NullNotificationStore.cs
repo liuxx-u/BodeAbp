@@ -39,6 +39,11 @@ namespace Abp.Notifications
             return Task.FromResult(new List<NotificationSubscriptionInfo>());
         }
 
+        public Task<List<NotificationSubscriptionInfo>> GetSubscriptionsAsync(int?[] tenantIds, string notificationName, string entityTypeName, string entityId)
+        {
+            return Task.FromResult(new List<NotificationSubscriptionInfo>());
+        }
+
         public Task<List<NotificationSubscriptionInfo>> GetSubscriptionsAsync(UserIdentifier user)
         {
             return Task.FromResult(new List<NotificationSubscriptionInfo>());
@@ -49,7 +54,7 @@ namespace Abp.Notifications
             return Task.FromResult(false);
         }
 
-        public Task UpdateUserNotificationStateAsync(Guid userNotificationId, UserNotificationState state)
+        public Task UpdateUserNotificationStateAsync(int? notificationId, Guid userNotificationId, UserNotificationState state)
         {
             return Task.FromResult(0);
         }
@@ -59,7 +64,7 @@ namespace Abp.Notifications
             return Task.FromResult(0);
         }
 
-        public Task DeleteUserNotificationAsync(Guid userNotificationId)
+        public Task DeleteUserNotificationAsync(int? notificationId, Guid userNotificationId)
         {
             return Task.FromResult(0);
         }
@@ -69,9 +74,9 @@ namespace Abp.Notifications
             return Task.FromResult(0);
         }
 
-        public Task<List<UserNotification>> GetUserNotificationsAsync(UserIdentifier user, UserNotificationState? state = null, int skipCount = 0, int maxResultCount = int.MaxValue)
+        public Task<List<UserNotificationInfoWithNotificationInfo>> GetUserNotificationsWithNotificationsAsync(UserIdentifier user, UserNotificationState? state = null, int skipCount = 0, int maxResultCount = int.MaxValue)
         {
-            return Task.FromResult(new List<UserNotification>());
+            return Task.FromResult(new List<UserNotificationInfoWithNotificationInfo>());
         }
 
         public Task<int> GetUserNotificationCountAsync(UserIdentifier user, UserNotificationState? state = null)
@@ -79,9 +84,14 @@ namespace Abp.Notifications
             return Task.FromResult(0);
         }
 
-        public Task<UserNotification> GetUserNotificationAsync(Guid userNotificationId)
+        public Task<UserNotificationInfoWithNotificationInfo> GetUserNotificationWithNotificationOrNullAsync(int? tenantId, Guid userNotificationId)
         {
-            return Task.FromResult((UserNotification)null);
+            return Task.FromResult((UserNotificationInfoWithNotificationInfo)null);
+        }
+
+        public Task InsertTenantNotificationAsync(TenantNotificationInfo tenantNotificationInfo)
+        {
+            return Task.FromResult(0);
         }
 
         public Task DeleteNotificationAsync(NotificationInfo notification)

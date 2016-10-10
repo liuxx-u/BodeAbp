@@ -28,11 +28,11 @@ namespace BodeAbp.Activity.Activities
         #region 活动
 
         /// <inheritdoc/>
-        public async Task<PagedResultOutput<GetActivityListOutput>> GetActivityPagedList(QueryListPagedRequestInput input)
+        public async Task<PagedResultDto<GetActivityListOutput>> GetActivityPagedList(QueryListPagedRequestInput input)
         {
             int total;
             var list = await _activityRepository.GetAll().Where(input, out total).ToListAsync();
-            return new PagedResultOutput<GetActivityListOutput>(total, list.MapTo<List<GetActivityListOutput>>());
+            return new PagedResultDto<GetActivityListOutput>(total, list.MapTo<List<GetActivityListOutput>>());
         }
 
         /// <inheritdoc/>
@@ -67,11 +67,11 @@ namespace BodeAbp.Activity.Activities
         #region 活动类型
 
         /// <inheritdoc/>
-        public async Task<PagedResultOutput<GetClassifyListOutput>> GetClassifyPagedList(QueryListPagedRequestInput input)
+        public async Task<PagedResultDto<GetClassifyListOutput>> GetClassifyPagedList(QueryListPagedRequestInput input)
         {
             int total;
             var list = await _classifyRepository.GetAll().Where(input, out total).ToListAsync();
-            return new PagedResultOutput<GetClassifyListOutput>(total, list.MapTo<List<GetClassifyListOutput>>());
+            return new PagedResultDto<GetClassifyListOutput>(total, list.MapTo<List<GetClassifyListOutput>>());
         }
 
         /// <inheritdoc/>

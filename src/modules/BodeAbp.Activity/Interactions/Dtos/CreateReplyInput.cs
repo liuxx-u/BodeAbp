@@ -8,7 +8,7 @@ namespace BodeAbp.Activity.Interactions.Dtos
     /// 回复Dto
     /// </summary>
     [AutoMapTo(typeof(Reply))]
-    public class CreateReplyInput : IInputDto
+    public class CreateReplyInput
     {
         /// <summary>
         /// 回复内容

@@ -200,11 +200,11 @@ namespace BodeAbp.Zero.Users
         /// </summary>
         /// <param name="input"></param>
         /// <returns>列表数据</returns>
-        public async Task<PagedResultOutput<GetUserListOutput>> GetUserPagedList(QueryListPagedRequestInput input)
+        public async Task<PagedResultDto<GetUserListOutput>> GetUserPagedList(QueryListPagedRequestInput input)
         {
             int total;
             var list = await UserRepo.GetAll().Where(input, out total).ToListAsync();
-            return new PagedResultOutput<GetUserListOutput>(total, list.MapTo<List<GetUserListOutput>>());
+            return new PagedResultDto<GetUserListOutput>(total, list.MapTo<List<GetUserListOutput>>());
         }
 
         /// <summary>
@@ -242,11 +242,11 @@ namespace BodeAbp.Zero.Users
         }
 
         /// <inheritdoc/>
-        public async Task<PagedResultOutput<UserLoginAttemptOutPut>> GetUserLoginLogList(QueryListPagedRequestInput input)
+        public async Task<PagedResultDto<UserLoginAttemptOutPut>> GetUserLoginLogList(QueryListPagedRequestInput input)
         {
             int total;
             var list = await LoginAttemptRepo.GetAll().Where(input, out total).ToListAsync();
-            return new PagedResultOutput<UserLoginAttemptOutPut>(total, list.MapTo<List<UserLoginAttemptOutPut>>());
+            return new PagedResultDto<UserLoginAttemptOutPut>(total, list.MapTo<List<UserLoginAttemptOutPut>>());
         }
 
         #endregion

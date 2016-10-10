@@ -8,7 +8,7 @@ namespace BodeAbp.Activity.Interactions.Dtos
     /// 评论Dto
     /// </summary>
     [AutoMapTo(typeof(Comment))]
-    public class CreateCommentInput : IInputDto
+    public class CreateCommentInput
     {
         /// <summary>
         /// 评论内容

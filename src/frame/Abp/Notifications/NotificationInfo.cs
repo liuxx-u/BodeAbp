@@ -2,17 +2,25 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Abp.Domain.Entities.Auditing;
+using Abp.MultiTenancy;
 
 namespace Abp.Notifications
 {
     /// <summary>
     /// Used to store a notification request.
-    /// This notification is distributed to users by <see cref="INotificationDistributer"/>.
+    /// This notification is distributed to tenants and users by <see cref="INotificationDistributer"/>.
     /// </summary>
     [Serializable]
     [Table("AbpNotifications")]
+    [MultiTenancySide(MultiTenancySides.Host)]
     public class NotificationInfo : CreationAuditedEntity<Guid>
     {
+        /// <summary>
+        /// Indicates all tenant ids for <see cref="TenantIds"/> property.
+        /// Value: "0".
+        /// </summary>
+        public const string AllTenantIds = "0";
+
         /// <summary>
         /// Maximum length of <see cref="NotificationName"/> property.
         /// Value: 96.
@@ -54,7 +62,13 @@ namespace Abp.Notifications
         /// Value: 131072 (128 KB).
         /// </summary>
         public const int MaxUserIdsLength = 128 * 1024;
-        
+
+        /// <summary>
+        /// Maximum length of <see cref="TenantIds"/> property.
+        /// Value: 131072 (128 KB).
+        /// </summary>
+        public const int MaxTenantIdsLength = 128 * 1024;
+
         /// <summary>
         /// Unique notification name.
         /// </summary>
@@ -114,7 +128,16 @@ namespace Abp.Notifications
         /// </summary>
         [MaxLength(MaxUserIdsLength)]
         public virtual string ExcludedUserIds { get; set; }
-        
+
+        /// <summary>
+        /// Target tenants of the notification.
+        /// Used to send notification to subscribed users of specific tenant(s).
+        /// This is valid only if UserIds is null.
+        /// If it's "0", then indicates to all tenants.
+        /// </summary>
+        [MaxLength(MaxTenantIdsLength)]
+        public virtual string TenantIds { get; set; }
+
         /// <summary>
         /// Initializes a new instance of the <see cref="NotificationInfo"/> class.
         /// </summary>

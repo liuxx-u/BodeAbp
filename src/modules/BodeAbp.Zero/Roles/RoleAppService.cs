@@ -41,11 +41,11 @@ namespace BodeAbp.Zero.Roles
         /// <param name="input"></param>
         /// <returns></returns>
         [AbpAuthorize]
-        public async Task<PagedResultOutput<GetRoleListOutput>> GetRolePagedList(QueryListPagedRequestInput input)
+        public async Task<PagedResultDto<GetRoleListOutput>> GetRolePagedList(QueryListPagedRequestInput input)
         {
             int total;
-            var list = await _roleRepository.QueryWithNoTracking().Where(input, out total).ToListAsync();
-            return new PagedResultOutput<GetRoleListOutput>(total, list.MapTo<List<GetRoleListOutput>>());
+            var list = await _roleRepository.GetAll().AsNoTracking().Where(input, out total).ToListAsync();
+            return new PagedResultDto<GetRoleListOutput>(total, list.MapTo<List<GetRoleListOutput>>());
         }
 
         /// <summary>

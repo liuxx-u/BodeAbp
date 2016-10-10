@@ -35,17 +35,17 @@ namespace BodeAbp.Zero.Roles.Dtos
     }
 
 	[AutoMap(typeof(Role))]
-    public class CreateRoleInput : RoleDto, IInputDto
+    public class CreateRoleInput : RoleDto
     {
     }
 
 	[AutoMap(typeof(Role))]
-    public class UpdateRoleInput : RoleDto, IInputDto
+    public class UpdateRoleInput : RoleDto
     {
     }
 
 	[AutoMap(typeof(Role))]
-    public class UpdateRoleOutput : RoleDto, IOutputDto
+    public class UpdateRoleOutput : RoleDto
     {
     }
 }

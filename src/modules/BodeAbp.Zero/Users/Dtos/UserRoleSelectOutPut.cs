@@ -2,7 +2,7 @@
 
 namespace BodeAbp.Zero.Users.Dtos
 {
-    public class UserRoleSelectOutPut : IOutputDto
+    public class UserRoleSelectOutPut
     {
         public string RoleName { get; set; }
 

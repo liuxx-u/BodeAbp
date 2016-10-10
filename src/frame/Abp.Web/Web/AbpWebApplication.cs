@@ -1,15 +1,13 @@
 ﻿using System;
 using System.Globalization;
 using System.Linq;
-using System.Security.Claims;
 using System.Threading;
 using System.Web;
 using Abp.Collections.Extensions;
-using Abp.Dependency;
 using Abp.Localization;
-using Abp.Reflection;
-using Abp.Runtime.Security;
+using Abp.Modules;
 using Abp.Threading;
+using Abp.Web.Configuration;
 
 namespace Abp.Web
 {
@@ -17,17 +15,15 @@ namespace Abp.Web
     /// This class is used to simplify starting of ABP system using <see cref="AbpBootstrapper"/> class..
     /// Inherit from this class in global.asax instead of <see cref="HttpApplication"/> to be able to start ABP system.
     /// </summary>
-    public abstract class AbpWebApplication : HttpApplication
+    /// <typeparam name="TStartupModule">Startup module of the application which depends on other used modules. Should be derived from <see cref="AbpModule"/>.</typeparam>
+    public abstract class AbpWebApplication<TStartupModule> : HttpApplication
+        where TStartupModule : AbpModule
     {
         /// <summary>
         /// Gets a reference to the <see cref="AbpBootstrapper"/> instance.
         /// </summary>
-        protected AbpBootstrapper AbpBootstrapper { get; private set; }
-
-        protected AbpWebApplication()
-        {
-            AbpBootstrapper = new AbpBootstrapper();
-        }
+        public static AbpBootstrapper AbpBootstrapper { get; } = AbpBootstrapper.Create<TStartupModule>();
+        private static IAbpWebLocalizationConfiguration _webLocalizationConfiguration;
 
         /// <summary>
         /// This method is called by ASP.NET system on web application's startup.
@@ -36,8 +32,9 @@ namespace Abp.Web
         {
             ThreadCultureSanitizer.Sanitize();
 
-            AbpBootstrapper.IocManager.RegisterIfNot<IAssemblyFinder, WebAssemblyFinder>();
             AbpBootstrapper.Initialize();
+
+            _webLocalizationConfiguration = AbpBootstrapper.IocManager.Resolve<IAbpWebLocalizationConfiguration>();
         }
 
         /// <summary>
@@ -69,7 +66,12 @@ namespace Abp.Web
         /// </summary>
         protected virtual void Application_BeginRequest(object sender, EventArgs e)
         {
-            var langCookie = Request.Cookies["Abp.Localization.CultureName"];
+            SetCurrentCulture();
+        }
+
+        protected virtual void SetCurrentCulture()
+        {
+            var langCookie = Request.Cookies[_webLocalizationConfiguration.CookieName];
             if (langCookie != null && GlobalizationHelper.IsValidCultureCode(langCookie.Value))
             {
                 Thread.CurrentThread.CurrentCulture = new CultureInfo(langCookie.Value);
@@ -77,10 +79,7 @@ namespace Abp.Web
             }
             else if (!Request.UserLanguages.IsNullOrEmpty())
             {
-                var firstValidLanguage = Request
-                    .UserLanguages
-                    .FirstOrDefault(GlobalizationHelper.IsValidCultureCode);
-
+                var firstValidLanguage = Request?.UserLanguages?.FirstOrDefault(GlobalizationHelper.IsValidCultureCode);
                 if (firstValidLanguage != null)
                 {
                     Thread.CurrentThread.CurrentCulture = new CultureInfo(firstValidLanguage);
@@ -99,6 +98,7 @@ namespace Abp.Web
 
         protected virtual void Application_AuthenticateRequest(object sender, EventArgs e)
         {
+
         }
 
         protected virtual void Application_Error(object sender, EventArgs e)

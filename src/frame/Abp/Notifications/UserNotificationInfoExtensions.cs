@@ -8,14 +8,15 @@
         /// <summary>
         /// Converts <see cref="UserNotificationInfo"/> to <see cref="UserNotification"/>.
         /// </summary>
-        public static UserNotification ToUserNotification(this UserNotificationInfo userNotificationInfo, Notification Notification)
+        public static UserNotification ToUserNotification(this UserNotificationInfo userNotificationInfo, TenantNotification tenantNotification)
         {
             return new UserNotification
             {
                 Id = userNotificationInfo.Id,
-                Notification = Notification,
+                Notification = tenantNotification,
                 UserId = userNotificationInfo.UserId,
                 State = userNotificationInfo.State,
+                TenantId = userNotificationInfo.TenantId
             };
         }
     }

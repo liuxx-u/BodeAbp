@@ -23,7 +23,7 @@ namespace Abp.Application.Services.Query
         /// <param name="pageCondition">分页查询条件</param>
         /// <param name="selector">数据筛选表达式</param>
         /// <returns>分页结果信息</returns>
-        public static PagedResultOutput<TResult> ToPage<TEntity, TResult>(this IQueryable<TEntity> source,
+        public static PagedResultDto<TResult> ToPage<TEntity, TResult>(this IQueryable<TEntity> source,
             Expression<Func<TEntity, bool>> predicate,
             PageCondition pageCondition,
             Expression<Func<TEntity, TResult>> selector)
@@ -47,7 +47,7 @@ namespace Abp.Application.Services.Query
         /// <param name="sortConditions">排序条件集合</param>
         /// <param name="selector">数据筛选表达式</param>
         /// <returns>分页结果信息</returns>
-        public static PagedResultOutput<TResult> ToPage<TEntity, TResult>(this IQueryable<TEntity> source,
+        public static PagedResultDto<TResult> ToPage<TEntity, TResult>(this IQueryable<TEntity> source,
             Expression<Func<TEntity, bool>> predicate,
             int pageIndex,
             int pageSize,
@@ -56,7 +56,7 @@ namespace Abp.Application.Services.Query
         {
             int total;
             TResult[] data = source.Where(predicate, pageIndex, pageSize, out total, sortConditions).Select(selector).ToArray();
-            return new PagedResultOutput<TResult>() { TotalCount = total, Items = data };
+            return new PagedResultDto<TResult>() { TotalCount = total, Items = data };
         }
 
         /// <summary>

@@ -7,7 +7,7 @@ namespace BodeAbp.Zero.Users.Domain
     /// <summary>
     /// 实体——外部登录信息
     /// </summary>
-    [Table("Zero#UserExternalLogin")]
+    [Table("Zero_UserExternalLogin")]
     public class UserExternalLogin : Entity<long>
     {
         #region 常量

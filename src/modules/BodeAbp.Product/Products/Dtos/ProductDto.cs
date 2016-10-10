@@ -44,7 +44,7 @@ namespace BodeAbp.Product.Products.Dtos
     /// 产品操作Dto
     /// </summary>
     [AutoMap(typeof(Domain.Product))]
-    public class OperableProductDto : ProductDto, IDoubleWayDto
+    public class OperableProductDto : ProductDto
     {
         /// <summary>
         /// 产品属性
@@ -63,12 +63,12 @@ namespace BodeAbp.Product.Products.Dtos
     }
 
     [AutoMapFrom(typeof(Domain.Product))]
-    public class GetProductOutput : ProductDto, IOutputDto
+    public class GetProductOutput : ProductDto
     {
     }
 
     [AutoMapFrom(typeof(Domain.Product))]
-    public class GetProductListOutput : ProductDto, IOutputDto
+    public class GetProductListOutput : ProductDto
     {
     }
 }
