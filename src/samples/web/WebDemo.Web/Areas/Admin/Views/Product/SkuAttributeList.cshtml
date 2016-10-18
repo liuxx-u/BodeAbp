@@ -1,0 +1,28 @@
+﻿@{
+    ViewBag.Title = "SKU属性列表";
+    Layout = "~/Areas/Admin/Views/Shared/_TreeGridLayout.cshtml";
+}
+
+@section customScript{
+    <script type="text/javascript">
+        var attributeTypes=@Html.Raw(Json.Encode(ViewBag.AttributeTypes));
+
+        treeOption.title = "产品分类";
+        treeOption.initialValue="null";
+        treeOption.folderSelectEnable=true;
+        treeOption.tableParamField = "productClassifyId";
+        treeOption.url = "/api/services/product/attributes/GetClassifyTreeData";
+
+        tableOption.url = {
+            read: "/api/services/product/skus/GetSkuAttributePagedList",
+            add: "/api/services/product/skus/CreateSkuAttribute",
+            edit: "/api/services/product/skus/UpdateSkuAttribute",
+            delete: "/api/services/product/skus/DeleteSkuAttribute",
+        };
+        tableOption.columns = [
+                { data: "id", title: "编号" },
+                { data: "name", title: "SKU属性名称", type: "text", query: true },
+                { title: "操作选项", type: "command", actions: [] }
+        ];
+    </script>
+}

@@ -1,0 +1,27 @@
+﻿@{
+    ViewBag.Title = "属性选项列表";
+    Layout = "~/Areas/Admin/Views/Shared/_TreeGridLayout.cshtml";
+}
+
+@section customScript{
+    <script type="text/javascript">
+        treeOption.title = "可选属性";
+        treeOption.initialValue="null";
+        treeOption.tableParamField = "attributeId";
+        treeOption.url = "/api/services/product/attributes/GetOptionalAttributeTreeData";
+
+        tableOption.url = {
+            read: "/api/services/product/attributes/GetAttributeOptionPagedList",
+            add: "/api/services/product/attributes/CreateAttributeOption",
+            edit: "/api/services/product/attributes/UpdateAttributeOption",
+            delete: "/api/services/product/attributes/DeleteAttributeOption",
+        };
+        tableOption.columns = [
+                { data: "id", title: "编号" },
+                { data: "value", title: "选项名称", type: "text", query: true },
+                { data: "orderNo", title: "排序号", type: "number", query: true },
+                { data: "remark", title: "备注", type: "text", query: true },
+                { title: "操作选项", type: "command", actions: [] }
+        ];
+    </script>
+}

@@ -1,0 +1,29 @@
+﻿
+@{
+    ViewBag.Title = "后台任务列表";
+    Layout = "~/Areas/Admin/Views/Shared/_GridLayout.cshtml";
+}
+
+@section customScript{
+    <script type="text/javascript">
+        var prioritys = @Html.Raw(Json.Encode(@ViewBag.Prioritys));
+
+        tableOption.url = {
+            read: "/api/services/zero/backgroundJob/GetBackgroundJobPagedList",
+            edit: "/api/services/zero/backgroundJob/DeleteBackgroundJob"
+        };
+        tableOption.columns = [
+            { data: "id", title: "编号", type: "hide" },
+            { data: "jobType", title: "任务类型", type: "text", query: true },
+            { data: "jobArgs", title: "任务参数", type: "text", query: true },
+            { data: "tryCount", title: "执行次数", type: "number", query: true },
+            { data: "isAbandoned", title: "是否终止", type: "switch", query: true },
+            { data: "priority", title: "优先级", type: "dropdown", source: {data:prioritys}, query: true },
+            { data: "isAbandoned", title: "是否终止", type: "switch", query: true },
+            { data: "nextTryTime", title: "下次执行时间", type: "timepicker", query: true },
+            { data: "lastTryTime", title: "最后一次执行时间", type: "timepicker", query: true },
+            { title: "操作选项", type: "command" }
+        ];
+    </script>
+}
+

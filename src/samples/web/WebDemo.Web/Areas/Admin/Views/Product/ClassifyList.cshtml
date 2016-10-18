@@ -1,0 +1,177 @@
+﻿
+@{
+    ViewBag.Title = "商品分类";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="page-container" id="classifys">
+    <div class="page-body">
+        <div class="row">
+            <div class="col-sm-8">
+                <div class="widget flat radius-bordered">
+                    <div class="widget-header bg-blue">
+                        <span class="widget-caption">商品分类</span>
+                        <div class="widget-buttons">
+                            <a href="#" style="margin-top:10px;" v-on:click="add(null);">
+                                <i class="fa fa-plus"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="widget-body">
+                        <div class="tree tree-solid-line">
+                            <nodes :nodes="classifys"></nodes>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/x-template" id="node">
+    <template v-for="node in nodes">
+        <template v-if="node.children.length>0">
+            <div class="tree-folder">
+                <div class="tree-folder-header">
+                    <i class="palegreen fa fa-folder"></i>
+                    <div class="tree-folder-name">
+                        <span>{{node.name}}</span>
+                        <div class="tree-actions">
+                            <i class="fa fa-plus" v-on:click="add(node.id);"></i>
+                            <i class="fa fa-edit" v-on:click="edit(node);"></i>
+                            <i class="fa  fa-long-arrow-up" v-on:click="up(node.id);"></i>
+                            <i class="fa  fa-long-arrow-down" v-on:click="down(node.id);"></i>
+                            <i class="fa fa-trash-o" v-on:click="down(node.id);"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="tree-folder-content">
+                    <nodes :nodes="node.children"></nodes>
+                </div>
+            </div>
+        </template>
+        <template v-else>
+            <div class="tree-item">
+                <i class="tree-dot"></i>
+                <div class="tree-item-name">
+                    <span>{{node.name}}</span>
+                    <div class="tree-actions">
+                        <i class="fa fa-plus" v-on:click="add(node.id);"></i>
+                        <i class="fa fa-edit" v-on:click="edit(node);"></i>
+                        <i class="fa  fa-long-arrow-up" v-on:click="up(node.id);"></i>
+                        <i class="fa  fa-long-arrow-down" v-on:click="down(node.id);"></i>
+                        <i class="fa fa-trash-o" v-on:click="down(node.id);"></i>
+                    </div>
+                </div>
+            </div>
+        </template>
+    </template>
+</script>
+
+<div id="model" class="layer-row-container">
+    <div class="row">
+        <div class="col-sm-12">
+            <form class="form-horizontal form-bordered" role="form">
+                <div class="form-group">
+                    <label for="classifyName" class="col-sm-2 control-label no-padding-right">分类名称</label>
+                    <div class="col-sm-10">
+                        <input type="email" class="form-control" id="classifyName">
+                    </div>
+                </div>
+                <hr class="wide" />
+            </form>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    function addClassify(parentId) {
+        layer.open({
+            title: "新增分类",
+            type: 1,
+            area: "40%",
+            content: $("#model"),
+            btn: ["保存", "取消"],
+            success: function () {
+                $("#classifyName").val("");
+            },
+            yes: function (index, layero) {
+                var dto = {
+                    name: $("#classifyName").val(),
+                    parentId: parentId,
+                }
+                $.bode.ajax("/api/services/product/attributes/CreateClassify", dto, function () {
+                    vm.reload();
+                    layer.msg("保存成功");
+                    layer.close(index);
+                });
+            },
+            cancel: function () { }
+        });
+    }
+
+    Vue.component('nodes', {
+        template: '#node',
+        data: function () { return {}; },
+        props: ['nodes'],
+        methods: {
+            add: addClassify,
+            edit: function (classify) {
+                layer.open({
+                    title: "编辑分类",
+                    type: 1,
+                    area: "40%",
+                    content: $("#model"),
+                    btn: ["保存", "取消"],
+                    success: function () {
+                        $("#classifyName").val(classify.name);
+                    },
+                    yes: function (index, layero) {
+                        var dto = {
+                            id: classify.id,
+                            name: $("#classifyName").val(),
+                            parentId: classify.parentId
+                        };
+                        $.bode.ajax("/api/services/product/attributes/UpdateClassify", dto, function () {
+                            vm.reload();
+                            layer.msg("保存成功");
+                            layer.close(index);
+                        });
+                    },
+                    cancel: function () { }
+                });
+            },
+            up: function (id) {
+                $.bode.ajax("/api/services/product/attributes/ClassifyUp", {id:id}, function () {
+                    vm.reload();
+                    layer.msg("保存成功");
+                });
+            },
+            down: function (id) {
+                $.bode.ajax("/api/services/product/attributes/ClassifyDown", { id: id }, function () {
+                    vm.reload();
+                    layer.msg("保存成功");
+                });
+            }
+        }
+    });
+
+    var vm = new Vue({
+        el: "#classifys",
+        data: {
+            classifys: []
+        },
+        methods: {
+            add: addClassify,
+            reload: function () {
+                var self = this;
+                $.bode.ajax("/api/services/product/attributes/GetAllClassifies", {}, function (classifys) {
+                    self.classifys = classifys;
+                })
+            }
+        },
+        created: function () {
+            this.reload();
+        }
+    });
+</script>

@@ -1,0 +1,22 @@
+﻿@{
+    ViewBag.Title = "登录日志列表";
+    Layout = "~/Areas/Admin/Views/Shared/_GridLayout.cshtml";
+}
+
+@section customScript{
+    <script type="text/javascript">
+        var loginResults=@Html.Raw(Json.Encode(ViewBag.LoginResults));
+        tableOption.url = {
+            read: "/api/services/zero/user/GetUserLoginLogList"
+        };
+        tableOption.columns = [
+            { title: "编号", data: "id", type: "hide" },
+            { title: "用户名", data: "userName", type: "text", query: true },
+            { title: "登录结果", data: "result", type: "dropdown", query: true, source:{data:loginResults} },
+            { title: "登录客户端IP", data: "clientIpAddress", type: "text", query: true },
+            { title: "登录客户端设备名称", data: "clientName", type: "text", query: true },
+            { title: "浏览器信息", data: "browserInfo", type: "text", query: true },
+            { title: "登录时间", data: "creationTime", type: "timepicker", query: true }
+        ];
+    </script>
+}

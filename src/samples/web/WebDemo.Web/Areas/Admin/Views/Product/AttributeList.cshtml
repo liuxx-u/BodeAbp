@@ -1,0 +1,36 @@
+﻿@{
+    ViewBag.Title = "属性列表";
+    Layout = "~/Areas/Admin/Views/Shared/_TreeGridLayout.cshtml";
+}
+
+@section customScript{
+    <script type="text/javascript">
+        var attributeTypes=@Html.Raw(Json.Encode(ViewBag.AttributeTypes));
+
+        treeOption.title = "产品分类";
+        treeOption.initialValue="null";
+        treeOption.folderSelectEnable=true;
+        treeOption.tableParamField = "productClassifyId";
+        treeOption.url = "/api/services/product/attributes/GetClassifyTreeData";
+
+        tableOption.url = {
+            read: "/api/services/product/attributes/GetAttributePagedList",
+            add: "/api/services/product/attributes/CreateAttribute",
+            edit: "/api/services/product/attributes/UpdateAttribute",
+            delete: "/api/services/product/attributes/DeleteAttribute",
+        };
+        tableOption.columns = [
+                { data: "id", title: "编号" },
+                { data: "name", title: "属性名称", type: "text", query: true },
+                { data: "attributeType", title: "属性类型", type: "dropdown", source: {data:attributeTypes}, query: true },
+                { data: "defaultValue", title: "默认值", type: "text", query: true },
+                 { data: "tips", title: "提示", type: "text", query: true },
+                 { data: "validateRegular", title: "验证规则（正则）", type: "text", query: true },
+                 { data: "groupName", title: "分组名", type: "text", query: true },
+                 { data: "orderNo", title: "排序号", type: "number", query: true },
+                { data: "isRequired", title: "是否必填项", type: "switch", query: true },
+                { data: "isShowToClient", title: "是否在客户端展示", type: "switch", query: true },
+                { title: "操作选项", type: "command", actions: [] }
+        ];
+    </script>
+}

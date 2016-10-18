@@ -1,0 +1,96 @@
+﻿@{
+    ViewBag.Title = "用户列表";
+    Layout = "~/Areas/Admin/Views/Shared/_GridLayout.cshtml";
+}
+
+@section customScript{
+    <script type="text/javascript">
+        var vm = new Vue({
+            el: '#roles',
+            data: {
+                curUserId: 0,
+                roleNames: [],
+                checkedRoleNames: []
+            },
+            created: function () {
+                var self = this;
+                $.bode.ajax("/api/services/zero/role/GetAllRoleNames", {}, function (roleNames) {
+                    self.roleNames = roleNames;
+                })
+            }
+        });
+
+        function onRoleClick(data) {
+            layer.open({
+                title: data.userName + "-设置角色",
+                type: 1,
+                area: "40%",
+                content: $("#roles"),
+                btn: ["保存", "取消"],
+                success: function () {
+                    //异步加载的数据在弹出框渲染完成之后再执行，vue不会触发隐藏元素的视图更新
+                    if (vm.curUserId !== data.id) {
+                        var url = "/api/services/zero/user/GetUserRoles?userId=" + data.id;
+                        $.bode.ajax(url, {}, function (roleNames) {
+                            vm.curUserId = data.id;
+                            vm.checkedRoleNames = roleNames;
+                        });
+                    }
+                },
+                yes: function (index, layero) {
+                    $.bode.ajax("/api/services/zero/user/SetUserRoles", { userId: vm.curUserId, roleNames: vm.checkedRoleNames }, function () {
+                        layer.msg("保存成功");
+                        layer.close(index);
+                    });
+                },
+                cancel: function () { }
+            });
+        }
+
+        tableOption.url = {
+            read: "/api/services/zero/user/GetUserPagedList",
+            add: "/api/services/zero/user/CreateUser",
+            edit: "/api/services/zero/user/UpdateUser",
+            delete: "/api/services/zero/user/DeleteUser"
+        };
+        tableOption.columns = [
+                { data: "id", title: "编号" },
+                { data: "userName", title: "用户名", type: "text", query: true },
+                { data: "nickName", title: "昵称", type: "text", query: true },
+                { data: "lastLoginTime", title: "最后登录时间", type: "timepicker", query: true },
+                { data: "isActive", title: "是否激活", type: "switch", query: true },
+                { data: "creationTime", title: "注册时间", type: "timepicker", query: true },
+                {
+                    title: "操作选项",
+                    width:"450px",
+                    type: "command",
+                    actions: [
+                        {
+                            name: "设置角色",
+                            icon: "fa-trash-o",
+                            onClick: onRoleClick
+                        }
+                    ]
+                }
+        ];
+    </script>
+}
+
+<div id="roles" class="layer-row-container">
+    <div class="row">
+            <template v-for="role in roleNames">
+                <div class="col-sm-4 col-md-3">
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" value="{{role.roleName}}" v-model="checkedRoleNames">
+                            <span class="text">{{role.displayName}}</span>
+                        </label>
+                    </div>
+                </div>
+            </template>
+    </div>
+</div>
+
+<div id="reset-password" class="layer-row-container">
+
+</div>

@@ -19,6 +19,7 @@ bld/
 [Bb]in/
 [Oo]bj/
 UploadFile/
+logs/
 
 # Roslyn cache directories
 *.ide/
