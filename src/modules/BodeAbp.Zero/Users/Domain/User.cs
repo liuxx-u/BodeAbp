@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -14,64 +14,64 @@ using Microsoft.AspNet.Identity;
 namespace BodeAbp.Zero.Users.Domain
 {
     /// <summary>
-    /// ÊµÌå¡ª¡ªÓÃ»§ĞÅÏ¢
+    /// å®ä½“â€”â€”ç”¨æˆ·
     /// </summary>
     [Table("Zero_User")]
     public class User : FullAuditedEntity<long>, IUser<long>, IPassivable
     {
-        #region ³£Á¿
+        #region Â³Â£ÃÂ¿
         
         /// <summary>
-        /// ÓÃ»§Ãû <see cref="UserName"/> ×î´ó³¤¶È
+        /// Ã“ÃƒÂ»Â§ÃƒÃ» <see cref="UserName"/> Ã—Ã®Â´Ã³Â³Â¤Â¶Ãˆ
         /// </summary>
         public const int MaxUserNameLength = 32;
 
         /// <summary>
-        /// ÓÊÏä <see cref="EmailAddress"/> ×î´ó³¤¶È
+        /// Ã“ÃŠÃÃ¤ <see cref="EmailAddress"/> Ã—Ã®Â´Ã³Â³Â¤Â¶Ãˆ
         /// </summary>
         public const int MaxEmailAddressLength = 256;
 
         /// <summary>
-        /// ÊÖ»úºÅ<see cref="PhoneNo"/>×î´ó³¤¶È
+        /// ÃŠÃ–Â»ÃºÂºÃ…<see cref="PhoneNo"/>Ã—Ã®Â´Ã³Â³Â¤Â¶Ãˆ
         /// </summary>
         public const int MaxPhoneNoLength = 32;
 
         /// <summary>
-        /// ¹ÜÀíÔ±Ä¬ÈÏÓÃ»§Ãû
+        /// Â¹ÃœÃ€Ã­Ã”Â±Ã„Â¬ÃˆÃÃ“ÃƒÂ»Â§ÃƒÃ»
         /// </summary>
         public const string AdminUserName = "admin";
 
         /// <summary>
-        /// Ãû³Æ <see cref="Name"/> ×î´ó³¤¶È
+        /// ÃƒÃ»Â³Ã† <see cref="Name"/> Ã—Ã®Â´Ã³Â³Â¤Â¶Ãˆ
         /// </summary>
         public const int MaxNameLength = 32;
 
         /// <summary>
-        /// ÃÜÂë <see cref="Password"/> ×î´ó³¤¶È
+        /// ÃƒÃœÃ‚Ã« <see cref="Password"/> Ã—Ã®Â´Ã³Â³Â¤Â¶Ãˆ
         /// </summary>
         public const int MaxPasswordLength = 128;
 
         /// <summary>
-        ///  ÓÃ»§ÊäÈëÃÜÂë<see cref="Password"/> ×î´ó³¤¶È
+        ///  Ã“ÃƒÂ»Â§ÃŠÃ¤ÃˆÃ«ÃƒÃœÃ‚Ã«<see cref="Password"/> Ã—Ã®Â´Ã³Â³Â¤Â¶Ãˆ
         /// </summary>
         public const int MaxPlainPasswordLength = 32;
 
         /// <summary>
-        /// Èı·½µÇÂ¼Ô´Ãû³Æ <see cref="AuthenticationSource"/> ×î´ó³¤¶È.
+        /// ÃˆÃ½Â·Â½ÂµÃ‡Ã‚Â¼Ã”Â´ÃƒÃ»Â³Ã† <see cref="AuthenticationSource"/> Ã—Ã®Â´Ã³Â³Â¤Â¶Ãˆ.
         /// </summary>
         public const int MaxAuthenticationSourceLength = 64;
 
         /// <summary>
-        /// Ä¬ÈÏµÇÂ¼ÃÜÂë
+        /// Ã„Â¬ÃˆÃÂµÃ‡Ã‚Â¼ÃƒÃœÃ‚Ã«
         /// </summary>
         public const string DefaultPassword = "bode123456";
 
         #endregion
 
-        #region ÊôĞÔ
+        #region ÃŠÃ´ÃÃ”
 
         /// <summary>
-        /// ÓÃ»§Ãû
+        /// Ã“ÃƒÂ»Â§ÃƒÃ»
         /// </summary>
         [Required]
         [MaxLength(MaxUserNameLength)]
@@ -79,93 +79,93 @@ namespace BodeAbp.Zero.Users.Domain
 
         /// <summary>
         /// Authorization source name.
-        /// Èı·½µÇÂ¼Ô´Ãû³Æ
+        /// ÃˆÃ½Â·Â½ÂµÃ‡Ã‚Â¼Ã”Â´ÃƒÃ»Â³Ã†
         /// Default: null.
         /// </summary>
         [MaxLength(MaxAuthenticationSourceLength)]
         public string AuthenticationSource { get; set; }
 
         /// <summary>
-        /// Ãû³Æ
+        /// ÃƒÃ»Â³Ã†
         /// </summary>
         [StringLength(MaxNameLength)]
         public string NickName { get; set; }
 
         /// <summary>
-        /// ÓÃ»§ÃÜÂë
+        /// Ã“ÃƒÂ»Â§ÃƒÃœÃ‚Ã«
         /// </summary>
         [Required]
         [StringLength(MaxPasswordLength)]
         public string Password { get; set; }
 
         /// <summary>
-        /// ÊÖ»úºÅÂë
+        /// ÃŠÃ–Â»ÃºÂºÃ…Ã‚Ã«
         /// </summary>
         [StringLength(MaxPhoneNoLength)]
         public string PhoneNo { get; set; }
 
         /// <summary>
-        /// ÓÊÏä
+        /// Ã“ÃŠÃÃ¤
         /// Email address must be unique for it's tenant.
         /// </summary>
         [StringLength(MaxEmailAddressLength)]
         public string EmailAddress { get; set; }
 
         /// <summary>
-        /// ×îºóµÇÂ¼Ê±¼ä
+        /// Ã—Ã®ÂºÃ³ÂµÃ‡Ã‚Â¼ÃŠÂ±Â¼Ã¤
         /// </summary>
         public DateTime? LastLoginTime { get; set; }
 
         /// <summary>
-        /// ÊÇ·ñÑéÖ¤ÓÊÏä <see cref="EmailAddress"/>.
+        /// ÃŠÃ‡Â·Ã±Ã‘Ã©Ã–Â¤Ã“ÃŠÃÃ¤ <see cref="EmailAddress"/>.
         /// </summary>
         public bool IsEmailConfirmed { get; set; }
 
         /// <summary>
-        /// ÊÇ·ñÑéÖ¤ÊÖ»ú<see cref="PhoneNo"/>
+        /// ÃŠÃ‡Â·Ã±Ã‘Ã©Ã–Â¤ÃŠÃ–Â»Ãº<see cref="PhoneNo"/>
         /// </summary>
         public bool IsPhoneNoConfirm { get; set; }
 
         /// <summary>
-        /// ÊÇ·ñ¼¤»î
+        /// ÃŠÃ‡Â·Ã±Â¼Â¤Â»Ã®
         /// </summary>
         public bool IsActive { get; set; }
 
         /// <summary>
-        /// ÓÃ»§×Ô¶¨ÒåÊı¾İ£¨json¸ñÊ½£©
+        /// Ã“ÃƒÂ»Â§Ã—Ã”Â¶Â¨Ã’Ã¥ÃŠÃ½Â¾ÃÂ£Â¨jsonÂ¸Ã±ÃŠÂ½Â£Â©
         /// </summary>
         public string CustomData { get; set; }
 
         /// <summary>
-        /// ÓÃ»§µÇÂ¼¼¯ºÏ
+        /// Ã“ÃƒÂ»Â§ÂµÃ‡Ã‚Â¼Â¼Â¯ÂºÃ
         /// </summary>
         [ForeignKey("UserId")]
         public virtual ICollection<UserExternalLogin> Logins { get; set; }
 
         /// <summary>
-        /// ÓÃ»§½ÇÉ«¼¯ºÏ
+        /// Ã“ÃƒÂ»Â§Â½Ã‡Ã‰Â«Â¼Â¯ÂºÃ
         /// </summary>
         [ForeignKey("UserId")]
         public virtual ICollection<UserRole> Roles { get; set; }
 
         /// <summary>
-        /// ÓÃ»§È¨ÏŞ¼¯ºÏ
+        /// Ã“ÃƒÂ»Â§ÃˆÂ¨ÃÃÂ¼Â¯ÂºÃ
         /// </summary>
         [ForeignKey("UserId")]
         public virtual ICollection<UserPermission> Permissions { get; set; }
 
         /// <summary>
-        /// ÓÃ»§ÉèÖÃ¼¯ºÏ
+        /// Ã“ÃƒÂ»Â§Ã‰Ã¨Ã–ÃƒÂ¼Â¯ÂºÃ
         /// </summary>
         [ForeignKey("UserId")]
         public virtual ICollection<Setting> Settings { get; set; }
 
         #endregion
 
-        #region ¹¹Ôìº¯Êı
+        #region Â¹Â¹Ã”Ã¬ÂºÂ¯ÃŠÃ½
         
         /// <summary>
-        /// ¹¹Ôìº¯Êı
+        /// Â¹Â¹Ã”Ã¬ÂºÂ¯ÃŠÃ½
         /// </summary>
         public User()
         {
@@ -174,15 +174,15 @@ namespace BodeAbp.Zero.Users.Domain
 
         #endregion
 
-        #region ¹«¹²·½·¨
+        #region Â¹Â«Â¹Â²Â·Â½Â·Â¨
         
 
         #endregion
 
-        #region ÖØÔØ
+        #region Ã–Ã˜Ã”Ã˜
 
         /// <summary>
-        /// ÖØĞ´ToString()·½·¨
+        /// Ã–Ã˜ÃÂ´ToString()Â·Â½Â·Â¨
         /// </summary>
         /// <returns></returns>
         public override string ToString()

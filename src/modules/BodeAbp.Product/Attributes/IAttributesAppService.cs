@@ -9,9 +9,9 @@ using Abp;
 namespace BodeAbp.Product.Attributes
 {
     /// <summary>
-    ///  属性 服务
+    ///  商品属性 服务
     /// </summary>
-    [Description("属性接口")]
+    [Description("商品属性接口")]
     public interface IAttributesAppService : IApplicationService
     {
         #region 属性模版
@@ -56,7 +56,7 @@ namespace BodeAbp.Product.Attributes
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
-        Task<ICollection<OperableAttributeGroupDto>> GetClassifyGroupAttributes(IdInput input);
+        Task<OperableAttributeGroupDto[]> GetClassifyGroupAttributes(IdInput input);
 
         #endregion
 
@@ -131,9 +131,9 @@ namespace BodeAbp.Product.Attributes
         /// <summary>
         /// 删除 分类
         /// </summary>
-        /// <param name="id">分类id</param>
+        /// <param name="input">input</param>
         /// <returns></returns>
-        Task DeleteClassify(int id);
+        Task DeleteClassify(IdInput input);
 
         /// <summary>
         /// 分类升序

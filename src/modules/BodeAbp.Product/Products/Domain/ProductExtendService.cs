@@ -4,10 +4,10 @@ using Abp.Domain.Entities;
 namespace BodeAbp.Product.Products.Domain
 {
     /// <summary>
-    /// 商品额外属性
+    /// 商品增值服务
     /// </summary>
-    [Table("Product#ExtendAttribute")]
-    public class ProductExtendAttribute : Entity<long>
+    [Table("Product_ExtendService")]
+    public class ProductExtendService : Entity<long>
     {
         /// <summary>
         /// 名称
@@ -15,9 +15,14 @@ namespace BodeAbp.Product.Products.Domain
         public string Name { get; set; }
 
         /// <summary>
-        /// 值
+        /// 价格
         /// </summary>
-        public string Value { get; set; }
+        public decimal Price { get; set; }
+        
+        /// <summary>
+        /// 是否按天计费
+        /// </summary>
+        public bool BillingByDay { get; set; }
 
         /// <summary>
         /// 产品Id

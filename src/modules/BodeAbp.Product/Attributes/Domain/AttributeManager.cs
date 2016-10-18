@@ -16,8 +16,8 @@ namespace BodeAbp.Product.Attributes.Domain
     public class AttributeManager : IDomainService
     {
         private readonly IRepository<ProductClassify> _classifyRepository;
-        private readonly IRepository<AttributeOption> _attributeOptionRepository;
-        private readonly IRepository<Attribute> _attributeRepository;
+        private readonly IRepository<ProductAttributeOption> _attributeOptionRepository;
+        private readonly IRepository<ProductAttribute> _attributeRepository;
 
         private readonly ICache _cache;
 
@@ -25,9 +25,9 @@ namespace BodeAbp.Product.Attributes.Domain
         /// 构造函数
         /// </summary>
         public AttributeManager(
-            IRepository<Attribute> attributeRepository,
+            IRepository<ProductAttribute> attributeRepository,
             IRepository<ProductClassify> classifyRepository,
-            IRepository<AttributeOption> attributeOptionRepository,
+            IRepository<ProductAttributeOption> attributeOptionRepository,
             ICacheManager cacheManager)
         {
             _classifyRepository = classifyRepository;
@@ -43,7 +43,7 @@ namespace BodeAbp.Product.Attributes.Domain
         /// </summary>
         /// <param name="attribute">模版</param>
         /// <returns></returns>
-        public async Task CreateAttributeTempateAsync(Attribute attribute)
+        public async Task CreateAttributeTempateAsync(ProductAttribute attribute)
         {
             attribute.CheckNotNull("attribute");
             attribute.Name.CheckNotNullOrEmpty("attribute.Name");
@@ -60,7 +60,7 @@ namespace BodeAbp.Product.Attributes.Domain
         /// </summary>
         /// <param name="attribute">模版</param>
         /// <returns></returns>
-        public async Task UpdateAttributeTempateAsync(Attribute attribute)
+        public async Task UpdateAttributeTempateAsync(ProductAttribute attribute)
         {
             attribute.CheckNotNull("attribute");
             attribute.Name.CheckNotNullOrEmpty("attribute.Name");
@@ -77,10 +77,10 @@ namespace BodeAbp.Product.Attributes.Domain
         /// </summary>
         /// <param name="classify">分类</param>
         /// <returns></returns>
-        public ICollection<Attribute> GetAttributeByClassify(ProductClassify classify)
+        public ICollection<ProductAttribute> GetAttributeByClassify(ProductClassify classify)
         {
             classify.CheckNotNull("Classify");
-            var attributes = new List<Attribute>();
+            var attributes = new List<ProductAttribute>();
 
             var classifyIds = classify.ParentIds.IsNullOrWhiteSpace()
                 ? new List<int>()
@@ -103,7 +103,7 @@ namespace BodeAbp.Product.Attributes.Domain
         /// </summary>
         /// <param name="classifyId">分类Id</param>
         /// <returns></returns>
-        public async Task<ICollection<Attribute>> GetAttributeByClassifyId(int classifyId)
+        public async Task<ICollection<ProductAttribute>> GetAttributeByClassifyId(int classifyId)
         {
             classifyId.CheckGreaterThan("classifyId", 0);
             var classify = await _classifyRepository.GetAsync(classifyId);
@@ -119,7 +119,7 @@ namespace BodeAbp.Product.Attributes.Domain
         /// </summary>
         /// <param name="option">属性选项</param>
         /// <returns></returns>
-        public async Task CreateAttributeOptionAsync(AttributeOption option)
+        public async Task CreateAttributeOptionAsync(ProductAttributeOption option)
         {
             option.CheckNotNull("option");
             option.Value.CheckNotNullOrEmpty("option.Value");
@@ -141,7 +141,7 @@ namespace BodeAbp.Product.Attributes.Domain
         /// </summary>
         /// <param name="option">属性值</param>
         /// <returns></returns>
-        public async Task UpdateAttributeOptionAsync(AttributeOption option)
+        public async Task UpdateAttributeOptionAsync(ProductAttributeOption option)
         {
             option.CheckNotNull("option");
             option.Value.CheckNotNullOrEmpty("option.Value");
@@ -163,7 +163,7 @@ namespace BodeAbp.Product.Attributes.Domain
         /// </summary>
         /// <param name="attributeId">属性Id</param>
         /// <returns></returns>
-        public async Task<ICollection<AttributeOption>> GetAttributeOptionsByAttributeId(int attributeId)
+        public async Task<ICollection<ProductAttributeOption>> GetAttributeOptionsByAttributeId(int attributeId)
         {
             return await _attributeOptionRepository.GetAllListAsync(p => p.AttributeId == attributeId);
         }

@@ -7,8 +7,8 @@ namespace BodeAbp.Product.Products.Domain
     /// <summary>
     /// 商品属性关系
     /// </summary>
-    [Table("Product#AttributeMap")]
-    public class ProductAttribute : Entity<long>
+    [Table("Product_ProductAttribute")]
+    public class ProductAttributeMap : Entity<long>
     {
         /// <summary>
         /// 产品Id
@@ -30,7 +30,7 @@ namespace BodeAbp.Product.Products.Domain
         /// 属性
         /// </summary>
         [ForeignKey("AttributeId")]
-        public virtual Attribute Attribute { get; set; }
+        public virtual ProductAttribute Attribute { get; set; }
 
         /// <summary>
         /// 属性值
@@ -38,14 +38,8 @@ namespace BodeAbp.Product.Products.Domain
         public string Value { get; set; }
 
         /// <summary>
-        /// 属性选项Id
+        /// 属性选项Id集合（当属性类型为Switch/Multiple时有效）
         /// </summary>
-        public int? AttributeOptionId { get; set; }
-
-        /// <summary>
-        /// 属性选项（属性为单选/多选时的值）
-        /// </summary>
-        [ForeignKey("AttributeOptionId")]
-        public virtual AttributeOption AttributeOption { get; set; }
+        public string AttributeOptionIds { get; set; }
     }
 }

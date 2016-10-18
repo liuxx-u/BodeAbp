@@ -1,7 +1,6 @@
 ﻿using Abp.Application.Services;
 using Abp.Application.Services.Dto;
 using Abp.Application.Services.Query;
-using Abp.AutoMapper;
 using Abp.Domain.Repositories;
 using BodeAbp.Product.Attributes.Domain;
 using BodeAbp.Product.Attributes.Dtos;
@@ -12,6 +11,7 @@ using System.Threading.Tasks;
 using System;
 using Abp.Extensions;
 using Abp;
+using Abp.AutoMapper;
 
 namespace BodeAbp.Product.Attributes
 {
@@ -26,13 +26,13 @@ namespace BodeAbp.Product.Attributes
         public AttributeManager attributeManager { protected get; set; }
 
         private readonly IRepository<ProductClassify> _classifyRepository;
-        private readonly IRepository<Domain.Attribute> _attributeRepository;
-        private readonly IRepository<AttributeOption> _attributeOptionRepository;
+        private readonly IRepository<ProductAttribute> _attributeRepository;
+        private readonly IRepository<ProductAttributeOption> _attributeOptionRepository;
 
         public AttributesAppService(
-            IRepository<Domain.Attribute> attributeTemplateRepository,
+            IRepository<ProductAttribute> attributeTemplateRepository,
             IRepository<ProductClassify> classifyRepository,
-            IRepository<AttributeOption> attributeValueRepository)
+            IRepository<ProductAttributeOption> attributeValueRepository)
         {
             _classifyRepository = classifyRepository;
             _attributeOptionRepository = attributeValueRepository;
@@ -59,7 +59,7 @@ namespace BodeAbp.Product.Attributes
         /// <inheritdoc/>
         public async Task CreateAttribute(AttributeDto input)
         {
-            var attributeTemplate = input.MapTo<Domain.Attribute>();
+            var attributeTemplate = input.MapTo<ProductAttribute>();
             await attributeManager.CreateAttributeTempateAsync(attributeTemplate);
         }
 
@@ -81,7 +81,7 @@ namespace BodeAbp.Product.Attributes
         public async Task<ICollection<TreeOutPut>> GetOptionalAttributeTreeData()
         {
             var attrbutes = await _attributeRepository.GetAll().AsNoTracking()
-                .Where(p => p.AttributeType == AttributeType.Switch)
+                .Where(p => p.AttributeType == ProductAttributeType.Switch || p.AttributeType == ProductAttributeType.Multiple)
                 .OrderBy(p => p.OrderNo)
                 .Select(p => new { p.Id, p.Name, p.ProductClassifyId }).ToListAsync();
 
@@ -137,19 +137,37 @@ namespace BodeAbp.Product.Attributes
         }
 
         /// <inheritdoc/>
-        public async Task<ICollection<OperableAttributeGroupDto>> GetClassifyGroupAttributes(IdInput input)
+        public async Task<OperableAttributeGroupDto[]> GetClassifyGroupAttributes(IdInput input)
         {
             var attributes = await attributeManager.GetAttributeByClassifyId(input.Id);
             //未设置分组名的属性默认为“基础属性”分组
             attributes.Where(p => p.GroupName.IsNullOrWhiteSpace()).ToList().ForEach(p => p.GroupName = "基础属性");
+            //查询可选的属性选项
+            var optionalAttributeIds = attributes.Where(p => p.AttributeType == ProductAttributeType.Switch || p.AttributeType == ProductAttributeType.Multiple).Select(p => p.Id);
+            var options = await _attributeOptionRepository.GetAll().AsNoTracking().
+                Where(p => optionalAttributeIds.Contains(p.AttributeId))
+                .OrderBy(p => p.OrderNo).Select(p => new
+                {
+                    p.Id,
+                    p.Value,
+                    p.AttributeId
+                }).ToArrayAsync();
 
             var result = attributes.GroupBy(p => p.GroupName).Select(p =>
-                new OperableAttributeGroupDto
+            {
+                var attributeDtos = p.OrderBy(m => m.OrderNo).MapTo<List<OperableAttributeDto>>();
+                foreach (var item in attributeDtos.Where(m => m.AttributeType == ProductAttributeType.Switch || m.AttributeType == ProductAttributeType.Multiple))
+                {
+                    item.Options = options.Where(n => n.AttributeId == item.Id).Select(n => new NameValueDto(n.Value, n.Id.ToString())).ToArray();
+                }
+
+                return new OperableAttributeGroupDto
                 {
                     GroupName = p.Key,
-                    Attributes = p.OrderBy(m => m.OrderNo).MapTo<List<OperableAttributeDto>>()
-                }).ToList();
-            return result;
+                    Attributes = attributeDtos
+                };
+            });
+            return result.ToArray();
         }
 
         #endregion
@@ -174,7 +192,7 @@ namespace BodeAbp.Product.Attributes
         /// <inheritdoc/>
         public async Task CreateAttributeOption(AttributeOptionDto input)
         {
-            var attributeValue = input.MapTo<AttributeOption>();
+            var attributeValue = input.MapTo<ProductAttributeOption>();
             await attributeManager.CreateAttributeOptionAsync(attributeValue);
         }
 
@@ -278,10 +296,11 @@ namespace BodeAbp.Product.Attributes
         }
 
         /// <inheritdoc/>
-        public async Task DeleteClassify(int id)
+        public async Task DeleteClassify(IdInput input)
         {
-            id.CheckGreaterThan("id", 0);
-            await attributeManager.DeleteClassifyAsync(id);
+            input.CheckNotNull("input");
+            input.Id.CheckGreaterThan("input.Id", 0);
+            await attributeManager.DeleteClassifyAsync(input.Id);
         }
 
         /// <inheritdoc/>

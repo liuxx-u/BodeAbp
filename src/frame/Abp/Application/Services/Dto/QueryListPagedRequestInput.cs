@@ -22,3 +22,4 @@ namespace Abp.Application.Services.Dto
         public int PageSize { get; set; }
     }
 }
+

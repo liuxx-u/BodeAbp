@@ -15,7 +15,7 @@ namespace WebDemo.Web.Areas.Admin.Controllers
     {
         public ActionResult AttributeList()
         {
-            ViewBag.AttributeTypes = typeof(AttributeType).ToDictionary().Select(p => new
+            ViewBag.AttributeTypes = typeof(ProductAttributeType).ToDictionary().Select(p => new
             {
                 value = p.Key,
                 text = p.Value
@@ -43,8 +43,9 @@ namespace WebDemo.Web.Areas.Admin.Controllers
             return View();
         }
 
-        public async Task<ActionResult> AddProduct()
+        public async Task<ActionResult> AddProduct(int classifyId)
         {
+            ViewBag.ClassifyId = classifyId;
             var attributesService = IocManager.Instance.Resolve<IAttributesAppService>();
             ViewBag.Classifies = await attributesService.GetClassifySelectedOptions();
             return View();

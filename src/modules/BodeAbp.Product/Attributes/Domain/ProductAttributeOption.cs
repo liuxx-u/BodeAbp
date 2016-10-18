@@ -1,15 +1,15 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
-using Abp.Domain.Entities.Auditing;
+﻿using Abp.Domain.Entities.Auditing;
 using System.ComponentModel.DataAnnotations;
 using Abp;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BodeAbp.Product.Attributes.Domain
 {
     /// <summary>
-    /// 属性选项
+    /// 商品属性选项
     /// </summary>
-    [Table("Product#AttributeOption")]
-    public class AttributeOption : FullAuditedEntity
+    [Table("Product_AttributeOption")]
+    public class ProductAttributeOption : FullAuditedEntity
     {
         /// <summary>
         /// 属性值
@@ -37,6 +37,6 @@ namespace BodeAbp.Product.Attributes.Domain
         /// <summary>
         /// 属性模版
         /// </summary>
-        public virtual Attribute Attribute { get; set; }
+        public virtual ProductAttribute Attribute { get; set; }
     }
 }

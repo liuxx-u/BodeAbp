@@ -1,15 +1,11 @@
-﻿using System.Reflection;
+﻿using Abp.EntityFramework;
 using Abp.EntityFramework.Default;
-using Abp.Localization.Dictionaries;
-using Abp.Localization.Dictionaries.Xml;
 using Abp.Modules;
-using BodeAbp.Product.Providers;
+using System.Reflection;
 
 namespace BodeAbp.Product
 {
-    /// <summary>
-    /// 产品模块
-    /// </summary>
+    [DependsOn(typeof(AbpEntityFrameworkModule))]
     public class BodeAbpProductModule : AbpModule
     {
         /// <summary>
@@ -22,18 +18,8 @@ namespace BodeAbp.Product
         /// </summary>
         public override void PreInitialize()
         {
-            Configuration.Localization.Sources.Add(
-                new DictionaryBasedLocalizationSource(
-                    BodeAbpProductConsts.LocalizationSourceName,
-                    new XmlEmbeddedFileLocalizationDictionaryProvider(
-                        Assembly.GetExecutingAssembly(),
-                        "BodeAbp.Product.Localization.Source"
-                        )
-                    )
-                );
-
-            Configuration.Settings.Providers.Add<BodeAbpProductSettingProvider>();
-            Configuration.Authorization.Providers.Add<BodeAbpProductAuthorizationProvider>();
+            //Configuration.Settings.Providers.Add<BodeAbpProductSettingProvider>();
+            //Configuration.Authorization.Providers.Add<BodeAbpProductAuthorizationProvider>();
 
             DefaultDbContextInitializer.Instance.MapperAssemblies.Add(Assembly.GetExecutingAssembly());
         }

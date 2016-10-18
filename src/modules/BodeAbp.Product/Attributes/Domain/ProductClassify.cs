@@ -6,9 +6,9 @@ using Abp;
 namespace BodeAbp.Product.Attributes.Domain
 {
     /// <summary>
-    /// 分类
+    /// 商品分类
     /// </summary>
-    [Table("Product#Classify")]
+    [Table("Product_Classify")]
     public class ProductClassify : FullAuditedEntity
     {
         /// <summary>

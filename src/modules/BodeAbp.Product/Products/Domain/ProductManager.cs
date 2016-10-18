@@ -25,26 +25,6 @@ namespace BodeAbp.Product.Products.Domain
         }
 
         /// <summary>
-        /// 创建  产品
-        /// </summary>
-        /// <param name="product">产品</param>
-        /// <returns></returns>
-        public async Task CreateProductAsync(Product product)
-        {
-            await _productRepository.InsertAsync(product);
-        }
-
-        /// <summary>
-        /// 更新  产品
-        /// </summary>
-        /// <param name="product">产品</param>
-        /// <returns></returns>
-        public async Task UpdateProductAsync(Product product)
-        {
-            await _productRepository.UpdateAsync(product);
-        }
-
-        /// <summary>
         /// 上架
         /// </summary>
         /// <param name="product">产品</param>

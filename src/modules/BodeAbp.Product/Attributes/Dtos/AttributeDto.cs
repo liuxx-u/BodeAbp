@@ -2,14 +2,13 @@
 using BodeAbp.Product.Attributes.Domain;
 using Abp.Application.Services.Dto;
 using System.ComponentModel.DataAnnotations;
-using System.Collections.Generic;
 
 namespace BodeAbp.Product.Attributes.Dtos
 {
     /// <summary>
     /// 属性Dto
     /// </summary>
-    [AutoMap(typeof(Attribute))]
+    [AutoMap(typeof(ProductAttribute))]
     public class AttributeDto : EntityDto
     {
         /// <summary>
@@ -51,7 +50,7 @@ namespace BodeAbp.Product.Attributes.Dtos
         /// <summary>
         /// 属性类型
         /// </summary>
-        public AttributeType AttributeType { get; set; }
+        public ProductAttributeType AttributeType { get; set; }
 
         /// <summary>
         /// 是否在客户端展示

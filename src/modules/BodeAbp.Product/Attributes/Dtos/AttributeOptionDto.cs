@@ -8,6 +8,7 @@ namespace BodeAbp.Product.Attributes.Dtos
     /// <summary>
     /// 属性选项Dto
     /// </summary>
+    [AutoMap(typeof(ProductAttributeOption))]
     public class AttributeOptionDto : EntityDto
     {
         /// <summary>

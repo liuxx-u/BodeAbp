@@ -1,17 +1,17 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel;
-using System.ComponentModel.DataAnnotations.Schema;
 using Abp.Domain.Entities.Auditing;
 using System.ComponentModel.DataAnnotations;
 using Abp;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BodeAbp.Product.Attributes.Domain
 {
     /// <summary>
-    /// 属性
+    /// 商品 属性
     /// </summary>
-    [Table("Product#Attribute")]
-    public class Attribute : FullAuditedEntity
+    [Table("Product_Attribute")]
+    public class ProductAttribute : FullAuditedEntity
     {
         #region 属性
 
@@ -58,7 +58,7 @@ namespace BodeAbp.Product.Attributes.Domain
         /// <summary>
         /// 属性类型
         /// </summary>
-        public AttributeType AttributeType { get; set; }
+        public ProductAttributeType AttributeType { get; set; }
 
         /// <summary>
         /// 是否在客户端展示
@@ -71,9 +71,9 @@ namespace BodeAbp.Product.Attributes.Domain
         public int ProductClassifyId { get; set; }
 
         /// <summary>
-        /// 属性值集合
+        /// 属性选项集合
         /// </summary>
-        public virtual ICollection<AttributeOption> Options { get; set; }
+        public virtual ICollection<ProductAttributeOption> AttributeOptions { get; set; }
 
         #endregion
     }
@@ -81,7 +81,7 @@ namespace BodeAbp.Product.Attributes.Domain
     /// <summary>
     /// 属性类型
     /// </summary>
-    public enum AttributeType
+    public enum ProductAttributeType
     {
         /// <summary>
         /// 普通文本
@@ -108,27 +108,45 @@ namespace BodeAbp.Product.Attributes.Domain
         Switch = 4,
 
         /// <summary>
+        /// 多项选择
+        /// </summary>
+        [Description("多项选择")]
+        Multiple = 5,
+
+        /// <summary>
         /// 日期
         /// </summary>
         [Description("日期")]
-        DatePicker = 5,
+        DatePicker = 6,
+        
+        /// <summary>
+        /// 文本域
+        /// </summary>
+        [Description("文本域")]
+        TextArea = 7,
 
         /// <summary>
         /// 富文本
         /// </summary>
         [Description("富文本")]
-        RichText = 6,
+        RichText = 8,
 
         /// <summary>
         /// 图片
         /// </summary>
         [Description("图片")]
-        Image = 7,
+        Image = 9,
 
         /// <summary>
         /// 布尔值
         /// </summary>
         [Description("布尔值")]
-         Boolean=8
+         Boolean=10,
+
+        /// <summary>
+        /// 地区
+        /// </summary>
+        [Description("地区")]
+        Area=11
     }
 }

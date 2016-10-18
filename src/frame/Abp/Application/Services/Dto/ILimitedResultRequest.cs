@@ -8,6 +8,6 @@ namespace Abp.Application.Services.Dto
         /// <summary>
         /// Max expected result count.
         /// </summary>
-        int MaxResultCount { get; set; }
+        int PageSize { get; set; }
     }
 }

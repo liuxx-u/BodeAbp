@@ -20,7 +20,6 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\Debug\BodeAbp.Product.XML</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -29,7 +28,6 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\Release\BodeAbp.Product.XML</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Castle.Core, Version=3.3.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
@@ -63,57 +61,35 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Attributes\AttributesAppService.cs" />
     <Compile Include="Attributes\Domain\AttributeManager.cs" />
-    <Compile Include="Attributes\Domain\Attribute.cs" />
-    <Compile Include="Attributes\Domain\AttributeOption.cs" />
+    <Compile Include="Attributes\Domain\ProductAttribute.cs" />
+    <Compile Include="Attributes\Domain\ProductAttributeOption.cs" />
     <Compile Include="Attributes\Domain\ProductClassify.cs" />
-    <Compile Include="Attributes\Dtos\OperableAttributeDto.cs" />
-    <Compile Include="Products\Dtos\ProductAttributeDto.cs" />
-    <Compile Include="Products\Dtos\ProductDto.cs" />
-    <Compile Include="Products\Dtos\ProductExtendAttributeDto.cs" />
-    <Compile Include="Skus\Domain\SkuAttribute.cs" />
-    <Compile Include="Skus\Domain\SkuAttributeOption.cs" />
     <Compile Include="Attributes\Dtos\AttributeDto.cs" />
     <Compile Include="Attributes\Dtos\AttributeOptionDto.cs" />
+    <Compile Include="Attributes\Dtos\OperableAttributeDto.cs" />
     <Compile Include="Attributes\Dtos\ProductClassifyDto.cs" />
     <Compile Include="Attributes\IAttributesAppService.cs" />
-    <Compile Include="Attributes\ModelConfigs\AttributeConfiguration.cs" />
-    <Compile Include="Attributes\ModelConfigs\AttributeOptionConfiguration.cs" />
+    <Compile Include="Attributes\ModelConfigs\ProductAttributeConfiguration.cs" />
+    <Compile Include="Attributes\ModelConfigs\ProductAttributeOptionConfiguration.cs" />
     <Compile Include="Attributes\ModelConfigs\ProductClassifyConfiguration.cs" />
-    <Compile Include="Skus\Dtos\SkuAttributeDto.cs" />
-    <Compile Include="Skus\Dtos\SkuAttributeOptionDto.cs" />
-    <Compile Include="Skus\ISkusAppService.cs" />
-    <Compile Include="Skus\ModelConfigs\SkuAttributeConfiguration.cs" />
-    <Compile Include="Skus\ModelConfigs\SkuAttributeOptionConfiguration.cs" />
-    <Compile Include="Products\Domain\ProductAttribute.cs" />
-    <Compile Include="Products\Domain\ProductExtendAttribute.cs" />
-    <Compile Include="Products\ModelConfigs\ProductAttributeConfiguration.cs" />
-    <Compile Include="Products\ModelConfigs\ProductExtendAttributeConfiguration.cs" />
-    <Compile Include="Providers\BodeAbpProductAuthorizationProvider.cs" />
-    <Compile Include="Providers\BodeAbpProductSettingProvider.cs" />
-    <Compile Include="Providers\PermissionNames.cs" />
-    <Compile Include="BodeAbpProductConsts.cs" />
+    <Compile Include="Attributes\AttributesAppService.cs" />
     <Compile Include="BodeAbpProductModule.cs" />
     <Compile Include="Products\Domain\Product.cs" />
     <Compile Include="Products\Domain\ProductAsset.cs" />
+    <Compile Include="Products\Domain\ProductAttributeMap.cs" />
+    <Compile Include="Products\Domain\ProductExtendService.cs" />
     <Compile Include="Products\Domain\ProductManager.cs" />
+    <Compile Include="Products\Dtos\ProductAttributeDto.cs" />
+    <Compile Include="Products\Dtos\ProductDto.cs" />
+    <Compile Include="Products\Dtos\ProductExtendServiceDto.cs" />
     <Compile Include="Products\IProductsAppService.cs" />
     <Compile Include="Products\ModelConfigs\ProductAssetConfiguration.cs" />
+    <Compile Include="Products\ModelConfigs\ProductAttributeMapConfiguration.cs" />
     <Compile Include="Products\ModelConfigs\ProductConfiguration.cs" />
+    <Compile Include="Products\ModelConfigs\ProductExtendServiceConfiguration.cs" />
     <Compile Include="Products\ProductsAppService.cs" />
-    <Compile Include="Providers\SettingNames.cs" />
-    <Compile Include="Skus\Domain\Goods.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Skus\Domain\GoodsSkuAttribute.cs" />
-    <Compile Include="Skus\Domain\SkuManager.cs" />
-    <Compile Include="Skus\Event\AddStoreEventData.cs" />
-    <Compile Include="Skus\ModelConfigs\GoodsConfiguration.cs" />
-    <Compile Include="Skus\ModelConfigs\GoodsSkuAttributeConfiguration.cs" />
-    <Compile Include="Skus\SkusAppService.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Configuration\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -132,10 +108,6 @@
       <Project>{2c221d3b-5f54-4c5b-8082-318636415132}</Project>
       <Name>Abp</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Localization\Source\BodeAbpProduct-en.xml" />
-    <Content Include="Localization\Source\BodeAbpProduct.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

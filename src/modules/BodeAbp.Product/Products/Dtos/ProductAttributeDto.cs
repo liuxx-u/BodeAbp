@@ -6,7 +6,7 @@ namespace BodeAbp.Product.Products.Dtos
     /// <summary>
     /// 产品属性Dto
     /// </summary>
-    [AutoMap(typeof(ProductAttribute))]
+    [AutoMap(typeof(ProductAttributeMap))]
     public class ProductAttributeDto
     {
         /// <summary>

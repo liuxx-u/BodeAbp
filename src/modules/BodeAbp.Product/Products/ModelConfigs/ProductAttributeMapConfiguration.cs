@@ -3,12 +3,11 @@ using BodeAbp.Product.Products.Domain;
 
 namespace BodeAbp.Product.Products.ModelConfigs
 {
-    public class ProductAttributeConfiguration : EntityConfigurationBase<ProductAttribute, long>
+    public class ProductAttributeMapConfiguration : EntityConfigurationBase<ProductAttributeMap, long>
     {
-        public ProductAttributeConfiguration()
+        public ProductAttributeMapConfiguration()
         {
             HasRequired(p => p.Attribute);
-            HasOptional(p => p.AttributeOption);
             HasRequired(p => p.Product).WithMany(p => p.Attributes).HasForeignKey(p => p.ProductId);
         }
     }
