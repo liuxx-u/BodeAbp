@@ -24,6 +24,8 @@ namespace Abp.WebApi.Configuration
 
         public bool SetNoCacheForAllResponses { get; set; }
 
+        public bool IsSignatureValidationEnable { get; set; }
+
         public IDynamicApiControllerBuilder DynamicApiControllerBuilder { get; }
 
         public AbpWebApiConfiguration(IDynamicApiControllerBuilder dynamicApiControllerBuilder)

@@ -305,6 +305,7 @@
     <Content Include="Content\js\bode\bode.wizard.js" />
     <Content Include="Content\js\bootstrap.min.js" />
     <Content Include="Content\js\admin\cloud.js" />
+    <Content Include="Content\js\md5.min.js" />
     <Content Include="Content\js\plugs\colorpicker\jquery.minicolors.js" />
     <Content Include="Content\js\plugs\datatable\datatables-init.js" />
     <Content Include="Content\js\plugs\datatable\dataTables.bootstrap.min.js" />
@@ -619,6 +620,7 @@
     <Content Include="Content\js\plugs\slider\jquery.nouislider.js" />
     <Content Include="Content\js\plugs\slimscroll\jquery.slimscroll.min.js" />
     <Content Include="Content\js\plugs\validation\bootstrapValidator.js" />
+    <Content Include="Content\js\store.min.js" />
     <Content Include="Content\js\vue.js" />
     <Content Include="Content\js\vue.min.js" />
     <Content Include="favicon.ico" />

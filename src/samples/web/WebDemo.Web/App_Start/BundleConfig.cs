@@ -17,6 +17,7 @@ namespace WebDemo.Web
                         "~/Content/js/plugs/slimscroll/jquery.slimscroll.min.js",
                         "~/Content/js/beyond.min.js",
                         "~/Content/js/plugs/layer/layer.js",
+                        "~/Content/js/md5.min.js",
                         "~/Content/js/bode/bode.js",
                         "~/Content/js/bode/bode.ajax.js",
                         "~/Content/js/vue.js"));

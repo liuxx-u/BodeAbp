@@ -29,6 +29,7 @@ using Abp.WebApi.ExceptionHandling;
 using Abp.WebApi.Security.AntiForgery;
 using Abp.WebApi.Uow;
 using Abp.WebApi.Validation;
+using Abp.WebApi.Security.Signature;
 
 namespace Abp.WebApi
 {
@@ -95,6 +96,7 @@ namespace Abp.WebApi
         {
             httpConfiguration.Filters.Add(IocManager.Resolve<AbpApiAuthorizeFilter>());
             httpConfiguration.Filters.Add(IocManager.Resolve<AbpAntiForgeryApiFilter>());
+            httpConfiguration.Filters.Add(IocManager.Resolve<AbpSignatureApiFilter>());
             httpConfiguration.Filters.Add(IocManager.Resolve<AbpApiAuditFilter>());
             httpConfiguration.Filters.Add(IocManager.Resolve<AbpApiValidationFilter>());
             httpConfiguration.Filters.Add(IocManager.Resolve<AbpApiUowFilter>());

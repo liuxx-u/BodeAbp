@@ -35,6 +35,9 @@ namespace WebDemo.WebApi
             dynamicApiControllerBuilder.ForAll<IApplicationService>(typeof(BodeAbpActivityModule).Assembly, "activity").Build();
             dynamicApiControllerBuilder.ForAll<IApplicationService>(typeof(BodeAbpProductModule).Assembly, "product").Build();
 
+            //对webapi开启签名验证
+            Configuration.Modules.AbpWebApi().IsSignatureValidationEnable = true;
+
             Configuration.Modules.AbpWebApi().HttpConfiguration.Filters.Add(new HostAuthenticationFilter("Bearer"));
 
             var cors = new EnableCorsAttribute("*", "*", "*");
@@ -58,7 +61,7 @@ namespace WebDemo.WebApi
                     c.ResolveConflictingActions(apiDescriptions => apiDescriptions.First());
                 })
                 .EnableSwaggerUi(c => {
-                    c.CustomAsset("index", typeof(WebDemoWebApiModule).Assembly, "WebDemo.WebApi.Swagger.index.html");
+                    //c.CustomAsset("index", typeof(WebDemoWebApiModule).Assembly, "WebDemo.WebApi.Swagger.index.html");
                     c.InjectStylesheet(typeof(WebDemoWebApiModule).Assembly, "WebDemo.WebApi.Swagger.theme-flattop.css");
                     c.InjectJavaScript(typeof(WebDemoWebApiModule).Assembly, "WebDemo.WebApi.Swagger.translator.js");
                 });

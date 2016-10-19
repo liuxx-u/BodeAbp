@@ -52,6 +52,11 @@ namespace Abp.WebApi.Configuration
         bool SetNoCacheForAllResponses { get; set; }
 
         /// <summary>
+        /// Default: false.
+        /// </summary>
+        bool IsSignatureValidationEnable { get; set; }
+
+        /// <summary>
         /// Used to configure dynamic Web API controllers.
         /// </summary>
         IDynamicApiControllerBuilder DynamicApiControllerBuilder { get; }

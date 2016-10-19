@@ -139,5 +139,17 @@ namespace Abp.Helper
 
             return ret;
         }
+
+        /// <summary>
+        /// 时间戳转C#时间
+        /// </summary>
+        /// <param name="timeStamp">时间戳</param>
+        /// <returns></returns>
+        public static DateTime GetTimeByStamp(string timeStamp)
+        {
+            DateTime dtStart = TimeZone.CurrentTimeZone.ToLocalTime(new DateTime(1970, 1, 1));
+            long lTime = long.Parse(timeStamp + "0000000");
+            TimeSpan toNow = new TimeSpan(lTime); return dtStart.Add(toNow);
+        }
     }
 }

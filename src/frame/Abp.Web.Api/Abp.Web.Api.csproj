@@ -85,6 +85,12 @@
   <ItemGroup>
     <Compile Include="Configuration\Startup\AbpWebApiConfigurationExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WebApi\Caching\InMemoryThrottleStore.cs" />
+    <Compile Include="WebApi\Caching\IThrottleStore.cs" />
+    <Compile Include="WebApi\Caching\ThrottleEntry.cs" />
+    <Compile Include="WebApi\Extensions\HttpMessageExtensions.cs" />
+    <Compile Include="WebApi\Handlers\ThrottlingHandler.cs" />
+    <Compile Include="WebApi\Security\Signature\AbpSignatureApiFilter.cs" />
     <Compile Include="WebApi\Upload\ApiUploadHelper.cs" />
     <Compile Include="WebApi\Upload\CustomMultipartFormDataStreamProvider.cs" />
     <Compile Include="WebApi\AbpWebApiModule.cs" />

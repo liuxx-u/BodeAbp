@@ -71,7 +71,7 @@
                 return result.substring(0, result.length - separator.length);
             }
         },
-        timeFormat: function(time, formatStr) {
+        timeFormat: function (time, formatStr) {
             if (!(time instanceof Date)) {
                 return time;
             }
@@ -96,24 +96,21 @@
                 }
             }
             return time.format(formatStr);
-        }
-    }; 
-
-    $.bode.store = {
-        set: function (key, value) {
-            localStorage.setItem(key, value);
         },
-        get: function (key) {
-            var val = localStorage.getItem(key);
-            return val;
-        },
-        remove: function (key) {
-            localStorage.removeItem(key)
-        },
-        clear: function () {
-            localStorage.clear()
+        hattedCode: function () {
+            return (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1);
         }
     };
+
+    if (typeof store === 'undefined') {
+        var jspath = "/Content/js/store.min.js";
+        $.getScript(jspath).done(function () {
+            $.bode.store = store;
+        }).fail(function () { alert("请检查/Content/js/store.min.js的路径是否正确!"); });
+    }
+    else {
+        $.bode.store = store;
+    }
 
     $.bode.auth = {
         login: function (token) {
@@ -130,5 +127,4 @@
             $.bode.store.remove("BodeAbpAuthToken");
         }
     };
-
 })(jQuery);
