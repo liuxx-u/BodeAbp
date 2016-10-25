@@ -1,0 +1,37 @@
+﻿<#@ template language="C#" HostSpecific="True" Debug="False" #>
+<#@ assembly name="System.Core" #>
+<#@ assembly name="System.Data.Linq" #>
+<#@ ScaffoldingAssembly Processor="ScaffoldingAssemblyLoader" #>
+<#@ import namespace="System.Collections" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="Microsoft.AspNet.Scaffolding.Core.Metadata" #>
+<#@ import namespace="BodeAbp.Scaffolding.Models" #>
+<#@ parameter type="System.String" name="AssemblySuffix" #>
+<#@ parameter type="System.String" name="EntityName" #>
+<#@ parameter type="System.String" name="FunctionName" #>
+<#@ parameter type="System.String" name="ModuleName" #>
+<#@ parameter type="BodeAbp.Scaffolding.Models.MetaTableInfo" name="DtoMetaTable" #>
+<#@ Include File="../CSharpHelpers.t4" #>
+<#@ output extension="cs" #>
+<#
+     var moduleName = ToCamelCase(ModuleName);
+	 var assemblySuffix= ToCamelCase(AssemblySuffix);
+#>
+
+        /*
+
+		TODO:★请将以下内容剪切到 PermissionNames
+		//<#= FunctionName #>
+        public const string <#= AssemblySuffix #>_<#= EntityName #> = "<#= AssemblySuffix #>.<#= EntityName #>";
+		public const string <#= AssemblySuffix #>_<#= EntityName #>_Crud = "<#= AssemblySuffix #>.<#= EntityName #>.Crud";
+
+		TODO:★请将以下内容剪切到 AuthorizationProvider
+         //<#= FunctionName #>
+		  var <#= assemblySuffix #><#= EntityName #>s = <#= assemblySuffix #>.CreateChildPermission(PermissionNames.<#= AssemblySuffix #>_<#= EntityName #>,L(PermissionNames.<#= AssemblySuffix #>_<#= EntityName #>));
+         <#= assemblySuffix #><#= EntityName #>s.CreateChildPermission(PermissionNames.<#= AssemblySuffix #>_<#= EntityName #>_Crud, L(PermissionNames.<#= AssemblySuffix #>_<#= EntityName #>_Crud));
+
+		 TODO:★请将以下内容剪切到Web站点Spartan.xml
+		  //<#= FunctionName #>
+
+		*/

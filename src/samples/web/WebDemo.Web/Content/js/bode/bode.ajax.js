@@ -35,6 +35,10 @@
                 else {
                     layer.msg(data.error.message);
                 }
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                layer.close(loadIndex);
+                layer.msg(errorThrown);
             }
         });
     };

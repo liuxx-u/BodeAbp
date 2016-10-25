@@ -87,6 +87,7 @@
     <Compile Include="IDbContextResolver.cs" />
     <Compile Include="IDbContextTypeMatcher.cs" />
     <Compile Include="IEntityMapper.cs" />
+    <Compile Include="Linq\EfAsyncQueryableExecuter.cs" />
     <Compile Include="Migrations\AutoMigrationsConfiguration.cs" />
     <Compile Include="Migrations\CreateDatabaseIfNotExistsWithSeedBase.cs" />
     <Compile Include="Migrations\ISeedAction.cs" />

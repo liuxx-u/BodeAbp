@@ -1,0 +1,87 @@
+﻿<#@ template language="C#" HostSpecific="True" Debug="False" #>
+<#@ assembly name="System.Core" #>
+<#@ assembly name="System.Data.Linq" #>
+<#@ ScaffoldingAssembly Processor="ScaffoldingAssemblyLoader" #>
+<#@ import namespace="System.Collections" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="Microsoft.AspNet.Scaffolding.Core.Metadata" #>
+<#@ import namespace="BodeAbp.Scaffolding.Models" #>
+<#@ parameter type="System.String" name="ModuleName" #>
+<#@ parameter type="System.String" name="ModuleNamespace" #>
+<#@ parameter type="System.String" name="EntityNamespace" #>
+<#@ parameter type="System.String" name="EntityName" #>
+<#@ parameter type="System.String" name="FunctionName" #>
+<#@ Include File="../CSharpHelpers.t4" #>
+<#@ output extension="cs" #>
+<#
+    var entityName = ToCamelCase(EntityName);
+#>
+using Abp.Application.Services;
+using Abp.Application.Services.Dto;
+using Abp.Application.Services.Query;
+using Abp.AutoMapper;
+using Abp.Domain.Repositories;
+using <#= EntityNamespace #>;
+using <#= ModuleNamespace #>.Dtos;
+using System.Collections.Generic;
+using System.Data.Entity;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace <#= ModuleNamespace #>
+{
+	/// <summary>
+    ///  <#= FunctionName #> 服务
+    /// </summary>
+    public class <#= ModuleName #>AppService : ApplicationService,I<#= EntityName #>AppService
+    {
+	    private readonly IRepository<<#= EntityName #>> _<#= entityName #>Repository;
+
+        public <#= EntityName #>AppService(IRepository<<#= EntityName #>> <#= entityName #>Repository)
+        {
+		    _<#= entityName #>Repository = <#= entityName #>Repository;
+        }
+
+		#region <#= FunctionName #>
+
+		 /// <inheritdoc/>
+        public async Task<PagedResultOutput<Get<#= EntityName #>ListOutput>> Get<#= EntityName #>PagedList(QueryListPagedRequestInput input)
+        {
+            int total;
+            var list = await _<#= entityName #>Repository.GetAll().Where(input, out total).ToListAsync();
+            return new PagedResultOutput<Get<#= EntityName #>ListOutput>(total, list.MapTo<List<Get<#= EntityName #>ListOutput>>());
+        }
+
+		/// <inheritdoc/>
+		public async Task<Get<#= EntityName #>Output> Get<#= EntityName #>(int id)
+        {
+            var result = await _<#= entityName #>Repository.GetAsync(id);
+			return result.MapTo<Get<#= EntityName #>Output>();
+        }
+
+		/// <inheritdoc/>
+        public async Task Create<#= EntityName #>(Create<#= EntityName #>Input input)
+        {
+            var <#= entityName #> = input.MapTo<<#= EntityName #>>();
+            await _<#= entityName #>Repository.InsertAsync(<#= entityName #>);
+        }
+
+		 /// <inheritdoc/>
+        public async Task Update<#= EntityName #>(Update<#= EntityName #>Input input)
+        {
+            var <#= entityName #> = await _<#= entityName #>Repository.GetAsync(input.Id);
+            input.MapTo(<#= entityName #>);
+            await _<#= entityName #>Repository.UpdateAsync(<#= entityName #>);
+        }
+
+		/// <inheritdoc/>
+        public async Task Delete<#= EntityName #>(IdInput[] input)
+        {
+			var ids = input.Select(p => p.Id);
+            await _<#= entityName #>Repository.DeleteAsync(p => ids.Contains(p.Id));
+        }
+
+		#endregion
+    }
+}

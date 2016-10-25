@@ -117,6 +117,9 @@
     <Compile Include="Application\Navigation\UserMenu.cs" />
     <Compile Include="Application\Navigation\UserMenuItem.cs" />
     <Compile Include="Application\Navigation\UserNavigationManager.cs" />
+    <Compile Include="Application\Services\AsyncCrudAppService.cs" />
+    <Compile Include="Application\Services\CrudAppService.cs" />
+    <Compile Include="Application\Services\CrudAppServiceBase.cs" />
     <Compile Include="Application\Services\Dto\IPagedAndSortedResultRequest.cs" />
     <Compile Include="Application\Services\Dto\LimitedResultRequestDto.cs" />
     <Compile Include="Application\Services\Dto\NullableIdDto.cs" />
@@ -125,7 +128,9 @@
     <Compile Include="Application\Services\Dto\QueryListPagedRequestInput.cs" />
     <Compile Include="Application\Services\Dto\QueryListRequestInput.cs" />
     <Compile Include="Application\Services\Dto\TreeOutPut.cs" />
+    <Compile Include="Application\Services\IAsyncCrudAppService.cs" />
     <Compile Include="Application\Services\IAvoidDuplicateCrossCuttingConcerns.cs" />
+    <Compile Include="Application\Services\ICrudAppService.cs" />
     <Compile Include="Application\Services\Query\CollectionExtensions.cs" />
     <Compile Include="Application\Services\Query\CollectionPropertySorter.cs" />
     <Compile Include="Application\Services\Query\FilterGroup.cs" />
@@ -221,6 +226,9 @@
     <Compile Include="JetBrains\Annotations\CodeAnnotations.cs" />
     <Compile Include="Json\AbpDateTimeConverter.cs" />
     <Compile Include="Json\JsonSerializationHelper.cs" />
+    <Compile Include="Linq\Extensions\QueryableExtensions.cs" />
+    <Compile Include="Linq\IAsyncQueryableExecuter.cs" />
+    <Compile Include="Linq\NullAsyncQueryableExecuter.cs" />
     <Compile Include="Localization\AbpDisplayNameAttribute.cs" />
     <Compile Include="Logging\LoggerExtensions.cs" />
     <Compile Include="Authorization\SimplePermissionDependency.cs" />

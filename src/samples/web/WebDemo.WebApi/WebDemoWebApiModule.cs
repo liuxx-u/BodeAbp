@@ -36,7 +36,7 @@ namespace WebDemo.WebApi
             dynamicApiControllerBuilder.ForAll<IApplicationService>(typeof(BodeAbpProductModule).Assembly, "product").Build();
 
             //对webapi开启签名验证
-            Configuration.Modules.AbpWebApi().IsSignatureValidationEnable = true;
+            Configuration.Modules.AbpWebApi().IsSignatureValidationEnable = false;
 
             Configuration.Modules.AbpWebApi().HttpConfiguration.Filters.Add(new HostAuthenticationFilter("Bearer"));
 

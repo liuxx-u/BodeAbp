@@ -10,10 +10,10 @@ namespace BodeAbp.Activity.Activities
     ///  活动 服务
     /// </summary>
     [Description("活动接口")]
-    public interface IActivitiesAppService : IApplicationService
+    public interface IActivitiesAppService : IApplicationService, IAsyncCrudAppService<ClassifyDto, int>
     {
         #region 活动
-        
+
         /// <summary>
         /// 获取 活动分页
         /// </summary>
@@ -49,46 +49,6 @@ namespace BodeAbp.Activity.Activities
         /// <param name="id"></param>
         /// <returns></returns>
         Task DeleteActivity(long id);
-
-        #endregion
-
-        #region 活动类型
-
-        /// <summary>
-        /// 获取 活动类型分页
-        /// </summary>
-        /// <param name="input"></param>
-        /// <returns></returns>
-        Task<PagedResultDto<GetClassifyListOutput>> GetClassifyPagedList(QueryListPagedRequestInput input);
-
-        /// <summary>
-        /// 获取 活动类型详情
-        /// </summary>
-        /// <param name="input"></param>
-        /// <returns></returns>
-        Task<GetClassifyOutput> GetClassify(IdInput input);
-
-        /// <summary>
-        /// 添加 活动类型
-        /// </summary>
-        /// <param name="input"></param>
-        /// <returns></returns>
-        Task CreateClassify(CreateClassifyInput input);
-
-        /// <summary>
-        /// 更新 活动类型
-        /// </summary>
-        /// <param name="input"></param>
-        /// <returns></returns>
-        Task UpdateClassify(UpdateClassifyInput input);
-
-
-        /// <summary>
-        /// 删除 活动类型
-        /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
-        Task DeleteClassify(int id);
 
         #endregion
     }

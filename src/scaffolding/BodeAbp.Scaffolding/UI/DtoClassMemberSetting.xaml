@@ -1,0 +1,141 @@
+﻿<UserControl x:Class="BodeAbp.Scaffolding.UI.DtoClassMemberSetting"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:self="clr-namespace:BodeAbp.Scaffolding.UI"
+             mc:Ignorable="d" 
+             d:DesignHeight="250" d:DesignWidth="650" 
+             MinHeight="250" MinWidth="650" MaxHeight="450">
+    <UserControl.Resources>
+        <Style TargetType="Label" x:Key="{x:Type Label}">
+            <Setter Property="Margin" Value="0,0,0,0" />
+            <Setter Property="HorizontalAlignment" Value="Left" />
+        </Style>
+        <Style TargetType="ComboBox" x:Key="{x:Type ComboBox}">
+            <Setter Property="Margin" Value="0,0,0,0" />
+            <Setter Property="HorizontalAlignment" Value="Stretch" />
+            <Setter Property="self:BindBehavior.ForceBindOnLostFocus" Value="{x:Static Member=ComboBox.SelectedItemProperty}" />
+            <Setter Property="self:BindBehavior.ForceBindOnEnter" Value="{x:Static Member=ComboBox.SelectedItemProperty}" />
+            <Style.Triggers>
+                <Trigger Property="Validation.HasError" Value="true">
+                    <Setter Property="ToolTip" Value="{Binding RelativeSource={RelativeSource Self},
+                        Path=(Validation.Errors)[0].ErrorContent}" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <Style TargetType="TextBox" x:Key="{x:Type TextBox}">
+            <Setter Property="Margin" Value="2,0,2,0" />
+            <Setter Property="Height" Value="24" />
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+            <Setter Property="self:BindBehavior.ForceBindOnEnter" Value="{x:Static Member=TextBox.TextProperty}" />
+            <Style.Triggers>
+                <Trigger Property="Validation.HasError" Value="true">
+                    <Setter Property="ToolTip" Value="{Binding RelativeSource={RelativeSource Self},
+                        Path=(Validation.Errors)[0].ErrorContent}" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <Style TargetType="CheckBox" x:Key="{x:Type CheckBox}">
+            <Setter Property="Margin" Value="0,0,0,0" />
+            <Setter Property="HorizontalAlignment" Value="Center" />
+        </Style>
+        <Style TargetType="Button" x:Key="{x:Type Button}">
+            <Setter Property="MinWidth" Value="75" />
+            <Setter Property="Height" Value="26" />
+        </Style>
+        <Style TargetType="TextBlock" x:Key="{x:Type TextBlock}">
+            <Setter Property="Margin" Value="0,2,0,0" />
+        </Style>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25" />
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <TextBlock Text=" 请选择Dto类的成员" Grid.Row="0"></TextBlock>
+        <Grid Grid.IsSharedSizeScope="True" Margin="0" Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="25" />
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <!--  Title  -->
+            <Grid HorizontalAlignment="Left">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition SharedSizeGroup="NameColumn0" Width="70" />
+                    <ColumnDefinition SharedSizeGroup="NameColumn1" Width="90" />
+                    <ColumnDefinition SharedSizeGroup="NameColumn2" Width="120" />
+                    <ColumnDefinition SharedSizeGroup="NameColumn3" Width="70"/>
+                    <ColumnDefinition SharedSizeGroup="NameColumn4" Width="120"/>
+                    <ColumnDefinition SharedSizeGroup="NameColumn5" Width="120" />
+                </Grid.ColumnDefinitions>
+                <Border TextBlock.TextAlignment="Center" Grid.Column="0">
+                    <TextBlock Text="Dto" />
+                </Border>
+                <Border TextBlock.TextAlignment="Left" Grid.Column="1">
+                    <TextBlock Text="名称"/>
+                </Border>
+                <Border TextBlock.TextAlignment="Left" Grid.Column="2">
+                    <TextBlock Text="中文显示名" />
+                </Border>
+                <Border TextBlock.TextAlignment="Center" Grid.Column="3">
+                    <TextBlock Text="必填" />
+                </Border>
+                <Border TextBlock.TextAlignment="Left" Grid.Column="4">
+                    <TextBlock Text="MaxLength/Range" />
+                </Border>
+                <Border TextBlock.TextAlignment="Left" Grid.Column="5">
+                    <TextBlock Text="数据类型" />
+                </Border>
+            </Grid>
+
+            <ListBox ItemsSource="{Binding Columns}" Grid.Row="1" ScrollViewer.CanContentScroll="True" VerticalAlignment="Top" HorizontalAlignment="Left">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Margin="0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="26"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition SharedSizeGroup="NameColumn0" />
+                                <ColumnDefinition SharedSizeGroup="NameColumn1" />
+                                <ColumnDefinition SharedSizeGroup="NameColumn2" />
+                                <ColumnDefinition SharedSizeGroup="NameColumn3" />
+                                <ColumnDefinition SharedSizeGroup="NameColumn4" />
+                                <ColumnDefinition SharedSizeGroup="NameColumn5" />
+                                <ColumnDefinition SharedSizeGroup="NameColumn6" />
+                            </Grid.ColumnDefinitions>
+
+                            <Grid Grid.Column="0" Width="40">
+                                <CheckBox IsChecked="{Binding IsDtoVisible}" Margin="0,4,0,0" HorizontalAlignment="Center"/>
+                            </Grid>
+                            <Grid Grid.Column="1">
+                                <TextBlock Text="{Binding Name}" Margin="0,4,4,0" HorizontalAlignment="Left"/>
+                            </Grid>
+
+                            <TextBox Grid.Column="2" Text="{Binding DisplayName}"  Margin="0,0,4,0"/>
+
+                            <Grid Grid.Column="3" Width="50">
+                                <CheckBox IsChecked="{Binding Required}" Margin="0,4,0,0"/>
+                            </Grid>
+
+                            <StackPanel Grid.Column="4"  Orientation="Horizontal">
+                                <StackPanel Orientation="Horizontal" Visibility="{Binding ShowEditorMaxLength}" >
+                                    <!--<TextBlock Margin="0,4,0,4" Text="MaxLength" />-->
+                                    <TextBox Text="{Binding MaxLength}" Width="45" TextAlignment="Left"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" Visibility="{Binding ShowEditorRange}">
+                                    <TextBox Text="{Binding RangeMin}" Width="45" TextAlignment="Left"/>
+                                    <TextBlock Margin="0,4,0,0"><Run Text="～"/></TextBlock>
+                                    <TextBox Text="{Binding RangeMax}" Width="45" TextAlignment="Left"/>
+                                </StackPanel>
+                            </StackPanel>
+
+                            <TextBlock Grid.Column="5" Margin="0,4,0,0" Text="{Binding strDataType}" TextAlignment="Left"/>
+                        </Grid>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </Grid>
+    </Grid>
+</UserControl>

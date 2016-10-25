@@ -1,0 +1,56 @@
+﻿<#@ template language="C#" HostSpecific="True" Debug="Flase" #>
+<#@ assembly name="System.Core" #>
+<#@ assembly name="System.Data.Linq" #>
+<#@ ScaffoldingAssembly Processor="ScaffoldingAssemblyLoader" #>
+<#@ import namespace="System.Collections" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="Microsoft.AspNet.Scaffolding.Core.Metadata" #>
+<#@ import namespace="BodeAbp.Scaffolding.Models" #>
+<#@ parameter type="System.String" name="ModuleName" #>
+<#@ parameter type="System.String" name="FunctionName" #>
+<#@ parameter type="System.String" name="EntityName" #>
+<#@ parameter type="System.String" name="AssemblySuffix" #>
+<#@ parameter type="BodeAbp.Scaffolding.Models.MetaTableInfo" name="DtoMetaTable" #>
+<#@ Include File="../../CSharpHelpers.t4" #>
+<#@ output extension="js" #>
+<#
+	 var moduleName = ToCamelCase(ModuleName);
+	 var assemblySuffix=ToCamelCase(AssemblySuffix);
+	 var entityName=ToCamelCase(EntityName);
+#>
+
+import React from 'react';
+import {ApiPrefix} from '../../../assets/js/bode/bode.conf';
+import Template from '../app-common-grid.template.jsx';
+
+const <#= entityName #>Page = React.createClass({
+    getInitialState() {
+        let gridOptions={
+		    title:"<#= FunctionName #>列表",
+            url:{
+                read:ApiPrefix+"<#= assemblySuffix #>/<#= moduleName #>/Get<#= EntityName #>PagedList",
+                add:ApiPrefix+"<#= assemblySuffix #>/<#= moduleName #>/Create<#= EntityName #>",
+                edit:ApiPrefix+"<#= assemblySuffix #>/<#= moduleName #>/Update<#= EntityName #>",
+                delete:ApiPrefix+"<#= assemblySuffix #>/<#= moduleName #>/Delete<#= EntityName #>"
+            },
+            columns:[
+		<# foreach (MetaColumnInfo column in DtoMetaTable.Columns) {
+				if (!column.IsDtoVisible) continue;
+		#>
+                   {title:"<#= column.DisplayName #>",data:"<#= ToCamelCase(column.Name) #>",type:"<#= column.strControlType #>",editor:{},query:true},
+		<# } #>
+					{title:"操作选项",type:"command"}
+            ]
+        };
+        return {
+            gridOptions: gridOptions
+        };
+    },
+    render: Template,
+});
+
+export default <#= entityName#>Page;
+
+
+

@@ -12,6 +12,7 @@ using Abp.WebApi.Configuration;
 using System.Web;
 using System.IO;
 using Abp.Helper;
+using Abp.Runtime.Validation;
 
 namespace Abp.WebApi.Security.Signature
 {

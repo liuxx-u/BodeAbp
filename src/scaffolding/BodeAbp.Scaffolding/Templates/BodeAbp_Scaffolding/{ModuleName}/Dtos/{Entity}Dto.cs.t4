@@ -1,0 +1,79 @@
+﻿<#@ template language="C#" HostSpecific="True" Debug="False" #>
+<#@ assembly name="System.Core" #>
+<#@ assembly name="System.Data.Linq" #>
+<#@ ScaffoldingAssembly Processor="ScaffoldingAssemblyLoader" #>
+<#@ import namespace="System.Collections" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="Microsoft.AspNet.Scaffolding.Core.Metadata" #>
+<#@ import namespace="BodeAbp.Scaffolding.Models" #>
+<#@ parameter type="System.String" name="ModuleNamespace" #>
+<#@ parameter type="System.String" name="EntityName" #>
+<#@ parameter type="System.String" name="EntityNamespace" #>
+<#@ parameter type="BodeAbp.Scaffolding.Models.MetaTableInfo" name="DtoMetaTable" #>
+<#@ output extension="cs" #>
+using System;
+using Abp.AutoMapper;
+using <#=EntityNamespace  #>;
+using Abp.Application.Services.Dto;
+using System.ComponentModel.DataAnnotations;
+
+namespace <#= ModuleNamespace #>.Dtos
+{
+    public abstract class <#= EntityName #>Dto : EntityDto
+    {
+<#
+    foreach (MetaColumnInfo column in DtoMetaTable.Columns) {
+        if (!column.IsDtoVisible) continue;
+        if (column.DisplayName != column.Name){
+#>
+        /// <summary>
+        /// <#= column.DisplayName #>
+        /// </summary>
+<#
+        }
+        if (column.Required){
+#>
+        [Required]
+<#      
+		}
+		if (column.HasMetaAttribute){
+#>
+        <#= column.MetaAttribute #>
+<#
+        }
+#>
+        public <#= column.strDataType #> <#= column.Name #> { get; set; }
+
+<#
+    }
+#>
+    }
+
+	[AutoMapTo(typeof(<#= EntityName #>))]
+    public class Create<#= EntityName #>Input : <#= EntityName #>Dto, IInputDto
+    {
+    }
+
+	[AutoMapTo(typeof(<#= EntityName #>))]
+    public class Update<#= EntityName #>Input : <#= EntityName #>Dto, IInputDto
+    {
+    }
+
+	[AutoMapFrom(typeof(<#= EntityName #>))]
+    public class Update<#= EntityName #>Output : <#= EntityName #>Dto, IOutputDto
+    {
+    }
+
+	[AutoMapFrom(typeof(<#= EntityName #>))]
+    public class Get<#= EntityName #>Output : <#= EntityName #>Dto, IOutputDto
+    {
+    }
+
+    [AutoMapFrom(typeof(<#= EntityName #>))]
+    public class Get<#= EntityName #>ListOutput : <#= EntityName #>Dto, IOutputDto
+    {
+    }
+}
+
+

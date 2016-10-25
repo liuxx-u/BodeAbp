@@ -6,7 +6,8 @@ using System.ComponentModel.DataAnnotations;
 
 namespace BodeAbp.Activity.Activities.Dtos
 {
-    public abstract class ClassifyDto : EntityDto
+    [AutoMap(typeof(Classify))]
+    public class ClassifyDto : EntityDto
     {
         /// <summary>
         /// 类型名称
@@ -29,31 +30,6 @@ namespace BodeAbp.Activity.Activities.Dtos
         /// </summary>
         public DateTime CreationTime { get; set; }
 
-    }
-
-	[AutoMapTo(typeof(Classify))]
-    public class CreateClassifyInput : ClassifyDto
-    {
-    }
-
-	[AutoMapTo(typeof(Classify))]
-    public class UpdateClassifyInput : ClassifyDto
-    {
-    }
-
-	[AutoMapFrom(typeof(Classify))]
-    public class UpdateClassifyOutput : ClassifyDto
-    {
-    }
-
-	[AutoMapFrom(typeof(Classify))]
-    public class GetClassifyOutput : ClassifyDto
-    {
-    }
-
-    [AutoMapFrom(typeof(Classify))]
-    public class GetClassifyListOutput : ClassifyDto
-    {
     }
 }
 

@@ -1,0 +1,70 @@
+﻿<#@ template language="C#" HostSpecific="True" Debug="False" #>
+<#@ assembly name="System.Core" #>
+<#@ assembly name="System.Data.Linq" #>
+<#@ ScaffoldingAssembly Processor="ScaffoldingAssemblyLoader" #>
+<#@ import namespace="System.Collections" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="Microsoft.AspNet.Scaffolding.Core.Metadata" #>
+<#@ import namespace="BodeAbp.Scaffolding.Models" #>
+<#@ parameter type="System.String" name="ModuleName" #>
+<#@ parameter type="System.String" name="ModuleNamespace" #>
+<#@ parameter type="System.String" name="EntityName" #>
+<#@ parameter type="System.String" name="FunctionName" #>
+<#@ output extension="cs" #>
+using Abp.Application.Services;
+using System.ComponentModel;
+using Abp.Application.Services.Dto;
+using <#= ModuleNamespace #>.Dtos;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+
+namespace <#= ModuleNamespace #>
+{
+	/// <summary>
+    ///  <#= FunctionName #> 服务
+    /// </summary>
+	[Description("<#= FunctionName#>接口")]
+    public interface I<#= ModuleName #>AppService : IApplicationService
+    {
+		#region <#= FunctionName #>
+
+        /// <summary>
+        /// 获取 <#= FunctionName #>分页
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        Task<PagedResultOutput<Get<#= EntityName #>ListOutput>> Get<#= EntityName #>PagedList(QueryListPagedRequestInput input);
+
+	    /// <summary>
+        /// 获取 <#= FunctionName #>详情
+        /// </summary>
+        /// <param name="id">id</param>
+        /// <returns></returns>
+        Task<Get<#= EntityName #>Output> Get<#= EntityName #>(int id);
+		
+        /// <summary>
+        /// 添加 <#= FunctionName #>
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        Task Create<#= EntityName #>(Create<#= EntityName #>Input input);
+
+        /// <summary>
+        /// 更新 <#= FunctionName #>
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        Task Update<#= EntityName #>(Update<#= EntityName #>Input input);
+		
+
+        /// <summary>
+        /// 删除 <#= FunctionName #>
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        Task Delete<#= EntityName #>(IdInput[] input);
+
+		#endregion
+    }
+}

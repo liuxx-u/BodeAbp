@@ -1,0 +1,27 @@
+﻿<#@ template language="C#" HostSpecific="True" Debug="False" #>
+<#@ assembly name="System.Core" #>
+<#@ assembly name="System.Data.Linq" #>
+<#@ ScaffoldingAssembly Processor="ScaffoldingAssemblyLoader" #>
+<#@ import namespace="System.Collections" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="Microsoft.AspNet.Scaffolding.Core.Metadata" #>
+<#@ import namespace="BodeAbp.Scaffolding.Models" #>
+<#@ parameter type="System.String" name="ModuleNamespace" #>
+<#@ parameter type="System.String" name="EntityNamespace" #>
+<#@ parameter type="System.String" name="EntityName" #>
+<#@ output extension="cs" #>
+
+using Abp.EntityFramework;
+using <#= EntityNamespace #>;
+
+namespace <#= ModuleNamespace #>.ModelConfigs
+{
+    public class <#= EntityName #>Configuration : EntityConfigurationBase<<#= EntityName #>, int>
+    {
+		public <#= EntityName #>Configuration()
+        {
+            //TODO：配置实体映射关系
+        }
+    }
+}

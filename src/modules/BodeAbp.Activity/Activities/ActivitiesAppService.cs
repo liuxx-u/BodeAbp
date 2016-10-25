@@ -9,19 +9,18 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
+using System;
 
 namespace BodeAbp.Activity.Activities
 {
 	/// <summary>
     ///  活动 服务
     /// </summary>
-    public class ActivitiesAppService : ApplicationService,IActivitiesAppService
+    public class ActivitiesAppService : AsyncCrudAppService<Classify,ClassifyDto,int>, IActivitiesAppService
     {
-        private readonly IRepository<Classify> _classifyRepository;
         private readonly IRepository<Domain.Activity,long> _activityRepository;
-        public ActivitiesAppService(IRepository<Domain.Activity,long> activityRepository, IRepository<Classify> classifyRepository)
+        public ActivitiesAppService(IRepository<Domain.Activity, long> activityRepository, IRepository<Classify> classifyRepository) : base(classifyRepository)
         {
-            _classifyRepository = classifyRepository;
             _activityRepository = activityRepository;
         }
 
@@ -62,46 +61,6 @@ namespace BodeAbp.Activity.Activities
         {
             await _activityRepository.DeleteAsync(id);
         }
-        #endregion
-
-        #region 活动类型
-
-        /// <inheritdoc/>
-        public async Task<PagedResultDto<GetClassifyListOutput>> GetClassifyPagedList(QueryListPagedRequestInput input)
-        {
-            int total;
-            var list = await _classifyRepository.GetAll().Where(input, out total).ToListAsync();
-            return new PagedResultDto<GetClassifyListOutput>(total, list.MapTo<List<GetClassifyListOutput>>());
-        }
-
-        /// <inheritdoc/>
-        public async Task<GetClassifyOutput> GetClassify(IdInput input)
-        {
-            var result = await _classifyRepository.GetAsync(input.Id);
-            return result.MapTo<GetClassifyOutput>();
-        }
-
-        /// <inheritdoc/>
-        public async Task CreateClassify(CreateClassifyInput input)
-        {
-            var classify = input.MapTo<Classify>();
-            await _classifyRepository.InsertAsync(classify);
-        }
-
-        /// <inheritdoc/>
-        public async Task UpdateClassify(UpdateClassifyInput input)
-        {
-            var classify = await _classifyRepository.GetAsync(input.Id);
-            input.MapTo(classify);
-            await _classifyRepository.UpdateAsync(classify);
-        }
-
-        /// <inheritdoc/>
-        public async Task DeleteClassify(int id)
-        {
-            await _classifyRepository.DeleteAsync(id);
-        }
-
         #endregion
     }
 }
