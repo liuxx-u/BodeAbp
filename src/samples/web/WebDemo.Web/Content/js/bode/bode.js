@@ -99,6 +99,11 @@
         },
         hattedCode: function () {
             return (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1);
+        },
+        toCamelCase: function (str) {
+            if (!str) return str;
+            if (str.Length == 1) return str.toLowerCase();
+            return str[0].toLowerCase() + str.substring(1);
         }
     };
 

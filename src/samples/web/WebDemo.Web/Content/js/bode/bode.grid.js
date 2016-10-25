@@ -344,6 +344,8 @@
                     this.columns[i]["actions"]=columnActions;
                 }
 
+                //将列的data字段统一转换为驼峰式命名法
+                this.columns[i].data = $.bode.tools.toCamelCase(this.columns[i].data);
                 //初始化columnHash
                 this.columnsHash[this.columns[i].data] = this.columns[i];
                 var display = colType === "hide" ? 'style="display:none;"' : '';

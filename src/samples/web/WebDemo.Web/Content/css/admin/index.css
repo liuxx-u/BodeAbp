@@ -10,8 +10,6 @@
 }
 .header .header-waper .top-light {
     position: absolute;
-    width: 346px;
-    height: 74px;
     background: url(/Content/imgs/admin/toplight.png);
     top: 0;
     left: 0;
