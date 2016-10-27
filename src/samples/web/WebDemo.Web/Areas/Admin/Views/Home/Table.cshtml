@@ -7,21 +7,17 @@
     <script type="text/javascript">
         var enums = @Html.Raw(Json.Encode(@ViewBag.Enums));
         tableOption.url = {
-            read: "/api/services/product/products/GetProductPagedList",
-            add: "/api/services/product/products/CreateProduct",
-            edit: "/api/services/product/products/UpdateProduct",
-            delete: "/api/services/product/products/DeleteProduct"
+            read: "/api/services/activity/activities/GetPagedList",
+            add: "/api/services/activity/activities/Create",
+            edit: "/api/services/activity/activities/Update",
+            delete: "/api/services/activity/activities/Delete"
         };
         tableOption.columns = [
-                { data: "id", title: "编号" },
-                { data: "name", title: "商品名称", type: "text", query: true, editor: {} },
-                { data: "brief", title: "商品简介", type: "textarea", query: true, editor: {} },
-                //{ data: "detail", title: "商品详情", type: "richtext", query: true, editor: {} },
-                { data: "price", title: "价格", type: "number", query: true, editor: {} },
-                { data: "cover2", title: "封面", type: "img", editor: {} },
-                { data: "isOnShelf", title: "是否上架", type: "switch", editor: {} },
-                { data: "enumTest", title: "枚举测试", type: "dropdown", editor: {},source:{data:enums} },
-                { data: "onShelfTime", title: "上架时间", type: "timepicker", editor: {} },
+                { data: "id", title: "编号",type:"hide" },
+                { data: "name", title: "类别名称", type: "text", query: true, editor: {},display:{} },
+                { data: "isStatic", title: "是否静态的类别", type: "switch", query: true, editor: {} },
+                { data: "order", title: "排序号", type: "number", query: true, editor: {} },
+                { data: "creationTime", title: "创建时间", type: "datepicker", editor: {} }
                 {
                     title: "操作选项",
                     type: "command",

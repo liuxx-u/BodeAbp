@@ -240,18 +240,18 @@
         }
 
         this.loadData = function () {
-            var actionClick=function(e){
-                var action=e.data.action;
-                var data=e.data.data;
+            var actionClick = function (e) {
+                var action = e.data.action;
+                var data = e.data.data;
                 action.onClick(data, e.data.tab);
-            }
+            };
 
             //加载表格
             for (var i = 0, n = this.originData.length; i < n; i++) {
                 var d = this.originData[i];
                 var tr = $('<tr></tr>');
                 if (this.isBatch) {
-                    $('<td style="width:25px;"><div class="checkbox"><label><input type="checkbox" value="' + d["Id"] + '"><span class="text"></span></label></div></td>').appendTo(tr);
+                    $('<td style="width:10px;padding:8px 0 0 5px"><div class="checkbox"><label><input type="checkbox" value="' + d["id"] + '"><span class="text"></span></label></div></td>').appendTo(tr);
                 }
                 for (var j = 0, m = this.columns.length; j < m; j++) {
                     var r = this.columns[j]["render"];
@@ -293,10 +293,10 @@
         this.initHead = function () {
             var tab = this;
             if (tab.isBatch) {
-                var th = $('<th style="width:35px;"><div class="checkbox"><label><input type="checkbox"><span class="text"></span></label></div></th>')
+                var th = $('<th style="width:10px;padding:0 0 5px 5px"><div class="checkbox"><label><input type="checkbox"><span class="text"></span></label></div></th>')
                 th.find("input:checkbox").click(function () {
                     if ($(this).is(":checked")) {
-                        tab.tab.find("tbody>tr").find("td:eq(0) input:checkbox").attr("checked", true);
+                        tab.tab.find("tbody>tr").find("td:eq(0) input:checkbox").not("input:checked").click();
                     }
                     else {
                         tab.tab.find("tbody>tr").find("td:eq(0) input:checkbox").removeAttr("checked");
@@ -649,6 +649,18 @@
             newFilters.push(extraFilter);
             this.extraFilters = newFilters;
             this.reload();
+        }
+
+        this.getCheckedValues = function () {
+            var checkDatas = [];
+            if (this.isBatch){
+                var originDatas = this.originData;
+                this.tab.find("tbody input:checkbox:checked").each(function () {
+                    var index = $(this).closest('tr').index();
+                    checkDatas.push(originDatas[index]);
+                });
+            }
+            return checkDatas;
         }
 
 	    //执行初始化
