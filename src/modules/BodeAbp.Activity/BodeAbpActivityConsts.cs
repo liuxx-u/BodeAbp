@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BodeAbp.Activity
 {
-    internal class BodeAbpActivityConsts
+    public class BodeAbpActivityConsts
     {
         /// <summary>
         /// "BodeAbpActivity"

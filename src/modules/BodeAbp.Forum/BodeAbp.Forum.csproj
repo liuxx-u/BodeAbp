@@ -20,6 +20,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <NoWarn>1591</NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -35,7 +36,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Castle.Facilities.Logging, Version=3.3.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Castle.LoggingFacility.3.3.0\lib\net45\Castle.Facilities.Logging.dll</HintPath>
+      <HintPath>..\..\packages\Castle.LoggingFacility.3.3.0\lib\net45\Castle.Facilities.Logging.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Castle.Windsor, Version=3.3.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
@@ -63,10 +64,6 @@
     <ProjectReference Include="..\..\frame\Abp\Abp.csproj">
       <Project>{2c221d3b-5f54-4c5b-8082-318636415132}</Project>
       <Name>Abp</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\..\BodeAbp.Zero\Abp.Zero\Abp.Zero.csproj">
-      <Project>{70d916f2-9bff-43da-b3f7-3e0655114d48}</Project>
-      <Name>Abp.Zero</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

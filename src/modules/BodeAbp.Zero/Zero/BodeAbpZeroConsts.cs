@@ -1,6 +1,6 @@
 ﻿namespace BodeAbp.Zero
 {
-    internal class BodeAbpZeroConsts
+    public class BodeAbpZeroConsts
     {
         /// <summary>
         /// "AbpZero"
