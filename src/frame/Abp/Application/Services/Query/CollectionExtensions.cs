@@ -5,6 +5,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using Abp.Extensions;
 using System.Collections.Generic;
+using System.ComponentModel;
 
 namespace Abp.Application.Services.Query
 {
@@ -104,7 +105,7 @@ namespace Abp.Application.Services.Query
             source = source.Where(predicate);
             if (sortConditions == null || sortConditions.Count == 0)
             {
-                source = source.OrderBy("Id");
+                source = source.OrderBy("Id", ListSortDirection.Descending);
             }
             else
             {

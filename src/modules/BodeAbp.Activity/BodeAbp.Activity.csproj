@@ -77,6 +77,11 @@
     <Compile Include="Activities\IActivitiesAppService.cs" />
     <Compile Include="Activities\ModelConfigs\ActivityConfiguration.cs" />
     <Compile Include="Activities\ModelConfigs\ClassifyConfiguration.cs" />
+    <Compile Include="DbContext\ActivityCreateDbContextWithSeed.cs" />
+    <Compile Include="DbContext\ActivityDbContext.cs" />
+    <Compile Include="DbContext\ActivityDbContextInitializer.cs" />
+    <Compile Include="DbContext\ActivityMigrationsConfigurationWithSeed.cs" />
+    <Compile Include="DbContext\IActivitySeedAction.cs" />
     <Compile Include="Providers\BodeAbpActivityAuthorizationProvider.cs" />
     <Compile Include="Providers\PermissionNames.cs" />
     <Compile Include="BodeAbpActivityConsts.cs" />

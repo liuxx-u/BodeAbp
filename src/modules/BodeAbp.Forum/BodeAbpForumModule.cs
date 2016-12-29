@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BodeAbp.Forum
 {
-    public class BodeAbpForumCoreModule : AbpModule
+    public class BodeAbpForumModule : AbpModule
     {
         public override void PreInitialize()
         {

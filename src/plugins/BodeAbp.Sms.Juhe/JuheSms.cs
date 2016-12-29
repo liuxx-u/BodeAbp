@@ -4,6 +4,7 @@ using Abp.Plugins.SMS;
 using Newtonsoft.Json.Linq;
 using System.Configuration;
 using System.Text;
+using System;
 
 namespace Bode.Sms.Juhe
 {
@@ -15,6 +16,12 @@ namespace Bode.Sms.Juhe
         {
             Key = ConfigurationManager.AppSettings["SMS_JH_Key"];
         }
+
+        public int QueryBalance()
+        {
+            throw new NotImplementedException();
+        }
+
         public bool Send(string phoneNos, int templateId = 0, params string[] content)
         {
             return RetryHelper.Retry(() =>

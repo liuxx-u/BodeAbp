@@ -83,7 +83,7 @@
                     <template v-for="(index,item) in permissions">
                         <li v-bind:class="['tab-sky',{'active':index==0}]">
                             <a data-toggle="tab" href="#{{item.name}}" aria-expanded="true">
-                                {{item.displayName}}
+                                {{item.displayName.name}}
                             </a>
                         </li>
                     </template>
@@ -100,7 +100,7 @@
                                             <div class="checkbox">
                                                 <label>
                                                     <input type="checkbox" id="{{p.name}}" value="{{p.name}}" v-model="checkedPermissions">
-                                                    <span class="text">{{p.displayName}}</span>
+                                                    <span class="text">{{p.displayName.name}}</span>
                                                 </label>
                                             </div>
                                         </div>

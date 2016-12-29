@@ -24,7 +24,6 @@ namespace BodeAbp.Zero.Application.Users.Dtos
         /// <summary>
         /// 用户密码
         /// </summary>
-        [Required]
         [StringLength(User.MaxPasswordLength)]
         public string Password { get; set; }
 

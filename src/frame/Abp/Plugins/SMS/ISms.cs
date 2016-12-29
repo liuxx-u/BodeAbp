@@ -12,5 +12,11 @@ namespace Abp.Plugins.SMS
         /// <param name="content">短信内容</param>
         /// <returns>是否发送成功</returns>
         bool Send(string phoneNos, int templateId = 0, params string[] content);
+
+        /// <summary>
+        /// 获取剩余数量
+        /// </summary>
+        /// <returns></returns>
+        int QueryBalance();
     }
 }

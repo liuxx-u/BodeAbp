@@ -44,13 +44,17 @@ namespace Abp.Helper
         /// <summary>
         /// 获取字符串的SHA1哈希值
         /// </summary>
-        public static string GetSha1(string value)
+        public static string GetSha1(string value, Encoding encoding = null)
         {
             value.CheckNotNullOrEmpty("value");
+            if (encoding == null)
+            {
+                encoding = Encoding.UTF8;
+            }
 
             StringBuilder sb = new StringBuilder();
             SHA1Managed hash = new SHA1Managed();
-            byte[] bytes = hash.ComputeHash(Encoding.ASCII.GetBytes(value));
+            byte[] bytes = hash.ComputeHash(encoding.GetBytes(value));
             foreach (byte b in bytes)
             {
                 sb.AppendFormat("{0:x2}", b);
@@ -61,13 +65,17 @@ namespace Abp.Helper
         /// <summary>
         /// 获取字符串的Sha256哈希值
         /// </summary>
-        public static string GetSha256(string value)
+        public static string GetSha256(string value, Encoding encoding = null)
         {
             value.CheckNotNullOrEmpty("value");
+            if (encoding == null)
+            {
+                encoding = Encoding.UTF8;
+            }
 
             StringBuilder sb = new StringBuilder();
             SHA256Managed hash = new SHA256Managed();
-            byte[] bytes = hash.ComputeHash(Encoding.ASCII.GetBytes(value));
+            byte[] bytes = hash.ComputeHash(encoding.GetBytes(value));
             foreach (byte b in bytes)
             {
                 sb.AppendFormat("{0:x2}", b);
@@ -78,13 +86,17 @@ namespace Abp.Helper
         /// <summary>
         /// 获取字符串的Sha512哈希值
         /// </summary>
-        public static string GetSha512(string value)
+        public static string GetSha512(string value, Encoding encoding = null)
         {
             value.CheckNotNullOrEmpty("value");
+            if (encoding == null)
+            {
+                encoding = Encoding.UTF8;
+            }
 
             StringBuilder sb = new StringBuilder();
             SHA512Managed hash = new SHA512Managed();
-            byte[] bytes = hash.ComputeHash(Encoding.ASCII.GetBytes(value));
+            byte[] bytes = hash.ComputeHash(encoding.GetBytes(value));
             foreach (byte b in bytes)
             {
                 sb.AppendFormat("{0:x2}", b);

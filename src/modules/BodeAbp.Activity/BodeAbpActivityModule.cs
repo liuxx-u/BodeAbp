@@ -1,10 +1,10 @@
 ﻿using System.Reflection;
-using Abp.EntityFramework;
-using Abp.EntityFramework.Default;
 using Abp.Localization.Dictionaries;
 using Abp.Localization.Dictionaries.Xml;
 using Abp.Modules;
 using BodeAbp.Activity.Providers;
+using BodeAbp.Activity.DbContext;
+using Abp.EntityFramework;
 
 namespace BodeAbp.Activity
 {
@@ -30,7 +30,9 @@ namespace BodeAbp.Activity
             //Configuration.Settings.Providers.Add<BodeAbpActivitySettingProvider>();
             Configuration.Authorization.Providers.Add<BodeAbpActivityAuthorizationProvider>();
 
-            DefaultDbContextInitializer.Instance.MapperAssemblies.Add(Assembly.GetExecutingAssembly());
+            //添加活动数据库初始化类
+            ActivityDbContextInitializer.Instance.MapperAssemblies.Add(Assembly.GetExecutingAssembly());
+            DbContextManager.Instance.RegisterInitializer(typeof(ActivityDbContext), ActivityDbContextInitializer.Instance);
         }
 
         public override void Initialize()

@@ -47,11 +47,13 @@ namespace Abp.EntityFramework.Initialize
         protected override IEnumerable<IEntityMapper> EntityMappersFilter(IEnumerable<IEntityMapper> entityMappers)
         {
             Type contextType = typeof(TDbContext);
-            Expression<Func<IEntityMapper, bool>> predicate = m => m.DbContextType == contextType;
-            if (contextType == typeof(DefaultDbContext))
-            {
-                predicate = predicate.Or(m => m.DbContextType == null);
-            }
+            //DbContextType为null的，默认注册到模块的DbContext
+            Expression<Func<IEntityMapper, bool>> predicate = m => m.DbContextType == contextType || m.DbContextType == null;
+
+            //if (contextType == typeof(DefaultDbContext))
+            //{
+            //    predicate = predicate.Or(m => m.DbContextType == null);
+            //}
             return entityMappers.Where(predicate.Compile());
         }
 

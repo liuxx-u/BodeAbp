@@ -2,6 +2,7 @@
 using Abp.Application.Services.Dto;
 using Abp.Authorization;
 using Abp.AutoMapper;
+using Abp.Localization;
 
 namespace BodeAbp.Zero.Permissions.Dtos
 {
@@ -19,7 +20,7 @@ namespace BodeAbp.Zero.Permissions.Dtos
         /// <summary>
         /// 显示名
         /// </summary>
-        public string DisplayName { get; set; }
+        public ILocalizableString DisplayName { get; set; }
 
         /// <summary>
         /// 子权限集合

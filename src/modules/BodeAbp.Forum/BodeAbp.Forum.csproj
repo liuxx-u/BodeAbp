@@ -54,13 +54,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BodeAbpForumCoreModule.cs" />
+    <Compile Include="BodeAbpForumModule.cs" />
     <Compile Include="Plates\Domain\Plate.cs" />
     <Compile Include="Plates\Domain\PlateKeeper.cs" />
     <Compile Include="Posts\Domain\Post.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\frame\Abp.EntityFramework\Abp.EntityFramework.csproj">
+      <Project>{948F0CAF-3382-4E03-9A0F-0DDB206FE40D}</Project>
+      <Name>Abp.EntityFramework</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\frame\Abp\Abp.csproj">
       <Project>{2c221d3b-5f54-4c5b-8082-318636415132}</Project>
       <Name>Abp</Name>

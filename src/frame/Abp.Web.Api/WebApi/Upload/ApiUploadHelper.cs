@@ -22,7 +22,7 @@ namespace Abp.WebApi.Upload
         public static async Task<List<string>> Upload(HttpContent content)
         {
             //文件存储地址
-            string path = string.Format("UploadFile/{0}/", DateTime.Today.ToString("yyyyMMdd"));
+            string path = string.Format("upload/image/{0}/", DateTime.Today.ToString("yyyyMM/dd"));
             string dirPath = AppDomain.CurrentDomain.BaseDirectory + path;
 
             if (!Directory.Exists(dirPath)) Directory.CreateDirectory(dirPath);
