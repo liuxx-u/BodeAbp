@@ -14,6 +14,7 @@ using BodeAbp.Activity;
 using BodeAbp.Product;
 using Abp.WebApi.Configuration;
 using Abp.Configuration.Startup;
+using Abp.Json;
 
 namespace WebDemo.WebApi
 {
@@ -44,6 +45,19 @@ namespace WebDemo.WebApi
             GlobalConfiguration.Configuration.EnableCors(cors);
             
             ConfigureSwaggerUi();
+        }
+
+        public override void PostInitialize()
+        {
+            var converters = Configuration.Modules.AbpWebApi().HttpConfiguration.Formatters.JsonFormatter.SerializerSettings.Converters;
+            foreach (var converter in converters)
+            {
+                if (converter is AbpDateTimeConverter)
+                {
+                    var tmpConverter = converter as AbpDateTimeConverter;
+                    tmpConverter.DateTimeFormat = "yyyy-MM-dd HH:mm:ss";
+                }
+            }
         }
 
         private void ConfigureSwaggerUi()

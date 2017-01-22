@@ -53,8 +53,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "console", "console", "{7BA0
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{BFFC1DA1-D96E-43CC-9877-88C8DC1B8570}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "rpc", "rpc", "{165F09D7-2C2A-4D9D-BB07-665AD380828E}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Abp.Web.Common", "frame\Abp.Web.Common\Abp.Web.Common.csproj", "{48CC5121-81B5-4F27-8210-9340433254EB}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Abp.TestBase", "frame\Abp.TestBase\Abp.TestBase.csproj", "{C0E9A023-B714-4274-B84F-16634C747DC5}"

@@ -33,11 +33,8 @@ namespace BodeAbp.Activity.Activities.Domain
         /// </summary>
         public bool IsStatic { get; set; }
 
-        /// <summary>
-        /// 排序
-        /// </summary>
         public int Order { get; set; }
-
+        
         #endregion
     }
 }

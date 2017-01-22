@@ -12,6 +12,8 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
 using Abp.EntityFramework.Default;
+using Abp.Dependency;
+using Abp.Configuration;
 
 namespace Abp.EntityFramework.Initialize
 {
@@ -70,7 +72,8 @@ namespace Abp.EntityFramework.Initialize
             }
             else
             {
-                initializer = MigrateInitializer;
+                var efConfiguration = IocManager.Instance.Resolve<IAbpEfModuleConfiguration>();
+                initializer = efConfiguration.AutoMigrateDatabase ? MigrateInitializer : null;
             }
             Database.SetInitializer(initializer);
 

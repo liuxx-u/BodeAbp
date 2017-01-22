@@ -73,6 +73,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AbpDbContext.cs" />
+    <Compile Include="Configuration\AbpEfModuleConfiguration.cs" />
+    <Compile Include="Configuration\AbpEfModuleConfigurationExtensions.cs" />
+    <Compile Include="Configuration\IAbpEfModuleConfiguration.cs" />
     <Compile Include="DbContextInitializerBase.cs" />
     <Compile Include="DbContextManager.cs" />
     <Compile Include="DbContextTypeMatcher.cs" />

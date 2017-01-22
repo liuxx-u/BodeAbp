@@ -34,6 +34,9 @@ namespace WebDemo.Web
 
             //发送所有错误消息至客户端
             Configuration.Modules.AbpWebCommon().SendAllExceptionsToClients = true;
+
+            //不启用EF自动迁移
+            Configuration.Modules.AbpEntityFramework().AutoMigrateDatabase = false;
         }
 
         public override void Initialize()

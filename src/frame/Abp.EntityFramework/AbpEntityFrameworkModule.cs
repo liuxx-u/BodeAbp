@@ -7,6 +7,8 @@ using Castle.Core.Logging;
 using Abp.Configuration.Startup;
 using Castle.MicroKernel.Registration;
 using Abp.Domain.Uow;
+using Abp.Configuration;
+using Abp.Dependency;
 
 namespace Abp.EntityFramework
 {
@@ -37,6 +39,8 @@ namespace Abp.EntityFramework
                     .LifestyleTransient()
                 );
             });
+
+            IocManager.Register<IAbpEfModuleConfiguration, AbpEfModuleConfiguration>(DependencyLifeStyle.Singleton);
 
             //添加默认数据库初始化类
             DbContextManager.Instance.RegisterInitializer(typeof(DefaultDbContext), DefaultDbContextInitializer.Instance);
