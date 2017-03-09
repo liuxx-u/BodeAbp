@@ -114,7 +114,7 @@ namespace Abp.BackgroundJobs
                 ? LastTryTime.Value.AddSeconds(nextWaitDuration)
                 : Clock.Now.AddSeconds(nextWaitDuration);
 
-            if (nextTryDate.Subtract(CreationTime).TotalDays > DefaultTimeout)
+            if (nextTryDate.Subtract(CreationTime).TotalSeconds > DefaultTimeout)
             {
                 return null;
             }

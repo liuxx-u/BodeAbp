@@ -1,13 +1,9 @@
 ﻿using System;
-using System.Globalization;
-using System.Linq;
-using System.Threading;
 using System.Web;
-using Abp.Collections.Extensions;
-using Abp.Localization;
+using Abp.Dependency;
 using Abp.Modules;
 using Abp.Threading;
-using Abp.Web.Configuration;
+using Abp.Web.Localization;
 
 namespace Abp.Web
 {
@@ -23,7 +19,6 @@ namespace Abp.Web
         /// Gets a reference to the <see cref="AbpBootstrapper"/> instance.
         /// </summary>
         public static AbpBootstrapper AbpBootstrapper { get; } = AbpBootstrapper.Create<TStartupModule>();
-        private static IAbpWebLocalizationConfiguration _webLocalizationConfiguration;
 
         /// <summary>
         /// This method is called by ASP.NET system on web application's startup.
@@ -31,10 +26,7 @@ namespace Abp.Web
         protected virtual void Application_Start(object sender, EventArgs e)
         {
             ThreadCultureSanitizer.Sanitize();
-
             AbpBootstrapper.Initialize();
-
-            _webLocalizationConfiguration = AbpBootstrapper.IocManager.Resolve<IAbpWebLocalizationConfiguration>();
         }
 
         /// <summary>
@@ -71,21 +63,7 @@ namespace Abp.Web
 
         protected virtual void SetCurrentCulture()
         {
-            var langCookie = Request.Cookies[_webLocalizationConfiguration.CookieName];
-            if (langCookie != null && GlobalizationHelper.IsValidCultureCode(langCookie.Value))
-            {
-                Thread.CurrentThread.CurrentCulture = new CultureInfo(langCookie.Value);
-                Thread.CurrentThread.CurrentUICulture = new CultureInfo(langCookie.Value);
-            }
-            else if (!Request.UserLanguages.IsNullOrEmpty())
-            {
-                var firstValidLanguage = Request?.UserLanguages?.FirstOrDefault(GlobalizationHelper.IsValidCultureCode);
-                if (firstValidLanguage != null)
-                {
-                    Thread.CurrentThread.CurrentCulture = new CultureInfo(firstValidLanguage);
-                    Thread.CurrentThread.CurrentUICulture = new CultureInfo(firstValidLanguage);
-                }
-            }
+            AbpBootstrapper.IocManager.Using<ICurrentCultureSetter>(cultureSetter => cultureSetter.SetCurrentCulture(Context));
         }
 
         /// <summary>

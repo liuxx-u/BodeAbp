@@ -159,7 +159,7 @@ namespace Abp.Extensions
         {
             if (str == null)
             {
-                throw new ArgumentNullException("str");
+                throw new ArgumentNullException(nameof(str));
             }
 
             var count = 0;

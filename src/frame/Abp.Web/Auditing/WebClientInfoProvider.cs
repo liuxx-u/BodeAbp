@@ -3,11 +3,10 @@ using System.Net;
 using System.Net.Sockets;
 using System.Web;
 using Castle.Core.Logging;
-using Abp.Auditing;
 
 namespace Abp.Auditing
 {
-    public class WebAuditInfoProvider : IClientInfoProvider
+    public class WebClientInfoProvider : IClientInfoProvider
     {
         public string BrowserInfo => GetBrowserInfo();
 
@@ -20,9 +19,9 @@ namespace Abp.Auditing
         private readonly HttpContext _httpContext;
 
         /// <summary>
-        /// Creates a new <see cref="WebAuditInfoProvider"/>.
+        /// Creates a new <see cref="WebClientInfoProvider"/>.
         /// </summary>
-        public WebAuditInfoProvider()
+        public WebClientInfoProvider()
         {
             _httpContext = HttpContext.Current;
             Logger = NullLogger.Instance;

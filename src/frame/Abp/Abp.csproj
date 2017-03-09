@@ -146,7 +146,9 @@
     <Compile Include="Aspects\AbpCrossCuttingConcerns.cs" />
     <Compile Include="Auditing\AuditingContractResolver.cs" />
     <Compile Include="Auditing\IAuditingHelper.cs" />
+    <Compile Include="Auditing\IAuditSerializer.cs" />
     <Compile Include="Auditing\IClientInfoProvider.cs" />
+    <Compile Include="Auditing\JsonNetAuditSerializer.cs" />
     <Compile Include="Auditing\NullClientInfoProvider.cs" />
     <Compile Include="Authorization\AbpAllowAnonymousAttribute.cs" />
     <Compile Include="Authorization\AuthorizationHelper.cs" />
@@ -159,6 +161,7 @@
     <Compile Include="Authorization\PermissionDependencyExtensions.cs" />
     <Compile Include="BackgroundJobs\BackgroundJobConfiguration.cs" />
     <Compile Include="BackgroundJobs\BackgroundJob.cs" />
+    <Compile Include="BackgroundJobs\BackgroundJobException.cs" />
     <Compile Include="BackgroundJobs\BackgroundJobManagerExtensions.cs" />
     <Compile Include="BackgroundJobs\IBackgroundJob.cs" />
     <Compile Include="BackgroundJobs\BackgroundJobManager.cs" />
@@ -181,6 +184,8 @@
     <Compile Include="Configuration\Startup\NavigationConfiguration.cs" />
     <Compile Include="Configuration\Startup\ValidationConfiguration.cs" />
     <Compile Include="Dependency\IIocManagerAccessor.cs" />
+    <Compile Include="Dependency\IScopedIocResolver.cs" />
+    <Compile Include="Dependency\ScopedIocResolver.cs" />
     <Compile Include="Domain\Entities\AggregateRoot.cs" />
     <Compile Include="Domain\Entities\Asset\AssetEntityOfPrimaryKey.cs" />
     <Compile Include="Domain\Entities\Asset\AssetEntity.cs" />
@@ -202,6 +207,10 @@
     <Compile Include="Domain\Uow\IUnitOfWorkFilterExecuter.cs" />
     <Compile Include="Domain\Uow\NullUnitOfWorkFilterExecuter.cs" />
     <Compile Include="Domain\Values\ValueObject.cs" />
+    <Compile Include="Events\Bus\Entities\DomainEventEntry.cs" />
+    <Compile Include="Events\Bus\Entities\EntityChangeEntry.cs" />
+    <Compile Include="Events\Bus\Entities\EntityChangeReport.cs" />
+    <Compile Include="Events\Bus\Entities\EntityChangeType.cs" />
     <Compile Include="Extensions\CollectionExtensions.cs" />
     <Compile Include="Extensions\DictionaryExtensions.cs" />
     <Compile Include="Extensions\EnumExtensions.cs" />
@@ -231,12 +240,22 @@
     <Compile Include="Linq\IAsyncQueryableExecuter.cs" />
     <Compile Include="Linq\NullAsyncQueryableExecuter.cs" />
     <Compile Include="Localization\AbpDisplayNameAttribute.cs" />
+    <Compile Include="Localization\Dictionaries\Utf8Helper.cs" />
     <Compile Include="Logging\LoggerExtensions.cs" />
     <Compile Include="Authorization\SimplePermissionDependency.cs" />
+    <Compile Include="MultiTenancy\ITenantResolveContributer.cs" />
+    <Compile Include="MultiTenancy\ITenantResolver.cs" />
+    <Compile Include="MultiTenancy\ITenantResolverCache.cs" />
+    <Compile Include="MultiTenancy\ITenantStore.cs" />
     <Compile Include="MultiTenancy\MultiTenancyConsts.cs" />
     <Compile Include="MultiTenancy\MultiTenancyExtensions.cs" />
     <Compile Include="MultiTenancy\MultiTenancySideAttribute.cs" />
     <Compile Include="MultiTenancy\MultiTenancySides.cs" />
+    <Compile Include="MultiTenancy\NullTenantResolverCache.cs" />
+    <Compile Include="MultiTenancy\NullTenantStore.cs" />
+    <Compile Include="MultiTenancy\TenantInfo.cs" />
+    <Compile Include="MultiTenancy\TenantResolver.cs" />
+    <Compile Include="MultiTenancy\TenantResolverCacheItem.cs" />
     <Compile Include="Net\Remoting\Args\RemotingMessage.cs" />
     <Compile Include="Net\Remoting\Args\RemotingRequest.cs" />
     <Compile Include="Net\Remoting\Args\RemotingResponse.cs" />
@@ -279,7 +298,6 @@
     <Compile Include="Notifications\IUserNotificationManager.cs" />
     <Compile Include="Notifications\LocalizableMessageNotificationData.cs" />
     <Compile Include="Notifications\MessageNotificationData.cs" />
-    <Compile Include="Notifications\Notification.cs" />
     <Compile Include="Notifications\NotificationConfiguration.cs" />
     <Compile Include="Notifications\NotificationData.cs" />
     <Compile Include="Notifications\NotificationDefinition.cs" />
@@ -302,6 +320,7 @@
     <Compile Include="Notifications\NotificationSubscriptionManager.cs" />
     <Compile Include="Notifications\NullNotificationStore.cs" />
     <Compile Include="Notifications\NullRealTimeNotifier.cs" />
+    <Compile Include="Notifications\TenantNotification.cs" />
     <Compile Include="Notifications\TenantNotificationInfo.cs" />
     <Compile Include="Notifications\TenantNotificationInfoExtensions.cs" />
     <Compile Include="Notifications\UserNotification.cs" />
@@ -315,9 +334,11 @@
     <Compile Include="ObjectMapping\IObjectMapper.cs" />
     <Compile Include="ObjectMapping\NullObjectMapper.cs" />
     <Compile Include="Plugins\AbpPlugInManager.cs" />
+    <Compile Include="Plugins\AssemblyFileListPlugInSource.cs" />
     <Compile Include="Plugins\FolderPlugInSource.cs" />
     <Compile Include="Plugins\IAbpPlugInManager.cs" />
     <Compile Include="Plugins\IPlugInSource.cs" />
+    <Compile Include="Plugins\PlugInSourceExtensions.cs" />
     <Compile Include="Plugins\PlugInSourceList.cs" />
     <Compile Include="Plugins\PlugInSourceListExtensions.cs" />
     <Compile Include="Plugins\PlugInTypeListSource.cs" />
@@ -330,10 +351,20 @@
     <Compile Include="Reflection\AssemblyHelper.cs" />
     <Compile Include="Reflection\Extensions\AssemblyExtensions.cs" />
     <Compile Include="RegularGuidGenerator.cs" />
+    <Compile Include="Resources\Embedded\EmbeddedResourceItem.cs" />
+    <Compile Include="Resources\Embedded\EmbeddedResourcesConfiguration.cs" />
+    <Compile Include="Resources\Embedded\EmbeddedResourceSet.cs" />
+    <Compile Include="Resources\Embedded\IEmbeddedResourcesConfiguration.cs" />
+    <Compile Include="Runtime\IAmbientDataContext.cs" />
+    <Compile Include="Runtime\IAmbientScopeProvider.cs" />
+    <Compile Include="Runtime\Remoting\CallContextAmbientDataContext.cs" />
+    <Compile Include="Runtime\Remoting\DataContextAmbientScopeProvider.cs" />
     <Compile Include="Runtime\Security\ClaimsIdentityExtensions.cs" />
     <Compile Include="Runtime\Security\SimpleStringCipher.cs" />
+    <Compile Include="Runtime\Session\AbpSessionBase.cs" />
     <Compile Include="Runtime\Session\DefaultPrincipalAccessor.cs" />
     <Compile Include="Runtime\Session\IPrincipalAccessor.cs" />
+    <Compile Include="Runtime\Session\SessionOverride.cs" />
     <Compile Include="Runtime\Validation\CustomValidationContext.cs" />
     <Compile Include="Runtime\Validation\EnableValidationAttribute.cs" />
     <Compile Include="Schedule\IScheduleService.cs" />
@@ -355,6 +386,21 @@
     <Compile Include="Serialization\BinarySerializer.cs" />
     <Compile Include="Serialization\StringObjectSerializer.cs" />
     <Compile Include="Serialization\ISerializer.cs" />
+    <Compile Include="Specifications\AndNotSpecification.cs" />
+    <Compile Include="Specifications\AndSpecification.cs" />
+    <Compile Include="Specifications\AnySpecification.cs" />
+    <Compile Include="Specifications\CompositeSpecification.cs" />
+    <Compile Include="Specifications\ExpressionFuncExtender.cs" />
+    <Compile Include="Specifications\ExpressionSpecification.cs" />
+    <Compile Include="Specifications\ICompositeSpecification.cs" />
+    <Compile Include="Specifications\ISpecification.cs" />
+    <Compile Include="Specifications\ISpecificationParser.cs" />
+    <Compile Include="Specifications\NoneSpecification.cs" />
+    <Compile Include="Specifications\NotSpecification.cs" />
+    <Compile Include="Specifications\OrSpecification.cs" />
+    <Compile Include="Specifications\ParameterRebinder.cs" />
+    <Compile Include="Specifications\Specification.cs" />
+    <Compile Include="Specifications\SpecificationExtensions.cs" />
     <Compile Include="Threading\ThreadCultureSanitizer.cs" />
     <Compile Include="Threading\BackgroundWorkers\BackgroundWorkerManager.cs" />
     <Compile Include="Threading\BackgroundWorkers\BackgroundWorkerBase.cs" />
@@ -586,9 +632,7 @@
     <Compile Include="Reflection\ITypeFinder.cs" />
     <Compile Include="Reflection\ReflectionHelper.cs" />
     <Compile Include="Reflection\TypeFinder.cs" />
-    <Compile Include="Resources\Embedded\EmbeddedResourceInfo.cs" />
     <Compile Include="Resources\Embedded\EmbeddedResourceManager.cs" />
-    <Compile Include="Resources\Embedded\EmbeddedResourcePathInfo.cs" />
     <Compile Include="Resources\Embedded\IEmbeddedResourceManager.cs" />
     <Compile Include="Runtime\Session\IAbpSession.cs" />
     <Compile Include="Runtime\Session\NullAbpSession.cs" />
@@ -655,7 +699,6 @@
     <Compile Include="Runtime\Validation\AbpValidationException.cs" />
     <Compile Include="Runtime\Validation\ICustomValidate.cs" />
     <Compile Include="Runtime\Validation\IShouldNormalize.cs" />
-    <Compile Include="Runtime\Validation\IValidate.cs" />
     <Compile Include="Runtime\Validation\Interception\MethodInvocationValidator.cs" />
     <Compile Include="Runtime\Validation\Interception\ValidationInterceptor.cs" />
     <Compile Include="AbpInitializationException.cs" />
@@ -758,6 +801,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Localization\Sources\AbpXmlSource\Abp-lv.xml" />
     <Content Include="Timing\Timezone\Mapping\WindowsZones.xml" />
   </ItemGroup>
   <ItemGroup />

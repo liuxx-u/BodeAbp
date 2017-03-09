@@ -6,7 +6,7 @@ namespace JetBrains.Annotations
         AttributeTargets.Method | AttributeTargets.Parameter |
         AttributeTargets.Property | AttributeTargets.Delegate |
         AttributeTargets.Field)]
-    internal sealed class NotNullAttribute : Attribute
+    public sealed class NotNullAttribute : Attribute
     {
     }
 
@@ -14,22 +14,22 @@ namespace JetBrains.Annotations
         AttributeTargets.Method | AttributeTargets.Parameter |
         AttributeTargets.Property | AttributeTargets.Delegate |
         AttributeTargets.Field)]
-    internal sealed class CanBeNullAttribute : Attribute
+    public sealed class CanBeNullAttribute : Attribute
     {
     }
 
     [AttributeUsage(AttributeTargets.Parameter)]
-    internal sealed class InvokerParameterNameAttribute : Attribute
+    public sealed class InvokerParameterNameAttribute : Attribute
     {
     }
 
     [AttributeUsage(AttributeTargets.Parameter)]
-    internal sealed class NoEnumerationAttribute : Attribute
+    public sealed class NoEnumerationAttribute : Attribute
     {
     }
 
     [AttributeUsage(AttributeTargets.Method, AllowMultiple = true)]
-    internal sealed class ContractAnnotationAttribute : Attribute
+    public sealed class ContractAnnotationAttribute : Attribute
     {
         public string Contract { get; private set; }
 

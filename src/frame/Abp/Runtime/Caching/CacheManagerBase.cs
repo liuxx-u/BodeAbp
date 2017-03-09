@@ -4,6 +4,7 @@ using System.Collections.Immutable;
 using System.Linq;
 using Abp.Dependency;
 using Abp.Runtime.Caching.Configuration;
+using JetBrains.Annotations;
 
 namespace Abp.Runtime.Caching
 {
@@ -45,10 +46,7 @@ namespace Abp.Runtime.Caching
 
                 foreach (var configurator in configurators)
                 {
-                    if (configurator.InitAction != null)
-                    {
-                        configurator.InitAction(cache);
-                    }
+                    configurator.InitAction?.Invoke(cache);
                 }
 
                 return cache;

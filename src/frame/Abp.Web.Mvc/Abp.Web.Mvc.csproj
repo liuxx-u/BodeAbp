@@ -103,6 +103,7 @@
     <Compile Include="Web\Mvc\Controllers\AbpController.cs" />
     <Compile Include="Web\Mvc\Controllers\AbpAppViewController.cs" />
     <Compile Include="Web\Mvc\Controllers\AbpScriptsController.cs" />
+    <Compile Include="Web\Mvc\Controllers\AbpUserConfigurationController.cs" />
     <Compile Include="Web\Mvc\Controllers\Localization\AbpLocalizationController.cs" />
     <Compile Include="Web\Mvc\Controllers\Results\AbpJsonResult.cs" />
     <Compile Include="Web\Mvc\Controllers\WindsorControllerFactory.cs" />
@@ -112,6 +113,9 @@
     <Compile Include="Web\Mvc\ModelBinding\Binders\AbpMvcDateTimeBinder.cs" />
     <Compile Include="Web\Mvc\Models\ModelStateExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Web\Mvc\Resources\Embedded\EmbeddedResourceItemCacheDependency.cs" />
+    <Compile Include="Web\Mvc\Resources\Embedded\EmbeddedResourceItemVirtualFile.cs" />
+    <Compile Include="Web\Mvc\Resources\Embedded\EmbeddedResourceVirtualPathProvider.cs" />
     <Compile Include="Web\Mvc\Resources\Embedded\Handlers\EmbeddedResourceHttpHandler.cs" />
     <Compile Include="Web\Mvc\Resources\Embedded\Handlers\EmbeddedResourceRouteHandler.cs" />
     <Compile Include="Web\Mvc\Resources\WebResourceHelper.cs" />

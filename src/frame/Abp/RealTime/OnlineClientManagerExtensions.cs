@@ -23,19 +23,6 @@ namespace Abp.RealTime
             return onlineClientManager.GetAllByUserId(user).Any();
         }
 
-        [NotNull]
-        public static IReadOnlyList<IOnlineClient> GetAllByUserId(
-            [NotNull] this IOnlineClientManager onlineClientManager, 
-            [NotNull] IUserIdentifier user)
-        {
-            onlineClientManager.CheckNotNull(nameof(onlineClientManager));
-            user.CheckNotNull(nameof(user));
-
-            return onlineClientManager.GetAllClients()
-                 .Where(c => (c.UserId == user.UserId && c.TenantId == user.TenantId))
-                 .ToImmutableList();
-        }
-
         public static bool Remove(
             [NotNull] this IOnlineClientManager onlineClientManager,
             [NotNull] IOnlineClient client)

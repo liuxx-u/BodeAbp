@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Abp.Application.Features;
 using Abp.Collections.Extensions;
 using Abp.Localization;
+using Abp.Extensions;
 
 namespace Abp.Application.Navigation
 {
@@ -57,10 +58,12 @@ namespace Abp.Application.Navigation
         /// <summary>
         /// Returns true if this menu item has no child <see cref="Items"/>.
         /// </summary>
-        public bool IsLeaf
-        {
-            get { return Items.IsNullOrEmpty(); }
-        }
+        public bool IsLeaf => Items.IsNullOrEmpty();
+        
+        /// <summary>
+        /// Target of the menu item. Can be "_blank", "_self", "_parent", "_top" or a frame name.
+        /// </summary>
+        public string Target { get; set; }
 
         /// <summary>
         /// Can be used to store a custom object related to this menu item. Optional.
@@ -84,17 +87,11 @@ namespace Abp.Application.Navigation
             string requiredPermissionName = null, 
             int order = 0, 
             object customData = null,
-            IFeatureDependency featureDependency = null)
+            IFeatureDependency featureDependency = null,
+            string target = null)
         {
-            if (string.IsNullOrEmpty(name))
-            {
-                throw new ArgumentNullException("name");
-            }
-
-            if (displayName == null)
-            {
-                throw new ArgumentNullException("displayName");
-            }
+            name.CheckNotNull(nameof(name));
+            displayName.CheckNotNull(nameof(displayName));
 
             Name = name;
             DisplayName = displayName;
@@ -105,6 +102,7 @@ namespace Abp.Application.Navigation
             Order = order;
             CustomData = customData;
             FeatureDependency = featureDependency;
+            Target = target;
 
             Items = new List<MenuItemDefinition>();
         }

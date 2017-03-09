@@ -9,6 +9,7 @@ using Abp.Domain.Repositories;
 using Abp.Extensions;
 using BodeAbp.Zero.Settings.Domain;
 using BodeAbp.Zero.Settings.Dtos;
+using Abp.Localization;
 
 namespace BodeAbp.Zero.Settings
 {
@@ -26,6 +27,8 @@ namespace BodeAbp.Zero.Settings
         /// 设置信息仓储
         /// </summary>
         public IRepository<Setting, long> _settingRepository { protected get; set; }
+
+        public ILocalizationContext localizationContext { protected get; set; }
 
         /// <inheritdoc/>
         public async Task<IEnumerable<SettingGroup>> GetApplicationSettingGroups()

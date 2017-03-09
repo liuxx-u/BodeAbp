@@ -27,7 +27,7 @@ namespace Abp.Authorization
                 throw new AbpException("There is already a permission with name: " + name);
             }
 
-            var permission = new Permission(name, displayName, description, false, multiTenancySides, featureDependency);
+            var permission = new Permission(name, displayName, description, multiTenancySides, featureDependency);
             Permissions[permission.Name] = permission;
             return permission;
         }

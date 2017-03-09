@@ -1,4 +1,5 @@
-﻿using System;
+﻿using System.Linq;
+using System.Security.Claims;
 
 namespace Abp.Runtime.Session
 {
@@ -50,6 +51,27 @@ namespace Abp.Runtime.Session
             return session.UserId == null
                 ? null
                 : new UserIdentifier(session.TenantId, session.GetUserId());
+        }
+
+        /// <summary>
+        /// Creates <see cref="UserIdentifier"/> from given session.
+        /// Returns UserName.
+        /// </summary>
+        /// <param name="session">The session.</param>
+        public static string GetUserName(this IAbpSession session)
+        {
+            return GetClaimValue(ClaimTypes.Name);
+        }
+
+        private static string GetClaimValue(string claimType)
+        {
+            var claimsPrincipal = DefaultPrincipalAccessor.Instance.Principal;
+
+            var claim = claimsPrincipal?.Claims.FirstOrDefault(c => c.Type == claimType);
+            if (string.IsNullOrEmpty(claim?.Value))
+                return null;
+
+            return claim.Value;
         }
     }
 }

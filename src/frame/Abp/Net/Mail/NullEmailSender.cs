@@ -25,6 +25,7 @@ namespace Abp.Net.Mail
 
         protected override Task SendEmailAsync(MailMessage mail)
         {
+            Logger.Warn("USING NullEmailSender!");
             Logger.Debug("SendEmailAsync:");
             LogEmail(mail);
             return Task.FromResult(0);
@@ -32,6 +33,7 @@ namespace Abp.Net.Mail
 
         protected override void SendEmail(MailMessage mail)
         {
+            Logger.Warn("USING NullEmailSender!");
             Logger.Debug("SendEmail:");
             LogEmail(mail);
         }

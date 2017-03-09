@@ -56,8 +56,10 @@
     <Compile Include="Runtime\Caching\Redis\AbpRedisCache.cs" />
     <Compile Include="Runtime\Caching\Redis\AbpRedisCacheManager.cs" />
     <Compile Include="Runtime\Caching\Redis\AbpRedisCacheOptions.cs" />
+    <Compile Include="Runtime\Caching\Redis\DefaultRedisCacheSerializer.cs" />
     <Compile Include="Runtime\Caching\Redis\IAbpRedisCacheDatabaseProvider.cs" />
     <Compile Include="Runtime\Caching\Redis\AbpRedisCacheDatabaseProvider.cs" />
+    <Compile Include="Runtime\Caching\Redis\IRedisCacheSerializer.cs" />
     <Compile Include="Runtime\Caching\Redis\RedisCacheConfigurationExtensions.cs" />
     <Compile Include="Runtime\Caching\Redis\RedisDatabaseExtensions.cs" />
   </ItemGroup>

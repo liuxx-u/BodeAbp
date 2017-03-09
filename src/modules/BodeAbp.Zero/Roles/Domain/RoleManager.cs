@@ -112,9 +112,7 @@ namespace BodeAbp.Zero.Roles.Domain
             var cacheItem = await GetRolePermissionCacheItemAsync(roleId);
 
             //Check the permission
-            return permission.IsGrantedByDefault
-                ? !(cacheItem.ProhibitedPermissions.Contains(permission.Name))
-                : (cacheItem.GrantedPermissions.Contains(permission.Name));
+            return cacheItem.GrantedPermissions.Contains(permission.Name);
         }
 
         /// <summary>
@@ -202,15 +200,7 @@ namespace BodeAbp.Zero.Roles.Domain
                 return;
             }
 
-            if (permission.IsGrantedByDefault)
-            {
-                await RolePermissionStore.RemovePermissionAsync(role, new PermissionGrantInfo(permission.Name, false));
-            }
-            else
-            {
-                await RolePermissionStore.AddPermissionAsync(role, new PermissionGrantInfo(permission.Name, true));
-            }
-            await RemoveRolePermissionCacheItemAsync(role.Id);
+            await RolePermissionStore.AddPermissionAsync(role, new PermissionGrantInfo(permission.Name, true));
         }
 
         /// <summary>
@@ -225,16 +215,7 @@ namespace BodeAbp.Zero.Roles.Domain
                 return;
             }
 
-            if (permission.IsGrantedByDefault)
-            {
-                await RolePermissionStore.AddPermissionAsync(role, new PermissionGrantInfo(permission.Name, false));
-            }
-            else
-            {
-                await RolePermissionStore.RemovePermissionAsync(role, new PermissionGrantInfo(permission.Name, true));
-            }
-
-            await RemoveRolePermissionCacheItemAsync(role.Id);
+            await RolePermissionStore.RemovePermissionAsync(role, new PermissionGrantInfo(permission.Name, true));
         }
 
         /// <summary>

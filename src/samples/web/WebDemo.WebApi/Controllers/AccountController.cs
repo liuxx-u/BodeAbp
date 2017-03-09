@@ -34,7 +34,6 @@ namespace WebDemo.Api.Controllers
         [UnitOfWork]
         public async Task<AjaxResponse> Authenticate(LoginModel loginModel)
         {
-            CheckModelState();
             var loginResult = await _userManager.LoginAsync(loginModel.UserName, loginModel.Password);
             if (loginResult.Result == AbpLoginResultType.Success)
             {

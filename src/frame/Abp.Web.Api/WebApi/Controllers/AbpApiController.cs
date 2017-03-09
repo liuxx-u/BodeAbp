@@ -11,7 +11,6 @@ using Abp.Localization;
 using Abp.Localization.Sources;
 using Abp.Runtime.Session;
 using Castle.Core.Logging;
-using Abp.UI;
 
 namespace Abp.WebApi.Controllers
 {
@@ -209,14 +208,6 @@ namespace Abp.WebApi.Controllers
         protected virtual bool IsEnabled(string featureName)
         {
             return FeatureChecker.IsEnabled(featureName);
-        }
-        
-        protected virtual void CheckModelState()
-        {
-            if (!ModelState.IsValid)
-            {
-                throw new UserFriendlyException("Invalid request!");
-            }
         }
     }
 }

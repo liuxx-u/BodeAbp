@@ -58,12 +58,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AutoMapper\AbpAutoMapperConfiguration.cs" />
+    <Compile Include="AutoMapper\AbpAutoMapperConfigurationExtensions.cs" />
     <Compile Include="AutoMapper\AbpAutoMapperModule.cs" />
-    <Compile Include="AutoMapper\AbpWebApiConfigurationExtensions.cs" />
     <Compile Include="AutoMapper\AutoMapAttribute.cs" />
-    <Compile Include="AutoMapper\AutoMapDirection.cs" />
+    <Compile Include="AutoMapper\AutoMapAttributeBase.cs" />
     <Compile Include="AutoMapper\AutoMapFromAttribute.cs" />
-    <Compile Include="AutoMapper\AutoMapperHelper.cs" />
+    <Compile Include="AutoMapper\AutoMapperConfigurationExtensions.cs" />
     <Compile Include="AutoMapper\AutoMapperObjectMapper.cs" />
     <Compile Include="AutoMapper\AutoMapToAttribute.cs" />
     <Compile Include="AutoMapper\AutoMapExtensions.cs" />

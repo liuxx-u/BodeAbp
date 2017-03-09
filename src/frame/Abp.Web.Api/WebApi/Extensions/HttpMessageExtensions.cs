@@ -1,11 +1,9 @@
-ï»¿using System;
-using System.Collections.Generic;
+using System;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using System.Web.Http;
-using System.Web.Http.Routing;
 
 
 namespace Abp.WebApi.Extensions
@@ -17,11 +15,11 @@ namespace Abp.WebApi.Extensions
     {
         private const string HttpContextKey = "MS_HttpContext";
         private const string OwinContextKey = "MS_OwinContext";
-        
+
         private const string RemoteEndpointMessage = "System.ServiceModel.Channels.RemoteEndpointMessageProperty";
 
         /// <summary>
-        /// è¿”å›è¯·æ±‚<see cref="HttpRequestMessage"/>æ˜¯å¦æ¥è‡ªæœ¬åœ°
+        /// ·µ»ØÇëÇó<see cref="HttpRequestMessage"/>ÊÇ·ñÀ´×Ô±¾µØ
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
@@ -32,7 +30,7 @@ namespace Abp.WebApi.Extensions
         }
 
         /// <summary>
-        /// è·å–å®¢æˆ·ç«¯IP
+        /// »ñÈ¡¿Í»§¶ËIP
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
@@ -67,7 +65,7 @@ namespace Abp.WebApi.Extensions
         }
 
         /// <summary>
-        /// å°†<see cref="HttpResponseMessage"/>ä½¿ç”¨<see cref="Task"/>æ¥åŒ…è£…
+        /// ½«<see cref="HttpResponseMessage"/>Ê¹ÓÃ<see cref="Task"/>À´°ü×°
         /// </summary>
         /// <param name="responseMessage"></param>
         /// <returns></returns>
@@ -79,7 +77,7 @@ namespace Abp.WebApi.Extensions
         }
 
         /// <summary>
-        /// è·å–<see cref="HttpResponseMessage"/>ä¸­åŒ…è£…çš„é”™è¯¯ä¿¡æ¯
+        /// »ñÈ¡<see cref="HttpResponseMessage"/>ÖĞ°ü×°µÄ´íÎóĞÅÏ¢
         /// </summary>
         /// <param name="response"></param>
         /// <returns></returns>
@@ -87,20 +85,20 @@ namespace Abp.WebApi.Extensions
         {
             if (!response.IsSuccessStatusCode)
             {
-                string msg = "è¯·æ±‚å¤„ç†å¤±è´¥";
+                string msg = "ÇëÇó´¦ÀíÊ§°Ü";
                 switch (response.StatusCode)
                 {
                     case HttpStatusCode.NotFound:
-                        msg = "è¯·æ±‚çš„èµ„æºä¸å­˜åœ¨";
+                        msg = "ÇëÇóµÄ×ÊÔ´²»´æÔÚ";
                         break;
                     case HttpStatusCode.BadRequest:
-                        msg = "è¯·æ±‚ä¸­æ­¢";
+                        msg = "ÇëÇóÖĞÖ¹";
                         break;
                     case HttpStatusCode.Forbidden:
-                        msg = "è¯·æ±‚è¢«æ‹’ç»";
+                        msg = "ÇëÇó±»¾Ü¾ø";
                         break;
                     case HttpStatusCode.ServiceUnavailable:
-                        msg = "æœåŠ¡å™¨å¿™æˆ–åœæœºç»´æŠ¤";
+                        msg = "·şÎñÆ÷Ã¦»òÍ£»úÎ¬»¤";
                         break;
                 }
                 MediaTypeHeaderValue contentType = response.Content.Headers.ContentType;
@@ -114,7 +112,7 @@ namespace Abp.WebApi.Extensions
                         {
                             errorMsg = error.ExceptionMessage;
                         }
-                        msg = string.Format("{0}ï¼Œè¯¦æƒ…ï¼š{1}",msg,errorMsg);
+                        msg = string.Format("{0}£¬ÏêÇé£º{1}", msg, errorMsg);
                     }
                 }
                 return msg;
