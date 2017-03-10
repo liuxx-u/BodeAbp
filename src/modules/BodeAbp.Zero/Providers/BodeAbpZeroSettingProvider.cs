@@ -17,7 +17,7 @@ namespace BodeAbp.Zero.Providers
 
             return new[]
             {
-                new SettingDefinition(SettingNames.FileSizeLimit, null, L("文件大小限制"),group:fileSettingGroup, scopes: SettingScopes.Application),
+                new SettingDefinition(SettingNames.ImageSizeLimit, null, L("文件大小限制"),group:fileSettingGroup, scopes: SettingScopes.Application),
                 new SettingDefinition(SettingNames.FileSuffixsLimit, null, L("文件类型限制"),group:fileSettingGroup, scopes: SettingScopes.Application),
 
 

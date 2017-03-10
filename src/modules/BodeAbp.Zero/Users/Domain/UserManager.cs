@@ -57,7 +57,7 @@ namespace Abp.Authorization.Users.Domain
 
         protected ISettingManager SettingManager { get; private set; }
 
-        protected UserStore AbpStore { get; private set; }
+        public UserStore AbpStore { get; private set; }
 
         private readonly IPermissionManager _permissionManager;
         private readonly IUnitOfWorkManager _unitOfWorkManager;

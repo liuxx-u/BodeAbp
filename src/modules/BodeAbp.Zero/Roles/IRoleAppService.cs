@@ -56,18 +56,18 @@ namespace BodeAbp.Zero.Roles
         Task DeleteRole(List<IdInput> input);
 
         /// <summary>
-        /// 获取已授权的权限名称
-        /// </summary>
-        /// <param name="roleId">角色Id</param>
-        /// <returns>权限名称集合</returns>
-        Task<IEnumerable<string>> GetRolePermissionNames(int roleId);
-
-        /// <summary>
         /// 设置角色权限
         /// </summary>
         /// <param name="input">角色权限input</param>
         /// <returns>业务操作结果</returns>
         Task GrantPermissions(GrantRolePermissionInput input);
+
+        /// <summary>
+        /// 获取已授权的权限名称
+        /// </summary>
+        /// <param name="roleId">角色Id</param>
+        /// <returns>权限名称集合</returns>
+        Task<IEnumerable<string>> GetRolePermissionNames(int roleId);
 
     }
 }

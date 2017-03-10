@@ -11,7 +11,7 @@ namespace BodeAbp.Activity.Participants.Domain
     /// <summary>
     /// 活动参与者
     /// </summary>
-    [Table("Activity#Paticipant")]
+    [Table("Activity_Paticipant")]
     public class Paticipant: FullAuditedEntity<long>
     {
         /// <summary>

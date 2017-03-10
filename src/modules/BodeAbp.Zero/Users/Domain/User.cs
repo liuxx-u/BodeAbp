@@ -2,10 +2,8 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using Abp;
 using Abp.Domain.Entities;
 using Abp.Domain.Entities.Auditing;
-using Abp.Extensions;
 using BodeAbp.Zero.Permissions.Domain;
 using BodeAbp.Zero.Roles.Domain;
 using BodeAbp.Zero.Settings.Domain;
@@ -19,8 +17,8 @@ namespace BodeAbp.Zero.Users.Domain
     [Table("Zero_User")]
     public class User : FullAuditedEntity<long>, IUser<long>, IPassivable
     {
-        #region ³£Á¿
-        
+        #region 常量
+
         /// <summary>
         /// ÓÃ»§Ãû <see cref="UserName"/> ×î´ó³¤¶È
         /// </summary>
@@ -68,10 +66,10 @@ namespace BodeAbp.Zero.Users.Domain
 
         #endregion
 
-        #region ÊôÐÔ
+        #region 属性
 
         /// <summary>
-        /// ÓÃ»§Ãû
+        /// 用户名
         /// </summary>
         [Required]
         [MaxLength(MaxUserNameLength)]
@@ -79,93 +77,148 @@ namespace BodeAbp.Zero.Users.Domain
 
         /// <summary>
         /// Authorization source name.
-        /// Èý·½µÇÂ¼Ô´Ãû³Æ
+        /// 三方认证源
         /// Default: null.
         /// </summary>
         [MaxLength(MaxAuthenticationSourceLength)]
         public string AuthenticationSource { get; set; }
 
         /// <summary>
-        /// Ãû³Æ
+        /// 昵称
         /// </summary>
         [StringLength(MaxNameLength)]
         public string NickName { get; set; }
 
         /// <summary>
-        /// ÓÃ»§ÃÜÂë
+        /// 密码
         /// </summary>
-        [Required]
         [StringLength(MaxPasswordLength)]
         public string Password { get; set; }
 
         /// <summary>
-        /// ÊÖ»úºÅÂë
+        /// 支付密码
+        /// </summary>
+        [StringLength(MaxPasswordLength)]
+        public string PayPassword { get; set; }
+
+        /// <summary>
+        /// 手机号
         /// </summary>
         [StringLength(MaxPhoneNoLength)]
         public string PhoneNo { get; set; }
 
         /// <summary>
-        /// ÓÊÏä
+        /// 邮箱地址
         /// Email address must be unique for it's tenant.
         /// </summary>
         [StringLength(MaxEmailAddressLength)]
         public string EmailAddress { get; set; }
 
         /// <summary>
-        /// ×îºóµÇÂ¼Ê±¼ä
+        /// 最后登录时间
         /// </summary>
         public DateTime? LastLoginTime { get; set; }
 
         /// <summary>
-        /// ÊÇ·ñÑéÖ¤ÓÊÏä <see cref="EmailAddress"/>.
+        /// 是否验证邮箱 <see cref="EmailAddress"/>.
         /// </summary>
         public bool IsEmailConfirmed { get; set; }
 
         /// <summary>
-        /// ÊÇ·ñÑéÖ¤ÊÖ»ú<see cref="PhoneNo"/>
+        /// 是否验证手机<see cref="PhoneNo"/>
         /// </summary>
         public bool IsPhoneNoConfirm { get; set; }
 
         /// <summary>
-        /// ÊÇ·ñ¼¤»î
+        /// 是否激活
         /// </summary>
         public bool IsActive { get; set; }
 
         /// <summary>
-        /// ÓÃ»§×Ô¶¨ÒåÊý¾Ý£¨json¸ñÊ½£©
+        /// 头像
         /// </summary>
-        public string CustomData { get; set; }
+        public string HeadPic { get; set; }
 
         /// <summary>
-        /// ÓÃ»§µÇÂ¼¼¯ºÏ
+        /// 性别
+        /// </summary>
+        public Sex Sex { get; set; }
+
+        /// <summary>
+        /// 用户类型
+        /// </summary>
+        public UserType UserType { get; set; }
+
+        /// <summary>
+        /// 联系人姓名
+        /// </summary>
+        public string ContactName { get; set; }
+
+        /// <summary>
+        /// 联系人电话
+        /// </summary>
+        public string ContactNo { get; set; }
+
+        /// <summary>
+        /// 余额
+        /// </summary>
+        public decimal Balance { get; set; }
+
+        /// <summary>
+        /// CC豆
+        /// </summary>
+        public decimal CcCoin { get; set; }
+
+        /// <summary>
+        /// 积分
+        /// </summary>
+        public int Integral { get; set; }
+
+        /// <summary>
+        /// 用户等级
+        /// </summary>
+        public int Level { get; set; }
+
+        /// <summary>
+        /// 备注
+        /// </summary>
+        public string Remark { get; set; }
+
+        /// <summary>
+        /// 是否完善资料
+        /// </summary>
+        public bool IsnoPerfectInfor { get; set; }
+
+        /// <summary>
+        /// 外部登录信息集合
         /// </summary>
         [ForeignKey("UserId")]
         public virtual ICollection<UserExternalLogin> Logins { get; set; }
 
         /// <summary>
-        /// ÓÃ»§½ÇÉ«¼¯ºÏ
+        /// 角色集合
         /// </summary>
         [ForeignKey("UserId")]
         public virtual ICollection<UserRole> Roles { get; set; }
 
         /// <summary>
-        /// ÓÃ»§È¨ÏÞ¼¯ºÏ
+        /// 权限集合
         /// </summary>
         [ForeignKey("UserId")]
         public virtual ICollection<UserPermission> Permissions { get; set; }
 
         /// <summary>
-        /// ÓÃ»§ÉèÖÃ¼¯ºÏ
+        /// 用户设置
         /// </summary>
         [ForeignKey("UserId")]
         public virtual ICollection<Setting> Settings { get; set; }
 
         #endregion
 
-        #region ¹¹Ôìº¯Êý
-        
+        #region 构造函数
+
         /// <summary>
-        /// ¹¹Ôìº¯Êý
+        /// 构造函数
         /// </summary>
         public User()
         {
@@ -174,15 +227,10 @@ namespace BodeAbp.Zero.Users.Domain
 
         #endregion
 
-        #region ¹«¹²·½·¨
-        
-
-        #endregion
-
-        #region ÖØÔØ
+        #region 重载
 
         /// <summary>
-        /// ÖØÐ´ToString()·½·¨
+        /// 重载ToString()方法
         /// </summary>
         /// <returns></returns>
         public override string ToString()
@@ -191,5 +239,18 @@ namespace BodeAbp.Zero.Users.Domain
         }
 
         #endregion
+    }
+
+    public enum Sex
+    {
+        男 = 1,
+        女 = 2
+    }
+
+    public enum UserType
+    {
+        平台用户 = 1,
+        系统管理员 = 2,
+        商家 = 3
     }
 }

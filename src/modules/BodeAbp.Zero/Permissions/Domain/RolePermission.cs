@@ -12,5 +12,10 @@ namespace BodeAbp.Zero.Permissions.Domain
         /// 角色Id
         /// </summary>
         public int RoleId { get; set; }
+
+        /// <summary>
+        /// true为选中的权限，false为选中的父级权限
+        /// </summary>
+        public bool IsCheckd { get; set; }
     }
 }

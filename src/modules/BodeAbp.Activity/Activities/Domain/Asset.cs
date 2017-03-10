@@ -6,7 +6,7 @@ namespace BodeAbp.Activity.Activities.Domain
     /// <summary>
     /// 活动资源（图片、视频、文档）
     /// </summary>
-    [Table("Activity#Asset")]
+    [Table("Activity_Asset")]
     public class Asset : AssetEntity<long>
     {
         /// <summary>

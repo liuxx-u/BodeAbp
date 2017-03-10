@@ -9,7 +9,7 @@ namespace BodeAbp.Zero.Settings.Domain
     /// Represents a setting for a user.
     /// </summary>
     [Table("Zero_Setting")]
-    public class Setting : AuditedEntity<long>, IMayHaveTenant
+    public class Setting : AuditedEntity<long>
     {
         #region 常量
 
@@ -21,23 +21,23 @@ namespace BodeAbp.Zero.Settings.Domain
         /// <summary>
         /// Maximum length of the <see cref="Value"/> property.
         /// </summary>
-        public const int MaxValueLength = 2000;
+        public const int MaxValueLength = 5000;
 
         #endregion
 
         #region 属性
 
         /// <summary>
-        /// UserId for this setting.
-        /// UserId is null if this setting is application level.
-        /// </summary>
-        public virtual long? UserId { get; set; }
-
-        /// <summary>
         /// TenantId for this setting.
         /// TenantId is null if this setting is not Tenant level.
         /// </summary>
         public virtual int? TenantId { get; set; }
+        
+        /// <summary>
+        /// UserId for this setting.
+        /// UserId is null if this setting is application level.
+        /// </summary>
+        public virtual long? UserId { get; set; }
 
         /// <summary>
         /// Unique name of the setting.

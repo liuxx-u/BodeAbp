@@ -21,6 +21,26 @@ namespace BodeAbp.Zero.Navigations
         /// </summary>
         /// <returns></returns>
         Task<ICollection<NavigationInfo>> GetUserNavigations();
+        
+        /// <summary>
+        /// 检查用户导航信息权限
+        /// </summary>
+        /// <param name="url"></param>
+        /// <returns></returns>
+        Task<bool> CheckUserNavigation(NavigationCheckInput input);
+        
+        /// <summary>
+        /// 获取 用户导航信息
+        /// </summary>
+        /// <param name="roleid">角色id</param>
+        /// <returns></returns>
+        Task<ICollection<NavigationInfo>> GetRoleAndMenu(int roleid);
+
+        /// <summary>
+        /// 角色关联菜单
+        /// </summary>
+        /// <returns></returns>
+        Task CreateRoleAndMenu(int roleid, string menuids);
 
         /// <summary>
         /// 获取 全部导航信息

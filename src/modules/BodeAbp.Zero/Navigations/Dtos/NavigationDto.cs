@@ -35,6 +35,11 @@ namespace BodeAbp.Zero.Navigations.Dtos
         public string Remark { get; set; }
 
         /// <summary>
+        /// 所需的权限名称
+        /// </summary>
+        public string RequiredPermissionName { get; set; }
+
+        /// <summary>
         /// 访问类型
         /// </summary>
         public NavigationType NavigationType { get; set; }

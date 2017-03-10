@@ -7,7 +7,7 @@ namespace BodeAbp.Forum.Plates.Domain
     /// <summary>
     /// 活动板块
     /// </summary>
-    [Table("Forum#Plate")]
+    [Table("Forum_Plate")]
     public class Plate : FullAuditedEntity
     {
         #region 常量

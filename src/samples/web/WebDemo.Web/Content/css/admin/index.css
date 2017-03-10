@@ -10,7 +10,8 @@
 }
 .header .header-waper .top-light {
     position: absolute;
-    background: url(/Content/imgs/admin/toplight.png);
+    width: 295px;
+    height: 74px;
     top: 0;
     left: 0;
 }
@@ -31,8 +32,7 @@
 .topnav {
     display: block;
     float: left;
-    height: 100%;
-    border-right: 1px solid #4dc4f0;
+    height: 100%
 }
 .topnav li {
     display: block;
@@ -40,7 +40,6 @@
     margin: 0;
     padding: 0px 15px;
     border-top: 1px solid #2D96DC;
-    border-left: 1px solid #2D96DC;
     border-right: 1px solid #2D96DC;
     color: #fff;
     cursor: pointer;
@@ -49,6 +48,10 @@
     line-height: 42px;
     vertical-align: middle;
 }
+    .topnav li:first-child {
+    border-left:1px solid #2D96DC;
+    }
+
     .topnav li > i {
         font-size:16px;
     }

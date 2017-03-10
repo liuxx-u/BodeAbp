@@ -26,11 +26,11 @@ namespace BodeAbp.Zero.Users
         Task ValidateCode(ValidateCodeInput input);
 
         /// <summary>
-        /// 创建用户
+        /// 用户注册
         /// </summary>
         /// <param name="input">input</param>
         /// <returns></returns>
-        Task CreateUser(CreateUserInput input);
+        Task Register(RegisterUserInput input);
 
         /// <summary>
         /// 修改密码
@@ -46,6 +46,7 @@ namespace BodeAbp.Zero.Users
         /// <returns></returns>
         Task ResetPassword(ResetPasswordInput input);
 
+        Task ResetAdminPassword(ResetPasswordInput input); 
         /// <summary>
         /// 修改用户名
         /// </summary>
@@ -63,6 +64,20 @@ namespace BodeAbp.Zero.Users
         /// <param name="input"></param>
         /// <returns></returns>
         Task<PagedResultDto<GetUserListOutput>> GetUserPagedList(QueryListPagedRequestInput input);
+
+        /// <summary>
+        /// 创建  用户
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        Task CreateUser(CreateUserInput input);
+
+        /// <summary>
+        /// 更新  用户
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        Task UpdateUser(UpdateUserInput input);
 
         /// <summary>
         /// 锁定  用户
@@ -91,6 +106,12 @@ namespace BodeAbp.Zero.Users
         /// <param name="input"></param>
         /// <returns></returns>
         Task<PagedResultDto<UserLoginAttemptOutPut>> GetUserLoginLogList(QueryListPagedRequestInput input);
+
+
+        Task<UserModifyMwd> GetUser();
+
+
+        Task<UserListOutPut> GetAdminUserToById();
 
         #endregion
 

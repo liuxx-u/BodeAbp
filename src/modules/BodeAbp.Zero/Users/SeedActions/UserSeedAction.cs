@@ -25,7 +25,9 @@ namespace BodeAbp.Zero.Users.SeedActions
                 adminUser = context.Set<User>().Add(new User
                 {
                     UserName = BodeAbpZeroConsts.StaticUserName,
-                    NickName= BodeAbpZeroConsts.StaticUserName,
+                    NickName = BodeAbpZeroConsts.StaticUserName,
+                    UserType = UserType.系统管理员,
+                    EmailAddress = "381334617@qq.com",
                     Password = new PasswordHasher().HashPassword(BodeAbpZeroConsts.StaticUserPassword),
                     IsActive = true
                 });

@@ -4,9 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Abp.Domain.Entities.Auditing;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BodeAbp.Forum.Posts.Domain
 {
+    [Table("Forum_Post")]
     public class Post : FullAuditedEntity<long>
     {
         #region 常量

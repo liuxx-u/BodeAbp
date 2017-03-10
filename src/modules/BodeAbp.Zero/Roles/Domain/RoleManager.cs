@@ -112,7 +112,7 @@ namespace BodeAbp.Zero.Roles.Domain
             var cacheItem = await GetRolePermissionCacheItemAsync(roleId);
 
             //Check the permission
-            return cacheItem.GrantedPermissions.Contains(permission.Name);
+            return (cacheItem.GrantedPermissions.Contains(permission.Name));
         }
 
         /// <summary>
@@ -201,6 +201,7 @@ namespace BodeAbp.Zero.Roles.Domain
             }
 
             await RolePermissionStore.AddPermissionAsync(role, new PermissionGrantInfo(permission.Name, true));
+            await RemoveRolePermissionCacheItemAsync(role.Id);
         }
 
         /// <summary>
@@ -216,6 +217,8 @@ namespace BodeAbp.Zero.Roles.Domain
             }
 
             await RolePermissionStore.RemovePermissionAsync(role, new PermissionGrantInfo(permission.Name, true));
+
+            await RemoveRolePermissionCacheItemAsync(role.Id);
         }
 
         /// <summary>

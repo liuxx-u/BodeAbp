@@ -13,9 +13,10 @@
             navs: [],
             curFirstNav: {},
             openNav: {},
-            activeLeafNav: {url:"/admin/home/default"}
+            crumbs: "首页",
+            activeLeafNav: { url: "/admin/home/default" }
         },
-        methods:{
+        methods: {
             firstNavClick: function (nav) {
                 if (this.curFirstNav.id == nav.id) return;
                 this.curFirstNav = nav;
@@ -28,17 +29,24 @@
             },
             leafNavClick: function (leafNav) {
                 this.activeLeafNav = leafNav;
+                this.crumbs = this.curFirstNav.name + ">" + this.openNav.name + ">" + this.activeLeafNav.name;
+                //设置iframe中实际的href为当前菜单的url
+                document.getElementById("page").contentWindow.location.href = leafNav.url;
             }
         },
         created: function () {
             var self = this;
-            $.bode.ajax("/api/services/zero/navigation/GetUserNavigations", {}, function (navs) {
-                self.navs = navs;
+            abp.ajax({
+                url: "/api/services/zero/navigation/GetUserNavigations",
+                type: "POST",
+                success: function (navs) {
+                    self.navs = navs;
 
-                if (self.navs.length > 1) {
-                    self.curFirstNav = self.navs[0];
-                    if (self.curFirstNav.children.length > 0) {
-                        self.openNav = self.curFirstNav.children[0];
+                    if (self.navs.length > 1) {
+                        self.curFirstNav = self.navs[0];
+                        if (self.curFirstNav.children.length > 0) {
+                            self.openNav = self.curFirstNav.children[0];
+                        }
                     }
                 }
             });

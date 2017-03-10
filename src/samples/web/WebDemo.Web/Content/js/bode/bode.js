@@ -16,7 +16,7 @@
             formatDiscount: function (oObj) {
                 if (!oObj) return;
                 oObj.keyup(function () {
-                    var reg = $(this).val().match(/\d+\.?\d{0,2}/);
+                    var reg = $(this).val().match(/\d+\.?\d{0,6}/);
                     var txt = '';
                     if (reg != null) {
                         txt = reg[0];
@@ -32,15 +32,16 @@
             },
             formatTime: function (oObj, showTime) {
                 if (!oObj) return;
-                var minView = showTime ? 1 : 2;
-                var format = showTime ? "yyyy-MM-dd hh:ii" : "yyyy-MM-dd";
+                var minView = showTime ? 0 : 2;
+                var format = showTime ? "yyyy-mm-dd hh:ii" : "yyyy-mm-dd";
                 oObj.datetimepicker({
                     minView: minView,
                     todayBtn: 1,
                     language: 'zh-CN',
                     format: format,
                     weekStart: 1,
-                    autoclose: 1
+                    autoclose: 1,
+                    zIndex:19910904
                 });
             }
         },
@@ -71,21 +72,26 @@
                 return result.substring(0, result.length - separator.length);
             }
         },
-        timeFormat: function (time, formatStr) {
+
+        timeFormat: function (time, formatStr, isUtc) {
+            if (typeof (time) === "string") {
+                time = new Date(time.replace(/-/g, "/"));
+            }
             if (!(time instanceof Date)) {
                 return time;
             }
             if (!Date.prototype.format) {
                 Date.prototype.format = function (format) {
                     var o = {
-                        "M+": this.getMonth() + 1, //month
-                        "d+": this.getDate(), //day
-                        "h+": this.getHours(), //hour
-                        "m+": this.getMinutes(), //minute
-                        "s+": this.getSeconds(), //second
-                        "q+": Math.floor((this.getMonth() + 3) / 3), //quarter
-                        "S": this.getMilliseconds() //millisecond
+                        "M+": (isUtc ? this.getUTCMonth() : this.getMonth()) + 1, //month
+                        "d+": isUtc ? this.getUTCDate() : this.getDate(), //day
+                        "h+": isUtc ? this.getUTCHours() : this.getHours(), //hour
+                        "m+": isUtc ? this.getUTCMinutes() : this.getMinutes(), //minute
+                        "s+": isUtc ? this.getUTCSeconds() : this.getSeconds(), //second
+                        "q+": Math.floor(((isUtc ? this.getUTCMonth() : this.getMonth()) + 3) / 3), //quarter
+                        "S": isUtc ? this.getUTCMilliseconds() : this.getMilliseconds() //millisecond
                     }
+
                     if (/(y+)/.test(format)) format = format.replace(RegExp.$1,
                     (this.getFullYear() + "").substr(4 - RegExp.$1.length));
                     for (var k in o) if (new RegExp("(" + k + ")").test(format))
@@ -95,7 +101,7 @@
                     return format;
                 }
             }
-            return time.format(formatStr);
+            return time.format(formatStr || "yyyy-MM-dd hh:mm:ss");
         },
         hattedCode: function () {
             return (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1);
@@ -131,5 +137,10 @@
         clearToken: function () {
             $.bode.store.remove("BodeAbpAuthToken");
         }
+    };
+
+    $.bode.config = {
+        imgSaveUrl: "http://file.cczcrv.com/image/upload",
+        QrCodeSaveUrl: "http://file.cczcrv.com/image/getQrcode"        
     };
 })(jQuery);

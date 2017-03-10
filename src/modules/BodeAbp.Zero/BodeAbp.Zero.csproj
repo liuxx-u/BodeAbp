@@ -31,9 +31,20 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <DocumentationFile>bin\Release\BodeAbp.Zero.XML</DocumentationFile>
-    <NoWarn>1591</NoWarn>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Abp, Version=0.8.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\frame\Abp.dll</HintPath>
+    </Reference>
+    <Reference Include="Abp.AutoMapper, Version=0.8.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\frame\Abp.AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="Abp.EntityFramework, Version=0.8.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\frame\Abp.EntityFramework.dll</HintPath>
+    </Reference>
     <Reference Include="Castle.Core, Version=3.3.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Castle.Core.3.3.3\lib\net45\Castle.Core.dll</HintPath>
       <Private>True</Private>
@@ -81,13 +92,11 @@
     <Compile Include="BackgroundJobs\BackgroundJobAppService.cs" />
     <Compile Include="BackgroundJobs\Dtos\BackgroundJobDto.cs" />
     <Compile Include="BackgroundJobs\IBackgroundJobAppService.cs" />
-    <Compile Include="Files\Domain\FileInfo.cs" />
-    <Compile Include="Files\FileAppService.cs" />
-    <Compile Include="Files\IFileAppService.cs" />
     <Compile Include="Navigations\Domain\Navigation.cs" />
     <Compile Include="Navigations\Domain\NavigationInfo.cs" />
     <Compile Include="Navigations\Domain\NavigationManager.cs" />
     <Compile Include="Navigations\Domain\RoleNavigation.cs" />
+    <Compile Include="Navigations\Dtos\NavigationCheckInput.cs" />
     <Compile Include="Navigations\Dtos\NavigationDto.cs" />
     <Compile Include="Navigations\INavigationAppService.cs" />
     <Compile Include="Navigations\ModelConfigs\NavigationConfiguration.cs" />
@@ -104,11 +113,8 @@
     <Compile Include="Organizations\ModelConfigs\OrganizationUnitConfiguration.cs" />
     <Compile Include="Organizations\ModelConfigs\UserOrganizationUnitConfiguration.cs" />
     <Compile Include="Organizations\OrganizationAppService.cs" />
-    <Compile Include="Permissions\Dtos\PermissionBriefOutPut.cs" />
-    <Compile Include="Permissions\IPermissionAppService.cs" />
     <Compile Include="Permissions\ModelConfigs\RolePermissionConfiguration.cs" />
     <Compile Include="Permissions\ModelConfigs\UserPermissionConfiguration.cs" />
-    <Compile Include="Permissions\PermissionAppService.cs" />
     <Compile Include="Providers\SettingNames.cs" />
     <Compile Include="Roles\Dtos\GrantRolePermissionInput.cs" />
     <Compile Include="Roles\Dtos\RoleDto.cs" />
@@ -126,9 +132,10 @@
     <Compile Include="Settings\SeedActions\DefaultSettingSeedAction.cs" />
     <Compile Include="Settings\SettingsAppService.cs" />
     <Compile Include="Users\Domain\IExternalAuthenticationSource.cs" />
+    <Compile Include="Users\Domain\UserRelationRegion.cs" />
     <Compile Include="Users\Dtos\ChangePasswordInput.cs" />
     <Compile Include="Users\Dtos\ChangeUserNameInput.cs" />
-    <Compile Include="Users\Dtos\CreateUserInput.cs" />
+    <Compile Include="Users\Dtos\RegisterUserInput.cs" />
     <Compile Include="Users\Dtos\ResetPasswordInput.cs" />
     <Compile Include="Users\Dtos\SetUserRoleInput.cs" />
     <Compile Include="Users\Dtos\UserDto.cs" />
@@ -139,6 +146,7 @@
     <Compile Include="Users\ModelConfigs\UserConfiguration.cs" />
     <Compile Include="Users\ModelConfigs\UserExternalLoginConfiguration.cs" />
     <Compile Include="Users\ModelConfigs\UserLoginAttemptConfiguration.cs" />
+    <Compile Include="Users\ModelConfigs\UserRelationRegionConifguration.cs" />
     <Compile Include="Users\ModelConfigs\ValidateCodeConfiguration.cs" />
     <Compile Include="Roles\SeedActions\HostRoleSeedAction.cs" />
     <Compile Include="Users\SeedActions\UserSeedAction.cs" />
@@ -184,31 +192,10 @@
     <Compile Include="Zero\Configuration\UserManagementConfig.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\frame\Abp.AutoMapper\Abp.AutoMapper.csproj">
-      <Project>{06eb5f7c-b974-4775-a305-f175d645f7c9}</Project>
-      <Name>Abp.AutoMapper</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\frame\Abp.EntityFramework\Abp.EntityFramework.csproj">
-      <Project>{948f0caf-3382-4e03-9a0f-0ddb206fe40d}</Project>
-      <Name>Abp.EntityFramework</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\frame\Abp\Abp.csproj">
-      <Project>{2c221d3b-5f54-4c5b-8082-318636415132}</Project>
-      <Name>Abp</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\plugins\BodeAbp.Sms.Juhe\BodeAbp.Sms.Juhe.csproj">
-      <Project>{f84d0d4a-f672-4281-90f3-1af989aac127}</Project>
-      <Name>BodeAbp.Sms.Juhe</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Files\Dtos\" />
-    <Folder Include="Files\ModelConfigs\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="Zero\Localization\Source\AbpZero.xml" />
     <Content Include="Zero\Localization\Source\AbpZero-en-US.xml" />

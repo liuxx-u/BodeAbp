@@ -43,10 +43,20 @@ namespace BodeAbp.Zero.Navigations.Domain
         public string Remark { get; set; }
 
         /// <summary>
+        /// 是否关联
+        /// </summary>
+        public bool IsRelation { get; set; }
+
+        /// <summary>
         /// 访问类型
         /// </summary>
         public NavigationType NavigationType { get; set; }
-        
+
+        /// <summary>
+        /// 权限名称
+        /// </summary>
+        public string RequiredPermissionName { get; set; }
+
         /// <summary>
         /// 子菜单
         /// </summary>

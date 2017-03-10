@@ -10,7 +10,7 @@ namespace BodeAbp.Activity.Activities.Domain
     /// <summary>
     /// 活动
     /// </summary>
-    [Table("Activity#Activity")]
+    [Table("Activity_Activity")]
     public class Activity : FullAuditedEntity<long>
     {
         #region 常量

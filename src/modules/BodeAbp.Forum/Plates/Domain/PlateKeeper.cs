@@ -1,7 +1,9 @@
 ﻿using Abp.Domain.Entities.Auditing;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BodeAbp.Forum.Plates.Domain
 {
+    [Table("Forum_Keeper")]
     public class PlateKeeper : CreationAuditedEntity
     {
         /// <summary>

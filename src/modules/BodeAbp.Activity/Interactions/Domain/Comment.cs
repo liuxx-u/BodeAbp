@@ -7,7 +7,7 @@ namespace BodeAbp.Activity.Interactions.Domain
     /// <summary>
     /// 活动评论
     /// </summary>
-    [Table("Activity#Comment")]
+    [Table("Activity_Comment")]
     public class Comment : FullAuditedEntity<long>
     {
         /// <summary>

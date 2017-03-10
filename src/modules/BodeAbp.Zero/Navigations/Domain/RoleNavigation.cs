@@ -1,10 +1,12 @@
 ﻿using Abp.Domain.Entities.Auditing;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BodeAbp.Zero.Navigations.Domain
 {
     /// <summary>
     /// 角色导航关系
     /// </summary>
+    [Table("Zero_RoleNavigation")]
     public class RoleNavigation : CreationAuditedEntity
     {
         /// <summary>

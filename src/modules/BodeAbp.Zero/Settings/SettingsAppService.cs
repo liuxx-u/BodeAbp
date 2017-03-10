@@ -18,6 +18,8 @@ namespace BodeAbp.Zero.Settings
     /// </summary>
     public class SettingsAppService : ApplicationService, ISettingsAppService
     {
+        public ILocalizationContext localizationContext { protected get; set; }
+
         /// <summary>
         /// 设置项管理器
         /// </summary>
@@ -27,8 +29,6 @@ namespace BodeAbp.Zero.Settings
         /// 设置信息仓储
         /// </summary>
         public IRepository<Setting, long> _settingRepository { protected get; set; }
-
-        public ILocalizationContext localizationContext { protected get; set; }
 
         /// <inheritdoc/>
         public async Task<IEnumerable<SettingGroup>> GetApplicationSettingGroups()

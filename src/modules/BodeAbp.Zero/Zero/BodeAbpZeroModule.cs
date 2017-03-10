@@ -29,7 +29,7 @@ namespace BodeAbp.Zero
                     )
                 );
             
-            Configuration.Authorization.Providers.Add<BodeAbpZeroAuthorizationProvider>();
+            //Configuration.Authorization.Providers.Add<BodeAbpZeroAuthorizationProvider>();
             Configuration.Settings.Providers.Add<BodeAbpZeroSettingProvider>();
 
             DefaultDbContextInitializer.Instance.MapperAssemblies.Add(Assembly.GetExecutingAssembly());

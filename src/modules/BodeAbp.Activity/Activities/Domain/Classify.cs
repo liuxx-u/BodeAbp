@@ -7,7 +7,7 @@ namespace BodeAbp.Activity.Activities.Domain
     /// <summary>
     /// 活动类型
     /// </summary>
-    [Table("Activity#Classify")]
+    [Table("Activity_Classify")]
     public class Classify : FullAuditedEntity
     {
         #region 常量
@@ -32,8 +32,6 @@ namespace BodeAbp.Activity.Activities.Domain
         /// 是否静态类型（静态类型不允许编辑和删除）
         /// </summary>
         public bool IsStatic { get; set; }
-
-        public int Order { get; set; }
         
         #endregion
     }

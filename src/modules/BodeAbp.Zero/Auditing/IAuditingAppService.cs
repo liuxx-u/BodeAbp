@@ -26,5 +26,11 @@ namespace BodeAbp.Zero.Auditing
         /// <param name="input"></param>
         /// <returns></returns>
         Task DeleteAuditLog(List<IdInput<long>> input);
+        /// <summary>
+        /// 获取用户 审计日志分页
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        Task<PagedResultDto<GetAuditLogListOutput>> GetUserAuditLogPagedList(QueryListPagedRequestInput input);
     }
 }

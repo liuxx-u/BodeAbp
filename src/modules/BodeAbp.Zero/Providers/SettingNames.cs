@@ -10,7 +10,7 @@ namespace BodeAbp.Zero.Providers
     {
         public const string FileSettingGroupName = "Zero.File.SettingGroupName";
 
-        public const string FileSizeLimit = "Zero.File.SizeLimit";
+        public const string ImageSizeLimit = "Zero.File.SizeLimit";
 
         public const string FileSuffixsLimit = "Zero.File.SuffixsLimit";
 

@@ -6,7 +6,7 @@ namespace BodeAbp.Activity.Interactions.Domain
     /// <summary>
     /// 活动评论回复
     /// </summary>
-    [Table("Activity#Reply")]
+    [Table("Activity_Reply")]
     public class Reply : CreationAuditedEntity<long>
     {
         /// <summary>

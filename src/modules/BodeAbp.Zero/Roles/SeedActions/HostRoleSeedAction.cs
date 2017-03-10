@@ -20,7 +20,11 @@ namespace BodeAbp.Zero.Roles.SeedActions
             if (adminRoleForHost == null)
             {
                 adminRoleForHost = context.Set<Role>().Add(new Role { Name = BodeAbpZeroConsts.StaticRoleName, DisplayName = BodeAbpZeroConsts.StaticRoleName, IsStatic = true });
-                
+
+                //Grant all tenant permissions
+                var permissions = PermissionFinder
+                    .GetAllPermissions()
+                    .ToList();
             }
         }
 

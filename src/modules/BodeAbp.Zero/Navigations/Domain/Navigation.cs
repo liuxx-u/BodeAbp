@@ -56,6 +56,11 @@ namespace BodeAbp.Zero.Navigations.Domain
         public int OrderNo { get; set; }
 
         /// <summary>
+        /// 所需权限
+        /// </summary>
+        public string RequiredPermissionName { get; set; }
+
+        /// <summary>
         /// 备注
         /// </summary>
         public string Remark { get; set; }

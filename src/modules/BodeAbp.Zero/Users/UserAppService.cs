@@ -25,7 +25,7 @@ using Abp.Plugins.SMS;
 
 namespace BodeAbp.Zero.Users
 {
-    public class UserAppService : ApplicationService,IUserAppService
+    public class UserAppService : ApplicationService, IUserAppService
     {
         public ISms Sms { protected get; set; }
         public IEmailSender EmailSender { protected get; set; }
@@ -34,10 +34,10 @@ namespace BodeAbp.Zero.Users
         public IRepository<Role, int> RoleRepo { protected get; set; }
         public IRepository<ValidateCode, long> ValidateCodeRepo { protected get; set; }
         public IRepository<UserLoginAttempt, long> LoginAttemptRepo { protected get; set; }
-
+        public IAbpSession AbpSession { get; set; }
 
         #region Account
-        
+
         /// <summary>
         /// 获取 验证码
         /// </summary>
@@ -106,7 +106,7 @@ namespace BodeAbp.Zero.Users
         /// </summary>
         /// <param name="input">input</param>
         /// <returns></returns>
-        public async Task CreateUser(CreateUserInput input)
+        public async Task Register(RegisterUserInput input)
         {
             await ValidateCode(input.ValidateCode);
 
@@ -127,29 +127,7 @@ namespace BodeAbp.Zero.Users
                 throw new UserFriendlyException(identityResult.Errors.JoinAsString(" "));
             }
         }
-
-        /// <summary>
-        /// 修改密码
-        /// </summary>
-        /// <param name="input">input</param>
-        /// <returns></returns>
-        [AbpAuthorize]
-        public async Task ChangePassword(ChangePasswordInput input)
-        {
-            var user = await UserManager.FindByIdAsync(AbpSession.UserId.Value);
-            if (user == null)
-            {
-                throw new UserFriendlyException("用户不存在");
-            }
-
-            if (!await UserManager.CheckPasswordAsync(user, input.Password))
-            {
-                throw new UserFriendlyException("原密码错误");
-            }
-            UserManager.RemovePassword(user.Id);
-            UserManager.AddPassword(user.Id, input.NewPassword);
-        }
-
+        
         /// <summary>
         /// 重置密码
         /// </summary>
@@ -160,6 +138,23 @@ namespace BodeAbp.Zero.Users
         {
             await ValidateCode(input.ValidateCode);
             var user = await UserManager.FindByIdAsync(AbpSession.UserId.Value);
+            if (user == null)
+            {
+                throw new UserFriendlyException("用户不存在");
+            }
+            UserManager.RemovePassword(user.Id);
+            UserManager.AddPassword(user.Id, input.NewPassword);
+        }
+
+        /// <summary>
+        /// 后台重置密码
+        /// </summary>
+        /// <param name="input">input</param>
+        /// <returns></returns>
+        [AbpAuthorize]
+        public async Task ResetAdminPassword(ResetPasswordInput input)
+        {
+            var user = await UserManager.FindByIdAsync(input.UserId);
             if (user == null)
             {
                 throw new UserFriendlyException("用户不存在");
@@ -194,7 +189,7 @@ namespace BodeAbp.Zero.Users
         #endregion
 
         #region Admin
-        
+
         /// <summary>
         /// 获取用户列表数据
         /// </summary>
@@ -203,8 +198,34 @@ namespace BodeAbp.Zero.Users
         public async Task<PagedResultDto<GetUserListOutput>> GetUserPagedList(QueryListPagedRequestInput input)
         {
             int total;
-            var list = await UserRepo.GetAll().Where(input, out total).ToListAsync();
+            var list = await UserRepo.GetAll()
+                .Where(p => p.UserType == UserType.系统管理员)
+                .AsNoTracking()
+                .Where(input, out total)
+                .ToListAsync();
             return new PagedResultDto<GetUserListOutput>(total, list.MapTo<List<GetUserListOutput>>());
+        }
+
+        /// <inheritdoc/>
+        public async Task CreateUser(CreateUserInput input)
+        {
+            var user = input.MapTo<User>();
+            user.IsActive = true;
+            user.UserType = UserType.系统管理员;
+            user.Password = new PasswordHasher().HashPassword(input.Password);
+            var identityResult = await UserManager.CreateAsync(user);
+            if (!identityResult.Succeeded)
+            {
+                throw new UserFriendlyException(identityResult.Errors.JoinAsString(" "));
+            }
+        }
+
+        /// <inheritdoc/>
+        public async Task UpdateUser(UpdateUserInput input)
+        {
+            var user = await UserManager.GetUserByIdAsync(input.Id);
+            input.MapTo(user);
+            await UserManager.UpdateAsync(user);
         }
 
         /// <summary>
@@ -249,6 +270,84 @@ namespace BodeAbp.Zero.Users
             return new PagedResultDto<UserLoginAttemptOutPut>(total, list.MapTo<List<UserLoginAttemptOutPut>>());
         }
 
+        /// <summary>
+        /// 密码修改用户单个查询
+        /// </summary>
+        /// <returns></returns>
+        public async Task<UserModifyMwd> GetUser()
+        {
+            if (string.IsNullOrEmpty(AbpSession.UserId.ToString()))
+            {
+                throw new UserFriendlyException("用户标识id为空");
+            }
+            var userentity = await UserRepo.GetAsync(long.Parse(AbpSession.UserId.ToString()));
+            if (userentity == null)
+            {
+                return new UserModifyMwd();
+            }
+            var userListOutPut = new UserModifyMwd
+            {
+                Id = int.Parse(userentity.Id.ToString()),
+                Password = "",
+                NickName = userentity.NickName,
+                UserName = userentity.UserName,
+                Xpassword = "",
+                Qpassword = "",
+                EmailAddress = userentity.EmailAddress
+            };
+            return userListOutPut;
+        }
+        /// <summary>
+        /// 修改密码
+        /// </summary>
+        /// <param name="input">input</param>
+        /// <returns></returns>
+        [AbpAuthorize]
+        public async Task ChangePassword(ChangePasswordInput input)
+        {
+            var user = await UserManager.FindByIdAsync(AbpSession.UserId.Value);
+            if (user == null)
+            {
+                throw new UserFriendlyException("用户不存在");
+            }
+
+            if (!await UserManager.CheckPasswordAsync(user, input.Password))
+            {
+                throw new UserFriendlyException("原密码错误");
+            }
+            UserManager.RemovePassword(user.Id);
+            UserManager.AddPassword(user.Id, input.NewPassword);
+        }
+
+        public async Task<UserListOutPut> GetAdminUserToById()
+        {
+            var userentity = await UserRepo.GetAsync(int.Parse(AbpSession.UserId.ToString()));
+            return userentity == null ? new UserListOutPut() : new UserInfo
+            {
+                Balance = userentity.Balance,
+                CcCoin = userentity.CcCoin,
+                ContactName = userentity.ContactName,
+                ContactNo = userentity.ContactNo,
+                CreationTime = userentity.CreationTime,
+                EmailAddress = userentity.EmailAddress,
+                HeadPic = userentity.HeadPic,
+                IsActive = userentity.IsActive,
+                IsActiveText = userentity.IsActive ? "是" : "否",
+                IsEmailConfirmed = userentity.IsEmailConfirmed,
+                IsEmailText = userentity.IsEmailConfirmed ? "是" : "否",
+                IsPhoneNoConfirm = userentity.IsPhoneNoConfirm,
+                IsPhoneText = userentity.IsPhoneNoConfirm ? "是" : "否",
+                LastLoginTime = userentity.LastLoginTime,
+                NickName = userentity.NickName,
+                PhoneNo = userentity.PhoneNo,
+                SexText = Enum.GetName(typeof(Sex), userentity.Sex),
+                UserName = userentity.UserName,
+                UserTypeText = Enum.GetName(typeof(UserType), userentity.UserType)
+            };
+        }
+
+
+
         #endregion
 
 
@@ -268,6 +367,6 @@ namespace BodeAbp.Zero.Users
         }
 
 
-        
+
     }
 }

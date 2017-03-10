@@ -7,6 +7,10 @@ using System.Threading.Tasks;
 using Abp.Extensions;
 using Abp.Application.Services;
 using System.Collections.Generic;
+using Abp.Authorization;
+using BodeAbp.Zero.Users.Domain;
+using System.Linq;
+using Abp.Auditing;
 
 namespace BodeAbp.Zero.Navigations
 {
@@ -21,18 +25,55 @@ namespace BodeAbp.Zero.Navigations
         public NavigationManager navigationManager { protected get; set; }
 
         private readonly IRepository<Navigation> _navigationRepository;
+        private readonly IRepository<User, long> _userRepository;
 
-        public NavigationAppService(IRepository<Navigation> navigationRepository)
+        public NavigationAppService(IRepository<Navigation> navigationRepository, IRepository<User, long> userRepository)
         {
-		    _navigationRepository = navigationRepository;
+            _navigationRepository = navigationRepository;
+            _userRepository = userRepository;
         }
 
-		#region 导航信息
+        #region 导航信息
 
-		 /// <inheritdoc/>
+        /// <inheritdoc/>
+        [AbpAuthorize]
         public async Task<ICollection<NavigationInfo>> GetUserNavigations()
         {
-            return await navigationManager.GetUserNavigations();
+            var user = await _userRepository.GetAsync(AbpSession.UserId.Value);
+            //return user.UserName == "admin"
+            //    ? await navigationManager.GetAllNavigations()
+            //    : await navigationManager.GetUserNavigations();
+            return user.UserName == "admin"
+                ? await navigationManager.GetAllNavigations()
+                : await navigationManager.GetUserRoleNavigation();
+
+        }
+
+        /// <inheritdoc/>
+        [DisableAuditing]
+        public async Task<bool> CheckUserNavigation(NavigationCheckInput input)
+        {
+            if (AbpSession.UserId.HasValue)
+            {
+                var user = await _userRepository.GetAsync(AbpSession.UserId.Value);
+                if (user.UserName == "admin") return true;
+            }
+            return await navigationManager.CheckUserNavigation(input.Url);
+        }
+
+        /// <inheritdoc/>
+        public async Task<ICollection<NavigationInfo>> GetRoleAndMenu(int roleid)
+        {
+            return await navigationManager.GetRoleAndMenu(roleid);
+        }
+
+        /// <summary>
+        /// 角色关联菜单
+        /// </summary>
+        /// <returns></returns>
+        public async Task CreateRoleAndMenu(int roleid, string menuids)
+        {
+            await navigationManager.CreateRoleAndMenu(roleid, menuids);
         }
 
         /// <inheritdoc/>
@@ -48,7 +89,7 @@ namespace BodeAbp.Zero.Navigations
             await navigationManager.CreateNavigationAsync(navigation);
         }
 
-		 /// <inheritdoc/>
+        /// <inheritdoc/>
         public async Task UpdateNavigation(NavigationInput input)
         {
             var navigation = await _navigationRepository.GetAsync(input.Id);
@@ -56,7 +97,7 @@ namespace BodeAbp.Zero.Navigations
             await navigationManager.UpdateNavigationAsync(navigation);
         }
 
-		/// <inheritdoc/>
+        /// <inheritdoc/>
         public async Task DeleteNavigation(IdInput input)
         {
             await _navigationRepository.DeleteAsync(input.Id);

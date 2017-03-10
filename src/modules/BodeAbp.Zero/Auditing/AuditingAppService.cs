@@ -1,4 +1,5 @@
-﻿using Abp.Application.Services.Dto;
+﻿using Abp.Application.Services;
+using Abp.Application.Services.Dto;
 using Abp.Application.Services.Query;
 using Abp.AutoMapper;
 using Abp.Domain.Repositories;
@@ -14,7 +15,7 @@ namespace BodeAbp.Zero.Auditing
 	/// <summary>
     ///  审计日志 服务
     /// </summary>
-    public class AuditingAppService : IAuditingAppService
+    public class AuditingAppService : ApplicationService,IAuditingAppService
     {
 	    private readonly IRepository<AuditLog,long> _auditLogRepository;
 
@@ -38,8 +39,20 @@ namespace BodeAbp.Zero.Auditing
             var list = await _auditLogRepository.GetAll().Where(input, out total).ToListAsync();
             return new PagedResultDto<GetAuditLogListOutput>(total, list.MapTo<List<GetAuditLogListOutput>>());
         }
-        
-		/// <summary>
+
+        /// <summary>
+        /// 获取 审计日志分页
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        public async Task<PagedResultDto<GetAuditLogListOutput>> GetUserAuditLogPagedList(QueryListPagedRequestInput input)
+        {
+            int total;
+            var list = await _auditLogRepository.GetAll().Where(t=>t.UserId==AbpSession.UserId).Where(input, out total).ToListAsync();
+            return new PagedResultDto<GetAuditLogListOutput>(total, list.MapTo<List<GetAuditLogListOutput>>());
+        }
+
+        /// <summary>
         /// 删除 审计日志
         /// </summary>
         /// <param name="input"></param>

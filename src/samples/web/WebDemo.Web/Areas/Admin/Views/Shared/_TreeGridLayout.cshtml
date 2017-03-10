@@ -24,6 +24,7 @@
     <script src="~/Content/js/plugs/ueditor/ueditor.config.js" type="text/javascript"></script>
     <script src="~/Content/js/plugs/ueditor/ueditor.all.min.js" type="text/javascript"></script>
     <script src="~/Content/js/plugs/textarea/jquery.autosize.js" type="text/javascript"></script>
+    <script src="~/Content/js/zooming.js" type="text/javascript"></script>
     <script src="~/Content/js/bode/bode.grid.js" type="text/javascript"></script>
     <script src="~/Content/js/bode/bode.tree.js" type="text/javascript"></script>
 
@@ -38,7 +39,7 @@
             formWidth: "40%",
             isBatch: false,
             extraFilters:[],
-            imgSaveUrl: "/api/File/UploadPic",
+            imgSaveUrl: $.bode.config.imgSaveUrl,
             loadDataComplete: function (data) { }
         };
 
@@ -75,7 +76,7 @@
             datatable = new $.bode.grid("#dataTable", tableOption);
             tree = new $.bode.tree("#treeContent", treeOption);
 
-            $("#tree").find(".widget-caption").text(treeOption.title);
+            $("#tree").find(".widget-caption>strong").text(treeOption.title);
             endfunction();
         });
     </script>
@@ -86,11 +87,10 @@
 <div class="page-container">
     <div class="page-body" style="padding:0;">
         <div class="row">
-
-            <div id="tree" class="col-xs-4 col-md-3 col-lg-2">
-                <div class="widget flat radius-bordered">
-                    <div class="widget-header bg-info">
-                        <span class="widget-caption">-</span>
+            <div id="tree" class="col-xs-4 col-md-3 col-lg-2" style="padding-right:0">
+                <div class="widget flat radius-bordered" style="margin-bottom:0">
+                    <div class="widget-header bordered-bottom bordered-sky">
+                        <span class="widget-caption"><strong>-</strong></span>
                     </div>
                     <div class="widget-body" style="overflow-y: auto;">
                         <div id="treeContent" class="tree tree-solid-line">
@@ -100,9 +100,9 @@
                 </div>
             </div>
 
-            <div class="col-xs-8 col-md-9 col-lg-10">
-                <div class="widget flat radius-bordered">
-                    <div class="widget-header bg-info">
+            <div class="col-xs-8 col-md-9 col-lg-10" style="padding-left:0;border-left: 1px solid #ccc;">
+                <div class="widget flat radius-bordered" style="margin-bottom:0">
+                    <div class="widget-header bordered-bottom bordered-sky">
                         <span class="widget-caption"><strong>@ViewBag.Title</strong></span>
                     </div>
                     <div class="widget-body">
@@ -137,6 +137,6 @@
 <script type="text/javascript">
     $(function () {
         $("#tree .widget-caption>strong").text(treeOption.title);
-        $("#tree .widget-body").height(document.body.scrollHeight - 140);
+        $("#tree .widget-body").height(document.body.scrollHeight-60);
     });
 </script>

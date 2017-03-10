@@ -57,9 +57,11 @@
                 { data: "id", title: "编号" },
                 { data: "userName", title: "用户名", type: "text", query: true },
                 { data: "nickName", title: "昵称", type: "text", query: true },
-                { data: "lastLoginTime", title: "最后登录时间", type: "timepicker", query: true },
+                { data: "password", title: "密码", type: "hide", query: true, editor: {ep:"hide"} },
+                { data: "emailAddress", title: "邮箱", type: "text", query: true },
                 { data: "isActive", title: "是否激活", type: "switch", query: true },
-                { data: "creationTime", title: "注册时间", type: "timepicker", query: true },
+                { data: "lastLoginTime", title: "最后登录时间", type: "timepicker", query: true, editor: { ap:"hide",ep: "hide" } },
+                { data: "creationTime", title: "创建时间", type: "timepicker", query: true, editor: { ap: "hide", ep: "hide" } },
                 {
                     title: "操作选项",
                     width:"450px",
@@ -70,27 +72,84 @@
                             icon: "fa-trash-o",
                             onClick: onRoleClick
                         }
+                         ,
+                    {
+                        name: "重置密码",
+                        icon: "fa-suitcase",
+                        onClick: chagePwd
+                    }
                     ]
                 }
         ];
+        function chagePwd(d, self) {
+            layer.open({
+                title: d.nickName + "-重置密码",
+                type: 1,
+                area: "40%",
+                content: $("#chagePwd"),
+                btn: ["保存", "取消"],
+                success: function () {
+
+                },
+                yes: function (index, layero) {
+                    var xpwd = $("#xpwd").val();
+                    var qpwd = $("#pwd").val();
+                    if (xpwd.length === 0) {
+                        layer.msg("新密码不能为空");
+                        return;
+                    }
+                    if (qpwd.length === 0) {
+                        layer.msg("确认密码不能为空");
+                        return;
+                    }
+                    if (xpwd !== qpwd) {
+                        layer.msg("密码不一致");
+                        return;
+                    }
+                    var data = { NewPassword: xpwd, UserId: d.id }
+                    $.bode.ajax("/api/services/zero/user/ResetAdminPassword",
+                       data,
+                        function () {
+                            layer.msg("重置成功");
+                            layer.close(index);
+                        });
+                },
+                cancel: function () { }
+            });
+        }
     </script>
 }
 
 <div id="roles" class="layer-row-container">
     <div class="row">
-            <template v-for="role in roleNames">
-                <div class="col-sm-4 col-md-3">
-                    <div class="checkbox">
-                        <label>
-                            <input type="checkbox" value="{{role.roleName}}" v-model="checkedRoleNames">
-                            <span class="text">{{role.displayName}}</span>
-                        </label>
-                    </div>
+        <template v-for="role in roleNames">
+            <div class="col-sm-4 col-md-3">
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" value="{{role.roleName}}" v-model="checkedRoleNames">
+                        <span class="text">{{role.displayName}}</span>
+                    </label>
                 </div>
-            </template>
+            </div>
+        </template>
     </div>
 </div>
+<div id="chagePwd" class="layer-row-container">
+    <div class="row">
+        <div class="form-group">
+            <label for="name" class="col-sm-3 control-label no-padding-right"><span style="color:red;">*&nbsp;</span>新密码：</label>
+            <div class="col-sm-9">
 
+                <input type="password" class="form-control" id="xpwd">
+            </div>
+            <label for="pwd" class="col-sm-3 control-label no-padding-right"><span style="color:red;">*&nbsp;</span>确认密码：</label>
+            <div class="col-sm-9">
+
+                <input type="password" class="form-control" id="pwd">
+            </div>
+        </div>
+    </div>
+</div>
 <div id="reset-password" class="layer-row-container">
 
 </div>

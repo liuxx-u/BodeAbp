@@ -12,7 +12,7 @@
 		this.originData = this.conf.data || [];//初始数据
 		this.actions = this.conf.actions || [];//右上角操作按钮
 		this.extraFilters = this.conf.extraFilters || [];//外部查询条件
-		this.imgSaveUrl = this.conf.imgSaveUrl || "/api/File/UploadPic";
+		this.imgSaveUrl = this.conf.imgSaveUrl || $.bode.config.imgSaveUrl;
 		this.formId = this.conf.formId || "bode-grid-autoform";//表单id
 		this.actionsContainerId = this.conf.actionsContainerId || "actionArea";
 		this.isFormInited = false;//表单是否初始化
@@ -21,7 +21,10 @@
 		this.queryParams = {
 			pageIndex: conf.pageIndex || 1,
 			pageSize: conf.pageSize || 15,
-            sortConditions:[],
+			sortConditions: [{//默认按Id倒序
+			    sortField: conf.sortField||"id",
+			    listSortDirection: conf.listSortDirection===0?0:1
+			}],
 			filterGroup: []
 		}
         this.searchOperators = {
@@ -38,6 +41,7 @@
         this.tool = {
             //数据展示render
             render: function (v, d, r) {
+                if (v == null) return "";
                 if (typeof (r) == 'function') return r(v, d);
                 return v;
             },
@@ -58,7 +62,7 @@
         }
 
         this.initForm = function () {
-            var form = $('<form id="'+this.formId+'" class="form-horizontal" role="form" style="width:95%;margin-top:10px;"></form>');
+            var form = $('<form id="' + this.formId + '" class="form-horizontal layer-row-container" role="form"></form>');
             form.appendTo($("body"));
 
             for (var i = 0, iLen = this.columns.length; i < iLen; i++) {
@@ -155,7 +159,7 @@
                     var dataField = self.columns[i]["data"];
                     var curValue = typeof (data[dataField]) === "undefined" || data[dataField]==null ? "" : data[dataField].toString();
 
-                    if (["text", "number", "datepicker", "timepicker", "hide", "switch", "dropdown", "textarea"].indexOf(colType) >= 0) {
+                    if (["text", "number", "hide", "datepicker", "timepicker", "switch", "dropdown", "textarea"].indexOf(colType) >= 0) {
                         $("#" + dataField).val(curValue);
                     }
                     else if (colType === "img") {
@@ -232,9 +236,14 @@
             }
             var url = this.curEditId === 0 ? this.conf.url.add : this.conf.url.edit;
 
-            $.bode.ajax(url, data, function () {
-                callback();
-                layer.msg("保存成功");
+            abp.ajax({
+                url: url,
+                type: "POST",
+                data: JSON.stringify(data),
+                success: function () {
+                    callback();
+                    abp.notify.success("保存成功");
+                }
             });
             this.curEditId = 0;
         }
@@ -256,28 +265,34 @@
                 for (var j = 0, m = this.columns.length; j < m; j++) {
                     var r = this.columns[j]["render"];
                     var colType = this.columns[j]["type"];
-                    //处理时间类型
                     var v = d[this.columns[j]["data"]];
                     if (colType === "dropdown" || colType === "switch") {
                         var source = this.columns[j].source;
                         $('<td>' + this.tool.sourceRender(v, source, this.columns[j]["render"]) + '</td>').appendTo(tr);
-                    } else if (colType === "img") {
-                        $('<td><img src="' + v + '" style="width:120px;height:80px;"/></td>').appendTo(tr);
+                    } else if (colType === "img" && v) {
+                        $('<td><img src="' + v + '" style="width:120px;height:80px;" data-action="zoom"/></td>').appendTo(tr);
                     }
                     else if (colType === "datepicker" || colType === "timepicker") {
-                        if (!v) return "";
-                        var date = new Date(v);
-                        var format = colType === "datepicker" ? "yyyy-MM-dd" : "yyyy-MM-dd hh:mm";
-                        $('<td>' + $.bode.tools.timeFormat(date, format) + '</td>').appendTo(tr);
+                        if (!v) {
+                            $('<td></td>').appendTo(tr);
+                        }
+                        else {
+                            var date = new Date(v);
+                            var format = colType === "datepicker" ? "yyyy-MM-dd" : "yyyy-MM-dd hh:mm";
+                            $('<td>' + $.bode.tools.timeFormat(date, format) + '</td>').appendTo(tr);
+                        }
                     }
                     else if (colType === "command") {
                         var self = this;
                         var td = $('<td></td>');
-                        for (var k = 0, kLen = this.columns[j].actions.length; k < kLen; k++) {
+                        for (var k = 0, sIndex = 0, kLen = this.columns[j].actions.length; k < kLen; k++) {
                             var action = this.columns[j].actions[k];
+                            if (action.hideFunc && action.hideFunc(d)) continue;
+                            if (action.permission && !abp.auth.isGranted(action.permission)) continue;
+
+                            if (sIndex++ > 0) td.append(' - ');
                             var actionName = action.getName ? action.getName(d) : action.name;
-                            var iconHtml = action.icon ? '<i class="fa ' + action.icon + '"></i>' : '';
-                            $('<a href="#" class="btn btn-default btn-sm purple"> ' + iconHtml + actionName + '</a>').bind("click", { action: action, data: d, tab: self }, actionClick).appendTo(td);
+                            $('<a href="#"> ' + actionName + '</a>').bind("click", { action: action, data: d, tab: self }, actionClick).appendTo(td);
                             td.appendTo(tr);
                         }
                     }
@@ -331,12 +346,19 @@
                             name: "删除",
                             icon: "fa-trash-o",
                             onClick: function (d) {
-                                layer.confirm('是否确定删除该数据？此操作是不可恢复的。', {
+                                var confirmIndex= layer.confirm('是否确定删除该数据？此操作是不可恢复的。', {
                                     btn: ['确定', '取消'] //按钮
                                 }, function () {
-                                    $.bode.ajax(tab.conf.url.delete, { id: d.id }, function (data){
-                                        layer.msg("删除成功");
-                                    })
+                                    abp.ajax({
+                                        url: tab.conf.url.delete + "?id=" + d.id,
+                                        type: "POST",
+                                        data: JSON.stringify({ id: d.id }),
+                                        success: function () {
+                                            tab.query();
+                                            layer.close(confirmIndex);
+                                            abp.notify.success("删除成功");
+                                        }
+                                    });
                                 });
                             }
                         });
@@ -403,6 +425,8 @@
 
             for (var i = 0, iLen = self.actions.length; i < iLen; i++) {
                 var action = self.actions[i];
+                if (action.permission && !abp.auth.isGranted(action.permission)) continue;
+
                 var iconHtml = action.icon ? '<span class="fa ' + action.icon + '" aria-hidden="true"></span>' : '';
                 var actionObj=$('<div class="pull-right" style="margin-right: 10px;"><button class="btn ' + action.btnClass + '">' + iconHtml + action.name + '</button></div>');
                 actionObj.find("button").bind("click", {},action.onClick);
@@ -468,14 +492,18 @@
                         rules: queryFilters.concat(tab.extraFilters)
                     } 
                 }
+                abp.ajax({
+                    url: tab.conf.url.read,
+                    type: "POST",
+                    data: JSON.stringify(query),
+                    success: function (data) {
+                        tab.originData = data.items;
+                        tab.loadData();
 
-                $.bode.ajax(tab.conf.url.read, query, function (data) {
-                    tab.originData = data.items;
-                    tab.loadData();
-
-                    //绑定分页控件
-                    tab.initFoot(data.totalCount);
-                    tab.loadDataComplete(data);
+                        //绑定分页控件
+                        tab.initFoot(data.totalCount);
+                        tab.loadDataComplete(data);
+                    }
                 });
             }
             else {
@@ -626,8 +654,11 @@
             this.queryParams = {
                 pageIndex: conf.pageIndex || 1,
                 pageSize: conf.pageSize || 15,
-                sortConditions: [],
-                filterGroup: []
+                sortConditions: [{//默认按Id倒序
+                    sortField: conf.sortField || "id",
+                    listSortDirection: conf.listSortDirection === 0 ? 0 : 1
+                }],
+                filterGroup: [{}]
             }
             this.query();
         }

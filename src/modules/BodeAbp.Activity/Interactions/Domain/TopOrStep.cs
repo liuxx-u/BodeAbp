@@ -6,7 +6,7 @@ namespace BodeAbp.Activity.Interactions.Domain
     /// <summary>
     /// 顶或踩
     /// </summary>
-    [Table("Activity#TopOrStep")]
+    [Table("Activity_TopOrStep")]
     public class TopOrStep: CreationAuditedEntity<long>
     {
         /// <summary>
