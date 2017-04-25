@@ -12,9 +12,7 @@ using System;
 using WebDemo.WebApi.Swagger;
 using BodeAbp.Activity;
 using BodeAbp.Product;
-using Abp.WebApi.Configuration;
 using Abp.Configuration.Startup;
-using Abp.Json;
 
 namespace WebDemo.WebApi
 {
@@ -47,19 +45,6 @@ namespace WebDemo.WebApi
             ConfigureSwaggerUi();
         }
 
-        public override void PostInitialize()
-        {
-            var converters = Configuration.Modules.AbpWebApi().HttpConfiguration.Formatters.JsonFormatter.SerializerSettings.Converters;
-            foreach (var converter in converters)
-            {
-                if (converter is AbpDateTimeConverter)
-                {
-                    var tmpConverter = converter as AbpDateTimeConverter;
-                    tmpConverter.DateTimeFormat = "yyyy-MM-dd HH:mm:ss";
-                }
-            }
-        }
-
         private void ConfigureSwaggerUi()
         {
             Configuration.Modules.AbpWebApi().HttpConfiguration
@@ -83,7 +68,7 @@ namespace WebDemo.WebApi
 
         private static string GetXmlCommentsPath(Type moduleType)
         {
-            return string.Format(@"{0}\bin\{1}.XML", AppDomain.CurrentDomain.BaseDirectory, moduleType.Assembly.GetName().Name);
+            return $@"{AppDomain.CurrentDomain.BaseDirectory}\bin\{moduleType.Assembly.GetName().Name}.XML";
         }
     }
 }

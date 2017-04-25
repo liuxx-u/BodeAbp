@@ -10,7 +10,7 @@ using Abp.Domain.Uow;
 using Abp.Runtime.Session;
 using Abp.Timing;
 using Castle.Core.Logging;
-using Newtonsoft.Json;
+using Abp.Extensions;
 
 namespace Abp.Auditing
 {
@@ -112,9 +112,11 @@ namespace Abp.Auditing
                     ? method.DeclaringType.FullName
                     : "",
                 MethodName = method.Name,
+                Description = $"{method.DeclaringType.ToDescription()}-{method.ToDescription()}",
                 Parameters = ConvertArgumentsToJson(arguments),
                 ExecutionTime = Clock.Now
             };
+
 
             _auditInfoProvider.Fill(auditInfo);
 

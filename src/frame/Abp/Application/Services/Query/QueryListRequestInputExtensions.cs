@@ -30,5 +30,7 @@ namespace Abp.Application.Services.Query
                 }
             }
         }
+
+
     }
 }

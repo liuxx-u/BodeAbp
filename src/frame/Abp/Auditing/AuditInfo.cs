@@ -38,6 +38,11 @@ namespace Abp.Auditing
         public string MethodName { get; set; }
 
         /// <summary>
+        /// Description
+        /// </summary>
+        public string Description { get; set; }
+
+        /// <summary>
         /// Calling parameters.
         /// </summary>
         public string Parameters { get; set; }

@@ -221,6 +221,7 @@
     <Compile Include="Helper\ActionHelper.cs" />
     <Compile Include="Helper\CombHelper.cs" />
     <Compile Include="Helper\DateTimeHelper.cs" />
+    <Compile Include="Helper\DesHelper.cs" />
     <Compile Include="Helper\GetRequestHelper.cs" />
     <Compile Include="Helper\HashHelper.cs" />
     <Compile Include="Helper\HtmlHelper.cs" />
