@@ -35,7 +35,7 @@ namespace Abp.Owin.Authentication
             return $"{NotifyFuncName}('{strUrls}');";
         }
 
-        public string GetErrorCode(int code,string message)
+        public string GetErrorCode(int code, string message)
         {
             return $"sso.error({code},'{message}')";
         }

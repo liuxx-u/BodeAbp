@@ -97,7 +97,7 @@ namespace Abp.Application.Services.Query
         {
             if (!typeof(TEntity).IsEntityType())
             {
-                string message = string.Format("类型“{0}”不是实体类型", typeof(TEntity).FullName);
+                string message = $"类型“{typeof(TEntity).FullName}”不是实体类型";
                 throw new InvalidOperationException(message);
             }
 
@@ -119,11 +119,9 @@ namespace Abp.Application.Services.Query
                         : CollectionPropertySorter<TEntity>.ThenBy(orderSource, sortField, sortCondition.ListSortDirection);
                     count++;
                 }
-                source = orderSource;
+                source = orderSource.ThenBy("Id", ListSortDirection.Descending);
             }
-            return source != null
-                ? source.Skip((pageIndex - 1) * pageSize).Take(pageSize)
-                : Enumerable.Empty<TEntity>().AsQueryable();
+            return source?.Skip((pageIndex - 1) * pageSize).Take(pageSize) ?? Enumerable.Empty<TEntity>().AsQueryable();
         }
 
         /// <summary>

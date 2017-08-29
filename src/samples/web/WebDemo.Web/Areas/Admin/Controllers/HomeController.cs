@@ -7,6 +7,8 @@ using Abp.Web.Mvc.Authorization;
 using BodeAbp.Product.Attributes.Domain;
 using Abp.Domain.Repositories;
 using BodeAbp.Activity.Activities.Domain;
+using BodeAbp.Zero.Users.Domain;
+using System.Collections.Generic;
 
 namespace WebDemo.Web.Areas.Admin.Controllers
 {
@@ -30,6 +32,11 @@ namespace WebDemo.Web.Areas.Admin.Controllers
 
         public ActionResult Table()
         {
+            ViewBag.Enums = new List<int>() { 1, 2 }.Select(p => new
+            {
+                value = p,
+                text = "类型_" + p
+            }).ToArray();
             return View();
         }
 

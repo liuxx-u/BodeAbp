@@ -21,8 +21,7 @@
     <script src="~/Content/js/plugs/datetime/bootstrap-datetimepicker.min.js" type="text/javascript"></script>
     <script src="~/Content/js/plugs/datetime/bootstrap-datetimepicker.zh-CN.js" type="text/javascript"></script>
     <script src="~/Content/js/plugs/webuploader/webuploader.js" type="text/javascript"></script>
-    <script src="~/Content/js/plugs/ueditor/ueditor.config.js" type="text/javascript"></script>
-    <script src="~/Content/js/plugs/ueditor/ueditor.all.min.js" type="text/javascript"></script>
+    <script src="~/Content/js/plugs/wangEditor-2.1.23/dist/js/wangEditor.js" type="text/javascript"></script>
     <script src="~/Content/js/plugs/textarea/jquery.autosize.js" type="text/javascript"></script>
     <script src="~/Content/js/zooming.js" type="text/javascript"></script>
     <script src="~/Content/js/bode/bode.grid.js" type="text/javascript"></script>
@@ -34,17 +33,18 @@
         var tableOption = {
             url: {},
             columns: [],
+            permission: {},
             pageSize: 15,
             actions: [],
             formWidth: "40%",
             isBatch: false,
-            extraFilters:[],
+            extraFilters: [],
             imgSaveUrl: $.bode.config.imgSaveUrl,
-            loadDataComplete: function (data) { }
+            loadDataComplete: function(data) {}
         };
 
         var treeOption = {
-            title:"",
+            title: "",
             url: "",
             valueField: "value",
             textField: "text",
@@ -53,27 +53,37 @@
             initialValue: "0",
             folderSelectEnable: false,
             multiSelectEnable: false,
-            itemSelect: function (data) {
+            itemSelect: function(data) {
                 datatable.setExtraFilter({
                     field: treeOption.tableParamField,
                     operate: "equal",
                     value: data[treeOption.valueField]
                 });
             },
-            loadCompleted: function () { },
-            itemCancel: function (data) { }
+            loadCompleted: function() {
+                if (tree.firstNode) {
+                    tableOption.extraFilters.push({
+                        field: treeOption.tableParamField,
+                        operate: "equal",
+                        value: tree.firstNode.value
+                    });
+                    tree.tree.find(".tree-item[data-value='" + tree.firstNode.value + "']").addClass("bg-palegreen");
+                }
+                //树加载完成之后再加载表格
+                datatable = new $.bode.grid("#dataTable", tableOption);
+            },
+            itemCancel: function(data) {}
         };
 
-        var startfunction = function () { };
-        var endfunction = function () { };
+        var startfunction = function() {};
+        var endfunction = function() {};
     </script>
     @RenderSection("customScript", true)
 
     <script type="text/javascript">
-        $(function () {
+        $(function() {
             startfunction();
             //初始化数据
-            datatable = new $.bode.grid("#dataTable", tableOption);
             tree = new $.bode.tree("#treeContent", treeOption);
 
             $("#tree").find(".widget-caption>strong").text(treeOption.title);

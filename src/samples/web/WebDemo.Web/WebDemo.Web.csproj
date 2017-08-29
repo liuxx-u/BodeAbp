@@ -25,6 +25,7 @@
     <UseGlobalApplicationHostFile />
     <TargetFrameworkProfile />
     <TypeScriptToolsVersion>2.1</TypeScriptToolsVersion>
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -714,6 +715,7 @@
     <Content Include="Content\fonts\fontawesome-webfont.woff2" />
     <Content Include="Content\fonts\FontAwesome.otf" />
     <Content Include="Content\js\plugs\sweetalert\sweet-alert.scss" />
+    <Content Include="Areas\Admin\Views\Product\ProductList.cshtml" />
     <None Include="Properties\PublishProfiles\211.149.223.24.pubxml" />
     <Content Include="Content\js\bode\bode.js" />
     <Content Include="Content\js\plugs\layer\layer.js" />

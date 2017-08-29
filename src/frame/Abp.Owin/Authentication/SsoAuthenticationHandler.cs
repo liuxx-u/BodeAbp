@@ -19,7 +19,7 @@ namespace Abp.Owin.Authentication
             if (Options.SessionStore != null)
             {
                 ticketInfo = await Options.SessionStore.RetrieveAsync(requestCookie);
-                if (!CheckAllowHost(ticketInfo)) return null;
+                //if (!CheckAllowHost(ticketInfo)) return null;
 
                 //如果超过一半的有效期，则刷新
                 DateTime now = DateTime.Now;
@@ -40,7 +40,7 @@ namespace Abp.Owin.Authentication
             {
                 //未启用分布式存储器，需要前端定时请求刷新token
                 ticketInfo = Options.TicketInfoProtector.UnProtect(requestCookie);
-                if (!CheckAllowHost(ticketInfo)) return null;
+                //if (!CheckAllowHost(ticketInfo)) return null;
             }
 
             if (ticketInfo != null && !ticketInfo.UserId.IsNullOrWhiteSpace())
@@ -71,8 +71,7 @@ namespace Abp.Owin.Authentication
             if (claim == null) return false;
 
             var allowHosts = claim.Value.Split(",", StringSplitOptions.RemoveEmptyEntries);
-            var currentHost = $"{Request.Scheme}://{Request.Host}/";
-            return allowHosts.Contains(currentHost);
+            return allowHosts.Contains(Request.Host.ToString());
         }
     }
 }
